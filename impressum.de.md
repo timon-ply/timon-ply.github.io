@@ -1,6 +1,6 @@
 # Impressum
 
-Angaben gemäß § 5 TMG
+Angaben gemäß § 5 DDG
 
 Timon Polley
 Gutenbergstraße 5

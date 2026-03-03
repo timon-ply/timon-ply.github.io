@@ -1,6 +1,6 @@
 # Legal Notice (Impressum)
 
-Information in accordance with § 5 TMG
+Information in accordance with § 5 DDG
 
 Timon Polley  
 Gutenbergstraße 5  

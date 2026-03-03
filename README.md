@@ -7,23 +7,27 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 **Impressum (Legal Notice)**
 - 🇩🇪 [Deutsch (German)](impressum.de.md)
 - 🇬🇧 [English](impressum.en.md)
+- 🇪🇸 [Español (Spanish)](impressum.es.md)
+- 🇯🇵 [日本語 (Japanese)](impressum.ja.md)
 
 ## Applications
 
-### Cyberpunk Habit Tracker
+### NeonRoutine
+
 **Privacy Policy**
-- 🇩🇪 [Deutsch (Coming Soon)](#)
-- 🇬🇧 [English (Coming Soon)](#)
+- 🇩🇪 [Deutsch (German)](neonroutine/privacy.de.md)
+- 🇬🇧 [English](neonroutine/privacy.en.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/privacy.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/privacy.ja.md)
 
 **Terms of Service**
-- 🇩🇪 [Deutsch (Coming Soon)](#)
-- 🇬🇧 [English (Coming Soon)](#)
+- 🇩🇪 [Deutsch (German)](neonroutine/terms.de.md)
+- 🇬🇧 [English](neonroutine/terms.en.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/terms.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/terms.ja.md)
 
-### Hearth & Harvest
-**Privacy Policy**
-- 🇩🇪 [Deutsch (Coming Soon)](#)
-- 🇬🇧 [English (Coming Soon)](#)
-
-**Terms of Service**
-- 🇩🇪 [Deutsch (Coming Soon)](#)
-- 🇬🇧 [English (Coming Soon)](#)
+**Accessibility Statement**
+- 🇩🇪 [Deutsch (German)](neonroutine/accessibility.de.md)
+- 🇬🇧 [English](neonroutine/accessibility.en.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/accessibility.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/accessibility.ja.md)
