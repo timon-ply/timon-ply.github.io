@@ -33,6 +33,25 @@ Under the GDPR, you have extensive rights regarding your data. You can exercise 
 - **Right to Rectification (Art. 16)**: You can edit, modify, or delete individual habits effortlessly within the App.
 - **Right to Object & Withdraw Consent (Art. 21 & 7)**: You can update or withdraw your ad consent via the Privacy/Consent settings in the App, and disable push notifications via your OS settings.
 
-## 5. Contact
+## 5. Data Retention
+We retain personal data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy.
+- **Local Data**: Kept indefinitely on your device until you delete the app or use the "Wipe System" feature.
+- **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days or as per Google's data retention policies.
+- **Purchase History**: Maintained by RevenueCat and App Stores as required for financial/tax compliance and subscription management.
+
+## 6. Children's Privacy
+Our App does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from children under 16. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us so that we will be able to take necessary actions.
+
+## 7. California Privacy Rights (CCPA/CPRA)
+If you are a California resident, you have the right to know what personal information we collect, the right to delete it, and the right to opt-out of its "sale" or "sharing." 
+Because we use Google AdMob for personalized advertising, this may be considered a "sale" or "sharing" under California law. You can opt-out at any time using the privacy/consent settings within the App.
+
+## 8. International Data Transfers
+Since some of our third-party processors (such as Google and RevenueCat) are located outside the European Economic Area (EEA), your information may be transferred to and maintained on computers located outside of your state, province, or country. These transfers are protected by Standard Contractual Clauses (SCCs) and adherence to the EU-US Data Privacy Framework where applicable.
+
+## 9. Changes to This Privacy Policy
+We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this document.
+
+## 10. Contact
 If you have any questions or suggestions about our Privacy Policy or wish to exercise your rights, please contact our Data Protection representative at:  
 **Email:** timon.polley1@gmail.com

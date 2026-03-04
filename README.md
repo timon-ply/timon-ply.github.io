@@ -1,10 +1,10 @@
 # App Portfolio & Legal Documents
 
-Welcome to the official portal for apps developed by Timon Polley. This site serves as the central hub for legal documents concerning my applications as an Einzelunternehmer.
+Welcome to the official portal for apps developed by Timon Polley. This site serves as the central hub for legal documents concerning my applications as a sole proprietor.
 
 ## General Documents
 
-**Impressum (Legal Notice)**
+**Legal Notice**
 - 🇩🇪 [Deutsch (German)](impressum.de.md)
 - 🇬🇧 [English](impressum.en.md)
 - 🇪🇸 [Español (Spanish)](impressum.es.md)

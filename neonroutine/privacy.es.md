@@ -33,6 +33,25 @@ Usted tiene amplios derechos sobre sus datos. Puede ejercer la mayoría directam
 - **Rectificación (Art. 16)**: Puede editar y eliminar hábitos en la App.
 - **Oposición y Retirada (Art. 21 & 7)**: Puede retirar su consentimiento para anuncios en la configuración de la App y para notificaciones en el sistema operativo.
 
-## 5. Contacto
+## 5. Retención de Datos
+Retenemos los datos personales solo durante el tiempo necesario para cumplir con los fines descritos en esta Política de Privacidad.
+- **Datos Locales**: Se conservan indefinidamente en su dispositivo hasta que elimine la aplicación o utilice la función "Wipe System".
+- **Informes de fallos y Análisis**: Retenidos por Google Firebase hasta por 90 días o de acuerdo con las políticas de retención de datos de Google.
+- **Historial de Compras**: Mantenido por RevenueCat y las tiendas de aplicaciones según sea necesario para el cumplimiento fiscal/financiero y la gestión de suscripciones.
+
+## 6. Privacidad de los Niños
+Nuestra App no está dirigida a menores de 16 años. No recopilamos a sabiendas información personal identificable de niños menores de 16 años. Si usted es padre o tutor y sabe que su hijo nos ha proporcionado datos personales, comuníquese con nosotros para que podamos tomar las medidas necesarias.
+
+## 7. Derechos de Privacidad de California (CCPA/CPRA)
+Si es residente de California, tiene derecho a saber qué información personal recopilamos, el derecho a eliminarla y el derecho a excluirse de su "venta" o "intercambio".
+Debido a que utilizamos Google AdMob para la publicidad personalizada, esto puede considerarse una "venta" o "intercambio" según la ley de California. Puede darse de baja (opt-out) en cualquier momento utilizando la configuración de privacidad/consentimiento dentro de la aplicación.
+
+## 8. Transferencias Internacionales de Datos
+Dado que algunos de nuestros procesadores externos (como Google y RevenueCat) se encuentran fuera del Espacio Económico Europeo (EEE), su información puede ser transferida y mantenida en computadoras ubicadas fuera de su estado, provincia o país. Estas transferencias están protegidas por Cláusulas Contractuales Tipo (SCC) y la adhesión al Marco de Privacidad de Datos UE-EE. UU. cuando corresponda.
+
+## 9. Cambios en esta Política de Privacidad
+Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página y actualizando la fecha de "Última actualización" en la parte superior de este documento.
+
+## 10. Contacto
 Si tiene preguntas sobre esta política, contáctenos en:  
 **Correo electrónico:** timon.polley1@gmail.com
