@@ -37,5 +37,37 @@ The European Commission provides a platform for online dispute resolution (ODR):
 ## 10. Changes to These Terms
 We may update our Terms from time to time. You are advised to review this page periodically for any changes.
 
-## 11. Contact
+## 11. Age Requirements & Parental Consent
+
+The App is rated 4+ and may be used by users of all ages. Users under 13 years of age (or under 16 in the EU/EEA) may only use the App with verifiable parental or guardian consent. By allowing a child to use the App, the parent or guardian agrees to these Terms on the child's behalf and accepts responsibility for their use.
+
+In-app purchases, including subscriptions, must not be made by children without explicit parental authorization. Parents are encouraged to use device-level parental controls to restrict purchase capabilities.
+
+## 12. Apple Platform Terms
+
+This End User License Agreement is concluded between you and Timon Polley only, and not with Apple Inc. ("Apple"). Timon Polley, not Apple, is solely responsible for the App and its content. To the extent this Agreement provides usage rules less restrictive than, or otherwise conflicts with, the App Store Terms of Service, the more restrictive or conflicting Apple term applies.
+
+**Maintenance and Support:** Timon Polley is solely responsible for providing maintenance and support services for the App. Apple has no obligation whatsoever to furnish any maintenance or support services with respect to the App.
+
+**Warranty:** In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price for the App to you. To the maximum extent permitted by applicable law, Apple will have no other warranty obligation with respect to the App. Any other claims, losses, liabilities, damages, costs, or expenses attributable to any failure to conform to a warranty are Timon Polley's sole responsibility.
+
+**Product Claims:** Timon Polley, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including but not limited to: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.
+
+**Intellectual Property:** In the event that a third party claims that the App or your possession and use of the App infringes that third party's intellectual property rights, Timon Polley, not Apple, will be solely responsible for the investigation, defense, settlement, and discharge of any such intellectual property infringement claim.
+
+**Third-Party Beneficiary:** Timon Polley and you acknowledge and agree that Apple, and Apple's subsidiaries, are third-party beneficiaries of this Agreement, and that upon your acceptance of the terms and conditions of this Agreement, Apple will have the right (and will be deemed to have accepted the right) to enforce this Agreement against you as a third-party beneficiary thereof.
+
+## 13. Third-Party Advertising
+
+The App may display advertisements served by Google LLC via the Google Mobile Ads SDK ("AdMob"). Ads are served on a rewarded basis — you may choose to watch an ad in exchange for in-app credits. No ads are shown without your explicit action.
+
+Google's advertising SDK may collect certain device and usage data to serve ads, including but not limited to device identifiers, IP address, and app interaction data. This data is processed in accordance with [Google's Privacy Policy](https://policies.google.com/privacy).
+
+To opt out of personalized advertising:
+- **iOS:** Settings → Privacy & Security → Apple Advertising → turn off "Personalized Ads"
+- **Android:** Settings → Google → Ads → opt out of Ads Personalization
+
+You can also manage your ad preferences at [https://adssettings.google.com](https://adssettings.google.com).
+
+## 14. Contact
 If you have any questions, contact us at: timon.polley1@gmail.com

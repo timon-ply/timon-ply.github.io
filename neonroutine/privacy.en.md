@@ -12,7 +12,7 @@ We collect the minimum amount of data necessary to operate the App effectively. 
   *Lawful Basis: Legitimate Interest (Art. 6(1)(f) GDPR).*
 - **In-App Purchases**: Managed securely via RevenueCat and the respective app stores (Apple App Store / Google Play). We do not have access to your payment details.  
   *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
-- **Advertisements**: We use Google AdMob to serve personalized or non-personalized ads, depending on your choices managed via Google UMP.  
+- **Advertisements**: We use Google AdMob to serve non-personalized ads. AdMob is configured globally with child-directed treatment (`tagForChildDirectedTreatment = true`), disabling behavioral profiling and personalized targeting for all users.
   *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
 - **Usage Data & Analytics**: Collected anonymously via Google Firebase/Crashlytics to improve the app's performance and fix bugs.  
   *Lawful Basis: Legitimate Interest / Consent where applicable (Art. 6(1)(a)/(f) GDPR).*
@@ -39,8 +39,19 @@ We retain personal data only for as long as necessary to fulfill the purposes ou
 - **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days or as per Google's data retention policies.
 - **Purchase History**: Maintained by RevenueCat and App Stores as required for financial/tax compliance and subscription management.
 
-## 6. Children's Privacy
-Our App does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from children under 16. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us so that we will be able to take necessary actions.
+## 6. Children's Privacy (COPPA & GDPR)
+
+The App carries a 4+ age rating and may be used by users of all ages, including children. We comply with the Children's Online Privacy Protection Act (COPPA, US) and applicable child-directed data protection laws.
+
+All habit data is stored exclusively on the user's device and is never transmitted to our servers or shared with third parties.
+
+For advertising, Google AdMob is configured globally with child-directed treatment (`tagForChildDirectedTreatment = true`), disabling behavioral profiling and personalized ad targeting for all users. Only non-personalized ads are served.
+
+If you are a parent or guardian and believe your child has provided personal data to us or our third-party processors without appropriate consent, contact us at timon.polley1@gmail.com and we will take prompt action to review and, where applicable, delete that data.
+
+## 6a. Parental Consent
+
+Children under 13 (or under 16 in the EU/EEA) must have verifiable parental or guardian consent before using features that involve third-party data processing, including in-app purchases and ad-supported content. A parent or guardian who accepts this Privacy Policy on behalf of a child confirms they have reviewed it and consent on the child's behalf.
 
 ## 7. California Privacy Rights (CCPA/CPRA)
 If you are a California resident, you have the right to know what personal information we collect, the right to delete it, and the right to opt-out of its "sale" or "sharing." 

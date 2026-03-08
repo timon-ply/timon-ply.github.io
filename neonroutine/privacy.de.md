@@ -12,7 +12,7 @@ Wir verarbeiten nur die minimal notwendigen Daten. Die Verarbeitung basiert auf 
   *Rechtsgrundlage: Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).*
 - **In-App-Käufe**: Sicher verwaltet über RevenueCat und die jeweiligen App Stores (Apple / Google). Wir haben keinen Zugriff auf Ihre Zahlungsdaten.  
   *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
-- **Werbung**: Wir nutzen Google AdMob für personalisierte oder nicht-personalisierte Werbung, abhängig von Ihrer per Google UMP erteilten Zustimmung.  
+- **Werbung**: Wir nutzen Google AdMob zur Auslieferung nicht-personalisierter Werbung. AdMob ist global mit kindgerechter Behandlung konfiguriert (`tagForChildDirectedTreatment = true`), wodurch Verhaltens-Profiling und personalisiertes Targeting für alle Nutzer deaktiviert werden.
   *Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) i.V.m. § 25 TDDDG.*
 - **Nutzungsdaten & Analyse**: Wird über Google Firebase/Crashlytics gesammelt, um die App zu verbessern und Fehler zu beheben.  
   *Rechtsgrundlage: Berechtigtes Interesse / Einwilligung (Art. 6 Abs. 1 lit. f / a DSGVO).*
@@ -39,8 +39,19 @@ Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der in 
 - **Analyse- & Absturzberichte**: Werden von Google Firebase für bis zu 90 Tage oder gemäß den Datenaufbewahrungsrichtlinien von Google gespeichert.
 - **Kaufhistorie**: Wird von RevenueCat und den App Stores verwaltet, sofern dies für die Einhaltung finanz- und steuerrechtlicher Vorgaben sowie zur Abonnementverwaltung erforderlich ist.
 
-## 6. Datenschutz für Kinder
-Unsere App richtet sich nicht an Personen unter 16 Jahren. Wir erfassen nicht wissentlich personenbezogene Daten von Kindern unter 16 Jahren. Wenn Sie ein Elternteil oder Vormund sind und feststellen, dass Ihr Kind uns personenbezogene Daten zur Verfügung gestellt hat, kontaktieren Sie uns bitte, damit wir die erforderlichen Maßnahmen ergreifen können.
+## 6. Datenschutz für Kinder (COPPA & DSGVO)
+
+Die App besitzt eine 4+-Altersfreigabe und kann von Nutzern jeden Alters, einschließlich Kindern, verwendet werden. Wir erfüllen die Anforderungen des US-amerikanischen Children's Online Privacy Protection Act (COPPA) sowie der anwendbaren kinderspezifischen Datenschutzgesetze.
+
+Alle Gewohnheitsdaten werden ausschließlich auf dem Gerät des Nutzers gespeichert und weder an unsere Server übermittelt noch an Dritte weitergegeben.
+
+Google AdMob ist global mit kindgerechter Behandlung (`tagForChildDirectedTreatment = true`) konfiguriert. Dies deaktiviert Verhaltens-Profiling und personalisiertes Targeting für alle Nutzer. Es werden ausschließlich nicht-personalisierte Anzeigen ausgeliefert.
+
+Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder unseren Drittanbietern ohne angemessene Einwilligung personenbezogene Daten übermittelt hat, kontaktieren Sie uns unter timon.polley1@gmail.com. Wir werden umgehend tätig und löschen die betroffenen Daten, soweit dies möglich ist.
+
+## 6a. Elterliche Einwilligung
+
+Kinder unter 13 Jahren (bzw. unter 16 Jahren in der EU/im EWR) müssen eine nachweisbare Einwilligung eines Elternteils oder Erziehungsberechtigten einholen, bevor sie Funktionen nutzen, die eine Verarbeitung durch Drittanbieter beinhalten, einschließlich In-App-Käufen und werbefinanzierten Inhalten. Ein Elternteil oder Erziehungsberechtigter, der diese Datenschutzerklärung im Namen des Kindes akzeptiert, bestätigt, dass er sie gelesen hat und im Namen des Kindes einwilligt.
 
 ## 7. Kalifornische Datenschutzrechte (CCPA/CPRA)
 Wenn Sie im Bundesstaat Kalifornien ansässig sind, haben Sie das Recht zu erfahren, welche personenbezogenen Daten wir sammeln, das Recht auf deren Löschung und das Recht, dem „Verkauf“ oder „Teilen“ dieser Daten zu widersprechen.
