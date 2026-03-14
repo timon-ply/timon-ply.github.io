@@ -12,7 +12,7 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 
 ## Applications
 
-### NeonRoutine
+### <img src="assets/icons/neonroutine.png" width="32" height="32" style="vertical-align:middle"> NeonRoutine
 
 **Privacy Policy**
 - 🇩🇪 [Deutsch (German)](neonroutine/privacy.de.md)
@@ -31,3 +31,17 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 - 🇬🇧 [English](neonroutine/accessibility.en.md)
 - 🇪🇸 [Español (Spanish)](neonroutine/accessibility.es.md)
 - 🇯🇵 [日本語 (Japanese)](neonroutine/accessibility.ja.md)
+
+### <img src="assets/icons/kalvenda.png" width="32" height="32" style="vertical-align:middle"> Kalvenda
+
+**Privacy Policy**
+- 🇩🇪 [Deutsch (German)](kalvenda/privacy.de.md)
+- 🇬🇧 [English](kalvenda/privacy.en.md)
+
+**Terms of Service**
+- 🇩🇪 [Deutsch (German)](kalvenda/terms.de.md)
+- 🇬🇧 [English](kalvenda/terms.en.md)
+
+**Accessibility Statement**
+- 🇩🇪 [Deutsch (German)](kalvenda/accessibility.de.md)
+- 🇬🇧 [English](kalvenda/accessibility.en.md)
