@@ -8,35 +8,31 @@ Diese Datenschutzerklärung gilt für die Nutzung der mobilen Anwendung **NeonRo
 ## 2. Erhobene Daten & Rechtsgrundlage (Art. 6 DSGVO)
 Wir verarbeiten nur die minimal notwendigen Daten. Die Verarbeitung basiert auf folgenden Rechtsgrundlagen:
 
-- **Lokale Gewohnheits-Daten**: Ihre Routinen und Protokolle werden ausschließlich *lokal* auf Ihrem Gerät gespeichert (Isar DB & SharedPreferences). Diese Daten verlassen Ihr Gerät nicht.  
+- **Lokale Gewohnheits-Daten**: Ihre Routinen und Protokolle werden ausschließlich *lokal* auf Ihrem Gerät gespeichert (Isar DB & SharedPreferences). Diese Daten verlassen Ihr Gerät nicht.
   *Rechtsgrundlage: Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).*
-- **In-App-Käufe**: Sicher verwaltet über RevenueCat und die jeweiligen App Stores (Apple / Google). Wir haben keinen Zugriff auf Ihre Zahlungsdaten.  
+- **In-App-Käufe**: Sicher verwaltet über RevenueCat und die jeweiligen App Stores (Apple / Google). Wir haben keinen Zugriff auf Ihre Zahlungsdaten.
   *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
-- **Werbung**: Wir nutzen Google AdMob zur Auslieferung nicht-personalisierter Werbung. AdMob ist global mit kindgerechter Behandlung konfiguriert (`tagForChildDirectedTreatment = true`), wodurch Verhaltens-Profiling und personalisiertes Targeting für alle Nutzer deaktiviert werden.
+- **Werbung**: Wir nutzen Google AdMob zur Auslieferung von Rewarded Ads. Die Personalisierung von Werbung richtet sich nach der Einwilligung des Nutzers über den UMP-Einwilligungsdialog (User Messaging Platform): EWR/UK-Nutzern wird ein DSGVO-Einwilligungsformular angezeigt; iOS-Nutzern wird ein App Tracking Transparency (ATT)-Dialog angezeigt. Nutzer, die nicht einwilligen, erhalten ausschließlich nicht-personalisierte Werbung. Auf iOS-Geräten kann bei Akzeptanz des ATT-Dialogs die IDFA (Identifier for Advertisers) des Geräts durch Google für Werbeausrichtung und Erfolgsmessung erfasst werden.
   *Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) i.V.m. § 25 TDDDG.*
-- **Nutzungsdaten & Analyse**: Wird über Google Firebase/Crashlytics gesammelt, um die App zu verbessern und Fehler zu beheben.  
-  *Rechtsgrundlage: Berechtigtes Interesse / Einwilligung (Art. 6 Abs. 1 lit. f / a DSGVO).*
-- **Push-Benachrichtigungen**: Zur Erinnerung an Ihre Routinen.  
+- **Push-Benachrichtigungen**: Zur Erinnerung an Ihre Routinen.
   *Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).*
 
 ## 3. Dienste von Drittanbietern & Auftragsverarbeiter (Art. 28 DSGVO)
 Wir setzen Drittanbieter ein und haben mit diesen Auftragsverarbeitungsverträge (AVV) geschlossen:
-- **Google AdMob**: Werbeauslieferung.
-- **Google Firebase**: App-Analysen und Fehlerberichterstattung.
+- **Google AdMob**: Werbeauslieferung und zugehörige Datenverarbeitung. Die Verarbeitung erfolgt gemäß der [Datenschutzrichtlinie von Google](https://policies.google.com/privacy).
 - **RevenueCat**: Abonnement-Verwaltung.
 - **Apple Inc. / Google LLC**: Abwicklung von Store-Käufen.
 
 ## 4. Ihre Rechte (Art. 15–22 DSGVO)
 Ihnen stehen umfangreiche Rechte zu, von denen Sie die meisten direkt in der App ausüben können:
-- **Auskunft & Datenübertragbarkeit (Art. 15 & 20)**: Sie können Ihre lokalen Daten jederzeit über den "Data Export" Button in den Einstellungen als JSON exportieren.
+- **Auskunft & Datenübertragbarkeit (Art. 15 & 20)**: Sie können Ihre lokalen Daten jederzeit über den "Data Export"-Button in den Einstellungen als JSON exportieren.
 - **Löschung (Art. 17)**: Über die Funktion "Wipe System" in den Einstellungen können Sie Ihre gesamten Daten dauerhaft vom Gerät löschen und die App zurücksetzen.
 - **Berichtigung (Art. 16)**: Einzelne Gewohnheiten können in der App jederzeit bearbeitet oder gelöscht werden.
-- **Widerruf & Widerspruch (Art. 7 & 21)**: Sie können Ihre Zustimmung zu Werbeanzeigen jederzeit in den Privatsphäre-Einstellungen der App widerrufen und Push-Benachrichtigungen über das Betriebssystem deaktivieren.
+- **Widerruf & Widerspruch (Art. 7 & 21)**: Sie können Ihre Werbeeinwilligung jederzeit unter **Einstellungen → ANZEIGENPRÄFERENZEN** in der App widerrufen. Push-Benachrichtigungen können über die OS-Einstellungen Ihres Geräts deaktiviert werden.
 
 ## 5. Datenspeicherung
 Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der in dieser Datenschutzerklärung genannten Zwecke erforderlich ist.
 - **Lokale Daten**: Werden auf unbestimmte Zeit auf Ihrem Gerät gespeichert, bis Sie die App löschen oder die Funktion "Wipe System" verwenden.
-- **Analyse- & Absturzberichte**: Werden von Google Firebase für bis zu 90 Tage oder gemäß den Datenaufbewahrungsrichtlinien von Google gespeichert.
 - **Kaufhistorie**: Wird von RevenueCat und den App Stores verwaltet, sofern dies für die Einhaltung finanz- und steuerrechtlicher Vorgaben sowie zur Abonnementverwaltung erforderlich ist.
 
 ## 6. Datenschutz für Kinder (COPPA & DSGVO)
@@ -45,7 +41,7 @@ Die App besitzt eine 4+-Altersfreigabe und kann von Nutzern jeden Alters, einsch
 
 Alle Gewohnheitsdaten werden ausschließlich auf dem Gerät des Nutzers gespeichert und weder an unsere Server übermittelt noch an Dritte weitergegeben.
 
-Google AdMob ist global mit kindgerechter Behandlung (`tagForChildDirectedTreatment = true`) konfiguriert. Dies deaktiviert Verhaltens-Profiling und personalisiertes Targeting für alle Nutzer. Es werden ausschließlich nicht-personalisierte Anzeigen ausgeliefert.
+Werbeinhalte sind auf eine PG-Bewertung (Parental Guidance) beschränkt. Die Personalisierung von Werbung setzt eine ausdrückliche Einwilligung des Nutzers gemäß Abschnitt 2 voraus. Ohne Einwilligung findet kein Behavioral Profiling statt.
 
 Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder unseren Drittanbietern ohne angemessene Einwilligung personenbezogene Daten übermittelt hat, kontaktieren Sie uns unter timon.polley1@gmail.com. Wir werden umgehend tätig und löschen die betroffenen Daten, soweit dies möglich ist.
 
@@ -54,8 +50,8 @@ Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder un
 Kinder unter 13 Jahren (bzw. unter 16 Jahren in der EU/im EWR) müssen eine nachweisbare Einwilligung eines Elternteils oder Erziehungsberechtigten einholen, bevor sie Funktionen nutzen, die eine Verarbeitung durch Drittanbieter beinhalten, einschließlich In-App-Käufen und werbefinanzierten Inhalten. Ein Elternteil oder Erziehungsberechtigter, der diese Datenschutzerklärung im Namen des Kindes akzeptiert, bestätigt, dass er sie gelesen hat und im Namen des Kindes einwilligt.
 
 ## 7. Kalifornische Datenschutzrechte (CCPA/CPRA)
-Wenn Sie im Bundesstaat Kalifornien ansässig sind, haben Sie das Recht zu erfahren, welche personenbezogenen Daten wir sammeln, das Recht auf deren Löschung und das Recht, dem „Verkauf“ oder „Teilen“ dieser Daten zu widersprechen.
-Da wir Google AdMob für personalisierte Werbung nutzen, kann dies nach kalifornischem Recht als "Verkauf" oder "Teilen" angesehen werden. Sie können jederzeit über die Privatsphäre/Zustimmungs-Einstellungen innerhalb der App widersprechen (Opt-out).
+Wenn Sie im Bundesstaat Kalifornien ansässig sind, haben Sie das Recht zu erfahren, welche personenbezogenen Daten wir sammeln, das Recht auf deren Löschung und das Recht, dem „Verkauf" oder „Teilen" dieser Daten zu widersprechen.
+Da wir Google AdMob für Werbung nutzen, kann dies nach kalifornischem Recht als "Verkauf" oder "Teilen" angesehen werden. Sie können jederzeit über **Einstellungen → ANZEIGENPRÄFERENZEN** in der App widersprechen (Opt-out).
 
 ## 8. Internationale Datenübermittlung
 Da einige unserer Drittanbieter (wie Google und RevenueCat) ihren Sitz außerhalb des Europäischen Wirtschaftsraums (EWR) haben, können Ihre Daten auf Server außerhalb Ihres Staates, Ihrer Provinz oder Ihres Landes übertragen und dort gespeichert werden. Diese Übermittlungen sind durch Standardvertragsklauseln (SCCs) und die Einhaltung des EU-US Data Privacy Frameworks geschützt, sofern anwendbar.
@@ -64,5 +60,5 @@ Da einige unserer Drittanbieter (wie Google und RevenueCat) ihren Sitz außerhal
 Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden Sie über jegliche Änderungen informieren, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen und das "Zuletzt aktualisiert"-Datum oben in diesem Dokument anpassen.
 
 ## 10. Kontakt
-Bei Fragen zur Datenschutzerklärung oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:  
+Bei Fragen zur Datenschutzerklärung oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:
 **E-Mail:** timon.polley1@gmail.com
