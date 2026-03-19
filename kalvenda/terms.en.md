@@ -1,4 +1,4 @@
-# Terms of Service for Kalvenda
+﻿# Terms of Service for Kalvenda
 
 Last Updated: March 2026
 
@@ -9,6 +9,7 @@ By downloading or using the **Kalvenda** app ("the App"), these terms will autom
 Kalvenda allows you to create groups, events, alerts, and other social interactions. You are solely responsible for the content you create and share.
 
 - **Zero Tolerance for Objectionable Content**: You agree not to post content that is illegal, offensive, abusive, harassing, defamatory, sexually explicit, or incites violence.
+- **Child Safety**: We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. By using the app, you agree to our [CSAE Standards](https://timonply.com/kalvenda/csae.en).
 - **Moderation**: We reserve the right to review, filter, and remove any content or user that violates these terms.
 - **Reporting & Blocking**: You can report objectionable content or block abusive users directly within the App. We will review reports and take appropriate action promptly (typically within 24 hours).
 

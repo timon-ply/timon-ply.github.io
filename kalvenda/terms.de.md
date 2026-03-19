@@ -1,4 +1,4 @@
-# Nutzungsbedingungen für Kalvenda
+﻿# Nutzungsbedingungen für Kalvenda
 
 Stand: März 2026
 
@@ -9,6 +9,7 @@ Mit dem Herunterladen oder der Nutzung der App **Kalvenda** stimmen Sie diesen N
 Kalvenda ermöglicht es Ihnen, Gruppen, Events und andere soziale Interaktionen zu erstellen. Sie sind für die von Ihnen erstellten und geteilten Inhalte allein verantwortlich.
 
 - **Null-Toleranz für anstößige Inhalte**: Es ist untersagt, illegale, beleidigende, belästigende, diffamierende, sexuell explizite oder gewaltverherrlichende Inhalte zu posten.
+- **Kinderschutz**: Wir verfolgen eine strikte Null-Toleranz-Richtlinie gegen die Ausbeutung von Kindern. Durch die Nutzung der App stimmen Sie unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de) zu.
 - **Moderation**: Wir behalten uns das Recht vor, Inhalte oder Nutzer, die gegen diese Bedingungen verstoßen, zu überprüfen und zu entfernen.
 - **Melden & Blockieren**: Sie können anstößige Inhalte melden oder missbräuchliche Nutzer direkt in der App blockieren. Meldungen werden zeitnah (i. d. R. innerhalb von 24 Stunden) geprüft.
 
