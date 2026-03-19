@@ -7,8 +7,8 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 **Legal Notice**
 - 🇩🇪 [Deutsch (German)](impressum.de.md)
 - 🇬🇧 [English](impressum.en.md)
-- ðŸ‡ªðŸ‡¸ [EspaÃ±ol (Spanish)](impressum.es.md)
-- ðŸ‡¯ðŸ‡µ [æ—¥æœ¬èªž (Japanese)](impressum.ja.md)
+- 🇪🇸 [Español (Spanish)](impressum.es.md)
+- 🇯🇵 [日本語 (Japanese)](impressum.ja.md)
 
 ## Applications
 
@@ -17,20 +17,20 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 **Privacy Policy**
 - 🇩🇪 [Deutsch (German)](neonroutine/privacy.de.md)
 - 🇬🇧 [English](neonroutine/privacy.en.md)
-- ðŸ‡ªðŸ‡¸ [EspaÃ±ol (Spanish)](neonroutine/privacy.es.md)
-- ðŸ‡¯ðŸ‡µ [æ—¥æœ¬èªž (Japanese)](neonroutine/privacy.ja.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/privacy.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/privacy.ja.md)
 
 **Terms of Service**
 - 🇩🇪 [Deutsch (German)](neonroutine/terms.de.md)
 - 🇬🇧 [English](neonroutine/terms.en.md)
-- ðŸ‡ªðŸ‡¸ [EspaÃ±ol (Spanish)](neonroutine/terms.es.md)
-- ðŸ‡¯ðŸ‡µ [æ—¥æœ¬èªž (Japanese)](neonroutine/terms.ja.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/terms.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/terms.ja.md)
 
 **Accessibility Statement**
 - 🇩🇪 [Deutsch (German)](neonroutine/accessibility.de.md)
 - 🇬🇧 [English](neonroutine/accessibility.en.md)
-- ðŸ‡ªðŸ‡¸ [EspaÃ±ol (Spanish)](neonroutine/accessibility.es.md)
-- ðŸ‡¯ðŸ‡µ [æ—¥æœ¬èªž (Japanese)](neonroutine/accessibility.ja.md)
+- 🇪🇸 [Español (Spanish)](neonroutine/accessibility.es.md)
+- 🇯🇵 [日本語 (Japanese)](neonroutine/accessibility.ja.md)
 
 ### <img src="assets/icons/kalvenda.png" width="32" height="32" style="vertical-align:middle"> Kalvenda
 
@@ -53,4 +53,3 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 **Account deletion**
 - 🇩🇪 [Deutsch (German)](kalvenda/deletion.de.md)
 - 🇬🇧 [English](kalvenda/deletion.en.md)
-
