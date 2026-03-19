@@ -45,3 +45,7 @@ Welcome to the official portal for apps developed by Timon Polley. This site ser
 **Accessibility Statement**
 - 🇩🇪 [Deutsch (German)](kalvenda/accessibility.de.md)
 - 🇬🇧 [English](kalvenda/accessibility.en.md)
+
+**Account deletion**
+- 🇩🇪 [Deutsch (German)](kalvenda/deletion.de.md)
+- 🇬🇧 [English](kalvenda/deletion.en.md)
