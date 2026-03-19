@@ -43,7 +43,7 @@ Todos los datos de hábitos se almacenan exclusivamente en el dispositivo del us
 
 El contenido publicitario está limitado a una calificación PG (supervisión parental). La personalización de anuncios está sujeta al consentimiento explícito del usuario según se describe en la Sección 2. No se realiza perfilado conductual sin consentimiento.
 
-Si usted es padre o tutor y cree que su hijo ha proporcionado datos personales a nosotros o a nuestros procesadores externos sin el consentimiento adecuado, contáctenos en timon.polley1@gmail.com y tomaremos medidas de inmediato.
+Si usted es padre o tutor y cree que su hijo ha proporcionado datos personales a nosotros o a nuestros procesadores externos sin el consentimiento adecuado, contáctenos en dev@timonply.com y tomaremos medidas de inmediato.
 
 ## 6a. Consentimiento Parental
 
@@ -61,4 +61,4 @@ Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notifica
 
 ## 10. Contacto
 Si tiene preguntas sobre esta política o desea ejercer sus derechos, contáctenos en:
-**Correo electrónico:** timon.polley1@gmail.com
+**Correo electrónico:** dev@timonply.com

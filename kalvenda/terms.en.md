@@ -1,9 +1,9 @@
-ï»¿# Terms of Service for Kalvenda
+# Terms of Service for Kalvenda
 
 Last Updated: March 2026
 
 ## 1. Terms
-By downloading or using the **Kalvenda** app ("the App"), these terms will automatically apply to you â€“ you should make sure therefore that you read them carefully before using the App. For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/kalvenda/privacy.en).
+By downloading or using the **Kalvenda** app ("the App"), these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the App. For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/kalvenda/privacy.en).
 
 ## 2. User-Generated Content & Conduct
 Kalvenda allows you to create groups, events, alerts, and other social interactions. You are solely responsible for the content you create and share.
@@ -16,8 +16,8 @@ Kalvenda allows you to create groups, events, alerts, and other social interacti
 ## 3. Subscriptions, In-App Purchases & Right of Withdrawal
 Some features of the App may be offered on a subscription basis. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current period. Payments are processed securely via Apple or Google. You can cancel your subscription at any time via your device's App Store or Play Store settings.
 
-**For EU Users â€“ Right of Withdrawal:**
-You have a 14-day right of withdrawal for digital subscriptions from the date of purchase, pursuant to Directive 2011/83/EU and Â§ 356(5) BGB. Before completing a digital subscription purchase, you will be asked to expressly consent to the immediate provision of the digital service and acknowledge that you thereby waive this 14-day right of withdrawal. This waiver only takes effect upon your express acknowledgment at the time of purchase.
+**For EU Users – Right of Withdrawal:**
+You have a 14-day right of withdrawal for digital subscriptions from the date of purchase, pursuant to Directive 2011/83/EU and § 356(5) BGB. Before completing a digital subscription purchase, you will be asked to expressly consent to the immediate provision of the digital service and acknowledge that you thereby waive this 14-day right of withdrawal. This waiver only takes effect upon your express acknowledgment at the time of purchase.
 
 As of June 19, 2026, in accordance with Directive (EU) 2023/2673, an in-app withdrawal function will be provided for applicable subscription contracts, allowing you to exercise your withdrawal right directly within the App where technically applicable. Cancellation and withdrawal for App Store and Play Store subscriptions may continue to be handled through your respective store settings.
 
@@ -39,4 +39,4 @@ You must be at least 16 years old to use Kalvenda, or have the explicit consent 
 ## 9. Online Dispute Resolution & Consumer Arbitration
 The European Commission provides an online dispute resolution (ODR) platform: [https://ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr).
 
-Pursuant to Â§ 36 of the German Consumer Dispute Resolution Act (VSBG), we are not obliged and not willing to participate in dispute resolution proceedings before a consumer arbitration board. We are however committed to resolving any concerns directly â€“ please contact us first at timon.polley1@gmail.com.
+Pursuant to § 36 of the German Consumer Dispute Resolution Act (VSBG), we are not obliged and not willing to participate in dispute resolution proceedings before a consumer arbitration board. We are however committed to resolving any concerns directly – please contact us first at dev@timonply.com.

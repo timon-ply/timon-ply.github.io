@@ -100,6 +100,6 @@ Gutenbergstraße 5
 Alemania
 
 Teléfono: +49 178 9702884
-Correo electrónico: timon.polley1@gmail.com
+Correo electrónico: dev@timonply.com
 
 Aviso legal completo (Impressum) conforme al § 5 DDG: [https://timonply.com/impressum.es](https://timonply.com/impressum.es)

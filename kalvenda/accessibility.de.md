@@ -37,7 +37,7 @@ Diese Erklärung zur Barrierefreiheit wurde zuletzt im **März 2026** überprüf
 ## Feedback, Kontakt & Durchsetzung
 Wir freuen uns auf Ihr Feedback zur Barrierefreiheit von Kalvenda. Bitte lassen Sie es uns wissen, falls Sie auf Barrieren stoßen:
 
-**E-Mail:** timon.polley1@gmail.com
+**E-Mail:** dev@timonply.com
 
 Falls Ihre Beschwerde zur Barrierefreiheit nicht innerhalb einer angemessenen Frist zufriedenstellend bearbeitet wird, können Sie sich an die zuständige Marktüberwachungsbehörde nach dem BFSG wenden:
 

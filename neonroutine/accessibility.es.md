@@ -17,4 +17,4 @@ Nos esforzamos por cumplir con el Acto Europeo de Accesibilidad (EAA) y las paut
 
 ## Contacto
 Por favor, infórmenos sobre cualquier barrera de accesibilidad:  
-**Correo electrónico:** timon.polley1@gmail.com
+**Correo electrónico:** dev@timonply.com

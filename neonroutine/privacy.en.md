@@ -43,7 +43,7 @@ All habit data is stored exclusively on the user's device and is never transmitt
 
 Ad content is limited to a PG (parental guidance) content rating. Ad personalization is subject to explicit user consent as described in Section 2. No behavioral profiling occurs without consent.
 
-If you are a parent or guardian and believe your child has provided personal data to us or our third-party processors without appropriate consent, contact us at timon.polley1@gmail.com and we will take prompt action to review and, where applicable, delete that data.
+If you are a parent or guardian and believe your child has provided personal data to us or our third-party processors without appropriate consent, contact us at dev@timonply.com and we will take prompt action to review and, where applicable, delete that data.
 
 ## 6a. Parental Consent
 
@@ -61,4 +61,4 @@ We may update our Privacy Policy from time to time. We will notify you of any ch
 
 ## 10. Contact
 If you have any questions or suggestions about our Privacy Policy or wish to exercise your rights, please contact our Data Protection representative at:
-**Email:** timon.polley1@gmail.com
+**Email:** dev@timonply.com

@@ -37,7 +37,7 @@ This accessibility statement was last reviewed in **March 2026**.
 ## Feedback, Contact & Enforcement
 We welcome your feedback on the accessibility of Kalvenda. Please let us know if you encounter accessibility barriers:
 
-**Email:** timon.polley1@gmail.com
+**Email:** dev@timonply.com
 
 If your accessibility complaint is not satisfactorily addressed within a reasonable time, you may contact the competent market surveillance authority under the BFSG:
 

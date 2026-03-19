@@ -1,4 +1,4 @@
-﻿# Kalvenda: Standards against Child Sexual Abuse and Exploitation (CSAE)
+# Kalvenda: Standards against Child Sexual Abuse and Exploitation (CSAE)
 
 Last Updated: March 2026
 
@@ -17,4 +17,4 @@ Users are strictly prohibited from using the Kalvenda app, including its groups,
 - **Law Enforcement**: We will report any confirmed instances of CSAM or child exploitation to the relevant authorities (such as the National Center for Missing & Exploited Children - NCMEC, and local law enforcement) and provide them with all necessary data to assist in investigations.
 
 ## 4. Contact
-For any urgent reports concerning child safety, please contact us immediately at: timon.polley1@gmail.com.
+For any urgent reports concerning child safety, please contact us immediately at: dev@timonply.com.

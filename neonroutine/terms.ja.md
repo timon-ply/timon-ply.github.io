@@ -100,6 +100,6 @@ Gutenbergstraße 5
 ドイツ
 
 電話：+49 178 9702884
-メール：timon.polley1@gmail.com
+メール：dev@timonply.com
 
 DDG第5条に基づく完全な法的通知（Impressum）：[https://timonply.com/impressum.ja](https://timonply.com/impressum.ja)

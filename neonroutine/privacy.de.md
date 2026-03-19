@@ -43,7 +43,7 @@ Alle Gewohnheitsdaten werden ausschließlich auf dem Gerät des Nutzers gespeich
 
 Werbeinhalte sind auf eine PG-Bewertung (Parental Guidance) beschränkt. Die Personalisierung von Werbung setzt eine ausdrückliche Einwilligung des Nutzers gemäß Abschnitt 2 voraus. Ohne Einwilligung findet kein Behavioral Profiling statt.
 
-Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder unseren Drittanbietern ohne angemessene Einwilligung personenbezogene Daten übermittelt hat, kontaktieren Sie uns unter timon.polley1@gmail.com. Wir werden umgehend tätig und löschen die betroffenen Daten, soweit dies möglich ist.
+Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder unseren Drittanbietern ohne angemessene Einwilligung personenbezogene Daten übermittelt hat, kontaktieren Sie uns unter dev@timonply.com. Wir werden umgehend tätig und löschen die betroffenen Daten, soweit dies möglich ist.
 
 ## 6a. Elterliche Einwilligung
 
@@ -61,4 +61,4 @@ Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir wer
 
 ## 10. Kontakt
 Bei Fragen zur Datenschutzerklärung oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:
-**E-Mail:** timon.polley1@gmail.com
+**E-Mail:** dev@timonply.com

@@ -9,7 +9,7 @@ Deutschland
 
 ## Kontakt
 Telefon: +49 178 9702884
-E-Mail: timon.polley1@gmail.com
+E-Mail: dev@timonply.com
 
 ## Verbraucherstreitbeilegung
 Gemäß § 36 des Verbraucherstreitbeilegungsgesetzes (VSBG) informieren wir Sie: Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.

@@ -25,7 +25,7 @@ We have implemented the following features to ensure compliance with the Europea
 
 ## Feedback and Enforcement
 We welcome your feedback on the accessibility of NeonRoutine. Please let us know if you encounter accessibility barriers:
-**Email:** timon.polley1@gmail.com
+**Email:** dev@timonply.com
 
 We try to respond to feedback within 2 business days.
 *This statement was created to fulfill the obligations under the European Accessibility Act (EAA) and national implementations.*

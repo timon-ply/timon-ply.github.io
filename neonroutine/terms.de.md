@@ -100,6 +100,6 @@ Gutenbergstraße 5
 Deutschland
 
 Telefon: +49 178 9702884
-E-Mail: timon.polley1@gmail.com
+E-Mail: dev@timonply.com
 
 Vollständiges Impressum gemäß § 5 DDG: [https://timonply.com/impressum.de](https://timonply.com/impressum.de)

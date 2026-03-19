@@ -19,6 +19,6 @@ Wir haben folgende Maßnahmen implementiert:
 
 ## Feedback und Durchsetzung
 Wir freuen uns über Ihr Feedback zur Barrierefreiheit von NeonRoutine. Wenn Sie auf Barrieren stoßen, kontaktieren Sie uns bitte:  
-**E-Mail:** timon.polley1@gmail.com
+**E-Mail:** dev@timonply.com
 
 Wir antworten auf Feedback in der Regel innerhalb von 2 Werktagen.
