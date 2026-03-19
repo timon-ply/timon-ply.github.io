@@ -1,4 +1,4 @@
-# Privacy Policy for Kalvenda
+ï»¿# Privacy Policy for Kalvenda
 
 Last Updated: March 2026
 
@@ -21,7 +21,7 @@ We collect the minimum amount of data necessary to operate the App effectively. 
   *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
 
 - **Advertisements & Tracking**: We use Google AdMob to serve ads. AdMob collects device identifiers (e.g., Advertising ID), approximate location, and interaction data to serve targeted advertising. This involves tracking your data across other apps and websites. For iOS users, this is subject to the App Tracking Transparency (ATT) prompt.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG).*
+  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR, Â§ 25(1) TDDDG).*
 
 - **Usage Data, Analytics, & Crash Logs**: Firebase collects app interactions, crash logs, diagnostics, device information, and approximate location (IP-based) to improve the App's performance. This data collection is optional and can be toggled on or off at any time in the App's Settings.
   *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
@@ -43,7 +43,7 @@ Google LLC and RevenueCat are established in the US. Transfers of your personal 
 ## 5. Automated Decision-Making & Profiling (Art. 22 GDPR)
 We do not make automated decisions with legally significant effects. Google AdMob may use automated profiling based on device identifiers to serve personalized ads, subject to your prior consent.
 
-## 6. Your Rights (Art. 15–22 GDPR)
+## 6. Your Rights (Art. 15â€“22 GDPR)
 - **Right of Access & Data Portability**: You can request an export of your personal data at any time.
 - **Right to Erasure (Account Deletion)**: You can permanently delete your account directly within the App's settings ("Delete Account"). This action completely wipes your user profile, authentication data, and linked user data from our Firestore databases and servers.
 - **Right to Rectification**: You can edit your profile and content within the App.
