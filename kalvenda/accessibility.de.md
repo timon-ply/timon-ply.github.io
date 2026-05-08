@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Barrierefreiheitserklaerung fuer Kalvenda"
+doc_id: kalvenda-accessibility
+doc_type: "Accessibility Statement"
+app_name: "Kalvenda"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /kalvenda/accessibility.de.md
+---
 # Erklärung zur Barrierefreiheit für Kalvenda
 
 Stand: März 2026

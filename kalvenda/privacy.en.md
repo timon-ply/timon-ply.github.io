@@ -1,9 +1,20 @@
-﻿# Privacy Policy for Kalvenda
+---
+layout: legal
+title: "Privacy Policy for Kalvenda"
+doc_id: kalvenda-privacy
+doc_type: "Privacy Policy"
+app_name: "Kalvenda"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /kalvenda/privacy.en.md
+---
+# Privacy Policy for Kalvenda
 
 Last Updated: March 2026
 
 ## 1. Introduction
-This Privacy Policy applies to the use of the mobile application **Kalvenda** (the "App"), developed and operated by Timon Polley ("we", "us", or "our"). We are committed to protecting your privacy and ensuring the security of your personal information in accordance with the General Data Protection Regulation (GDPR) and other applicable laws (including the TDDDG and DDG). 
+This Privacy Policy applies to the use of the mobile application **Kalvenda** (the "App"), developed and operated by Timon Polley ("we", "us", or "our"). We are committed to protecting your privacy and ensuring the security of your personal information in accordance with the General Data Protection Regulation (GDPR) and other applicable laws (including the TDDDG and DDG).
 
 ## 2. Information We Collect & Lawful Basis (Art. 6 GDPR)
 We collect the minimum amount of data necessary to operate the App effectively. Our processing is based on the following legal grounds:
@@ -26,7 +37,7 @@ We collect the minimum amount of data necessary to operate the App effectively. 
 - **Usage Data, Analytics, & Crash Logs**: Firebase collects app interactions, crash logs, diagnostics, device information, and approximate location (IP-based) to improve the App's performance. This data collection is optional and can be toggled on or off at any time in the App's Settings.
   *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
 
-- **Push Notifications**: Used to alert you about group updates. Firebase Cloud Messaging (FCM) processes a device token. Notifications require your explicit permission.      
+- **Push Notifications**: Used to alert you about group updates. Firebase Cloud Messaging (FCM) processes a device token. Notifications require your explicit permission.
   *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
 
 **Mandatory vs. Optional Data**: Providing your email and authentication data is mandatory to use the App. Location permissions, analytics data, push notifications, and advertising tracking are optional.
@@ -35,7 +46,7 @@ We collect the minimum amount of data necessary to operate the App effectively. 
 The App uses third-party services that process data on our behalf under Data Processing Agreements (DPAs):
 - **Google LLC (Firebase, Google AdMob, Google Sign-In)**: Database hosting, authentication, crash reporting, and ad serving. Data is hosted in the EU where technically possible. Google's DPA incorporates EU Standard Contractual Clauses (SCCs).
 - **RevenueCat, Inc.**: Subscription and in-app purchase management. [Privacy Policy](https://www.revenuecat.com/privacy)
-- **Apple Inc. / Google LLC**: Processing of app transactions.      
+- **Apple Inc. / Google LLC**: Processing of app transactions.
 
 ## 4. International Data Transfers (Art. 46 GDPR)
 Google LLC and RevenueCat are established in the US. Transfers of your personal data to the US are safeguarded by Standard Contractual Clauses (SCCs). Details: https://cloud.google.com/terms/data-processing-addendum
@@ -52,10 +63,10 @@ We do not make automated decisions with legally significant effects. Google AdMo
 
 ## 7. Data Retention
 - **Account & Social Data**: Retained until you delete your account. Upon account deletion, your data is completely wiped from our database. Some anonymized metadata or group-owned content may remain to preserve group integrity for other members.
-- **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days.        
+- **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days.
 
 ## 8. Child Safety
-We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. Please refer to our [CSAE Standards](https://timonply.com/kalvenda/csae.en) for more information.
+We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. Please refer to our [CSAE Standards](https://timonply.com/kalvenda/csae.en.md) for more information.
 
 ## 9. Contact
 If you have any questions or wish to exercise your data subject rights, please contact us at:

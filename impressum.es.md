@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Aviso legal"
+doc_id: impressum
+doc_type: "Legal Notice"
+app_name: "General"
+language: "Espanol"
+language_code: es
+language_order: 3
+permalink: /impressum.es.md
+---
 # Aviso Legal (Impressum)
 
 Información conforme al § 5 DDG

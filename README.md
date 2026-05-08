@@ -173,18 +173,12 @@ GitHub Pages converts markdown files into stable pages.
 Examples:
 
 ```text
-https://timonply.com/kalvenda/privacy.en
-https://timonply.com/kalvenda/terms.en
-https://timonply.com/kalvenda/deletion.en
-https://timonply.com/neonroutine/privacy.en
-https://timonply.com/neonroutine/terms.en
-https://timonply.com/impressum.en
-```
-
-Depending on GitHub Pages rendering, `.html` variants may also resolve:
-
-```text
-https://timonply.com/kalvenda/privacy.en.html
+https://timonply.com/kalvenda/privacy.en.md
+https://timonply.com/kalvenda/terms.en.md
+https://timonply.com/kalvenda/deletion.en.md
+https://timonply.com/neonroutine/privacy.en.md
+https://timonply.com/neonroutine/terms.en.md
+https://timonply.com/impressum.en.md
 ```
 
 Always verify the exact URL before submitting it to an app store or third-party dashboard.

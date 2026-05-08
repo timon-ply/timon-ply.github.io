@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Barrierefreiheitserklaerung fuer NeonRoutine"
+doc_id: neonroutine-accessibility
+doc_type: "Accessibility Statement"
+app_name: "NeonRoutine"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /neonroutine/accessibility.de.md
+---
 # Erklärung zur Barrierefreiheit für NeonRoutine
 
 Zuletzt aktualisiert: März 2026
@@ -18,7 +29,7 @@ Wir haben folgende Maßnahmen implementiert:
 - **Farbunabhängigkeit**: Informationen werden nicht ausschließlich über Farbe kommuniziert.
 
 ## Feedback und Durchsetzung
-Wir freuen uns über Ihr Feedback zur Barrierefreiheit von NeonRoutine. Wenn Sie auf Barrieren stoßen, kontaktieren Sie uns bitte:  
+Wir freuen uns über Ihr Feedback zur Barrierefreiheit von NeonRoutine. Wenn Sie auf Barrieren stoßen, kontaktieren Sie uns bitte:
 **E-Mail:** dev@timonply.com
 
 Wir antworten auf Feedback in der Regel innerhalb von 2 Werktagen.

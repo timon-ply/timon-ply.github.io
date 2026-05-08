@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Privacy Policy for NeonRoutine"
+doc_id: neonroutine-privacy
+doc_type: "Privacy Policy"
+app_name: "NeonRoutine"
+language: "Japanese"
+language_code: ja
+language_order: 4
+permalink: /neonroutine/privacy.ja.md
+---
 # NeonRoutine プライバシーポリシー
 
 最終更新日：2026年3月

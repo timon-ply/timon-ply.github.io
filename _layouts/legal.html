@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="{{ page.language_code | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.title | escape }}{% if page.app_name %} for {{ page.app_name | escape }}{% endif %}.">
+  <title>{{ page.title }} | Timon Polley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/index.html" aria-label="Timon Polley home">
+      <span class="brand-mark">TP</span>
+      <span>
+        <strong>Timon Polley</strong>
+        <small>Legal documents</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/index.html#apps">Apps</a>
+      <a href="/index.html#legal" aria-current="page">Legal</a>
+      <a href="/index.html#about">About</a>
+      <a class="nav-action" href="/support.html">Support</a>
+    </nav>
+  </header>
+
+  <main class="legal-page">
+    <div class="section-shell legal-narrow">
+      <header class="legal-header">
+        <p class="eyebrow">{{ page.doc_type | default: 'Legal document' }}</p>
+        <h1>{{ page.title }}</h1>
+        <div class="legal-meta" aria-label="Document information">
+          {% if page.app_name %}<span>{{ page.app_name }}</span>{% endif %}
+          <span>{{ page.language | default: page.language_code | upcase }}</span>
+        </div>
+      </header>
+
+      <nav class="legal-language" aria-label="Language options">
+        <span>Language</span>
+        <div class="language-list">
+          {% assign versions = site.pages | where: "doc_id", page.doc_id | sort: "language_order" %}
+          {% for version in versions %}
+            <a href="{{ version.url }}" {% if version.url == page.url %}aria-current="page"{% endif %}>
+              <span>{{ version.language | default: version.language_code }}</span>
+              <small>{{ version.language_code | upcase }}</small>
+            </a>
+          {% endfor %}
+        </div>
+      </nav>
+
+      <article class="legal-content">
+        {{ content }}
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Timon Polley</p>
+    <div>
+      <a href="/index.html">Home</a>
+      <a href="/support.html">Support</a>
+      <a href="/index.html#legal">All documents</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

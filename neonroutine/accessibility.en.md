@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Accessibility Statement for NeonRoutine"
+doc_id: neonroutine-accessibility
+doc_type: "Accessibility Statement"
+app_name: "NeonRoutine"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /neonroutine/accessibility.en.md
+---
 # Accessibility Statement for NeonRoutine
 
 Last Updated: March 2026
@@ -6,7 +17,7 @@ Last Updated: March 2026
 Timon Polley is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards for **NeonRoutine**.
 
 ## Conformance Status
-The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. 
+The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA.
 **NeonRoutine** is partially conformant with **WCAG 2.1 level AA**. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
 
 ## Technical Specifications

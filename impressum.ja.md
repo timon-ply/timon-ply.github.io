@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Legal Notice"
+doc_id: impressum
+doc_type: "Legal Notice"
+app_name: "General"
+language: "Japanese"
+language_code: ja
+language_order: 4
+permalink: /impressum.ja.md
+---
 # 運営者情報 (Impressum)
 
 DDG第5条に基づく情報

@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Impressum"
+doc_id: impressum
+doc_type: "Legal Notice"
+app_name: "General"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /impressum.de.md
+---
 # Impressum
 
 Angaben gemäß § 5 DDG

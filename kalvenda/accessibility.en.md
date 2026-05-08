@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Accessibility Statement for Kalvenda"
+doc_id: kalvenda-accessibility
+doc_type: "Accessibility Statement"
+app_name: "Kalvenda"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /kalvenda/accessibility.en.md
+---
 # Accessibility Statement for Kalvenda
 
 Last Updated: March 2026

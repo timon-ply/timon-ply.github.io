@@ -1,4 +1,15 @@
-﻿# Kalvenda: Standards gegen den sexuellen Missbrauch und die Ausbeutung von Kindern (CSAE)
+---
+layout: legal
+title: "Kalvenda CSAE-Standards"
+doc_id: kalvenda-csae
+doc_type: "Safety Standards"
+app_name: "Kalvenda"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /kalvenda/csae.de.md
+---
+# Kalvenda: Standards gegen den sexuellen Missbrauch und die Ausbeutung von Kindern (CSAE)
 
 Stand: März 2026
 

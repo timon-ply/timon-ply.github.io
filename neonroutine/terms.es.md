@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Terminos de Servicio de NeonRoutine"
+doc_id: neonroutine-terms
+doc_type: "Terms of Service"
+app_name: "NeonRoutine"
+language: "Espanol"
+language_code: es
+language_order: 3
+permalink: /neonroutine/terms.es.md
+---
 # Términos de Servicio de NeonRoutine
 
 Última actualización: Marzo 2026
@@ -5,7 +16,7 @@
 ## 1. Términos
 Al descargar o usar la aplicación **NeonRoutine** ("la App"), estos términos se aplicarán automáticamente a usted. Asegúrese de leerlos cuidadosamente antes de usar la App.
 
-Para más información sobre cómo recopilamos y procesamos sus datos, consulte nuestra [Política de Privacidad](https://timonply.com/neonroutine/privacy.es).
+Para más información sobre cómo recopilamos y procesamos sus datos, consulte nuestra [Política de Privacidad](https://timonply.com/neonroutine/privacy.es.md).
 
 ## 2. Suscripciones, Compras en la Aplicación y Derecho de Desistimiento
 Algunas funciones de la App pueden ofrecerse mediante suscripción. Las suscripciones se renuevan automáticamente a menos que se cancelen al menos 24 horas antes del final del período en curso. Los pagos se procesan de forma segura a través de Apple o Google. Los precios de suscripción y las frecuencias de facturación se muestran en la respectiva tienda antes de la compra.
@@ -102,4 +113,4 @@ Alemania
 Teléfono: +49 178 9702884
 Correo electrónico: dev@timonply.com
 
-Aviso legal completo (Impressum) conforme al § 5 DDG: [https://timonply.com/impressum.es](https://timonply.com/impressum.es)
+Aviso legal completo (Impressum) conforme al § 5 DDG: [https://timonply.com/impressum.es.md](https://timonply.com/impressum.es.md)

@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Privacy Policy for NeonRoutine"
+doc_id: neonroutine-privacy
+doc_type: "Privacy Policy"
+app_name: "NeonRoutine"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /neonroutine/privacy.en.md
+---
 # Privacy Policy for NeonRoutine
 
 Last Updated: March 2026

@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Declaracion de Accesibilidad de NeonRoutine"
+doc_id: neonroutine-accessibility
+doc_type: "Accessibility Statement"
+app_name: "NeonRoutine"
+language: "Espanol"
+language_code: es
+language_order: 3
+permalink: /neonroutine/accessibility.es.md
+---
 # Declaración de Accesibilidad de NeonRoutine
 
 Última actualización: Marzo 2026
@@ -16,5 +27,5 @@ Nos esforzamos por cumplir con el Acto Europeo de Accesibilidad (EAA) y las paut
 - Contraste de texto optimizado.
 
 ## Contacto
-Por favor, infórmenos sobre cualquier barrera de accesibilidad:  
+Por favor, infórmenos sobre cualquier barrera de accesibilidad:
 **Correo electrónico:** dev@timonply.com

@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Datenschutzerklaerung fuer NeonRoutine"
+doc_id: neonroutine-privacy
+doc_type: "Privacy Policy"
+app_name: "NeonRoutine"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /neonroutine/privacy.de.md
+---
 # Datenschutzerklärung für NeonRoutine
 
 Zuletzt aktualisiert: März 2026

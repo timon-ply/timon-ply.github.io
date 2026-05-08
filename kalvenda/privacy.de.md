@@ -1,4 +1,15 @@
-﻿# Datenschutzerklärung für Kalvenda
+---
+layout: legal
+title: "Datenschutzerklaerung fuer Kalvenda"
+doc_id: kalvenda-privacy
+doc_type: "Privacy Policy"
+app_name: "Kalvenda"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /kalvenda/privacy.de.md
+---
+# Datenschutzerklärung für Kalvenda
 
 Stand: März 2026
 
@@ -23,7 +34,7 @@ Wir erheben nur die Daten, die für den Betrieb der App erforderlich sind:
 - **Werbung & Tracking**: Wir nutzen Google AdMob zur Anzeigenausspielung. AdMob erhebt Geräte-Identifikatoren (z. B. Advertising ID), den ungefähren Standort und Interaktionsdaten, um personalisierte Werbung auszuliefern. Dies beinhaltet das Tracking über andere Apps und Webseiten hinweg (bei iOS unterliegt dies der "App Tracking Transparency" (ATT)-Zustimmung).
   *Rechtsgrundlage: Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG).*
 
-- **Nutzungsdaten, Analytics & Absturzberichte**: Firebase erhebt Interaktionsdaten, Absturzberichte, Diagnosedaten, Geräteinformationen und den ungefähren Standort (IP-basiert) zur Verbesserung der App-Leistung. Diese Datenerhebung ist freiwillig und kann jederzeit in den App-Einstellungen deaktiviert werden. 
+- **Nutzungsdaten, Analytics & Absturzberichte**: Firebase erhebt Interaktionsdaten, Absturzberichte, Diagnosedaten, Geräteinformationen und den ungefähren Standort (IP-basiert) zur Verbesserung der App-Leistung. Diese Datenerhebung ist freiwillig und kann jederzeit in den App-Einstellungen deaktiviert werden.
   *Rechtsgrundlage: Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).*
 
 - **Push-Benachrichtigungen**: Zur Benachrichtigung über Gruppeneinladungen und Updates. Firebase Cloud Messaging (FCM) verarbeitet einen Geräte-Token zur Zustellung. Dies erfordert Ihre ausdrückliche Genehmigung.
@@ -32,7 +43,7 @@ Wir erheben nur die Daten, die für den Betrieb der App erforderlich sind:
 **Pflichtangaben vs. freiwillige Daten**: E-Mail und Authentifizierung sind zwingend erforderlich. Standort, Analytics, Push und Werbe-Tracking sind freiwillig.
 
 ## 3. Drittanbieter & Auftragsverarbeiter (Art. 28 DSGVO)
-Wir haben Auftragsverarbeitungsverträge (AVV) mit folgenden Anbietern geschlossen:    
+Wir haben Auftragsverarbeitungsverträge (AVV) mit folgenden Anbietern geschlossen:
 - **Google LLC (Firebase, Google AdMob, Google Sign-In)**: Hosting, Authentifizierung, Crash-Reporting und Anzeigenausspielung. Daten werden soweit technisch möglich in der EU (europe-west3) gehostet. Googles AVV beinhaltet EU-Standardvertragsklauseln (SCC).
 - **RevenueCat, Inc.**: Verwaltung von Abonnements und In-App-Käufen. [Datenschutzrichtlinie](https://www.revenuecat.com/privacy)
 - **Apple Inc. / Google LLC**: Zahlungsabwicklung.
@@ -55,7 +66,7 @@ Wir treffen keine automatisierten Entscheidungen mit rechtlich erheblicher Wirku
 - **Analytics & Absturzberichte**: Werden von Google Firebase bis zu 90 Tage gespeichert.
 
 ## 8. Kinderschutz (CSAE)
-Wir verfolgen eine strikte Null-Toleranz-Richtlinie in Bezug auf den sexuellen Missbrauch und die Ausbeutung von Kindern. Weitere Informationen finden Sie in unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de).
+Wir verfolgen eine strikte Null-Toleranz-Richtlinie in Bezug auf den sexuellen Missbrauch und die Ausbeutung von Kindern. Weitere Informationen finden Sie in unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de.md).
 
 ## 9. Kontakt
 Bei Fragen zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:

@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Kalvenda Account Deletion"
+doc_id: kalvenda-deletion
+doc_type: "Account Deletion"
+app_name: "Kalvenda"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /kalvenda/deletion.en.md
+---
 # Data Deletion Request
 
 At Kalvenda, we take your privacy seriously. In accordance with Google Play's Data Safety policies and GDPR regulations, we provide the following methods to request the deletion of your account and all associated data.

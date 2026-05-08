@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Kalvenda Kontoloeschung"
+doc_id: kalvenda-deletion
+doc_type: "Account Deletion"
+app_name: "Kalvenda"
+language: "Deutsch"
+language_code: de
+language_order: 1
+permalink: /kalvenda/deletion.de.md
+---
 # Antrag auf Datenlöschung
 
 Bei Kalvenda nehmen wir den Schutz deiner Daten sehr ernst. In öbereinstimmung mit den Google Play-Datensicherheitsrichtlinien und der DSGVO bieten wir die folgenden Methoden an, um die Löschung deines Kontos und aller damit verbundenen Daten zu beantragen.

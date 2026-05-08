@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Legal Notice"
+doc_id: impressum
+doc_type: "Legal Notice"
+app_name: "General"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /impressum.en.md
+---
 # Legal Notice (Impressum)
 
 Information in accordance with § 5 DDG

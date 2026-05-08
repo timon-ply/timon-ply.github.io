@@ -1,3 +1,14 @@
+---
+layout: legal
+title: "Politica de Privacidad de NeonRoutine"
+doc_id: neonroutine-privacy
+doc_type: "Privacy Policy"
+app_name: "NeonRoutine"
+language: "Espanol"
+language_code: es
+language_order: 3
+permalink: /neonroutine/privacy.es.md
+---
 # Política de Privacidad de NeonRoutine
 
 Última actualización: Marzo 2026
