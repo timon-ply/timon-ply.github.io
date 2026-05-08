@@ -7,20 +7,20 @@ app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /kalvenda/terms.en
+permalink: /kalvenda/terms.en/
 ---
 # Terms of Service for Kalvenda
 
 Last Updated: March 2026
 
 ## 1. Terms
-By downloading or using the **Kalvenda** app ("the App"), these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the App. For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/kalvenda/privacy.en).
+By downloading or using the **Kalvenda** app ("the App"), these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the App. For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/kalvenda/privacy.en/).
 
 ## 2. User-Generated Content & Conduct
 Kalvenda allows you to create groups, events, alerts, and other social interactions. You are solely responsible for the content you create and share.
 
 - **Zero Tolerance for Objectionable Content**: You agree not to post content that is illegal, offensive, abusive, harassing, defamatory, sexually explicit, or incites violence.
-- **Child Safety**: We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. By using the app, you agree to our [CSAE Standards](https://timonply.com/kalvenda/csae.en).
+- **Child Safety**: We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. By using the app, you agree to our [CSAE Standards](https://timonply.com/kalvenda/csae.en/).
 - **Moderation**: We reserve the right to review, filter, and remove any content or user that violates these terms.
 - **Reporting & Blocking**: You can report objectionable content or block abusive users directly within the App. We will review reports and take appropriate action promptly (typically within 24 hours).
 

@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /kalvenda/deletion.de
+permalink: /kalvenda/deletion.de/
 ---
 # Antrag auf Datenlöschung
 

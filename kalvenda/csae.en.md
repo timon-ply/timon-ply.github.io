@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /kalvenda/csae.en
+permalink: /kalvenda/csae.en/
 ---
 # Kalvenda: Standards against Child Sexual Abuse and Exploitation (CSAE)
 

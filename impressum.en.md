@@ -7,7 +7,7 @@ app_name: "General"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /impressum.en
+permalink: /impressum.en/
 ---
 # Legal Notice (Impressum)
 

@@ -7,7 +7,7 @@ app_name: "General"
 language: "Japanese"
 language_code: ja
 language_order: 4
-permalink: /impressum.ja
+permalink: /impressum.ja/
 ---
 # 運営者情報 (Impressum)
 

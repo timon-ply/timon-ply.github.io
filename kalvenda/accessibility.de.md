@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /kalvenda/accessibility.de
+permalink: /kalvenda/accessibility.de/
 ---
 # Erklärung zur Barrierefreiheit für Kalvenda
 

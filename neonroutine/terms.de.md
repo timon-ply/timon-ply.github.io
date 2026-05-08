@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /neonroutine/terms.de
+permalink: /neonroutine/terms.de/
 ---
 # Nutzungsbedingungen für NeonRoutine
 
@@ -16,7 +16,7 @@ Zuletzt aktualisiert: März 2026
 ## 1. Bedingungen
 Durch das Herunterladen oder die Nutzung der **NeonRoutine** App („die App") gelten diese Bedingungen automatisch für Sie -- Sie sollten sie daher vor der Nutzung der App sorgfältig lesen.
 
-Einzelheiten zur Erhebung und Verarbeitung Ihrer Daten finden Sie in unserer [Datenschutzerklärung](https://timonply.com/neonroutine/privacy.de).
+Einzelheiten zur Erhebung und Verarbeitung Ihrer Daten finden Sie in unserer [Datenschutzerklärung](https://timonply.com/neonroutine/privacy.de/).
 
 ## 2. Abonnements, In-App-Käufe & Widerrufsrecht
 Einige Funktionen der App werden als Abonnement angeboten. Abonnements verlängern sich automatisch, wenn sie nicht spätestens 24 Stunden vor Ablauf des laufenden Zeitraums gekündigt werden. Zahlungen werden sicher über Apple oder Google abgewickelt. Die Abonnementpreise und Abrechnungsintervalle werden vor dem Kauf im jeweiligen Store angezeigt.
@@ -113,4 +113,4 @@ Deutschland
 Telefon: +49 178 9702884
 E-Mail: dev@timonply.com
 
-Vollständiges Impressum gemäß § 5 DDG: [https://timonply.com/impressum.de](https://timonply.com/impressum.de)
+Vollständiges Impressum gemäß § 5 DDG: [https://timonply.com/impressum.de/](https://timonply.com/impressum.de/)

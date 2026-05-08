@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /kalvenda/privacy.de
+permalink: /kalvenda/privacy.de/
 ---
 # Datenschutzerklärung für Kalvenda
 
@@ -66,7 +66,7 @@ Wir treffen keine automatisierten Entscheidungen mit rechtlich erheblicher Wirku
 - **Analytics & Absturzberichte**: Werden von Google Firebase bis zu 90 Tage gespeichert.
 
 ## 8. Kinderschutz (CSAE)
-Wir verfolgen eine strikte Null-Toleranz-Richtlinie in Bezug auf den sexuellen Missbrauch und die Ausbeutung von Kindern. Weitere Informationen finden Sie in unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de).
+Wir verfolgen eine strikte Null-Toleranz-Richtlinie in Bezug auf den sexuellen Missbrauch und die Ausbeutung von Kindern. Weitere Informationen finden Sie in unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de/).
 
 ## 9. Kontakt
 Bei Fragen zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:
