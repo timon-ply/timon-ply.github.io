@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support page for applications developed by Timon Polley.">
+  <title>Support | Timon Polley Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Timon Polley home">
+      <span class="brand-mark">TP</span>
+      <span>
+        <strong>Timon Polley</strong>
+        <small>Application Support</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html#apps">Apps</a>
+      <a href="index.html#documents">Legal</a>
+      <a href="index.html#about">About</a>
+      <a class="nav-action" href="support.html" aria-current="page">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="support-hero section-shell">
+      <p class="eyebrow">Support</p>
+      <h1>Report issues directly and include the details needed to investigate.</h1>
+      <p class="lead">
+        Use this page for app issues, account questions, legal-document questions,
+        data deletion requests, accessibility feedback, and store-review support.
+      </p>
+      <a class="button primary" href="mailto:dev@timonply.com?subject=App%20Support%20Request&body=App%3A%20%0APlatform%3A%20%0AApp%20version%3A%20%0AIssue%20summary%3A%20%0ASteps%20to%20reproduce%3A%20%0AExpected%20result%3A%20%0AActual%20result%3A%20">
+        Email support
+      </a>
+    </section>
+
+    <section class="section-shell support-grid">
+      <article class="support-card">
+        <h2>What to include</h2>
+        <ul>
+          <li>App name: NeonRoutine or Kalvenda</li>
+          <li>Platform: Android, iOS, web, or desktop</li>
+          <li>App version if visible in the app or store listing</li>
+          <li>Short description of the issue</li>
+          <li>Steps that reproduce the problem</li>
+          <li>Any relevant screenshots or error messages</li>
+        </ul>
+      </article>
+
+      <article class="support-card">
+        <h2>Account and data requests</h2>
+        <p>
+          For account deletion, privacy, or data questions, include the app name,
+          the account email or sign-in provider, and the request type. Do not send passwords
+          or authentication codes.
+        </p>
+        <div class="card-links stacked">
+          <a href="kalvenda/deletion.en.md">Kalvenda account deletion</a>
+          <a href="kalvenda/privacy.en.md">Kalvenda privacy policy</a>
+          <a href="neonroutine/privacy.en.md">NeonRoutine privacy policy</a>
+        </div>
+      </article>
+
+      <article class="support-card">
+        <h2>Accessibility feedback</h2>
+        <p>
+          Accessibility reports are useful when they include the screen name, the assistive
+          technology used, expected behavior, and what blocked the interaction.
+        </p>
+        <div class="card-links stacked">
+          <a href="kalvenda/accessibility.en.md">Kalvenda accessibility statement</a>
+          <a href="neonroutine/accessibility.en.md">NeonRoutine accessibility statement</a>
+        </div>
+      </article>
+
+      <article class="support-card">
+        <h2>Safety reports</h2>
+        <p>
+          For Kalvenda safety or content reports, include the group or event context,
+          the type of content involved, and why it should be reviewed.
+        </p>
+        <div class="card-links stacked">
+          <a href="kalvenda/csae.en.md">Kalvenda safety standards</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Timon Polley. Support and legal document hub.</p>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="impressum.en.md">Legal notice</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
