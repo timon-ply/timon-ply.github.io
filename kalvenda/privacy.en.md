@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /kalvenda/privacy.en.md
+permalink: /kalvenda/privacy.en
 ---
 # Privacy Policy for Kalvenda
 
@@ -66,7 +66,7 @@ We do not make automated decisions with legally significant effects. Google AdMo
 - **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days.
 
 ## 8. Child Safety
-We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. Please refer to our [CSAE Standards](https://timonply.com/kalvenda/csae.en.md) for more information.
+We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. Please refer to our [CSAE Standards](https://timonply.com/kalvenda/csae.en) for more information.
 
 ## 9. Contact
 If you have any questions or wish to exercise your data subject rights, please contact us at:

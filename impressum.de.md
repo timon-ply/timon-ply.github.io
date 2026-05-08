@@ -7,7 +7,7 @@ app_name: "General"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /impressum.de.md
+permalink: /impressum.de
 ---
 # Impressum
 

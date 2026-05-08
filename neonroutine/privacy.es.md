@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Espanol"
 language_code: es
 language_order: 3
-permalink: /neonroutine/privacy.es.md
+permalink: /neonroutine/privacy.es
 ---
 # Política de Privacidad de NeonRoutine
 

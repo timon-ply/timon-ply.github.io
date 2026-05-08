@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Japanese"
 language_code: ja
 language_order: 4
-permalink: /neonroutine/terms.ja.md
+permalink: /neonroutine/terms.ja
 ---
 # NeonRoutine 利用規約
 
@@ -16,7 +16,7 @@ permalink: /neonroutine/terms.ja.md
 ## 1. 規約
 **NeonRoutine**アプリ（「本アプリ」）をダウンロードまたは利用することにより、本規約が自動的に適用されます。本アプリのご利用前に必ずお読みください。
 
-当社のデータ収集および処理方法の詳細は、[プライバシーポリシー](https://timonply.com/neonroutine/privacy.ja.md)をご参照ください。
+当社のデータ収集および処理方法の詳細は、[プライバシーポリシー](https://timonply.com/neonroutine/privacy.ja)をご参照ください。
 
 ## 2. サブスクリプション、アプリ内購入および撤回権
 本アプリの一部の機能はサブスクリプションとして提供されます。サブスクリプションは、現在の期間終了の24時間前までに解約しない限り自動更新されます。支払いはAppleまたはGoogleを通じて安全に処理されます。サブスクリプションの価格および請求頻度は、購入前に各ストアに表示されます。
@@ -113,4 +113,4 @@ Gutenbergstraße 5
 電話：+49 178 9702884
 メール：dev@timonply.com
 
-DDG第5条に基づく完全な法的通知（Impressum）：[https://timonply.com/impressum.ja.md](https://timonply.com/impressum.ja.md)
+DDG第5条に基づく完全な法的通知（Impressum）：[https://timonply.com/impressum.ja](https://timonply.com/impressum.ja)

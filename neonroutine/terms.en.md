@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /neonroutine/terms.en.md
+permalink: /neonroutine/terms.en
 ---
 # Terms of Service for NeonRoutine
 
@@ -16,7 +16,7 @@ Last Updated: March 2026
 ## 1. Terms
 By downloading or using the **NeonRoutine** app ("the App"), these terms will automatically apply to you -- you should make sure therefore that you read them carefully before using the App.
 
-For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/neonroutine/privacy.en.md).
+For details on how we collect and process your data, please refer to our [Privacy Policy](https://timonply.com/neonroutine/privacy.en).
 
 ## 2. Subscriptions, In-App Purchases & Right of Withdrawal
 Some features of the App may be offered on a subscription basis. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current period. Payments are processed securely via Apple or Google. Subscription prices and billing frequencies are displayed in the respective store before purchase.
@@ -113,4 +113,4 @@ Germany
 Phone: +49 178 9702884
 Email: dev@timonply.com
 
-Full legal notice (Impressum) pursuant to § 5 DDG: [https://timonply.com/impressum.en.md](https://timonply.com/impressum.en.md)
+Full legal notice (Impressum) pursuant to § 5 DDG: [https://timonply.com/impressum.en](https://timonply.com/impressum.en)

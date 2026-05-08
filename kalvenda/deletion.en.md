@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /kalvenda/deletion.en.md
+permalink: /kalvenda/deletion.en
 ---
 # Data Deletion Request
 

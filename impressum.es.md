@@ -7,7 +7,7 @@ app_name: "General"
 language: "Espanol"
 language_code: es
 language_order: 3
-permalink: /impressum.es.md
+permalink: /impressum.es
 ---
 # Aviso Legal (Impressum)
 

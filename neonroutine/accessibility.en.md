@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /neonroutine/accessibility.en.md
+permalink: /neonroutine/accessibility.en
 ---
 # Accessibility Statement for NeonRoutine
 

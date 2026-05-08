@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /neonroutine/privacy.de.md
+permalink: /neonroutine/privacy.de
 ---
 # Datenschutzerklärung für NeonRoutine
 

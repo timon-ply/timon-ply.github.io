@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Deutsch"
 language_code: de
 language_order: 1
-permalink: /neonroutine/accessibility.de.md
+permalink: /neonroutine/accessibility.de
 ---
 # Erklärung zur Barrierefreiheit für NeonRoutine
 

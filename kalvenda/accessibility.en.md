@@ -7,7 +7,7 @@ app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
-permalink: /kalvenda/accessibility.en.md
+permalink: /kalvenda/accessibility.en
 ---
 # Accessibility Statement for Kalvenda
 

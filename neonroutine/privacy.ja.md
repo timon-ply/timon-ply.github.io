@@ -7,7 +7,7 @@ app_name: "NeonRoutine"
 language: "Japanese"
 language_code: ja
 language_order: 4
-permalink: /neonroutine/privacy.ja.md
+permalink: /neonroutine/privacy.ja
 ---
 # NeonRoutine プライバシーポリシー
 
