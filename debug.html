@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Developer QA entrypoint for the Timon Polley app portfolio and legal document site.">
+  <title>Developer QA | Timon Polley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/index.html" aria-label="Timon Polley home">
+      <span class="brand-mark">TP</span>
+      <span>
+        <strong>Timon Polley</strong>
+        <small>Developer QA</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/index.html#apps">Apps</a>
+      <a href="/index.html#legal">Legal</a>
+      <a href="/support.html">Support</a>
+      <a class="nav-action" href="/debug.html" aria-current="page">Debug</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero section-shell">
+      <p class="eyebrow">Developer QA</p>
+      <h1>Debug entrypoint</h1>
+      <p class="lead">
+        Public, non-sensitive checks for the app portfolio, legal document routes, support line,
+        and design regression checkpoints.
+      </p>
+    </section>
+
+    <section class="section-shell support-dashboard" aria-label="Developer QA checks">
+      <article class="info-panel primary-panel">
+        <p class="kicker">Visual regression checkpoints</p>
+        <h2>Responsive pages</h2>
+        <ul>
+          <li>Home page at 375px, 768px, 1024px, and 1440px viewport widths</li>
+          <li>Support page intake layout and mailto action</li>
+          <li>Legal page language switcher and readable document body</li>
+          <li>Keyboard focus visibility on navigation, cards, and document links</li>
+        </ul>
+      </article>
+
+      <article class="info-panel">
+        <p class="kicker">Routes</p>
+        <h2>Critical public URLs</h2>
+        <div class="document-list compact">
+          <a href="/index.html"><span>Portfolio home</span><small>HTML</small></a>
+          <a href="/support.html"><span>Support page</span><small>HTML</small></a>
+          <a href="/app-ads.txt"><span>App ads file</span><small>TXT</small></a>
+        </div>
+      </article>
+
+      <article class="info-panel">
+        <p class="kicker">Legal</p>
+        <h2>Representative documents</h2>
+        <div class="document-list compact">
+          <a href="/neonroutine/privacy.en/"><span>NeonRoutine privacy</span><small>EN</small></a>
+          <a href="/kalvenda/privacy.en/"><span>Kalvenda privacy</span><small>EN</small></a>
+          <a href="/kalvenda/deletion.en/"><span>Kalvenda account deletion</span><small>EN</small></a>
+          <a href="/impressum.en/"><span>Legal notice</span><small>EN</small></a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Timon Polley</p>
+    <div>
+      <a href="/index.html">Home</a>
+      <a href="/support.html">Support</a>
+      <a href="/impressum.en/">Legal notice</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

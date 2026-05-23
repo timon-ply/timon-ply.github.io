@@ -7,7 +7,7 @@
   <title>Timon Polley | Applications</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
       <span class="brand-mark">TP</span>
       <span>
         <strong>Timon Polley</strong>
-        <small>Applications</small>
+        <small>App portfolio</small>
       </span>
     </a>
     <nav class="nav" aria-label="Primary navigation">
@@ -28,97 +28,143 @@
   </header>
 
   <main id="top">
-    <section class="hero section-shell">
+    <section class="portfolio-hero section-shell">
       <div class="hero-copy">
-        <p class="eyebrow">Mobile application projects</p>
-        <h1>Apps, support, and legal information in one place.</h1>
+        <p class="eyebrow">Public app portfolio</p>
+        <h1>App portfolio. Legal documents. Support.</h1>
         <p class="lead">
-          This site collects the public pages for my application projects: product links,
-          support contact, privacy policies, terms, accessibility statements, and related notices.
+          A central surface for current applications, app-store review links, privacy documents,
+          accessibility statements, account requests, and user support.
         </p>
         <div class="hero-actions" aria-label="Main actions">
-          <a class="button primary" href="#apps">View apps</a>
-          <a class="button secondary" href="#legal">Open legal documents</a>
+          <a class="button primary" href="#apps">Explore apps</a>
+          <a class="button secondary" href="#legal">Open legal directory</a>
         </div>
       </div>
-      <div class="hero-index" aria-label="Site sections">
-        <a href="#apps">
-          <span>01</span>
-          <strong>Applications</strong>
-          <small>Current app projects and product pages.</small>
-        </a>
-        <a href="#legal">
-          <span>02</span>
-          <strong>Legal documents</strong>
-          <small>Privacy, terms, accessibility, and notices.</small>
-        </a>
-        <a href="/support.html">
-          <span>03</span>
-          <strong>Support</strong>
-          <small>Issue reports and account-related requests.</small>
-        </a>
-      </div>
+
+      <aside class="hero-panel" aria-label="Portfolio status">
+        <div class="panel-topline">
+          <span>timonply.com</span>
+          <strong>Live index</strong>
+        </div>
+        <div class="artifact-stack" aria-label="Current applications">
+          <a class="artifact artifact-neon" href="/neonroutine/privacy.en/">
+            <img src="/assets/icons/neonroutine-192.png" srcset="/assets/icons/neonroutine-192.png 192w, /assets/icons/neonroutine.png 1024w" sizes="72px" alt="" width="72" height="72">
+            <span>
+              <strong>NeonRoutine</strong>
+              <small>Privacy, terms, accessibility</small>
+            </span>
+          </a>
+          <a class="artifact artifact-kalvenda" href="/kalvenda/privacy.en/">
+            <img src="/assets/icons/kalvenda-192.png" srcset="/assets/icons/kalvenda-192.png 192w, /assets/icons/kalvenda.png 1024w" sizes="72px" alt="" width="72" height="72">
+            <span>
+              <strong>Kalvenda</strong>
+              <small>Safety, deletion, compliance</small>
+            </span>
+          </a>
+        </div>
+        <div class="signal-grid">
+          <a href="#apps">
+            <span>02</span>
+            <strong>Apps</strong>
+          </a>
+          <a href="#legal">
+            <span>26</span>
+            <strong>Legal pages</strong>
+          </a>
+          <a href="/support.html">
+            <span>01</span>
+            <strong>Support line</strong>
+          </a>
+          <a href="/app-ads.txt">
+            <span>Ads</span>
+            <strong>Verified file</strong>
+          </a>
+        </div>
+      </aside>
     </section>
 
     <section id="apps" class="section-shell content-section">
-      <div class="section-heading">
-        <p class="eyebrow">Applications</p>
-        <h2>Current projects</h2>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Applications</p>
+          <h2>Current projects</h2>
+        </div>
         <p>
-          These are the applications currently represented by this site. Each project links to
-          its support and legal documents.
+          Each product entry keeps the visual identity visible and exposes the documents that
+          reviewers and users most often need first.
         </p>
       </div>
 
-      <div class="app-list">
-        <article class="app-row">
-          <img src="/assets/icons/neonroutine.png" alt="" width="72" height="72">
-          <div class="app-row-main">
-            <h3>NeonRoutine</h3>
-            <p>
-              A routine and habit application with a stylized interface, reminders, local data,
-              and optional app-store purchase features.
-            </p>
+      <div class="app-showcase">
+        <article class="app-card">
+          <div class="app-identity">
+            <img src="/assets/icons/neonroutine-192.png" srcset="/assets/icons/neonroutine-192.png 192w, /assets/icons/neonroutine.png 1024w" sizes="88px" alt="" width="88" height="88">
+            <div>
+              <p class="kicker">Routine system</p>
+              <h3>NeonRoutine</h3>
+            </div>
           </div>
-          <div class="app-row-links" aria-label="NeonRoutine links">
-            <a href="/neonroutine/privacy.en/">Privacy</a>
-            <a href="/neonroutine/terms.en/">Terms</a>
-            <a href="/neonroutine/accessibility.en/">Accessibility</a>
+          <p>
+            A cyberpunk routine and habit application with reminders, local habit data,
+            app-store purchase flows, and rewarded ad consent handling.
+          </p>
+          <div class="app-meta" aria-label="NeonRoutine characteristics">
+            <span>Local-first data</span>
+            <span>Purchases</span>
+            <span>Rewarded ads</span>
+          </div>
+          <div class="link-grid" aria-label="NeonRoutine links">
+            <a href="/neonroutine/privacy.en/"><span>Privacy Policy</span><small>EN</small></a>
+            <a href="/neonroutine/terms.en/"><span>Terms of Service</span><small>EN</small></a>
+            <a href="/neonroutine/accessibility.en/"><span>Accessibility</span><small>EN</small></a>
           </div>
         </article>
 
-        <article class="app-row">
-          <img src="/assets/icons/kalvenda.png" alt="" width="72" height="72">
-          <div class="app-row-main">
-            <h3>Kalvenda</h3>
-            <p>
-              A group planning application for events and activities, with account flows,
-              notifications, moderation-related pages, and data request information.
-            </p>
+        <article class="app-card">
+          <div class="app-identity">
+            <img src="/assets/icons/kalvenda-192.png" srcset="/assets/icons/kalvenda-192.png 192w, /assets/icons/kalvenda.png 1024w" sizes="88px" alt="" width="88" height="88">
+            <div>
+              <p class="kicker">Group planning</p>
+              <h3>Kalvenda</h3>
+            </div>
           </div>
-          <div class="app-row-links" aria-label="Kalvenda links">
-            <a href="/kalvenda/privacy.en/">Privacy</a>
-            <a href="/kalvenda/terms.en/">Terms</a>
-            <a href="/kalvenda/deletion.en/">Deletion</a>
-            <a href="/kalvenda/csae.en/">Safety</a>
+          <p>
+            A group activity and event management application with accounts, notifications,
+            location-enabled planning, moderation context, and account deletion routes.
+          </p>
+          <div class="app-meta" aria-label="Kalvenda characteristics">
+            <span>Accounts</span>
+            <span>Groups</span>
+            <span>Safety pages</span>
+          </div>
+          <div class="link-grid" aria-label="Kalvenda links">
+            <a href="/kalvenda/privacy.en/"><span>Privacy Policy</span><small>EN</small></a>
+            <a href="/kalvenda/terms.en/"><span>Terms of Service</span><small>EN</small></a>
+            <a href="/kalvenda/accessibility.en/"><span>Accessibility</span><small>EN</small></a>
+            <a href="/kalvenda/deletion.en/"><span>Kalvenda account deletion</span><small>EN</small></a>
+            <a href="/kalvenda/csae.en/"><span>Safety Standards</span><small>EN</small></a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="legal" class="section-shell content-section">
-      <div class="section-heading">
-        <p class="eyebrow">Legal documents</p>
-        <h2>Stable public documents</h2>
+    <section id="legal" class="section-shell content-section legal-command">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Legal directory</p>
+          <h2>Stable public documents</h2>
+        </div>
         <p>
-          The links below keep the existing document paths and open in the same site design.
-          Language options are available at the top of each document page.
+          Document paths remain unchanged for app stores, ad networks, and users. Language
+          options stay available inside each legal page.
         </p>
       </div>
 
-      <div class="legal-directory">
+      <div class="directory-grid">
         <article class="directory-panel">
-          <h3>General</h3>
+          <p class="kicker">General</p>
+          <h3>Legal notice</h3>
           <div class="language-links">
             <a href="/impressum.de/">Deutsch</a>
             <a href="/impressum.en/">English</a>
@@ -128,7 +174,8 @@
         </article>
 
         <article class="directory-panel">
-          <h3>NeonRoutine</h3>
+          <p class="kicker">NeonRoutine</p>
+          <h3>Core documents</h3>
           <div class="document-list">
             <a href="/neonroutine/privacy.en/"><span>Privacy Policy</span><small>EN</small></a>
             <a href="/neonroutine/terms.en/"><span>Terms of Service</span><small>EN</small></a>
@@ -137,13 +184,14 @@
         </article>
 
         <article class="directory-panel">
-          <h3>Kalvenda</h3>
+          <p class="kicker">Kalvenda</p>
+          <h3>Review documents</h3>
           <div class="document-list">
             <a href="/kalvenda/privacy.en/"><span>Privacy Policy</span><small>EN</small></a>
             <a href="/kalvenda/terms.en/"><span>Terms of Service</span><small>EN</small></a>
             <a href="/kalvenda/accessibility.en/"><span>Accessibility Statement</span><small>EN</small></a>
-            <a href="/kalvenda/csae.en/"><span>Safety Standards</span><small>EN</small></a>
             <a href="/kalvenda/deletion.en/"><span>Account Deletion</span><small>EN</small></a>
+            <a href="/kalvenda/csae.en/"><span>Safety Standards</span><small>EN</small></a>
           </div>
         </article>
       </div>
@@ -152,16 +200,16 @@
     <section id="about" class="section-shell about-section">
       <div>
         <p class="eyebrow">About</p>
-        <h2>About this site</h2>
+        <h2>Built for practical review flows</h2>
       </div>
       <div class="about-text">
         <p>
-          I develop application projects with a focus on practical product details: clear user
-          flows, localized text, app-store requirements, support pages, and public legal documents.
+          The site exists to make application context, legal documents, support contact, and
+          platform-review links easy to inspect without requiring accounts or separate portals.
         </p>
         <p>
-          This website is intentionally simple. It exists so users, reviewers, and platform teams
-          can find the correct documents and contact route without searching through separate pages.
+          The design stays intentionally quiet: fast static pages, readable documents, durable
+          URLs, and enough product identity to make the portfolio feel deliberate.
         </p>
       </div>
     </section>
@@ -169,8 +217,8 @@
     <section class="section-shell support-strip">
       <div>
         <p class="eyebrow">Support</p>
-        <h2>Need to report an issue?</h2>
-        <p>Use the support page for app issues, account questions, accessibility feedback, and data requests.</p>
+        <h2>One route for issues, data requests, and accessibility feedback.</h2>
+        <p>Use the support page for app issues, account questions, document questions, and safety reports.</p>
       </div>
       <a class="button primary" href="/support.html">Open support page</a>
     </section>

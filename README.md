@@ -77,6 +77,10 @@ README.md                       Site index and repository guide
 app-ads.txt                     Advertising-system verification file
 googleba074b808e0bf51a.html     Google site verification file
 assets/icons/                   App icons used in the README/site index
+debug.html                      Public non-sensitive developer QA entrypoint
+feature_registry.md             Feature and debug-functionality registry
+tests/                          Node-based structural regression checks
+docs/superpowers/               Design and implementation planning records
 impressum.*.md                  General legal notice in multiple languages
 neonroutine/                    NeonRoutine legal and accessibility documents
 kalvenda/                       Kalvenda legal, safety, deletion, and accessibility documents
@@ -199,6 +203,7 @@ Typical destinations for these URLs:
 
 Before relying on a document publicly:
 
+- Run `node --test tests/site-structure.test.mjs`.
 - The document exists in every required language.
 - The public URL loads without authentication.
 - The content names the correct app.
@@ -206,6 +211,7 @@ Before relying on a document publicly:
 - Links between privacy, terms, deletion, and accessibility pages are consistent.
 - App store metadata points to the public URL, not the GitHub source URL.
 - `app-ads.txt` is reachable from the root domain if ads are enabled.
+- `/debug.html` opens and links to the representative QA routes.
 
 ## Deployment
 
