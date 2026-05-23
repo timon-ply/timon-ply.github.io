@@ -115,7 +115,6 @@ button:focus-visible {
 
 .nav a,
 .button,
-.language-links a,
 .document-list a,
 .link-grid a {
   min-height: 44px;
@@ -295,7 +294,6 @@ h4 {
 
 .hero-panel,
 .app-card,
-.directory-panel,
 .info-panel,
 .legal-language,
 .legal-content,
@@ -404,8 +402,7 @@ h4 {
   margin-bottom: 0;
 }
 
-.app-meta,
-.language-links {
+.app-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -421,13 +418,6 @@ h4 {
   font-weight: 800;
 }
 
-.directory-grid {
-  display: grid;
-  grid-template-columns: 0.85fr 1fr 1fr;
-  gap: 1rem;
-}
-
-.directory-panel,
 .info-panel {
   padding: 1.25rem;
 }
@@ -470,25 +460,6 @@ h4 {
 
 .document-list.compact {
   margin-top: 1rem;
-}
-
-.language-links a {
-  padding: 0.55rem 0.72rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--soft);
-  color: var(--blue-strong);
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-decoration: none;
-  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
-}
-
-.language-links a:hover,
-.language-links a:focus-visible {
-  color: #ffffff;
-  background: var(--blue);
-  border-color: var(--blue);
 }
 
 .support-strip {
@@ -692,7 +663,6 @@ h4 {
 @media (max-width: 900px) {
   .portfolio-hero,
   .split-heading,
-  .directory-grid,
   .support-dashboard {
     grid-template-columns: 1fr;
   }
@@ -757,7 +727,6 @@ h4 {
 
   .hero-panel,
   .app-card,
-  .directory-panel,
   .info-panel,
   .legal-content,
   .support-strip {

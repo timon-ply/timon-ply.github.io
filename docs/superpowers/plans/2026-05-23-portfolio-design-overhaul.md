@@ -29,7 +29,7 @@
 - Create: `assets/icons/neonroutine-192.png`
 - Create: `assets/icons/kalvenda-192.png`
 
-- [x] Replace the home page with the app-document hero, app quick links, app showcase, legal command directory, and support strip.
+- [x] Replace the home page with the app-document hero, app quick links, one app document showcase, and support strip.
 - [x] Replace the support page body with a support dashboard while preserving `mailto:dev@timonply.com`.
 - [x] Update the legal layout font import and page class.
 - [x] Rewrite shared CSS for responsive, accessible, minimal editorial styling.

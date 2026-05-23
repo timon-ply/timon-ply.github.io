@@ -2,9 +2,9 @@
 
 ## Portfolio Design Overhaul
 
-Abstraction: Static GitHub Pages portfolio made from `index.html`, `support.html`, `_layouts/legal.html`, `debug.html`, and shared styling in `assets/site.css`.
+Abstraction: Static GitHub Pages app-document site made from `index.html`, `support.html`, `_layouts/legal.html`, `debug.html`, and shared styling in `assets/site.css`.
 
-Purpose: Present current app projects, support contact, and legal document routes with a professional minimal interface that keeps the public page focused on app-scoped actions.
+Purpose: Present current app projects, support contact, and legal document routes with a professional minimal interface that keeps the public page focused on app-scoped actions without duplicate document directories.
 
 Connected features:
 - App portfolio entries for NeonRoutine and Kalvenda.
@@ -20,7 +20,7 @@ Possible conflicts:
 Validation:
 - Run `node --test tests/site-structure.test.mjs`.
 - Open `/index.html`, `/support.html`, `/debug.html`, and representative legal document routes.
-- Verify mobile widths at 375px and 640px, tablet width at 768px, and desktop widths at 1024px and 1440px.
+- Confirm the home page has one app-document section and no separate `Documents by app` directory.
 
 ## Debug Functionality Register
 
