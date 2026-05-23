@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a static, professional, minimal portfolio redesign with stronger visual impact while preserving legal and support routes.
+**Goal:** Build a static, professional, minimal app-document redesign with stronger visual impact while preserving legal and support routes.
 
 **Architecture:** Keep hand-written static HTML pages, Jekyll markdown legal documents, and one shared stylesheet. Add a public non-sensitive debug entrypoint and a Node built-in structural test suite.
 
@@ -29,7 +29,7 @@
 - Create: `assets/icons/neonroutine-192.png`
 - Create: `assets/icons/kalvenda-192.png`
 
-- [x] Replace the home page with the portfolio hero, app showcase, legal command directory, about section, and support strip.
+- [x] Replace the home page with the app-document hero, app quick links, app showcase, legal command directory, and support strip.
 - [x] Replace the support page body with a support dashboard while preserving `mailto:dev@timonply.com`.
 - [x] Update the legal layout font import and page class.
 - [x] Rewrite shared CSS for responsive, accessible, minimal editorial styling.

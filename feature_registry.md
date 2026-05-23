@@ -4,7 +4,7 @@
 
 Abstraction: Static GitHub Pages portfolio made from `index.html`, `support.html`, `_layouts/legal.html`, `debug.html`, and shared styling in `assets/site.css`.
 
-Purpose: Present current app projects, support contact, and legal document routes with a professional minimal interface that carries stronger product identity through app visuals, editorial typography, and structured document navigation.
+Purpose: Present current app projects, support contact, and legal document routes with a professional minimal interface that keeps the public page focused on app-scoped actions.
 
 Connected features:
 - App portfolio entries for NeonRoutine and Kalvenda.
@@ -27,10 +27,10 @@ Validation:
 Single entrypoint: `/debug.html`.
 
 Debug features:
-- Visual regression checkpoints for the home, support, and legal page layouts.
-- Critical public route links for portfolio, support, app ads verification, and representative legal document routes.
-- Accessibility-oriented checks for keyboard focus visibility and readable document layout.
+- App-scoped route checks for NeonRoutine and Kalvenda legal documents.
+- Shared app support, provider notice, and app ads verification links.
+- Representative legal document routes for quick manual verification.
 
 Connected features:
 - `/debug.html` links to legal document routes without modifying those documents.
-- `tests/site-structure.test.mjs` verifies the debug page exists and remains connected to the design and legal document routes.
+- `tests/site-structure.test.mjs` verifies the debug page exists and remains connected to app-scoped route checks and legal document routes.

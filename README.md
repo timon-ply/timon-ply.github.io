@@ -77,7 +77,7 @@ README.md                       Site index and repository guide
 app-ads.txt                     Advertising-system verification file
 googleba074b808e0bf51a.html     Google site verification file
 assets/icons/                   App icons used in the README/site index
-debug.html                      Public non-sensitive developer QA entrypoint
+debug.html                      Public non-sensitive app route QA entrypoint
 feature_registry.md             Feature and debug-functionality registry
 tests/                          Node-based structural regression checks
 docs/superpowers/               Design and implementation planning records

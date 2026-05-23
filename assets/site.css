@@ -117,8 +117,7 @@ button:focus-visible {
 .button,
 .language-links a,
 .document-list a,
-.link-grid a,
-.signal-grid a {
+.link-grid a {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -311,22 +310,13 @@ h4 {
   padding: 1rem;
 }
 
-.panel-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+.panel-heading {
   margin-bottom: 1rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
-.panel-topline strong {
-  color: var(--green);
-  letter-spacing: 0;
+.panel-heading h2 {
+  margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .artifact-stack {
@@ -371,48 +361,6 @@ h4 {
 .artifact small {
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.signal-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--line);
-}
-
-.signal-grid a {
-  display: grid;
-  align-content: center;
-  justify-content: stretch;
-  gap: 0.2rem;
-  min-height: 92px;
-  padding: 1rem;
-  background: var(--paper);
-  color: var(--ink);
-  text-decoration: none;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.signal-grid a:hover,
-.signal-grid a:focus-visible {
-  color: #ffffff;
-  background: var(--ink);
-}
-
-.signal-grid span {
-  font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.signal-grid strong {
-  color: inherit;
-  font-size: 0.82rem;
 }
 
 .section-heading {
@@ -541,18 +489,6 @@ h4 {
   color: #ffffff;
   background: var(--blue);
   border-color: var(--blue);
-}
-
-.about-section {
-  display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  padding: 5rem 0;
-  border-top: 1px solid var(--line);
-}
-
-.about-text {
-  max-width: 720px;
 }
 
 .support-strip {
@@ -757,7 +693,6 @@ h4 {
   .portfolio-hero,
   .split-heading,
   .directory-grid,
-  .about-section,
   .support-dashboard {
     grid-template-columns: 1fr;
   }
@@ -783,8 +718,7 @@ h4 {
   }
 
   .portfolio-hero,
-  .content-section,
-  .about-section {
+  .content-section {
     padding: 3.75rem 0;
   }
 
@@ -843,10 +777,6 @@ h4 {
   .app-identity img {
     width: 64px;
     height: 64px;
-  }
-
-  .signal-grid {
-    grid-template-columns: 1fr;
   }
 
   .legal-language {

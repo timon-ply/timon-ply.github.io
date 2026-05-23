@@ -21,31 +21,34 @@ test('home page exposes the redesigned portfolio structure', () => {
   const html = read('index.html');
 
   assert.match(html, /class="[^"]*\bportfolio-hero\b/);
-  assert.match(html, /class="[^"]*\bsignal-grid\b/);
-  assert.match(html, /aria-label="Portfolio status"/);
+  assert.match(html, /aria-label="App quick links"/);
   assert.match(html, /class="[^"]*\bapp-showcase\b/);
   assert.match(html, /class="[^"]*\blegal-command\b/);
   assert.match(html, /Kalvenda account deletion/);
+  assert.doesNotMatch(html, /Live index/i);
+  assert.doesNotMatch(html, /signal-grid/);
+  assert.doesNotMatch(html, /The design stays/i);
 });
 
-test('support and debug pages keep public support and QA routes reachable', () => {
+test('support and debug pages keep app-scoped support and QA routes reachable', () => {
   const support = read('support.html');
   const debug = read('debug.html');
 
   assert.match(support, /mailto:dev@timonply\.com/);
   assert.match(support, /class="[^"]*\bsupport-dashboard\b/);
-  assert.match(debug, /Developer QA/);
-  assert.match(debug, /Visual regression checkpoints/);
+  assert.match(debug, /App route checks/);
   assert.match(debug, /\/kalvenda\/deletion\.en\//);
+  assert.doesNotMatch(debug, /design regression|Visual regression|viewport widths/i);
 });
 
-test('feature registry documents the design and debug surfaces', () => {
+test('feature registry documents app route and debug surfaces', () => {
   const registry = read('feature_registry.md');
 
   assert.match(registry, /Portfolio Design Overhaul/);
   assert.match(registry, /Debug Functionality Register/);
   assert.match(registry, /\/debug\.html/);
   assert.match(registry, /legal document routes/);
+  assert.match(registry, /app-scoped route checks/);
 });
 
 test('stylesheet has accessible responsive behavior without viewport-scaled type', () => {
