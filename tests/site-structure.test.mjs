@@ -21,10 +21,13 @@ test('home page exposes the redesigned portfolio structure', () => {
   const html = read('index.html');
 
   assert.match(html, /class="[^"]*\bportfolio-hero\b/);
+  assert.match(html, /Apps, legal documents, and support by Timon Polley\./);
+  assert.match(html, /current and future app projects/);
   assert.match(html, /aria-label="App quick links"/);
   assert.match(html, /class="[^"]*\bapp-showcase\b/);
   assert.match(html, /Kalvenda account deletion/);
   assert.match(html, /\/impressum\.en\//);
+  assert.doesNotMatch(html, /Documents and support for NeonRoutine and Kalvenda\./);
   assert.doesNotMatch(html, /Live index/i);
   assert.doesNotMatch(html, /signal-grid/);
   assert.doesNotMatch(html, /The design stays/i);

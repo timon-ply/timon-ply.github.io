@@ -4,7 +4,7 @@
 
 Abstraction: Static GitHub Pages app-document site made from `index.html`, `support.html`, `_layouts/legal.html`, `debug.html`, and shared styling in `assets/site.css`.
 
-Purpose: Present current app projects, support contact, and legal document routes with a professional minimal interface that keeps the public page focused on app-scoped actions without duplicate document directories.
+Purpose: Present current and future app projects by Timon Polley, support contact, and legal document routes with a professional minimal interface that keeps the public page focused on app-scoped actions without duplicate document directories.
 
 Connected features:
 - App portfolio entries for NeonRoutine and Kalvenda.
