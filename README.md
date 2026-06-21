@@ -68,6 +68,17 @@ kalvenda/deletion.de.md
 kalvenda/deletion.en.md
 ```
 
+### Exactake
+
+Exactake is a local-first nutrition tracking application. This site hosts its public privacy policy and terms of service.
+
+Documents:
+
+```text
+exactake/privacy.en.md
+exactake/terms.en.md
+```
+
 ## Repository Structure
 
 ```text
@@ -84,6 +95,7 @@ docs/superpowers/               Design and implementation planning records
 impressum.*.md                  General legal notice in multiple languages
 neonroutine/                    NeonRoutine legal and accessibility documents
 kalvenda/                       Kalvenda legal, safety, deletion, and accessibility documents
+exactake/                       Exactake legal documents
 ```
 
 ## General Legal Notice
@@ -182,6 +194,8 @@ https://timonply.com/kalvenda/terms.en/
 https://timonply.com/kalvenda/deletion.en/
 https://timonply.com/neonroutine/privacy.en/
 https://timonply.com/neonroutine/terms.en/
+https://timonply.com/exactake/privacy.en/
+https://timonply.com/exactake/terms.en/
 https://timonply.com/impressum.en/
 ```
 

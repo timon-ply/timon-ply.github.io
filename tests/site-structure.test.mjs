@@ -26,6 +26,9 @@ test('home page exposes the redesigned portfolio structure', () => {
   assert.match(html, /aria-label="App quick links"/);
   assert.match(html, /class="[^"]*\bapp-showcase\b/);
   assert.match(html, /Kalvenda account deletion/);
+  assert.match(html, /Exactake/);
+  assert.match(html, /\/exactake\/privacy\.en\//);
+  assert.match(html, /\/exactake\/terms\.en\//);
   assert.match(html, /\/impressum\.en\//);
   assert.doesNotMatch(html, /Documents and support for NeonRoutine and Kalvenda\./);
   assert.doesNotMatch(html, /Live index/i);
@@ -44,6 +47,9 @@ test('support and debug pages keep app-scoped support and QA routes reachable', 
   assert.match(support, /class="[^"]*\bsupport-dashboard\b/);
   assert.match(debug, /App route checks/);
   assert.match(debug, /\/kalvenda\/deletion\.en\//);
+  assert.match(support, /\/exactake\/privacy\.en\//);
+  assert.match(debug, /\/exactake\/privacy\.en\//);
+  assert.match(debug, /\/exactake\/terms\.en\//);
   assert.doesNotMatch(debug, /design regression|Visual regression|viewport widths/i);
 });
 
