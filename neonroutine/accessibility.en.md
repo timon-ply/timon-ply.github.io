@@ -8,35 +8,45 @@ language: "English"
 language_code: en
 language_order: 2
 permalink: /neonroutine/accessibility.en/
+redirect_from:
+  - /neonroutine/accessibility.en
+  - /neonroutine/accessibility.en.html
+  - /neonroutine/accessibility.en.md
 ---
 # Accessibility Statement for NeonRoutine
 
-Last Updated: March 2026
+Last Updated: June 23, 2026
 
-## Statement of Commitment
-Timon Polley is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards for **NeonRoutine**.
+## Commitment
 
-## Conformance Status
-The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA.
-**NeonRoutine** is partially conformant with **WCAG 2.1 level AA**. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
+Timon Polley aims to make NeonRoutine usable by people with disabilities and to improve accessibility as the product evolves.
 
-## Technical Specifications
-Accessibility of NeonRoutine relies on the following technologies to work with the particular combination of operating system and any assistive technologies or plugins installed on your device:
-- Flutter / Dart
-- iOS Accessibility APIs (VoiceOver, Dynamic Type)
-- Android Accessibility APIs (TalkBack, Display Size)
+## Conformance status
 
-## Accessibility Features
-We have implemented the following features to ensure compliance with the European Accessibility Act (EAA) / Barrierefreiheitsstärkungsgesetz (BFSG):
-- **Contrast & Scalability**: Text contrast is optimized (>= 4.5:1), and UI scales gracefully up to 200%.
-- **Screen Reader Support**: Active VoiceOver and TalkBack support through semantic labeling.
-- **Alternative Gestures**: Essential actions triggered via "Hold-to-Execute" possess accessible alternatives.
-- **Motion Reduction**: Flashing and moving animations adhere to the OS-level "Reduce Motion" setting.
-- **Color Independence**: State information (like integrity and streaks) uses both color and icons.
+The app is currently partially conformant with WCAG 2.2 Level AA and EN 301 549 expectations where they apply to mobile apps. Some complex or platform-native interactions may need further improvement.
 
-## Feedback and Enforcement
-We welcome your feedback on the accessibility of NeonRoutine. Please let us know if you encounter accessibility barriers:
-**Email:** dev@timonply.com
+## Accessibility features
 
-We try to respond to feedback within 2 business days.
-*This statement was created to fulfill the obligations under the European Accessibility Act (EAA) and national implementations.*
+- Support for platform screen readers and semantic labels where implemented.
+- Support for larger text and operating-system settings where the surface allows it.
+- Focus on sufficient contrast, clear actions, and reduced motion where available.
+
+## Known limitations
+
+- High-motion HUD animations, glow effects, shader overlays, and timer screens may need further tuning for some assistive technology combinations.
+- Rewarded-ad and purchase provider dialogs are partly controlled by third-party SDKs or app stores.
+
+## Feedback and enforcement
+
+Send accessibility barriers, screen names, device/platform details, assistive technology used, and expected behavior to dev@timonply.com.
+
+For consumer products and services in Germany, the competent market surveillance authority under the BFSG may also be contacted if an issue is not resolved appropriately.
+
+## Related public paths
+
+- Privacy Policy: [https://timonply.com/neonroutine/privacy.en/](https://timonply.com/neonroutine/privacy.en/)
+- Terms of Service: [https://timonply.com/neonroutine/terms.en/](https://timonply.com/neonroutine/terms.en/)
+- Accessibility Statement: [https://timonply.com/neonroutine/accessibility.en/](https://timonply.com/neonroutine/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/neonroutine/deletion.en/](https://timonply.com/neonroutine/deletion.en/)
+- Legal Notice: [https://timonply.com/neonroutine/impressum.en/](https://timonply.com/neonroutine/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

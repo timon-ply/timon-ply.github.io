@@ -1,260 +1,205 @@
-# Timon Polley App Portfolio And Legal Documents
+# Timon Polley App Legal Repository
 
-This repository powers the public legal-document and app-information site for applications developed by Timon Polley. It is hosted through GitHub Pages and served from the custom domain configured in `CNAME`.
+This repository powers the public legal-document and support site for applications
+developed by Timon Polley.
 
-The site provides a central, version-controlled place for legal notices, privacy policies, terms of service, accessibility statements, app ads declarations, child-safety standards, and account-deletion instructions.
-
-## Live Site
+Live site:
 
 ```text
 https://timonply.com
 ```
 
-GitHub Pages serves the repository from the `main` branch.
+GitHub Pages serves this repository from `main` using the custom domain in
+`CNAME`.
 
 ## Purpose
 
-Mobile app stores and ad networks require stable public URLs for:
+The site provides stable public URLs for app stores, SDK dashboards, reviewers,
+and users:
 
 - Privacy policies.
 - Terms of service.
 - Accessibility statements.
-- Legal notice / Impressum.
-- Account deletion instructions.
-- Child safety and CSAE standards where applicable.
-- `app-ads.txt` for ad inventory verification.
-
-This repository keeps those documents in one public place so app metadata, store listings, and SDK dashboards can reference durable URLs.
+- Deletion and data-control instructions.
+- Legal notice / Impressum pages.
+- Child-safety / CSAE standards for social or user-content apps.
+- `app-ads.txt` ad inventory verification.
+- Support, privacy request, accessibility feedback, and safety report intake.
 
 ## Applications Covered
 
+Each canonical document is published in four languages:
+
+```text
+de  German
+en  English
+es  Spanish
+ja  Japanese
+```
+
 ### NeonRoutine
 
-NeonRoutine is a gamified cyberpunk habit and routine tracker. This site hosts its multilingual legal and accessibility documents.
+Local-first habit and routine tracking with local data, reminders, export/import,
+RevenueCat purchases, Google Mobile Ads rewarded ads, and consent handling.
 
 Documents:
 
 ```text
-neonroutine/privacy.de.md
-neonroutine/privacy.en.md
-neonroutine/privacy.es.md
-neonroutine/privacy.ja.md
-neonroutine/terms.de.md
-neonroutine/terms.en.md
-neonroutine/terms.es.md
-neonroutine/terms.ja.md
-neonroutine/accessibility.de.md
-neonroutine/accessibility.en.md
-neonroutine/accessibility.es.md
-neonroutine/accessibility.ja.md
+neonroutine/privacy.{de,en,es,ja}.md
+neonroutine/terms.{de,en,es,ja}.md
+neonroutine/accessibility.{de,en,es,ja}.md
+neonroutine/deletion.{de,en,es,ja}.md
+neonroutine/impressum.{de,en,es,ja}.md
 ```
 
 ### Kalvenda
 
-Kalvenda is a group activity and event management application. This site hosts its legal, accessibility, account-deletion, and child-safety documents.
+Group activity and event planning with accounts, groups, invitations,
+notifications, reporting, blocking, moderation, ads, and purchases.
 
 Documents:
 
 ```text
-kalvenda/privacy.de.md
-kalvenda/privacy.en.md
-kalvenda/terms.de.md
-kalvenda/terms.en.md
-kalvenda/accessibility.de.md
-kalvenda/accessibility.en.md
-kalvenda/csae.de.md
-kalvenda/csae.en.md
-kalvenda/deletion.de.md
-kalvenda/deletion.en.md
+kalvenda/privacy.{de,en,es,ja}.md
+kalvenda/terms.{de,en,es,ja}.md
+kalvenda/accessibility.{de,en,es,ja}.md
+kalvenda/deletion.{de,en,es,ja}.md
+kalvenda/csae.{de,en,es,ja}.md
+kalvenda/impressum.{de,en,es,ja}.md
 ```
 
 ### Exactake
 
-Exactake is a local-first nutrition tracking application. This site hosts its public privacy policy and terms of service.
+Local-first nutrition tracking with sensitive local nutrition/body data,
+export/import/delete controls, and user-triggered Open Food Facts lookup.
 
 Documents:
 
 ```text
-exactake/privacy.en.md
-exactake/terms.en.md
+exactake/privacy.{de,en,es,ja}.md
+exactake/terms.{de,en,es,ja}.md
+exactake/accessibility.{de,en,es,ja}.md
+exactake/deletion.{de,en,es,ja}.md
+exactake/impressum.{de,en,es,ja}.md
 ```
 
-## Repository Structure
+Icons:
 
 ```text
-_config.yml                     GitHub Pages / Jekyll configuration
-CNAME                           Custom domain
-README.md                       Site index and repository guide
-app-ads.txt                     Advertising-system verification file
-googleba074b808e0bf51a.html     Google site verification file
-assets/icons/                   App icons used in the README/site index
-debug.html                      Public non-sensitive app route QA entrypoint
-feature_registry.md             Feature and debug-functionality registry
-tests/                          Node-based structural regression checks
-docs/superpowers/               Design and implementation planning records
-impressum.*.md                  General legal notice in multiple languages
-neonroutine/                    NeonRoutine legal and accessibility documents
-kalvenda/                       Kalvenda legal, safety, deletion, and accessibility documents
-exactake/                       Exactake legal documents
+assets/icons/exactake.png
+assets/icons/exactake-192.png
 ```
 
-## General Legal Notice
+### Flatnest
 
-The legal notice is available in:
+Pre-release shared-living app with flat membership, chores, shared money, chat,
+invites, notifications, and Firebase-backed collaboration surfaces.
+
+Documents:
 
 ```text
-impressum.de.md
-impressum.en.md
-impressum.es.md
-impressum.ja.md
+flatnest/privacy.{de,en,es,ja}.md
+flatnest/terms.{de,en,es,ja}.md
+flatnest/accessibility.{de,en,es,ja}.md
+flatnest/deletion.{de,en,es,ja}.md
+flatnest/csae.{de,en,es,ja}.md
+flatnest/impressum.{de,en,es,ja}.md
+flatnest/LEGAL_REVIEW_REQUIRED.md
 ```
 
-These files are shared across the app portfolio and should be updated together when legal identity, contact, or jurisdiction information changes.
+Flatnest is pre-release. Re-review the documents before external launch, store
+submission, live Firebase activation, paid features, advertising, analytics,
+support uploads, or production legal publication.
 
-## Jekyll Configuration
-
-The site uses GitHub Pages with the minimal Jekyll theme:
-
-```yaml
-title: Timon Polley - Legal Documents
-description: Central repository for legal documents ...
-theme: jekyll-theme-minimal
-```
-
-The custom domain is configured through:
+## Shared Pages
 
 ```text
-CNAME
+index.html                     Public app/document index
+support.html                   Support and request intake
+debug.html                     Public route QA page
+docs/legal-route-matrix.md     Canonical route matrix for all languages
+docs/regulatory-review.md      Engineering compliance review notes
+impressum.{de,en,es,ja}.md     General legal notice pages
+app-ads.txt                    Ad network seller declaration
 ```
 
-## Editing Documents
+## Generated Documents
 
-When updating a document:
+Most legal-document files are generated from:
 
-1. Edit the relevant language file.
-2. Update all supported language variants for the same legal topic.
-3. Keep wording consistent across app store metadata and this repository.
-4. Commit with a specific message.
-5. Push to `main`.
-6. Verify the public URL after GitHub Pages rebuilds.
+```text
+tools/generate_legal_docs.mjs
+```
 
-Example:
+Regenerate after changing app legal facts, document wording, language variants,
+route aliases, or the route matrix:
 
 ```powershell
-git add kalvenda/privacy.en.md kalvenda/privacy.de.md
-git commit -m "Update Kalvenda privacy policy"
-git push
+node tools\generate_legal_docs.mjs
 ```
 
-## Adding A New App
-
-Create a new folder:
+The generator adds redirect aliases for current and legacy app routes:
 
 ```text
-newapp/
+/app/document.lang/
+/app/document.lang
+/app/document.lang.html
+/app/document.lang.md
 ```
 
-Add the required documents:
+GitHub Pages needs `jekyll-redirect-from`, configured in `_config.yml`, for those
+aliases to work after deployment.
+
+## URL Patterns
+
+Canonical public URLs:
 
 ```text
-newapp/privacy.en.md
-newapp/privacy.de.md
-newapp/terms.en.md
-newapp/terms.de.md
-newapp/accessibility.en.md
-newapp/accessibility.de.md
-```
-
-Add optional documents as needed:
-
-```text
-newapp/deletion.en.md
-newapp/deletion.de.md
-newapp/csae.en.md
-newapp/csae.de.md
-```
-
-Add an icon under:
-
-```text
-assets/icons/newapp.png
-```
-
-Update this README with links to the new documents.
-
-## Useful URL Patterns
-
-GitHub Pages converts markdown files into stable pages.
-
-Examples:
-
-```text
-https://timonply.com/kalvenda/privacy.en/
-https://timonply.com/kalvenda/terms.en/
-https://timonply.com/kalvenda/deletion.en/
-https://timonply.com/neonroutine/privacy.en/
-https://timonply.com/neonroutine/terms.en/
-https://timonply.com/exactake/privacy.en/
-https://timonply.com/exactake/terms.en/
+https://timonply.com/{app}/privacy.en/
+https://timonply.com/{app}/terms.en/
+https://timonply.com/{app}/accessibility.en/
+https://timonply.com/{app}/deletion.en/
+https://timonply.com/{app}/impressum.en/
+https://timonply.com/{app}/csae.en/
 https://timonply.com/impressum.en/
+https://timonply.com/docs/legal-route-matrix/
+https://timonply.com/support.html
 ```
 
-Always verify the exact URL before submitting it to an app store or third-party dashboard.
+Only apps with social or user-generated-content surfaces currently publish CSAE
+pages: Kalvenda and Flatnest.
 
-## App Store And Service Usage
+## App Workspaces Referenced
 
-Typical destinations for these URLs:
-
-- Apple App Store privacy policy URL.
-- Google Play privacy policy URL.
-- Google Play account deletion URL.
-- App Store Connect support/legal metadata.
-- RevenueCat app/legal metadata.
-- AdMob app verification.
-- Firebase or Google verification flows.
-
-## Validation Checklist
-
-Before relying on a document publicly:
-
-- Run `node --test tests/site-structure.test.mjs`.
-- The document exists in every required language.
-- The public URL loads without authentication.
-- The content names the correct app.
-- Contact and legal identity information are current.
-- Links between privacy, terms, deletion, and accessibility pages are consistent.
-- App store metadata points to the public URL, not the GitHub source URL.
-- `app-ads.txt` is reachable from the root domain if ads are enabled.
-- `/debug.html` opens and links to the representative QA routes.
-
-## Deployment
-
-Deployment is automatic through GitHub Pages after pushing to `main`.
-
-Check local git state:
-
-```powershell
-git status --short
-```
-
-Commit and push:
-
-```powershell
-git add README.md kalvenda neonroutine impressum.*.md app-ads.txt
-git commit -m "Update legal document portal"
-git push
-```
-
-Then verify:
+The current document set was reviewed against these local workspaces:
 
 ```text
-https://timonply.com
+C:\coding\Flutter-Learning\neon_routine
+C:\coding\Flutter-Learning\Kalvenda
+C:\coding\applications\exactake
+C:\coding\Flutter-Learning\flatnest
 ```
 
-## Maintenance Notes
+Do not assume this repository alone reflects a final app-store privacy/data-safety
+form. Re-check the shipped app features, SDKs, feature flags, and store metadata
+immediately before submission.
 
-- Keep this repository public because app stores and users need unauthenticated access.
-- Do not commit private keys, credentials, internal notes, or unpublished account data.
-- Treat legal document changes as release-impacting.
-- Keep language variants semantically aligned.
-- Review documents before every major app release and before store submission.
+## Validation
+
+Before relying on changed pages publicly:
+
+```powershell
+node --test tests\site-structure.test.mjs
+```
+
+For website presentation changes, run a local static server and inspect the actual
+rendered pages at desktop and mobile widths.
+
+## Adding Or Updating An App
+
+1. Update `tools/generate_legal_docs.mjs` with the app facts.
+2. Regenerate documents.
+3. Add icons under `assets/icons/` if the app has canonical icons.
+4. Update `index.html`, `support.html`, and `debug.html` if routes or app coverage change.
+5. Run `node --test tests\site-structure.test.mjs`.
+6. Verify public URLs after GitHub Pages rebuilds.

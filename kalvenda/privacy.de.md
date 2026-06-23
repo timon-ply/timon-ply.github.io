@@ -1,73 +1,82 @@
 ---
 layout: legal
-title: "Datenschutzerklaerung fuer Kalvenda"
+title: "Datenschutzerklärung für Kalvenda"
 doc_id: kalvenda-privacy
-doc_type: "Privacy Policy"
+doc_type: "Datenschutzerklärung"
 app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /kalvenda/privacy.de/
+redirect_from:
+  - /kalvenda/privacy.de
+  - /kalvenda/privacy.de.html
+  - /kalvenda/privacy.de.md
 ---
 # Datenschutzerklärung für Kalvenda
 
-Stand: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## 1. Einleitung
-Diese Datenschutzerklärung gilt für die Nutzung der mobilen Anwendung **Kalvenda** (die „App“), entwickelt und betrieben von Timon Polley („wir“, „uns“ oder „unser“). Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Daten in Übereinstimmung mit der Datenschutz-Grundverordnung (DSGVO) sowie anderen anwendbaren Gesetzen (z. B. TDDDG, DDG) zu gewährleisten.
+Diese Datenschutzerklärung erklärt, wie Timon Polley Informationen im Zusammenhang mit Kalvenda verarbeitet.
 
-## 2. Erhobene Daten & Rechtsgrundlage (Art. 6 DSGVO)
-Wir erheben nur die Daten, die für den Betrieb der App erforderlich sind:
+## Verantwortlicher und Kontakt
 
-- **Konto- & Profildaten**: Bei der Kontoerstellung erfassen wir E-Mail-Adresse, Anzeigename, User-IDs und Authentifizierungsdaten (via Google oder E-Mail/Passwort).
-  *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
+Timon Polley, Gutenbergstraße 5, 51469 Bergisch Gladbach, Deutschland. E-Mail: [dev@timonply.com](mailto:dev@timonply.com).
 
-- **Soziale & Gruppendaten (Nutzergenerierte Inhalte)**: Erstellte Gruppen, Events, Benachrichtigungen, Reaktionen und Mitgliedschaftsinformationen werden auf unseren Servern (Google Firebase/Firestore) sicher gespeichert, um eine geräteübergreifende Synchronisation mit Ihren Gruppenmitgliedern zu ermöglichen.
-  *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
+## Was die App macht
 
-- **Standort- & Kartendaten**: Wenn Sie einem Event einen Standort hinzufügen, werden präzise Koordinatendaten (Breiten- und Längengrad) erfasst, optional in unserer Datenbank gespeichert und auf einer interaktiven Karte angezeigt. Es erfolgt keine kontinuierliche oder Hintergrund-Standortverfolgung. Diese Datenerhebung ist strikt freiwillig.
-  *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
+Eine Gruppenplanungs-App mit Konten, Gruppen, Events, Einladungen, Alerts, Reaktionen, Benachrichtigungen, Werbung, Abonnements und Moderationswerkzeugen.
 
-- **In-App-Käufe & Abonnements**: Abgewickelt über RevenueCat, das Kaufhistorie, App-Nutzer-IDs und Geräte-IDs in unserem Auftrag verarbeitet. Zahlungen werden sicher über Apple oder Google abgewickelt.
-  *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
+## Daten und Zwecke
 
-- **Werbung & Tracking**: Wir nutzen Google AdMob zur Anzeigenausspielung. AdMob erhebt Geräte-Identifikatoren (z. B. Advertising ID), den ungefähren Standort und Interaktionsdaten, um personalisierte Werbung auszuliefern. Dies beinhaltet das Tracking über andere Apps und Webseiten hinweg (bei iOS unterliegt dies der "App Tracking Transparency" (ATT)-Zustimmung).
-  *Rechtsgrundlage: Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG).*
+- Konto- und Profildaten, Authentifizierungskennungen, Anzeigenamen, Avatare, Gruppenmitgliedschaften, Rollen, Einladungen, Events, Alerts, Reaktionen, Meldungen, Blockierungen, Benachrichtigungseinstellungen und FCM-Token werden verarbeitet, um den Gruppendienst bereitzustellen.
+- Optionale Event-Orte können Koordinaten oder Kartendaten enthalten. UGC-Meldungen und Moderationsaufzeichnungen können gespeichert werden, um Sicherheitsregeln durchzusetzen und Missbrauch zu verhindern.
+- RevenueCat/App Stores verwalten Kaufstatus; Google AdMob verarbeitet Werbung, soweit aktiviert; Firebase/Google-Dienste stellen Authentifizierung, Datenbank, Functions, Benachrichtigungen, Diagnostik und Hosting-Infrastruktur bereit.
 
-- **Nutzungsdaten, Analytics & Absturzberichte**: Firebase erhebt Interaktionsdaten, Absturzberichte, Diagnosedaten, Geräteinformationen und den ungefähren Standort (IP-basiert) zur Verbesserung der App-Leistung. Diese Datenerhebung ist freiwillig und kann jederzeit in den App-Einstellungen deaktiviert werden.
-  *Rechtsgrundlage: Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).*
+## Auftragsverarbeiter und Drittanbieter
 
-- **Push-Benachrichtigungen**: Zur Benachrichtigung über Gruppeneinladungen und Updates. Firebase Cloud Messaging (FCM) verarbeitet einen Geräte-Token zur Zustellung. Dies erfordert Ihre ausdrückliche Genehmigung.
-  *Rechtsgrundlage: Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).*
+Google Firebase, Firebase Authentication, Cloud Firestore, Cloud Functions, Firebase Cloud Messaging, Google Sign-In, Google AdMob, RevenueCat, Apple App Store und Google Play.
 
-**Pflichtangaben vs. freiwillige Daten**: E-Mail und Authentifizierung sind zwingend erforderlich. Standort, Analytics, Push und Werbe-Tracking sind freiwillig.
+## Rechtsgrundlagen für Nutzer im EWR
 
-## 3. Drittanbieter & Auftragsverarbeiter (Art. 28 DSGVO)
-Wir haben Auftragsverarbeitungsverträge (AVV) mit folgenden Anbietern geschlossen:
-- **Google LLC (Firebase, Google AdMob, Google Sign-In)**: Hosting, Authentifizierung, Crash-Reporting und Anzeigenausspielung. Daten werden soweit technisch möglich in der EU (europe-west3) gehostet. Googles AVV beinhaltet EU-Standardvertragsklauseln (SCC).
-- **RevenueCat, Inc.**: Verwaltung von Abonnements und In-App-Käufen. [Datenschutzrichtlinie](https://www.revenuecat.com/privacy)
-- **Apple Inc. / Google LLC**: Zahlungsabwicklung.
+Für Nutzer im EWR beruht die Kernverarbeitung auf der Vertragserfüllung oder auf vom Nutzer angeforderten Funktionen. Optionale Werbung, Tracking, Benachrichtigungen oder Berechtigungen beruhen auf Einwilligung, soweit dies erforderlich ist. Sicherheit, Missbrauchsvermeidung und minimale Diagnostik können auf berechtigten Interessen beruhen, soweit zulässig.
 
-## 4. Internationale Datenübermittlungen (Art. 46 DSGVO)
-Google LLC und RevenueCat haben ihren Sitz in den USA. Übermittlungen in die USA werden durch Standardvertragsklauseln (SCC) abgesichert.
+## Speicherung, Löschung und Nutzerkontrollen
 
-## 5. Automatisierte Entscheidungsfindung & Profiling (Art. 22 DSGVO)
-Wir treffen keine automatisierten Entscheidungen mit rechtlich erheblicher Wirkung. Google AdMob kann auf Basis von Geräte-Identifikatoren automatisiert Profile zur Auswahl personalisierter Werbung erstellen, vorausgesetzt Ihre Einwilligung liegt vor.
+Kalvenda bietet kontobezogene Kontrollen in der App. Das Löschen eines Kontos entfernt oder anonymisiert konto verknüpfte Daten, soweit keine Aufbewahrung für Sicherheit, Betrugsvermeidung, Rechtsbefolgung, Streitfälle oder die Erhaltung geteilter Aufzeichnungen anderer Nutzer erforderlich ist.
 
-## 6. Ihre Rechte (Art. 15–22 DSGVO)
-- **Auskunft & Datenübertragbarkeit**: Sie können jederzeit eine Kopie Ihrer Daten anfordern.
-- **Löschung (Konto löschen)**: Sie können Ihr Konto direkt in den App-Einstellungen ("Konto löschen") permanent löschen. Dadurch werden Ihr Nutzerprofil, Ihre Authentifizierungsdaten und alle mit Ihnen verknüpften Nutzerdaten vollständig und unwiderruflich von unseren Firestore-Datenbanken und Servern gelöscht.
-- **Berichtigung**: Sie können Ihr Profil und Ihre Inhalte in der App bearbeiten.
-- **Widerruf & Widerspruch**: Sie können Ihre Einwilligungen in Werbung und Analytics in den Datenschutzeinstellungen der App widerrufen.
-- **Beschwerderecht**: Sie haben das Recht, bei der zuständigen Aufsichtsbehörde Beschwerde einzulegen.
+Wenn Sie die In-App-Kontrollen nicht nutzen können, kontaktieren Sie dev@timonply.com von der mit dem Konto verbundenen E-Mail-Adresse, soweit anwendbar. Vor der Bearbeitung kann eine angemessene Verifizierung erforderlich sein.
 
-## 7. Datenspeicherung
-- **Konto & Soziale Daten**: Bis zur Kontolöschung. Nach der Löschung werden Ihre Daten vollständig gelöscht. Anonymisierte Metadaten oder gruppenbezogene Inhalte bleiben ggf. erhalten, um die Integrität der Gruppen für andere zu wahren.
-- **Analytics & Absturzberichte**: Werden von Google Firebase bis zu 90 Tage gespeichert.
+## Ihre Datenschutzrechte
 
-## 8. Kinderschutz (CSAE)
-Wir verfolgen eine strikte Null-Toleranz-Richtlinie in Bezug auf den sexuellen Missbrauch und die Ausbeutung von Kindern. Weitere Informationen finden Sie in unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de/).
+Je nach Standort können Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Widerruf einer Einwilligung und Beschwerde bei einer Aufsichtsbehörde bestehen. Kontaktieren Sie dev@timonply.com für Anliegen, die nicht direkt in der App erledigt werden können.
 
-## 9. Kontakt
-Bei Fragen zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:
-**E-Mail:** dev@timonply.com
+## Kinder und Altersanforderungen
+
+Die App ist nicht für unbeaufsichtigte Nutzung durch Kinder unterhalb des digitalen Einwilligungsalters ihres Landes bestimmt. Eltern oder Erziehungsberechtigte müssen App, Käufe, Werbung und Datenkontrollen vor der Nutzung durch ein Kind prüfen.
+
+## Sicherheit
+
+Wir verwenden angemessene technische und organisatorische Schutzmaßnahmen, begrenzen die Erhebung auf den aktuellen Produktumfang und bitten Nutzer nicht, Passwörter, Authentifizierungscodes oder unnötige sensible Daten per E-Mail zu senden.
+
+## Internationale Übermittlungen
+
+Einige Dienstleister können Daten außerhalb des EWR verarbeiten. Soweit die DSGVO-Regeln für Übermittlungen gelten, beruhen Übermittlungen auf geeigneten Garantien wie Angemessenheitsbeschlüssen, dem EU-US Data Privacy Framework, soweit anwendbar, oder Standardvertragsklauseln.
+
+## Automatisierte Entscheidungen
+
+Die App trifft keine automatisierten Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung. Personalisierte Werbung oder Store-/SDK-Entscheidungen können automatisiert erfolgen, soweit der jeweilige Dienst dies vorsieht und eine erforderliche Einwilligung vorliegt.
+
+## Änderungen
+
+Wir können dieses Dokument aktualisieren, wenn sich App, Rechtslage oder Store-Offenlegungspflichten ändern. Das Datum oben zeigt die aktuelle Version.
+
+## Verwandte öffentliche Pfade
+
+- Datenschutzerklärung: [https://timonply.com/kalvenda/privacy.de/](https://timonply.com/kalvenda/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/kalvenda/terms.de/](https://timonply.com/kalvenda/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/kalvenda/accessibility.de/](https://timonply.com/kalvenda/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/kalvenda/deletion.de/](https://timonply.com/kalvenda/deletion.de/)
+- CSAE-Standards: [https://timonply.com/kalvenda/csae.de/](https://timonply.com/kalvenda/csae.de/)
+- Impressum: [https://timonply.com/kalvenda/impressum.de/](https://timonply.com/kalvenda/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

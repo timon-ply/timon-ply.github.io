@@ -2,25 +2,42 @@
 layout: legal
 title: "Impressum"
 doc_id: impressum
-doc_type: "Legal Notice"
+doc_type: "Impressum"
 app_name: "General"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /impressum.de/
+redirect_from:
+  - /impressum.de
+  - /impressum.de.html
+  - /impressum.de.md
 ---
 # Impressum
 
-Angaben gemäß § 5 DDG
+Zuletzt aktualisiert: 23. Juni 2026
 
-Timon Polley
-Gutenbergstraße 5
-51469 Bergisch Gladbach
-Deutschland
+## Verantwortlicher und Kontakt
 
-## Kontakt
-Telefon: +49 178 9702884
-E-Mail: dev@timonply.com
+Timon Polley<br>
+Gutenbergstraße 5<br>
+51469 Bergisch Gladbach<br>
+Germany
+
+Email: [dev@timonply.com](mailto:dev@timonply.com)<br>
+Phone: +49 178 9702884
+
+## Anbieterinformationen
+
+Angaben gemäß § 5 DDG.
 
 ## Verbraucherstreitbeilegung
-Gemäß § 36 des Verbraucherstreitbeilegungsgesetzes (VSBG) informieren wir Sie: Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+
+Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nach dem VSBG teilzunehmen.
+
+## App-spezifische Impressen
+
+- [NeonRoutine](https://timonply.com/neonroutine/impressum.de/)
+- [Kalvenda](https://timonply.com/kalvenda/impressum.de/)
+- [Exactake](https://timonply.com/exactake/impressum.de/)
+- [Flatnest](https://timonply.com/flatnest/impressum.de/)

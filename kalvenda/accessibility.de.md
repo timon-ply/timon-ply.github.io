@@ -1,57 +1,53 @@
 ---
 layout: legal
-title: "Barrierefreiheitserklaerung fuer Kalvenda"
+title: "Barrierefreiheitserklärung für Kalvenda"
 doc_id: kalvenda-accessibility
-doc_type: "Accessibility Statement"
+doc_type: "Barrierefreiheitserklärung"
 app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /kalvenda/accessibility.de/
+redirect_from:
+  - /kalvenda/accessibility.de
+  - /kalvenda/accessibility.de.html
+  - /kalvenda/accessibility.de.md
 ---
-# Erklärung zur Barrierefreiheit für Kalvenda
+# Barrierefreiheitserklärung für Kalvenda
 
-Stand: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## Verpflichtungserklärung
-Timon Polley verpflichtet sich, die digitale Barrierefreiheit für Menschen mit Behinderungen zu gewährleisten. Wir verbessern kontinuierlich die Benutzererfahrung für alle und wenden die relevanten Barrierefreiheitsstandards für **Kalvenda** an, in Übereinstimmung mit dem Barrierefreiheitsstärkungsgesetz (BFSG), gültig ab dem 28. Juni 2025.
+## Verpflichtung
+
+Timon Polley möchte Kalvenda für Menschen mit Behinderungen nutzbar machen und die Barrierefreiheit mit der Weiterentwicklung des Produkts verbessern.
 
 ## Konformitätsstatus
-**Kalvenda** ist **teilweise konform** mit **WCAG 2.1 Stufe AA** und dem europäischen Standard **EN 301 549 V3.2.1**.
 
-„Teilweise konform" bedeutet, dass einige Teile des Inhalts den Anforderungen noch nicht vollständig entsprechen, wie im Abschnitt „Bekannte Einschränkungen" beschrieben.
+Die App ist derzeit teilweise konform mit WCAG 2.2 Level AA und den Erwartungen aus EN 301 549, soweit sie für mobile Apps gelten. Einige komplexe oder plattformnative Interaktionen können weitere Verbesserungen benötigen.
 
-## Technische Spezifikationen
-Die Barrierefreiheit von Kalvenda stützt sich auf folgende Technologien:
-- Flutter / Dart
-- iOS Accessibility APIs (VoiceOver, Dynamische Schriftgröße)
-- Android Accessibility APIs (TalkBack, Anzeigeschriftgröße)
+## Barrierefreiheitsfunktionen
 
-## Funktionen zur Barrierefreiheit
-Wir haben folgende Funktionen implementiert:
-
-- **Kontrast & Skalierbarkeit**: Textkontrastverhältnisse erfüllen die Anforderungen von WCAG 2.1 Stufe AA. Die Benutzeroberfläche lässt sich ohne Funktionsverlust auf bis zu 200 % Textgröße skalieren.
-- **Screenreader-Unterstützung**: Interaktive Elemente sind mit semantischen Labels für VoiceOver (iOS) und TalkBack (Android) versehen.
-- **Bewegungsreduzierung**: Animationen und Übergänge berücksichtigen die systemweite Einstellung „Bewegung reduzieren" / „Animationen entfernen".
+- Unterstützung für Plattform-Screenreader und semantische Labels, soweit implementiert.
+- Unterstützung für größere Schrift und Betriebssystem-Einstellungen, soweit die jeweilige Oberfläche dies zulässt.
+- Fokus auf ausreichenden Kontrast, klare Aktionen und reduzierte Bewegung, wo verfügbar.
 
 ## Bekannte Einschränkungen
-Folgende Bereiche sind derzeit noch nicht vollständig konform:
 
-- **Interaktive Kartenansichten**: Komplexe Karteninteraktionen (z. B. der Standort-Picker für Events) bieten möglicherweise eingeschränkte Screenreader-Unterstützung. Wo möglich, wird eine alternative Texteingabe für Koordinaten angeboten.
-- **Dynamisch geladene Inhalte**: Inhalte, die in Echtzeit geladen werden (z. B. Gruppenaktualisierungen, eingehende Benachrichtigungen), werden von Screenreadern möglicherweise nicht sofort angekündigt.
+- Interaktive Karten, Echtzeit-Gruppenupdates, Admin-/Moderationsansichten und dichte Mitglieder-/Eventlisten benötigen möglicherweise fortlaufende Verbesserungen für Screenreader und große Schrift.
+- Einige Berechtigungs-, Anzeigen-, Zahlungs- und Anmeldedialoge werden von Drittanbietern kontrolliert.
 
-Wir arbeiten aktiv daran, diese Einschränkungen in zukünftigen Updates zu beheben.
+## Feedback und Durchsetzung
 
-## Letzte Überprüfung
-Diese Erklärung zur Barrierefreiheit wurde zuletzt im **März 2026** überprüft.
+Senden Sie Barrieren, Bildschirmnamen, Gerät/Plattform, verwendete assistive Technologie und erwartetes Verhalten an dev@timonply.com.
 
-## Feedback, Kontakt & Durchsetzung
-Wir freuen uns auf Ihr Feedback zur Barrierefreiheit von Kalvenda. Bitte lassen Sie es uns wissen, falls Sie auf Barrieren stoßen:
+Für Verbraucherprodukte und -dienstleistungen in Deutschland kann die zuständige Marktüberwachungsbehörde nach dem BFSG zusätzlich kontaktiert werden, wenn ein Anliegen nicht angemessen gelöst wird.
 
-**E-Mail:** dev@timonply.com
+## Verwandte öffentliche Pfade
 
-Falls Ihre Beschwerde zur Barrierefreiheit nicht innerhalb einer angemessenen Frist zufriedenstellend bearbeitet wird, können Sie sich an die zuständige Marktüberwachungsbehörde nach dem BFSG wenden:
-
-**Bundesnetzagentur** (Bundesbehörde)
-Tulpenfeld 4, 53113 Bonn
-www.bundesnetzagentur.de
+- Datenschutzerklärung: [https://timonply.com/kalvenda/privacy.de/](https://timonply.com/kalvenda/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/kalvenda/terms.de/](https://timonply.com/kalvenda/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/kalvenda/accessibility.de/](https://timonply.com/kalvenda/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/kalvenda/deletion.de/](https://timonply.com/kalvenda/deletion.de/)
+- CSAE-Standards: [https://timonply.com/kalvenda/csae.de/](https://timonply.com/kalvenda/csae.de/)
+- Impressum: [https://timonply.com/kalvenda/impressum.de/](https://timonply.com/kalvenda/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

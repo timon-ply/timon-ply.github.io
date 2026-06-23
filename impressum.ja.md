@@ -1,26 +1,43 @@
 ---
 layout: legal
-title: "Legal Notice"
+title: "運営者情報"
 doc_id: impressum
-doc_type: "Legal Notice"
+doc_type: "運営者情報"
 app_name: "General"
-language: "Japanese"
+language: "日本語"
 language_code: ja
 language_order: 4
 permalink: /impressum.ja/
+redirect_from:
+  - /impressum.ja
+  - /impressum.ja.html
+  - /impressum.ja.md
 ---
-# 運営者情報 (Impressum)
+# 運営者情報
 
-DDG第5条に基づく情報
+最終更新日: 2026年6月23日
 
-Timon Polley
-Gutenbergstraße 5
-51469 Bergisch Gladbach
-Germany (ドイツ)
+## 管理者および連絡先
 
-## 連絡先
-電話番号: +49 178 9702884
-メールアドレス: dev@timonply.com
+Timon Polley<br>
+Gutenbergstraße 5<br>
+51469 Bergisch Gladbach<br>
+Germany
+
+Email: [dev@timonply.com](mailto:dev@timonply.com)<br>
+Phone: +49 178 9702884
+
+## 提供者情報
+
+DDG第5条に基づく情報。
 
 ## 消費者紛争解決
-ドイツ消費者紛争解決法（Verbraucherstreitbeilegungsgesetz -- VSBG）第36条に従い、お知らせいたします：当社は、消費者仲裁機関の紛争解決手続きに参加する用意はなく、その義務も負いません。
+
+当社は、ドイツ消費者紛争解決法（VSBG）に基づく消費者仲裁機関での紛争解決手続に参加する意思も義務もありません。
+
+## アプリ別運営者情報
+
+- [NeonRoutine](https://timonply.com/neonroutine/impressum.ja/)
+- [Kalvenda](https://timonply.com/kalvenda/impressum.ja/)
+- [Exactake](https://timonply.com/exactake/impressum.ja/)
+- [Flatnest](https://timonply.com/flatnest/impressum.ja/)

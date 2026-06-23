@@ -8,66 +8,75 @@ language: "English"
 language_code: en
 language_order: 2
 permalink: /kalvenda/privacy.en/
+redirect_from:
+  - /kalvenda/privacy.en
+  - /kalvenda/privacy.en.html
+  - /kalvenda/privacy.en.md
 ---
 # Privacy Policy for Kalvenda
 
-Last Updated: March 2026
+Last Updated: June 23, 2026
 
-## 1. Introduction
-This Privacy Policy applies to the use of the mobile application **Kalvenda** (the "App"), developed and operated by Timon Polley ("we", "us", or "our"). We are committed to protecting your privacy and ensuring the security of your personal information in accordance with the General Data Protection Regulation (GDPR) and other applicable laws (including the TDDDG and DDG).
+This Privacy Policy explains how Timon Polley processes information in connection with Kalvenda.
 
-## 2. Information We Collect & Lawful Basis (Art. 6 GDPR)
-We collect the minimum amount of data necessary to operate the App effectively. Our processing is based on the following legal grounds:
+## Controller and contact
 
-- **Account & Profile Data**: When you create an account, we collect your email address, display name, user IDs, and authentication data (via Google or Email/Password).
-  *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
+Timon Polley, Gutenbergstrasse 5, 51469 Bergisch Gladbach, Germany. Email: [dev@timonply.com](mailto:dev@timonply.com).
 
-- **Social & Group Data (User-Generated Content)**: Your created groups, events, alerts, reactions, and membership information are stored securely on our servers (Google Firebase/Firestore) to synchronize across your devices and with other members of your groups.
-  *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
+## What the app does
 
-- **Location & Map Data**: When you add a location to an event, precise coordinate data (latitude/longitude) is temporarily processed and optionally stored in our database. It is displayed on an interactive map. No continuous or background location tracking is performed. This data collection is strictly optional.
-  *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
+A group planning app with accounts, groups, events, invitations, alerts, reactions, notifications, ads, subscriptions, and moderation tools.
 
-- **In-App Purchases & Subscriptions**: Managed via RevenueCat, which processes purchase history, app user IDs, and device IDs on our behalf. Payments are processed securely by Apple or Google.
-  *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
+## Data and purposes
 
-- **Advertisements & Tracking**: We use Google AdMob to serve ads. AdMob collects device identifiers (e.g., Advertising ID), approximate location, and interaction data to serve targeted advertising. This involves tracking your data across other apps and websites. For iOS users, this is subject to the App Tracking Transparency (ATT) prompt.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR, § 25(1) TDDDG).*
+- Account and profile data, authentication identifiers, display names, avatars, group memberships, roles, invitations, events, alerts, reactions, reports, blocks, notification settings, and FCM tokens are processed to provide the group service.
+- Optional event locations may include coordinates or map-related data. UGC reports and moderation records may be retained to enforce safety rules and prevent abuse.
+- RevenueCat/app stores handle purchase status; Google AdMob handles ads where enabled; Firebase/Google services provide authentication, database, functions, notifications, diagnostics, and hosting infrastructure.
 
-- **Usage Data, Analytics, & Crash Logs**: Firebase collects app interactions, crash logs, diagnostics, device information, and approximate location (IP-based) to improve the App's performance. This data collection is optional and can be toggled on or off at any time in the App's Settings.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
+## Processors and third-party services
 
-- **Push Notifications**: Used to alert you about group updates. Firebase Cloud Messaging (FCM) processes a device token. Notifications require your explicit permission.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
+Google Firebase, Firebase Authentication, Cloud Firestore, Cloud Functions, Firebase Cloud Messaging, Google Sign-In, Google AdMob, RevenueCat, Apple App Store, and Google Play.
 
-**Mandatory vs. Optional Data**: Providing your email and authentication data is mandatory to use the App. Location permissions, analytics data, push notifications, and advertising tracking are optional.
+## Legal bases for EEA users
 
-## 3. Third-Party Services & Sub-Processors (Art. 28 GDPR)
-The App uses third-party services that process data on our behalf under Data Processing Agreements (DPAs):
-- **Google LLC (Firebase, Google AdMob, Google Sign-In)**: Database hosting, authentication, crash reporting, and ad serving. Data is hosted in the EU where technically possible. Google's DPA incorporates EU Standard Contractual Clauses (SCCs).
-- **RevenueCat, Inc.**: Subscription and in-app purchase management. [Privacy Policy](https://www.revenuecat.com/privacy)
-- **Apple Inc. / Google LLC**: Processing of app transactions.
+For EEA users, core app processing is based on performance of the user contract or user-requested functionality. Optional ads, tracking, notifications, or permissions rely on consent where required. Security, abuse prevention, and minimal service diagnostics may rely on legitimate interests where legally available.
 
-## 4. International Data Transfers (Art. 46 GDPR)
-Google LLC and RevenueCat are established in the US. Transfers of your personal data to the US are safeguarded by Standard Contractual Clauses (SCCs). Details: https://cloud.google.com/terms/data-processing-addendum
+## Retention, deletion, and user controls
 
-## 5. Automated Decision-Making & Profiling (Art. 22 GDPR)
-We do not make automated decisions with legally significant effects. Google AdMob may use automated profiling based on device identifiers to serve personalized ads, subject to your prior consent.
+Kalvenda provides account-related controls in the app. Deleting an account removes or anonymizes account-linked data unless retention is required for security, fraud prevention, legal compliance, dispute handling, or preserving other users' shared records.
 
-## 6. Your Rights (Art. 15–22 GDPR)
-- **Right of Access & Data Portability**: You can request an export of your personal data at any time.
-- **Right to Erasure (Account Deletion)**: You can permanently delete your account directly within the App's settings ("Delete Account"). This action completely wipes your user profile, authentication data, and linked user data from our Firestore databases and servers.
-- **Right to Rectification**: You can edit your profile and content within the App.
-- **Right to Object & Withdraw Consent**: You can withdraw your ad or analytics consent at any time via the App's privacy settings.
-- **Right to lodge a complaint**: You have the right to lodge a complaint with your competent supervisory data protection authority (e.g., LDI NRW, Germany).
+If you cannot use the in-app controls, contact dev@timonply.com from the email address connected to the account where applicable. We may need reasonable verification before acting on a request.
 
-## 7. Data Retention
-- **Account & Social Data**: Retained until you delete your account. Upon account deletion, your data is completely wiped from our database. Some anonymized metadata or group-owned content may remain to preserve group integrity for other members.
-- **Analytics & Crash Reports**: Retained by Google Firebase for up to 90 days.
+## Your privacy rights
 
-## 8. Child Safety
-We have a strict zero-tolerance policy against Child Sexual Abuse and Exploitation. Please refer to our [CSAE Standards](https://timonply.com/kalvenda/csae.en/) for more information.
+Depending on your location, you may have rights to access, correction, deletion, restriction, objection, portability, withdrawal of consent, and complaint to a supervisory authority. Contact dev@timonply.com for requests that cannot be completed directly in the app.
 
-## 9. Contact
-If you have any questions or wish to exercise your data subject rights, please contact us at:
-**Email:** dev@timonply.com
+## Children and age requirements
+
+The app is not intended for unsupervised use by children below the digital-consent age in their country. A parent or guardian must review the app, purchases, ads, and data controls before a child uses it.
+
+## Security
+
+We use reasonable technical and organizational safeguards, limit collection to the active product scope, and avoid asking users to send passwords, authentication codes, or unnecessary sensitive data by email.
+
+## International transfers
+
+Some service providers may process data outside the EEA. Where GDPR transfer rules apply, transfers rely on appropriate safeguards such as adequacy decisions, the EU-U.S. Data Privacy Framework where applicable, or Standard Contractual Clauses.
+
+## Automated decision-making
+
+The app does not make automated decisions with legal or similarly significant effects. Personalized ads or store/SDK decisions may be automated where the provider offers them and required consent exists.
+
+## Changes
+
+We may update this document when the app, legal requirements, or store disclosure requirements change. The date at the top shows the current version.
+
+## Related public paths
+
+- Privacy Policy: [https://timonply.com/kalvenda/privacy.en/](https://timonply.com/kalvenda/privacy.en/)
+- Terms of Service: [https://timonply.com/kalvenda/terms.en/](https://timonply.com/kalvenda/terms.en/)
+- Accessibility Statement: [https://timonply.com/kalvenda/accessibility.en/](https://timonply.com/kalvenda/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/kalvenda/deletion.en/](https://timonply.com/kalvenda/deletion.en/)
+- CSAE Standards: [https://timonply.com/kalvenda/csae.en/](https://timonply.com/kalvenda/csae.en/)
+- Legal Notice: [https://timonply.com/kalvenda/impressum.en/](https://timonply.com/kalvenda/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

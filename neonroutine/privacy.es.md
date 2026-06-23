@@ -1,75 +1,81 @@
 ---
 layout: legal
-title: "Politica de Privacidad de NeonRoutine"
+title: "Política de Privacidad de NeonRoutine"
 doc_id: neonroutine-privacy
-doc_type: "Privacy Policy"
+doc_type: "Política de Privacidad"
 app_name: "NeonRoutine"
-language: "Espanol"
+language: "Español"
 language_code: es
 language_order: 3
 permalink: /neonroutine/privacy.es/
+redirect_from:
+  - /neonroutine/privacy.es
+  - /neonroutine/privacy.es.html
+  - /neonroutine/privacy.es.md
 ---
 # Política de Privacidad de NeonRoutine
 
-Última actualización: Marzo 2026
+Última actualización: 23 de junio de 2026
 
-## 1. Introducción
-Esta Política de Privacidad se aplica al uso de la aplicación móvil **NeonRoutine** (la "App"), desarrollada y operada por Timon Polley ("nosotros", "nos" o "nuestro"). Estamos comprometidos a proteger su privacidad en conformidad con el Reglamento General de Protección de Datos (RGPD) y otras leyes aplicables.
+Esta Política de Privacidad explica cómo Timon Polley trata información en relación con NeonRoutine.
 
-## 2. Información que recopilamos y Base Legal (Art. 6 RGPD)
-Recopilamos la cantidad mínima de datos necesarios. Nuestro procesamiento se basa en los siguientes fundamentos legales:
+## Responsable y contacto
 
-- **Datos Locales de Hábitos**: Sus rutinas y registros se almacenan de forma segura y *exclusivamente local* en su dispositivo (Isar DB y SharedPreferences). Estos datos nunca se transmiten a nuestros servidores.
-  *Base Legal: Interés Legítimo (Art. 6(1)(f) RGPD).*
-- **Compras dentro de la aplicación**: Gestionadas a través de RevenueCat y las tiendas de aplicaciones (Apple / Google). No tenemos acceso a sus datos de pago.
-  *Base Legal: Ejecución de un Contrato (Art. 6(1)(b) RGPD).*
-- **Publicidad**: Utilizamos Google AdMob para mostrar anuncios de recompensa (rewarded ads). La personalización de anuncios está determinada por el consentimiento del usuario a través del diálogo de consentimiento UMP (User Messaging Platform): a los usuarios del EEE/Reino Unido se les presenta un formulario de consentimiento RGPD; a los usuarios de iOS se les presenta un aviso de Transparencia en el Seguimiento de Apps (ATT). Los usuarios que no den su consentimiento recibirán únicamente anuncios no personalizados. En iOS, los usuarios que acepten el aviso ATT pueden tener su IDFA (Identificador para Anunciantes) recopilado por Google para orientación de anuncios y medición de rendimiento.
-  *Base Legal: Consentimiento Explícito (Art. 6(1)(a) RGPD).*
-- **Notificaciones Push**: Utilizadas para recordarle sus rutinas.
-  *Base Legal: Consentimiento Explícito (Art. 6(1)(a) RGPD).*
+Timon Polley, Gutenbergstrasse 5, 51469 Bergisch Gladbach, Alemania. Correo: [dev@timonply.com](mailto:dev@timonply.com).
 
-## 3. Servicios de terceros y Procesadores (Art. 28 RGPD)
-La App utiliza servicios de terceros. Hemos firmado Acuerdos de Procesamiento de Datos (DPA) con:
-- **Google AdMob**: Publicidad y procesamiento de datos relacionado. Los datos se procesan de conformidad con la [Política de Privacidad de Google](https://policies.google.com/privacy).
-- **RevenueCat**: Suscripciones y gestión de compras.
-- **Apple Inc. / Google LLC**: Transacciones en tiendas de aplicaciones.
+## Qué hace la app
 
-## 4. Sus Derechos (Art. 15–22 RGPD)
-Usted tiene amplios derechos sobre sus datos. Puede ejercer la mayoría directamente en la App:
-- **Acceso y Portabilidad (Art. 15 & 20)**: Puede exportar sus datos locales a JSON usando el botón "Data Export" en la Configuración.
-- **Supresión (Art. 17)**: Puede eliminar permanentemente todos sus datos usando "Wipe System" en la Configuración.
-- **Rectificación (Art. 16)**: Puede editar y eliminar hábitos en la App.
-- **Oposición y Retirada (Art. 21 & 7)**: Puede actualizar o retirar su consentimiento publicitario en cualquier momento a través de **Ajustes → PREFERENCIAS DE ANUNCIOS** en la App. Las notificaciones push pueden desactivarse desde la configuración del sistema operativo de su dispositivo.
+Una app cyberpunk de hábitos, rutinas, rachas, funciones premium, notificaciones, analítica local y anuncios recompensados.
 
-## 5. Retención de Datos
-Retenemos los datos personales solo durante el tiempo necesario para cumplir con los fines descritos en esta Política de Privacidad.
-- **Datos Locales**: Se conservan indefinidamente en su dispositivo hasta que elimine la aplicación o utilice la función "Wipe System".
-- **Historial de Compras**: Mantenido por RevenueCat y las tiendas de aplicaciones según sea necesario para el cumplimiento fiscal/financiero y la gestión de suscripciones.
+## Datos y finalidades
 
-## 6. Privacidad de los Niños (COPPA y RGPD)
+- Los datos locales de hábitos y rutinas, registros de ejecución, rachas, XP, créditos, ajustes de facción/acento, registros de ánimo y energía, logros, analítica local, exportación/importación y restablecimiento se almacenan en el dispositivo.
+- RevenueCat y las tiendas de aplicaciones tratan el estado de compras y suscripciones. Google Mobile Ads puede tratar identificadores de dispositivo, dirección IP, estado de consentimiento, interacciones con anuncios y eventos de anuncios recompensados cuando se usan anuncios.
+- Las notificaciones locales y widgets de inicio tratan recordatorios, horarios y resúmenes en el dispositivo. Actualmente no hay cuenta NeonRoutine ni sincronización en la nube.
 
-La App tiene una calificación 4+ y puede ser utilizada por usuarios de todas las edades, incluidos menores. Cumplimos con la Ley de Protección de la Privacidad en Línea de los Niños (COPPA, EE. UU.) y con las leyes de protección de datos aplicables a audiencias infantiles.
+## Encargados y servicios de terceros
 
-Todos los datos de hábitos se almacenan exclusivamente en el dispositivo del usuario y nunca se transmiten a nuestros servidores ni se comparten con terceros.
+RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, servicios de notificaciones de plataforma y servicios de almacenamiento/widgets del sistema operativo.
 
-El contenido publicitario está limitado a una calificación PG (supervisión parental). La personalización de anuncios está sujeta al consentimiento explícito del usuario según se describe en la Sección 2. No se realiza perfilado conductual sin consentimiento.
+## Bases jurídicas para usuarios del EEE
 
-Si usted es padre o tutor y cree que su hijo ha proporcionado datos personales a nosotros o a nuestros procesadores externos sin el consentimiento adecuado, contáctenos en dev@timonply.com y tomaremos medidas de inmediato.
+Para usuarios del EEE, el tratamiento principal se basa en la ejecución del contrato de usuario o en funcionalidades solicitadas por el usuario. Los anuncios, seguimiento, notificaciones o permisos opcionales se basan en el consentimiento cuando sea necesario. La seguridad, prevención de abusos y diagnósticos mínimos pueden basarse en intereses legítimos cuando la ley lo permita.
 
-## 6a. Consentimiento Parental
+## Conservación, eliminación y controles
 
-Los menores de 13 años (o menores de 16 en la UE/EEE) deben contar con el consentimiento verificable de un padre o tutor antes de utilizar funciones que impliquen procesamiento de datos por terceros, incluidas las compras dentro de la aplicación y el contenido con publicidad. Un padre o tutor que acepte esta Política de Privacidad en nombre de un menor confirma que la ha leído y da su consentimiento en nombre del menor.
+NeonRoutine no ofrece actualmente una cuenta de app ni sincronización en la nube. No hay una cuenta remota que eliminar; use los controles de eliminación/restablecimiento de la app, los controles de almacenamiento del sistema operativo o desinstale la app para retirar datos locales del dispositivo.
 
-## 7. Derechos de Privacidad de California (CCPA/CPRA)
-Si es residente de California, tiene derecho a saber qué información personal recopilamos, el derecho a eliminarla y el derecho a excluirse de su "venta" o "intercambio".
-Debido a que utilizamos Google AdMob para publicidad, esto puede considerarse una "venta" o "intercambio" según la ley de California. Puede darse de baja en cualquier momento a través de **Ajustes → PREFERENCIAS DE ANUNCIOS** dentro de la App.
+Si no puede usar los controles dentro de la app, contacte con dev@timonply.com desde el correo asociado a la cuenta cuando corresponda. Podemos necesitar una verificación razonable antes de actuar.
 
-## 8. Transferencias Internacionales de Datos
-Dado que algunos de nuestros procesadores externos (como Google y RevenueCat) se encuentran fuera del Espacio Económico Europeo (EEE), su información puede ser transferida y mantenida en servidores ubicados fuera de su estado, provincia o país. Estas transferencias están protegidas por Cláusulas Contractuales Tipo (SCC) y la adhesión al Marco de Privacidad de Datos UE-EE. UU. cuando corresponda.
+## Sus derechos de privacidad
 
-## 9. Cambios en esta Política de Privacidad
-Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página y actualizando la fecha de "Última actualización" en la parte superior de este documento.
+Según su ubicación, puede tener derechos de acceso, rectificación, supresión, limitación, oposición, portabilidad, retirada del consentimiento y reclamación ante una autoridad de control. Contacte con dev@timonply.com para solicitudes que no puedan completarse directamente en la app.
 
-## 10. Contacto
-Si tiene preguntas sobre esta política o desea ejercer sus derechos, contáctenos en:
-**Correo electrónico:** dev@timonply.com
+## Menores y requisitos de edad
+
+La app no está destinada al uso no supervisado por menores por debajo de la edad de consentimiento digital de su país. Un padre, madre o tutor debe revisar la app, compras, anuncios y controles de datos antes de que un menor la use.
+
+## Seguridad
+
+Usamos medidas técnicas y organizativas razonables, limitamos la recogida al alcance activo del producto y no pedimos contraseñas, códigos de autenticación ni datos sensibles innecesarios por correo.
+
+## Transferencias internacionales
+
+Algunos proveedores pueden tratar datos fuera del EEE. Cuando se apliquen las normas del RGPD sobre transferencias, estas se basan en garantías adecuadas como decisiones de adecuación, el Marco de Privacidad de Datos UE-EE. UU. cuando sea aplicable, o Cláusulas Contractuales Tipo.
+
+## Decisiones automatizadas
+
+La app no toma decisiones automatizadas con efectos jurídicos o similares significativos. La publicidad personalizada o decisiones de SDK/tienda pueden ser automatizadas cuando el proveedor las ofrece y exista el consentimiento requerido.
+
+## Cambios
+
+Podemos actualizar este documento cuando cambien la app, los requisitos legales o los requisitos de divulgación de las tiendas. La fecha superior indica la versión actual.
+
+## Rutas públicas relacionadas
+
+- Política de Privacidad: [https://timonply.com/neonroutine/privacy.es/](https://timonply.com/neonroutine/privacy.es/)
+- Términos del Servicio: [https://timonply.com/neonroutine/terms.es/](https://timonply.com/neonroutine/terms.es/)
+- Declaración de Accesibilidad: [https://timonply.com/neonroutine/accessibility.es/](https://timonply.com/neonroutine/accessibility.es/)
+- Eliminación y controles de datos: [https://timonply.com/neonroutine/deletion.es/](https://timonply.com/neonroutine/deletion.es/)
+- Aviso legal: [https://timonply.com/neonroutine/impressum.es/](https://timonply.com/neonroutine/impressum.es/)
+- Soporte: [https://timonply.com/support.html](https://timonply.com/support.html)

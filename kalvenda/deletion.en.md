@@ -1,42 +1,44 @@
 ---
 layout: legal
-title: "Kalvenda Account Deletion"
+title: "Deletion and Data Controls for Kalvenda"
 doc_id: kalvenda-deletion
-doc_type: "Account Deletion"
+doc_type: "Deletion and Data Controls"
 app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
 permalink: /kalvenda/deletion.en/
+redirect_from:
+  - /kalvenda/deletion.en
+  - /kalvenda/deletion.en.html
+  - /kalvenda/deletion.en.md
 ---
-# Data Deletion Request
+# Deletion and Data Controls for Kalvenda
 
-At Kalvenda, we take your privacy seriously. In accordance with Google Play's Data Safety policies and GDPR regulations, we provide the following methods to request the deletion of your account and all associated data.
+Last Updated: June 23, 2026
 
-## Method 1: In-App (Recommended)
-The fastest way to delete your data is directly within the Kalvenda app:
-1. Open **Kalvenda** on your device.
-2. Navigate to **Settings**.
-3. Tap **Delete Account**.
-4. Confirm the deletion.
+## Primary method
 
-This will immediately and permanently wipe your profile, group memberships, owned groups, and all associated content from our servers.
+Kalvenda provides account-related controls in the app. Deleting an account removes or anonymizes account-linked data unless retention is required for security, fraud prevention, legal compliance, dispute handling, or preserving other users' shared records.
 
-## Method 2: Manual Request
-If you no longer have the app installed, you can request data deletion by contacting us via email:
-- **Email:** [dev@timonply.com](mailto:dev@timonply.com)
+## In-app controls
 
-Please include the email address associated with your Kalvenda account. We will process your request and verify the deletion within 48 hours.
+Use the app account, privacy, or settings areas to access account, export, deletion, or consent controls.
 
-## What data is deleted?
-When you delete your account, Kalvenda permanently removes:
-- Your personal profile and account credentials.
-- All groups where you are the sole owner.
-- Your membership and roles in all other groups.
-- All events, alerts, and reactions created by you.
-- Your uploaded avatar and preferences.
+## Manual request
 
-*Note: Data retention may apply only where required by law or for legitimate security/fraud prevention purposes.*
+If you cannot use the in-app controls, contact dev@timonply.com from the email address connected to the account where applicable. We may need reasonable verification before acting on a request.
 
----
-[Privacy Policy](privacy.en) | 2026 Kalvenda
+## Retention exceptions
+
+Some data may be retained where necessary for security, fraud prevention, billing, legal obligations, evidence, dispute resolution, abuse reports, or other users rights. Data no longer needed is deleted or anonymized.
+
+## Related public paths
+
+- Privacy Policy: [https://timonply.com/kalvenda/privacy.en/](https://timonply.com/kalvenda/privacy.en/)
+- Terms of Service: [https://timonply.com/kalvenda/terms.en/](https://timonply.com/kalvenda/terms.en/)
+- Accessibility Statement: [https://timonply.com/kalvenda/accessibility.en/](https://timonply.com/kalvenda/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/kalvenda/deletion.en/](https://timonply.com/kalvenda/deletion.en/)
+- CSAE Standards: [https://timonply.com/kalvenda/csae.en/](https://timonply.com/kalvenda/csae.en/)
+- Legal Notice: [https://timonply.com/kalvenda/impressum.en/](https://timonply.com/kalvenda/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

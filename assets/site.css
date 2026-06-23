@@ -90,6 +90,12 @@ button:focus-visible {
   letter-spacing: 0;
 }
 
+.large-mark {
+  width: 5.5rem;
+  height: 5.5rem;
+  font-size: 1.35rem;
+}
+
 .brand strong,
 .brand small {
   display: block;
@@ -462,6 +468,64 @@ h4 {
   margin-top: 1rem;
 }
 
+.route-grid {
+  display: grid;
+  gap: 0;
+  margin-top: 0.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.route-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) repeat(4, minmax(42px, auto));
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.58rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.route-row span {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.route-row a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--soft);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.route-row a:hover,
+.route-row a:focus-visible {
+  color: #ffffff;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.notice-text {
+  margin-top: 1rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.strip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
 .support-strip {
   display: flex;
   align-items: center;
@@ -709,6 +773,11 @@ h4 {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .strip-actions,
+  .strip-actions .button {
+    width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -746,6 +815,22 @@ h4 {
   .app-identity img {
     width: 64px;
     height: 64px;
+  }
+
+  .large-mark {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1rem;
+  }
+
+  .route-row {
+    grid-template-columns: repeat(4, minmax(42px, 1fr));
+    gap: 0.45rem;
+    padding: 0.72rem 0;
+  }
+
+  .route-row span {
+    grid-column: 1 / -1;
   }
 
   .legal-language {

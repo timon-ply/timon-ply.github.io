@@ -2,25 +2,42 @@
 layout: legal
 title: "Aviso legal"
 doc_id: impressum
-doc_type: "Legal Notice"
+doc_type: "Aviso legal"
 app_name: "General"
-language: "Espanol"
+language: "Español"
 language_code: es
 language_order: 3
 permalink: /impressum.es/
+redirect_from:
+  - /impressum.es
+  - /impressum.es.html
+  - /impressum.es.md
 ---
-# Aviso Legal (Impressum)
+# Aviso legal
 
-Información conforme al § 5 DDG
+Última actualización: 23 de junio de 2026
 
-Timon Polley
-Gutenbergstraße 5
-51469 Bergisch Gladbach
-Alemania
+## Responsable y contacto
 
-## Contacto
-Teléfono: +49 178 9702884
-Correo electrónico: dev@timonply.com
+Timon Polley<br>
+Gutenbergstraße 5<br>
+51469 Bergisch Gladbach<br>
+Germany
 
-## Resolución de litigios en materia de consumo
-De conformidad con el § 36 de la Ley Alemana de Resolución de Litigios de Consumo (Verbraucherstreitbeilegungsgesetz -- VSBG), le informamos: No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante una junta de arbitraje de consumo.
+Email: [dev@timonply.com](mailto:dev@timonply.com)<br>
+Phone: +49 178 9702884
+
+## Información del proveedor
+
+Información conforme al § 5 DDG.
+
+## Resolución de litigios de consumo
+
+No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante una junta arbitral de consumo conforme a la ley alemana VSBG.
+
+## Avisos legales específicos de app
+
+- [NeonRoutine](https://timonply.com/neonroutine/impressum.es/)
+- [Kalvenda](https://timonply.com/kalvenda/impressum.es/)
+- [Exactake](https://timonply.com/exactake/impressum.es/)
+- [Flatnest](https://timonply.com/flatnest/impressum.es/)

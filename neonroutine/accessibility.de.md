@@ -1,35 +1,52 @@
 ---
 layout: legal
-title: "Barrierefreiheitserklaerung fuer NeonRoutine"
+title: "Barrierefreiheitserklärung für NeonRoutine"
 doc_id: neonroutine-accessibility
-doc_type: "Accessibility Statement"
+doc_type: "Barrierefreiheitserklärung"
 app_name: "NeonRoutine"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /neonroutine/accessibility.de/
+redirect_from:
+  - /neonroutine/accessibility.de
+  - /neonroutine/accessibility.de.html
+  - /neonroutine/accessibility.de.md
 ---
-# Erklärung zur Barrierefreiheit für NeonRoutine
+# Barrierefreiheitserklärung für NeonRoutine
 
-Zuletzt aktualisiert: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## Verpflichtung zur Barrierefreiheit
-Timon Polley ist bestrebt, die digitale Barrierefreiheit für Menschen mit Behinderungen zu gewährleisten. Wir verbessern kontinuierlich die Nutzererfahrung für alle und wenden die entsprechenden Standards für **NeonRoutine** an.
+## Verpflichtung
+
+Timon Polley möchte NeonRoutine für Menschen mit Behinderungen nutzbar machen und die Barrierefreiheit mit der Weiterentwicklung des Produkts verbessern.
 
 ## Konformitätsstatus
-Gemäß dem Barrierefreiheitsstärkungsgesetz (BFSG) und der Europäischen Richtlinie 2019/882 (EAA) bemühen wir uns um Konformität mit **WCAG 2.1 Level AA**.
-**NeonRoutine** ist teilweise konform mit diesen Richtlinien.
+
+Die App ist derzeit teilweise konform mit WCAG 2.2 Level AA und den Erwartungen aus EN 301 549, soweit sie für mobile Apps gelten. Einige komplexe oder plattformnative Interaktionen können weitere Verbesserungen benötigen.
 
 ## Barrierefreiheitsfunktionen
-Wir haben folgende Maßnahmen implementiert:
-- **Kontrast & Skalierbarkeit**: Textkontrast von >= 4.5:1 und Unterstützung von bis zu 200% Textvergrößerung.
-- **Screenreader-Unterstützung**: Semantische Beschriftungen für TalkBack und VoiceOver.
-- **Alternative Gesten**: "Hold-to-Execute"-Aktionen besitzen berührungsbasierte Alternativen.
-- **Reduzierte Bewegung**: Animationen (z.B. Glitch-Effekte) respektieren die OS-Einstellung zur Bewegungsreduzierung.
-- **Farbunabhängigkeit**: Informationen werden nicht ausschließlich über Farbe kommuniziert.
+
+- Unterstützung für Plattform-Screenreader und semantische Labels, soweit implementiert.
+- Unterstützung für größere Schrift und Betriebssystem-Einstellungen, soweit die jeweilige Oberfläche dies zulässt.
+- Fokus auf ausreichenden Kontrast, klare Aktionen und reduzierte Bewegung, wo verfügbar.
+
+## Bekannte Einschränkungen
+
+- Bewegungsreiche HUD-Animationen, Leuchteffekte, Shader-Overlays und Timer-Bildschirme können für manche Kombinationen assistiver Technologien weitere Anpassungen benötigen.
+- Rewarded-Ad- und Kaufdialoge werden teilweise durch Drittanbieter-SDKs oder App Stores kontrolliert.
 
 ## Feedback und Durchsetzung
-Wir freuen uns über Ihr Feedback zur Barrierefreiheit von NeonRoutine. Wenn Sie auf Barrieren stoßen, kontaktieren Sie uns bitte:
-**E-Mail:** dev@timonply.com
 
-Wir antworten auf Feedback in der Regel innerhalb von 2 Werktagen.
+Senden Sie Barrieren, Bildschirmnamen, Gerät/Plattform, verwendete assistive Technologie und erwartetes Verhalten an dev@timonply.com.
+
+Für Verbraucherprodukte und -dienstleistungen in Deutschland kann die zuständige Marktüberwachungsbehörde nach dem BFSG zusätzlich kontaktiert werden, wenn ein Anliegen nicht angemessen gelöst wird.
+
+## Verwandte öffentliche Pfade
+
+- Datenschutzerklärung: [https://timonply.com/neonroutine/privacy.de/](https://timonply.com/neonroutine/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/neonroutine/terms.de/](https://timonply.com/neonroutine/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/neonroutine/accessibility.de/](https://timonply.com/neonroutine/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/neonroutine/deletion.de/](https://timonply.com/neonroutine/deletion.de/)
+- Impressum: [https://timonply.com/neonroutine/impressum.de/](https://timonply.com/neonroutine/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

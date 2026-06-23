@@ -1,31 +1,51 @@
 ---
 layout: legal
-title: "Kalvenda CSAE-Standards"
+title: "CSAE-Standards für Kalvenda"
 doc_id: kalvenda-csae
-doc_type: "Safety Standards"
+doc_type: "CSAE-Standards"
 app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /kalvenda/csae.de/
+redirect_from:
+  - /kalvenda/csae.de
+  - /kalvenda/csae.de.html
+  - /kalvenda/csae.de.md
 ---
-# Kalvenda: Standards gegen den sexuellen Missbrauch und die Ausbeutung von Kindern (CSAE)
+# CSAE-Standards für Kalvenda
 
-Stand: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## 1. Null-Toleranz-Richtlinie
-Kalvenda verfolgt eine strikte Null-Toleranz-Richtlinie gegen das Teilen, Fördern oder Begünstigen von Darstellungen sexuellen Missbrauchs von Kindern (CSAM) sowie die Ausbeutung von Minderjährigen. Die Sicherheit von Minderjährigen hat für uns höchste Priorität.
+## Null-Toleranz
 
-## 2. Verbotenes Verhalten
-Es ist den Nutzern strengstens untersagt, die Kalvenda-App – einschließlich ihrer Gruppen, Events und Texteingaben – zu nutzen, um:
-- Bilder, Videos oder Beschreibungen, die den sexuellen Missbrauch oder die Ausbeutung von Minderjährigen darstellen, zu posten, zu teilen oder anzufordern.
-- Minderjährige für unangemessene Kontakte zu umwerben ("Grooming"), zu kontaktieren oder dies zu versuchen.
-- Inhalte, die Kinder sexualisieren, zu fördern oder zu verbreiten.
+Kalvenda verbietet sexuellen Missbrauch und Ausbeutung von Kindern (CSAE), Missbrauchsdarstellungen von Kindern (CSAM), Grooming, sexuelle Kontaktanbahnung mit Minderjährigen sowie Inhalte oder Handlungen, die Kinder gefährden.
 
-## 3. Meldung und Durchsetzung
-- **Meldung durch Nutzer**: Nutzer müssen jeden Verdacht auf CSAM oder die Ausbeutung von Kindern sofort über die In-App-Funktionen "Inhalt melden" oder "Nutzer blockieren" melden.
-- **Kontosperrung**: Jedes Konto, das an CSAE beteiligt ist oder dies begünstigt, wird ohne Vorankündigung dauerhaft gesperrt.
-- **Strafverfolgungsbehörden**: Wir werden alle bestätigten Fälle von CSAM oder der Ausbeutung von Kindern den zuständigen Behörden melden und ihnen alle notwendigen Daten zur Unterstützung von Ermittlungen zur Verfügung stellen.
+## Verbotenes Verhalten
 
-## 4. Kontakt
-Für dringende Meldungen bezüglich der Sicherheit von Kindern kontaktieren Sie uns bitte umgehend unter: dev@timonply.com.
+- CSAM hochladen, teilen, anfordern, verlinken oder beschreiben.
+- Minderjährige sexuell kontaktieren, groomen, erpressen oder ausbeuten.
+- Gruppen, Chats, Events, Profile, Einladungen oder Anhänge zur Gefährdung von Kindern nutzen.
+- Meldesysteme missbrauchen oder Ermittlungen behindern.
+
+## Meldung
+
+Melden Sie vermutete CSAE sofort über vorhandene In-App-Meldefunktionen und per E-Mail an dev@timonply.com. Wenn ein Kind unmittelbar gefährdet ist, kontaktieren Sie zuerst Notdienste oder Strafverfolgungsbehörden.
+
+## Durchsetzung
+
+Wir können Inhalte entfernen, Funktionen einschränken, Konten sperren oder beenden, Beweise rechtlich angemessen sichern und bestätigte CSAM- oder akute Kinderschutzfälle an NCMEC oder die zuständige regionale Behörde und Strafverfolgung melden.
+
+## Kontaktstelle
+
+Kinderschutz-Kontaktstelle: dev@timonply.com. Kommunikation ist auf Deutsch oder Englisch möglich.
+
+## Verwandte öffentliche Pfade
+
+- Datenschutzerklärung: [https://timonply.com/kalvenda/privacy.de/](https://timonply.com/kalvenda/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/kalvenda/terms.de/](https://timonply.com/kalvenda/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/kalvenda/accessibility.de/](https://timonply.com/kalvenda/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/kalvenda/deletion.de/](https://timonply.com/kalvenda/deletion.de/)
+- CSAE-Standards: [https://timonply.com/kalvenda/csae.de/](https://timonply.com/kalvenda/csae.de/)
+- Impressum: [https://timonply.com/kalvenda/impressum.de/](https://timonply.com/kalvenda/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

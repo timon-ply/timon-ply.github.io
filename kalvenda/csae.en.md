@@ -1,31 +1,51 @@
 ---
 layout: legal
-title: "Kalvenda CSAE Standards"
+title: "CSAE Standards for Kalvenda"
 doc_id: kalvenda-csae
-doc_type: "Safety Standards"
+doc_type: "CSAE Standards"
 app_name: "Kalvenda"
 language: "English"
 language_code: en
 language_order: 2
 permalink: /kalvenda/csae.en/
+redirect_from:
+  - /kalvenda/csae.en
+  - /kalvenda/csae.en.html
+  - /kalvenda/csae.en.md
 ---
-# Kalvenda: Standards against Child Sexual Abuse and Exploitation (CSAE)
+# CSAE Standards for Kalvenda
 
-Last Updated: March 2026
+Last Updated: June 23, 2026
 
-## 1. Zero Tolerance Policy
-Kalvenda maintains a strict zero-tolerance policy against the sharing, promotion, or facilitation of Child Sexual Abuse Material (CSAM) and the exploitation of minors. The safety of minors is our highest priority.
+## Zero tolerance
 
-## 2. Prohibited Conduct
-Users are strictly prohibited from using the Kalvenda app, including its groups, events, alerts, and any text inputs, to:
-- Post, share, or request any imagery, videos, or descriptions depicting the sexual abuse or exploitation of minors.
-- Groom, solicit, or attempt to engage in inappropriate contact with minors.
-- Promote or distribute any content that sexualizes children.
+Kalvenda prohibits child sexual abuse and exploitation (CSAE), child sexual abuse material (CSAM), grooming, sexual solicitation of minors, and any content or conduct that endangers children.
 
-## 3. Reporting and Enforcement
-- **User Reporting**: Users must report any suspected CSAM or child exploitation immediately using the in-app "Report Content" or "Block User" features.
-- **Account Termination**: Any account found to be engaging in or facilitating CSAE will be permanently suspended and banned without notice.
-- **Law Enforcement**: We will report any confirmed instances of CSAM or child exploitation to the relevant authorities (such as the National Center for Missing & Exploited Children - NCMEC, and local law enforcement) and provide them with all necessary data to assist in investigations.
+## Prohibited conduct
 
-## 4. Contact
-For any urgent reports concerning child safety, please contact us immediately at: dev@timonply.com.
+- Uploading, sharing, requesting, linking to, or describing CSAM.
+- Sexually contacting, grooming, sextorting, trafficking, or exploiting minors.
+- Using groups, chats, events, profiles, invitations, or attachments to endanger children.
+- Abusing reporting systems or interfering with investigations.
+
+## Reporting
+
+Report suspected CSAE immediately through the in-app reporting tools where available and by emailing dev@timonply.com. If a child is in immediate danger, contact local emergency services or law enforcement first.
+
+## Enforcement
+
+We may remove content, restrict features, suspend or terminate accounts, preserve evidence where legally appropriate, and report confirmed CSAM or imminent child-safety threats to NCMEC or the relevant regional authority and law enforcement.
+
+## Point of contact
+
+Child safety point of contact: dev@timonply.com. Communications can be sent in English or German.
+
+## Related public paths
+
+- Privacy Policy: [https://timonply.com/kalvenda/privacy.en/](https://timonply.com/kalvenda/privacy.en/)
+- Terms of Service: [https://timonply.com/kalvenda/terms.en/](https://timonply.com/kalvenda/terms.en/)
+- Accessibility Statement: [https://timonply.com/kalvenda/accessibility.en/](https://timonply.com/kalvenda/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/kalvenda/deletion.en/](https://timonply.com/kalvenda/deletion.en/)
+- CSAE Standards: [https://timonply.com/kalvenda/csae.en/](https://timonply.com/kalvenda/csae.en/)
+- Legal Notice: [https://timonply.com/kalvenda/impressum.en/](https://timonply.com/kalvenda/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

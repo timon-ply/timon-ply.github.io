@@ -1,53 +1,80 @@
 ---
 layout: legal
-title: "Nutzungsbedingungen fuer Kalvenda"
+title: "Nutzungsbedingungen für Kalvenda"
 doc_id: kalvenda-terms
-doc_type: "Terms of Service"
+doc_type: "Nutzungsbedingungen"
 app_name: "Kalvenda"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /kalvenda/terms.de/
+redirect_from:
+  - /kalvenda/terms.de
+  - /kalvenda/terms.de.html
+  - /kalvenda/terms.de.md
 ---
 # Nutzungsbedingungen für Kalvenda
 
-Stand: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## 1. Geltungsbereich
-Mit dem Herunterladen oder der Nutzung der App **Kalvenda** stimmen Sie diesen Nutzungsbedingungen zu. Bitte lesen Sie diese sorgfältig durch. Details zur Datenverarbeitung finden Sie in unserer [Datenschutzerklärung](https://timonply.com/kalvenda/privacy.de/).
+## 1. Nutzungsbedingungen
 
-## 2. Nutzergenerierte Inhalte & Verhalten
-Kalvenda ermöglicht es Ihnen, Gruppen, Events und andere soziale Interaktionen zu erstellen. Sie sind für die von Ihnen erstellten und geteilten Inhalte allein verantwortlich.
+Mit dem Herunterladen, Aufrufen oder Nutzen der App stimmen Sie diesen Bedingungen zu. Wenn Sie nicht zustimmen, nutzen Sie die App nicht.
 
-- **Null-Toleranz für anstößige Inhalte**: Es ist untersagt, illegale, beleidigende, belästigende, diffamierende, sexuell explizite oder gewaltverherrlichende Inhalte zu posten.
-- **Kinderschutz**: Wir verfolgen eine strikte Null-Toleranz-Richtlinie gegen die Ausbeutung von Kindern. Durch die Nutzung der App stimmen Sie unseren [CSAE-Standards](https://timonply.com/kalvenda/csae.de/) zu.
-- **Moderation**: Wir behalten uns das Recht vor, Inhalte oder Nutzer, die gegen diese Bedingungen verstoßen, zu überprüfen und zu entfernen.
-- **Melden & Blockieren**: Sie können anstößige Inhalte melden oder missbräuchliche Nutzer direkt in der App blockieren. Meldungen werden zeitnah (i. d. R. innerhalb von 24 Stunden) geprüft.
+Timon Polley, Gutenbergstraße 5, 51469 Bergisch Gladbach, Deutschland. E-Mail: [dev@timonply.com](mailto:dev@timonply.com).
 
-## 3. Abonnements, In-App-Käufe & Widerrufsrecht
-Einige Funktionen können als Abonnement angeboten werden. Abonnements verlängern sich automatisch, wenn sie nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums gekündigt werden. Zahlungen werden sicher über Apple oder Google abgewickelt. Sie können Ihr Abonnement jederzeit über die Einstellungen des jeweiligen App Stores oder Play Stores kündigen.
+## 2. Produktumfang
 
-**Für EU-Nutzer – Widerrufsrecht:**
-Sie haben ein 14-tägiges Widerrufsrecht für digitale Abonnements ab dem Kaufdatum gemäß Richtlinie 2011/83/EU und § 356 Abs. 5 BGB. Vor Abschluss eines digitalen Abonnements stimmen Sie ausdrücklich zu, dass wir mit der Vertragserfüllung vor Ablauf der Widerrufsfrist beginnen, und bestätigen, dass Sie durch diese Zustimmung Ihr 14-tägiges Widerrufsrecht verlieren. Diese Erklärung ist nur mit Ihrer ausdrücklichen Bestätigung zum Zeitpunkt des Kaufs wirksam.
+Eine Gruppenplanungs-App mit Konten, Gruppen, Events, Einladungen, Alerts, Reaktionen, Benachrichtigungen, Werbung, Abonnements und Moderationswerkzeugen.
 
-Ab dem 19. Juni 2026 wird gemäß Richtlinie (EU) 2023/2673 eine In-App-Widerrufsfunktion für anwendbare Abonnementverträge bereitgestellt, soweit dies technisch anwendbar ist. Die Kündigung und der Widerruf von App Store- und Play Store-Abonnements können weiterhin über die jeweiligen Store-Einstellungen erfolgen.
 
-## 4. Zulässige Nutzung
-Sie stimmen zu, die App nicht für rechtswidrige, betrügerische oder schädliche Zwecke zu nutzen. Reverse Engineering oder das Extrahieren des Quellcodes der App ist untersagt.
 
-## 5. Haftungsbeschränkung
-Wir haften unbeschränkt für Vorsatz und grobe Fahrlässigkeit sowie für Schäden aus der Verletzung von Leben, Körper und Gesundheit. Bei der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) ist die Haftung bei leichter Fahrlässigkeit auf den vorhersehbaren, vertragstypischen Schaden begrenzt. Eine darüber hinausgehende Haftung für leichte Fahrlässigkeit ist ausgeschlossen.
+## 3. Verantwortung der Nutzer
 
-## 6. Kündigung
-Wir können Ihren Zugang zur App sperren oder kündigen, wenn Sie diese Nutzungsbedingungen wesentlich verletzen, insbesondere durch: das Posten verbotener Inhalte gemäß Abschnitt 2, rechtswidriges Verhalten oder die missbräuchliche Nutzung des Dienstes. Soweit möglich, werden wir Sie über die Gründe der Kündigung informieren.
+Sie sind dafür verantwortlich, Einträge, Einstellungen, geteilte Inhalte, Mengen, Termine, Berechtigungen und Ergebnisse zu prüfen, bevor Sie sich darauf verlassen.
 
-## 7. Anwendbares Recht
-Diese Bedingungen unterliegen dem Recht der Bundesrepublik Deutschland, unbeschadet zwingender Verbraucherschutzrechte, die Ihnen nach dem Recht Ihres Wohnsitzlandes zustehen.
+## 4. Konten, Inhalte und Sicherheit
 
-## 8. Altersfreigabe
-Sie müssen mindestens 16 Jahre alt sein, um Kalvenda nutzen zu dürfen, es sei denn, es liegt die ausdrückliche Zustimmung der Erziehungsberechtigten vor.
+Sie sind für die Sicherheit Ihres Kontos, korrekte Angaben und zulässige Nutzung geteilter Bereiche verantwortlich.
 
-## 9. Online-Streitbeilegung & Verbraucherschlichtung
-Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: [https://ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr).
+Nutzerinhalte dürfen nicht rechtswidrig, missbräuchlich, belästigend, diskriminierend, sexuell ausbeuterisch, kindergefährdend oder verletzend sein. Wir können Meldungen prüfen, Inhalte entfernen, Funktionen einschränken und Konten sperren.
 
-Gemäß § 36 des Verbraucherstreitbeilegungsgesetzes (VSBG) sind wir nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Wir sind jedoch bestrebt, Anliegen direkt zu lösen – kontaktieren Sie uns bitte zunächst unter dev@timonply.com.
+## 5. Käufe, Abonnements und Werbung
+
+Preise, Verlängerungen, Kündigung, Erstattung und Wiederherstellung werden vor dem Kauf durch die jeweilige Store- oder Zahlungsoberfläche angezeigt. Bezahlte Funktionen dürfen nicht missbraucht, übertragen oder umgangen werden.
+
+Wenn Sie die App über den Apple App Store oder Google Play installieren, gelten zusätzlich die jeweiligen Store-Bedingungen, Abrechnungs-, Kündigungs-, Erstattungs- und Abonnementregeln.
+
+## 6. Drittanbieter und Datenquellen
+
+Google Firebase, Firebase Authentication, Cloud Firestore, Cloud Functions, Firebase Cloud Messaging, Google Sign-In, Google AdMob, RevenueCat, Apple App Store und Google Play.
+
+
+
+## 7. Verfügbarkeit und Änderungen
+
+Funktionen können geändert, eingeschränkt, unterbrochen oder entfernt werden. Lokale, Store-, Netzwerk- und Drittanbieterbedingungen können die Verfügbarkeit beeinflussen.
+
+## 8. Gewährleistung und Haftung
+
+Nichts in diesen Bedingungen beschränkt die Haftung für Vorsatz, grobe Fahrlässigkeit, Verletzung von Leben, Körper oder Gesundheit oder eine gesetzlich nicht beschränkbare Haftung. Zwingende Verbraucherrechte bleiben unberührt.
+
+## 9. Anwendbares Recht und Streitbeilegung
+
+Diese Bedingungen unterliegen deutschem Recht, unbeschadet zwingender Verbraucherschutzrechte in Ihrem Wohnsitzland.
+
+Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nach dem VSBG teilzunehmen.
+
+## 10. Änderungen
+
+Wir können dieses Dokument aktualisieren, wenn sich App, Rechtslage oder Store-Offenlegungspflichten ändern. Das Datum oben zeigt die aktuelle Version.
+
+## Verwandte öffentliche Pfade
+
+- Datenschutzerklärung: [https://timonply.com/kalvenda/privacy.de/](https://timonply.com/kalvenda/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/kalvenda/terms.de/](https://timonply.com/kalvenda/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/kalvenda/accessibility.de/](https://timonply.com/kalvenda/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/kalvenda/deletion.de/](https://timonply.com/kalvenda/deletion.de/)
+- CSAE-Standards: [https://timonply.com/kalvenda/csae.de/](https://timonply.com/kalvenda/csae.de/)
+- Impressum: [https://timonply.com/kalvenda/impressum.de/](https://timonply.com/kalvenda/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

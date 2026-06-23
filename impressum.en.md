@@ -8,19 +8,36 @@ language: "English"
 language_code: en
 language_order: 2
 permalink: /impressum.en/
+redirect_from:
+  - /impressum.en
+  - /impressum.en.html
+  - /impressum.en.md
 ---
-# Legal Notice (Impressum)
+# Legal Notice
 
-Information in accordance with § 5 DDG
+Last Updated: June 23, 2026
 
-Timon Polley
-Gutenbergstraße 5
-51469 Bergisch Gladbach
+## Controller and contact
+
+Timon Polley<br>
+Gutenbergstraße 5<br>
+51469 Bergisch Gladbach<br>
 Germany
 
-## Contact
+Email: [dev@timonply.com](mailto:dev@timonply.com)<br>
 Phone: +49 178 9702884
-Email: dev@timonply.com
 
-## Consumer Dispute Resolution
-In accordance with § 36 of the German Consumer Dispute Resolution Act (Verbraucherstreitbeilegungsgesetz -- VSBG), we inform you that we are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.
+## Provider information
+
+Information in accordance with Section 5 DDG.
+
+## Consumer dispute resolution
+
+We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board under the German Consumer Dispute Resolution Act (VSBG).
+
+## App-specific legal notices
+
+- [NeonRoutine](https://timonply.com/neonroutine/impressum.en/)
+- [Kalvenda](https://timonply.com/kalvenda/impressum.en/)
+- [Exactake](https://timonply.com/exactake/impressum.en/)
+- [Flatnest](https://timonply.com/flatnest/impressum.en/)

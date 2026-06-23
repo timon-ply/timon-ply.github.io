@@ -8,152 +8,72 @@ language: "English"
 language_code: en
 language_order: 2
 permalink: /exactake/terms.en/
+redirect_from:
+  - /exactake/terms.en
+  - /exactake/terms.en.html
+  - /exactake/terms.en.md
 ---
 # Terms of Service for Exactake
 
-Last Updated: June 21, 2026
+Last Updated: June 23, 2026
 
-## 1. Terms
+## 1. Terms of Service
 
-By downloading or using **Exactake** (the "App"), you agree to these Terms of
-Service. If you do not agree, do not use the App.
+By downloading, accessing, or using the app, you agree to these Terms. If you do not agree, do not use the app.
 
-For details about data processing, see the
-[Privacy Policy](https://timonply.com/exactake/privacy.en/).
+Timon Polley, Gutenbergstrasse 5, 51469 Bergisch Gladbach, Germany. Email: [dev@timonply.com](mailto:dev@timonply.com).
 
-The App is developed and operated by:
+## 2. Product scope
 
-Timon Polley  
-Gutenbergstrasse 5  
-51469 Bergisch Gladbach  
-Germany
+A local-first nutrition tracker with food logging, nutrition estimates, body metrics, source confidence, exports, local deletion, and user-triggered food-data lookup.
 
-Email: [dev@timonply.com](mailto:dev@timonply.com)  
-Legal notice: [https://timonply.com/impressum.en/](https://timonply.com/impressum.en/)
+The app is for personal information, organization, or wellness support only. It is not a medical device, diagnosis tool, treatment tool, emergency service, or substitute for professional advice.
 
-## 2. Product Scope
+## 3. User responsibility
 
-Exactake helps users log foods, estimate nutrition, calculate targets, review
-progress, and manage local exports and deletion. The App is intended for
-personal wellness and informational nutrition tracking.
+You are responsible for checking entries, settings, shared content, quantities, dates, permissions, and results before relying on them.
 
-Exactake is not a medical device, diagnosis tool, treatment tool,
-eating-disorder intervention, emergency tool, or substitute for professional
-medical, nutrition, or mental-health advice.
+## 4. Accounts, content, and safety
 
-## 3. User Responsibility
+The current version does not provide an app account. Local data, backups, and exported files are your responsibility.
 
-You are responsible for reviewing foods, quantities, labels, nutrition values,
-source confidence, completeness, unknown-data states, targets, and progress
-summaries before relying on them.
 
-Food and nutrition data can be incomplete, estimated, mislabeled, outdated,
-region-specific, or unsuitable for your personal circumstances. Consult a
-qualified professional before making significant diet, weight, supplementation,
-or medical decisions.
 
-## 4. Local Data and Exports
+## 5. Purchases, subscriptions, and ads
 
-The current version is local-first. You are responsible for your device, device
-backups, and exported files. Exported files may contain sensitive nutrition,
-body, target, and food-log information.
+Prices, renewal, cancellation, refunds, and restore options are shown before purchase by the applicable store or payment interface. Paid features must not be abused, transferred, or bypassed.
 
-Use the App's local delete controls, operating-system storage controls, or
-uninstallation to remove local data from your device. The current version does
-not provide Exactake accounts or cloud sync, so there is no remote account to
-delete.
+If you install the app through Apple App Store or Google Play, the applicable store terms, billing, cancellation, refund, and subscription-management rules also apply.
 
-## 5. Free Core, Ads, and Purchases
+## 6. Third-party services and data sources
 
-The current public production scope does not enable production ads, production
-in-app purchases, production receipt validation, or a live subscription service.
-Sandbox purchase states and fake/test ad surfaces may exist for development,
-testing, or layout verification only.
+Open Food Facts for user-triggered uncached barcode lookup; Apple App Store and Google Play if future store purchases are enabled. Current local-first scope otherwise avoids remote Exactake processors.
 
-If paid features, subscriptions, production ads, or production purchase flows
-are enabled in a future version, the applicable store terms, prices, renewal,
-cancellation, restore, refund, and consent information will apply and the App's
-legal and store disclosures will be updated before release.
+Third-party food and nutrition data can be incomplete, outdated, or wrong. Review sources, labels, quantities, and uncertainty yourself.
 
-## 6. Accounts, Sync, and Community Features
+## 7. Availability and changes
 
-The current version does not provide Exactake accounts, cloud sync, or public
-community writes. If those services are added later, additional terms may apply
-for account security, acceptable use, data deletion, availability, moderation,
-and service changes.
+Features may change, be limited, interrupted, or removed. Local, store, network, and third-party conditions can affect availability.
 
-## 7. Third-Party Food Data
+## 8. Warranty and liability
 
-Exactake may display or normalize data from third-party public sources such as
-Open Food Facts and USDA FoodData Central. Third-party source names, URLs,
-external identifiers, licenses, confidence, and completeness metadata may be
-shown in the App.
+Nothing in these Terms limits liability for intent, gross negligence, injury to life, body, or health, or any liability that cannot legally be limited. Mandatory consumer rights remain unaffected.
 
-Third-party sources are independent from Exactake. Exactake does not guarantee
-that third-party data is complete, current, accurate, or endorsed by the source
-provider.
+## 9. Governing law and dispute resolution
 
-## 8. Acceptable Use
+These Terms are governed by German law, without prejudice to mandatory consumer-protection rights in your country of residence.
 
-You agree not to use the App in a way that is unlawful, harmful, fraudulent, or
-abusive. You must not attempt to interfere with the App, bypass security
-controls, misuse third-party services, extract source code except where
-permitted by applicable law, or use the App to infringe the rights of others.
+We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board under the German Consumer Dispute Resolution Act (VSBG).
 
-## 9. Availability and Changes
+## 10. Changes
 
-The App may change over time. Features may be added, removed, limited, or
-modified, especially while disabled or approval-gated production capabilities
-remain outside the current launch scope.
+We may update this document when the app, legal requirements, or store disclosure requirements change. The date at the top shows the current version.
 
-Local-first features can usually be used without an Exactake account, but
-operating-system updates, app-store availability, device storage, third-party
-source availability, or network availability for barcode lookup may affect
-functionality.
+## Related public paths
 
-## 10. Warranty and Liability
-
-To the maximum extent permitted by applicable law, the App is provided without
-guarantees that it will be uninterrupted, error-free, or suitable for a
-particular purpose.
-
-Nothing in these Terms limits liability for intent, gross negligence, injury to
-life, body, or health, or any other liability that cannot be limited under
-applicable law. For slightly negligent breaches of essential contractual
-obligations, liability is limited to foreseeable, contract-typical damages. Any
-mandatory consumer rights remain unaffected.
-
-## 11. Platform Terms
-
-If you downloaded the App from Apple App Store or Google Play, the applicable
-store terms also apply. The store provider is not responsible for providing
-maintenance or support for Exactake, except where required by applicable law or
-the store's own terms.
-
-For iOS users, Apple and its subsidiaries are third-party beneficiaries of these
-Terms to the extent required by Apple's developer terms, and may enforce these
-Terms against you as a third-party beneficiary.
-
-## 12. Age Requirements
-
-You must be at least 16 years old to use Exactake, or have permission from a
-parent or guardian where required by the laws of your country.
-
-## 13. Governing Law and Dispute Resolution
-
-These Terms are governed by the laws of the Federal Republic of Germany,
-without prejudice to mandatory consumer-protection rights in your country of
-residence.
-
-The European Commission provides an online dispute resolution platform:
-[https://ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr).
-
-In accordance with Section 36 of the German Consumer Dispute Resolution Act
-(VSBG), we are not willing or obliged to participate in dispute resolution
-proceedings before a consumer arbitration board.
-
-## 14. Changes
-
-These Terms may be updated when Exactake changes, when legal requirements
-change, or when app-store requirements change. Material changes will be
-reflected by updating this page and the "Last Updated" date.
+- Privacy Policy: [https://timonply.com/exactake/privacy.en/](https://timonply.com/exactake/privacy.en/)
+- Terms of Service: [https://timonply.com/exactake/terms.en/](https://timonply.com/exactake/terms.en/)
+- Accessibility Statement: [https://timonply.com/exactake/accessibility.en/](https://timonply.com/exactake/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/exactake/deletion.en/](https://timonply.com/exactake/deletion.en/)
+- Legal Notice: [https://timonply.com/exactake/impressum.en/](https://timonply.com/exactake/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

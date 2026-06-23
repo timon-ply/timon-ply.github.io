@@ -8,68 +8,74 @@ language: "English"
 language_code: en
 language_order: 2
 permalink: /neonroutine/privacy.en/
+redirect_from:
+  - /neonroutine/privacy.en
+  - /neonroutine/privacy.en.html
+  - /neonroutine/privacy.en.md
 ---
 # Privacy Policy for NeonRoutine
 
-Last Updated: March 2026
+Last Updated: June 23, 2026
 
-## 1. Introduction
-This Privacy Policy applies to the use of the mobile application **NeonRoutine** (the "App"), developed and operated by Timon Polley ("we", "us", or "our"). We are committed to protecting your privacy and ensuring the security of your personal information in accordance with the General Data Protection Regulation (GDPR) and other applicable laws.
+This Privacy Policy explains how Timon Polley processes information in connection with NeonRoutine.
 
-## 2. Information We Collect & Lawful Basis (Art. 6 GDPR)
-We collect the minimum amount of data necessary to operate the App effectively. Our processing is based on the following legal grounds:
+## Controller and contact
 
-- **Local Habit Data**: Your routines, subroutines, and execution logs are stored securely and *locally only* on your device (using Isar DB and SharedPreferences). This data is never transmitted to our servers.
-  *Lawful Basis: Legitimate Interest (Art. 6(1)(f) GDPR).*
-- **In-App Purchases**: Managed securely via RevenueCat and the respective app stores (Apple App Store / Google Play). We do not have access to your payment details.
-  *Lawful Basis: Performance of a Contract (Art. 6(1)(b) GDPR).*
-- **Advertisements**: We use Google AdMob to serve rewarded ads. Ad personalization is determined by user consent via the UMP (User Messaging Platform) consent dialog: EEA/UK users are presented with a GDPR consent form; iOS users are presented with an App Tracking Transparency (ATT) prompt. Users who do not consent receive non-personalized ads only. On iOS, users who accept the ATT prompt may have their device's IDFA (Identifier for Advertisers) collected by Google for ad targeting and performance measurement.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
-- **Push Notifications**: Used to remind you of your routines.
-  *Lawful Basis: Explicit Consent (Art. 6(1)(a) GDPR).*
+Timon Polley, Gutenbergstrasse 5, 51469 Bergisch Gladbach, Germany. Email: [dev@timonply.com](mailto:dev@timonply.com).
 
-## 3. Third-Party Services & Processors (Art. 28 GDPR)
-The App uses third-party services that may collect information used to identify you. We have accepted Data Processing Agreements (DPAs) with these sub-processors:
-- **Google AdMob**: Ad serving and related data processing. Data is processed in accordance with [Google's Privacy Policy](https://policies.google.com/privacy).
-- **RevenueCat**: Subscription and purchase management.
-- **Apple Inc. / Google LLC**: Processing of App Store / Play Store transactions.
+## What the app does
 
-## 4. Your Rights (Art. 15–22 GDPR)
-Under the GDPR, you have extensive rights regarding your data. You can exercise most of these directly within the App:
-- **Right of Access & Data Portability (Art. 15 & 20)**: You can export all your local habit data in JSON format at any time using the "Data Export" button in the App's Settings.
-- **Right to Erasure (Art. 17)**: You can permanently delete all your data and reset the App to a clean state by using the "Wipe System" feature in the Settings.
-- **Right to Rectification (Art. 16)**: You can edit, modify, or delete individual habits effortlessly within the App.
-- **Right to Object & Withdraw Consent (Art. 21 & 7)**: You can update or withdraw your ad consent at any time via **Settings → AD PREFERENCES** in the App. Push notifications can be disabled via your device's OS settings.
+A cyberpunk habit, routine, streak, premium, notification, local analytics, and rewarded-ad app.
 
-## 5. Data Retention
-We retain personal data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy.
-- **Local Data**: Kept indefinitely on your device until you delete the app or use the "Wipe System" feature.
-- **Purchase History**: Maintained by RevenueCat and App Stores as required for financial/tax compliance and subscription management.
+## Data and purposes
 
-## 6. Children's Privacy (COPPA & GDPR)
+- Local habit and routine data, execution logs, streaks, XP, credits, faction/accent settings, mood and energy logs, achievements, local analytics, export/import state, and factory-reset state are stored on the device.
+- RevenueCat and the app stores process purchase and subscription status. Google Mobile Ads may process device identifiers, IP address, consent state, ad interactions, and rewarded-ad events when ads are used.
+- Local notifications and home widgets process reminder, schedule, and summary data on the device. No NeonRoutine account or cloud sync is currently provided.
 
-The App carries a 4+ age rating and may be used by users of all ages, including children. We comply with the Children's Online Privacy Protection Act (COPPA, US) and applicable child-directed data protection laws.
+## Processors and third-party services
 
-All habit data is stored exclusively on the user's device and is never transmitted to our servers or shared with third parties.
+RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, platform notification services, and operating-system storage/widget services.
 
-Ad content is limited to a PG (parental guidance) content rating. Ad personalization is subject to explicit user consent as described in Section 2. No behavioral profiling occurs without consent.
+## Legal bases for EEA users
 
-If you are a parent or guardian and believe your child has provided personal data to us or our third-party processors without appropriate consent, contact us at dev@timonply.com and we will take prompt action to review and, where applicable, delete that data.
+For EEA users, core app processing is based on performance of the user contract or user-requested functionality. Optional ads, tracking, notifications, or permissions rely on consent where required. Security, abuse prevention, and minimal service diagnostics may rely on legitimate interests where legally available.
 
-## 6a. Parental Consent
+## Retention, deletion, and user controls
 
-Children under 13 (or under 16 in the EU/EEA) must have verifiable parental or guardian consent before using features that involve third-party data processing, including in-app purchases and ad-supported content. A parent or guardian who accepts this Privacy Policy on behalf of a child confirms they have reviewed it and consent on the child's behalf.
+NeonRoutine currently does not provide an app account or cloud sync. There is no remote account to delete; use the in-app deletion/reset controls, operating-system storage controls, or uninstall the app to remove local data from the device.
 
-## 7. California Privacy Rights (CCPA/CPRA)
-If you are a California resident, you have the right to know what personal information we collect, the right to delete it, and the right to opt-out of its "sale" or "sharing."
-Because we use Google AdMob for advertising, this may be considered a "sale" or "sharing" under California law. You can opt-out at any time via **Settings → AD PREFERENCES** within the App.
+If you cannot use the in-app controls, contact dev@timonply.com from the email address connected to the account where applicable. We may need reasonable verification before acting on a request.
 
-## 8. International Data Transfers
-Since some of our third-party processors (such as Google and RevenueCat) are located outside the European Economic Area (EEA), your information may be transferred to and maintained on computers located outside of your state, province, or country. These transfers are protected by Standard Contractual Clauses (SCCs) and adherence to the EU-US Data Privacy Framework where applicable.
+## Your privacy rights
 
-## 9. Changes to This Privacy Policy
-We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this document.
+Depending on your location, you may have rights to access, correction, deletion, restriction, objection, portability, withdrawal of consent, and complaint to a supervisory authority. Contact dev@timonply.com for requests that cannot be completed directly in the app.
 
-## 10. Contact
-If you have any questions or suggestions about our Privacy Policy or wish to exercise your rights, please contact our Data Protection representative at:
-**Email:** dev@timonply.com
+## Children and age requirements
+
+The app is not intended for unsupervised use by children below the digital-consent age in their country. A parent or guardian must review the app, purchases, ads, and data controls before a child uses it.
+
+## Security
+
+We use reasonable technical and organizational safeguards, limit collection to the active product scope, and avoid asking users to send passwords, authentication codes, or unnecessary sensitive data by email.
+
+## International transfers
+
+Some service providers may process data outside the EEA. Where GDPR transfer rules apply, transfers rely on appropriate safeguards such as adequacy decisions, the EU-U.S. Data Privacy Framework where applicable, or Standard Contractual Clauses.
+
+## Automated decision-making
+
+The app does not make automated decisions with legal or similarly significant effects. Personalized ads or store/SDK decisions may be automated where the provider offers them and required consent exists.
+
+## Changes
+
+We may update this document when the app, legal requirements, or store disclosure requirements change. The date at the top shows the current version.
+
+## Related public paths
+
+- Privacy Policy: [https://timonply.com/neonroutine/privacy.en/](https://timonply.com/neonroutine/privacy.en/)
+- Terms of Service: [https://timonply.com/neonroutine/terms.en/](https://timonply.com/neonroutine/terms.en/)
+- Accessibility Statement: [https://timonply.com/neonroutine/accessibility.en/](https://timonply.com/neonroutine/accessibility.en/)
+- Deletion and Data Controls: [https://timonply.com/neonroutine/deletion.en/](https://timonply.com/neonroutine/deletion.en/)
+- Legal Notice: [https://timonply.com/neonroutine/impressum.en/](https://timonply.com/neonroutine/impressum.en/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

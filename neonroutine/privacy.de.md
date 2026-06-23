@@ -1,75 +1,81 @@
 ---
 layout: legal
-title: "Datenschutzerklaerung fuer NeonRoutine"
+title: "Datenschutzerklärung für NeonRoutine"
 doc_id: neonroutine-privacy
-doc_type: "Privacy Policy"
+doc_type: "Datenschutzerklärung"
 app_name: "NeonRoutine"
 language: "Deutsch"
 language_code: de
 language_order: 1
 permalink: /neonroutine/privacy.de/
+redirect_from:
+  - /neonroutine/privacy.de
+  - /neonroutine/privacy.de.html
+  - /neonroutine/privacy.de.md
 ---
 # Datenschutzerklärung für NeonRoutine
 
-Zuletzt aktualisiert: März 2026
+Zuletzt aktualisiert: 23. Juni 2026
 
-## 1. Einleitung
-Diese Datenschutzerklärung gilt für die Nutzung der mobilen Anwendung **NeonRoutine** (die "App"), entwickelt und betrieben von Timon Polley ("wir", "uns" oder "unser"). Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) sowie nationaler Gesetze (TDDDG, BDSG) zu gewährleisten.
+Diese Datenschutzerklärung erklärt, wie Timon Polley Informationen im Zusammenhang mit NeonRoutine verarbeitet.
 
-## 2. Erhobene Daten & Rechtsgrundlage (Art. 6 DSGVO)
-Wir verarbeiten nur die minimal notwendigen Daten. Die Verarbeitung basiert auf folgenden Rechtsgrundlagen:
+## Verantwortlicher und Kontakt
 
-- **Lokale Gewohnheits-Daten**: Ihre Routinen und Protokolle werden ausschließlich *lokal* auf Ihrem Gerät gespeichert (Isar DB & SharedPreferences). Diese Daten verlassen Ihr Gerät nicht.
-  *Rechtsgrundlage: Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).*
-- **In-App-Käufe**: Sicher verwaltet über RevenueCat und die jeweiligen App Stores (Apple / Google). Wir haben keinen Zugriff auf Ihre Zahlungsdaten.
-  *Rechtsgrundlage: Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).*
-- **Werbung**: Wir nutzen Google AdMob zur Auslieferung von Rewarded Ads. Die Personalisierung von Werbung richtet sich nach der Einwilligung des Nutzers über den UMP-Einwilligungsdialog (User Messaging Platform): EWR/UK-Nutzern wird ein DSGVO-Einwilligungsformular angezeigt; iOS-Nutzern wird ein App Tracking Transparency (ATT)-Dialog angezeigt. Nutzer, die nicht einwilligen, erhalten ausschließlich nicht-personalisierte Werbung. Auf iOS-Geräten kann bei Akzeptanz des ATT-Dialogs die IDFA (Identifier for Advertisers) des Geräts durch Google für Werbeausrichtung und Erfolgsmessung erfasst werden.
-  *Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) i.V.m. § 25 TDDDG.*
-- **Push-Benachrichtigungen**: Zur Erinnerung an Ihre Routinen.
-  *Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).*
+Timon Polley, Gutenbergstraße 5, 51469 Bergisch Gladbach, Deutschland. E-Mail: [dev@timonply.com](mailto:dev@timonply.com).
 
-## 3. Dienste von Drittanbietern & Auftragsverarbeiter (Art. 28 DSGVO)
-Wir setzen Drittanbieter ein und haben mit diesen Auftragsverarbeitungsverträge (AVV) geschlossen:
-- **Google AdMob**: Werbeauslieferung und zugehörige Datenverarbeitung. Die Verarbeitung erfolgt gemäß der [Datenschutzrichtlinie von Google](https://policies.google.com/privacy).
-- **RevenueCat**: Abonnement-Verwaltung.
-- **Apple Inc. / Google LLC**: Abwicklung von Store-Käufen.
+## Was die App macht
 
-## 4. Ihre Rechte (Art. 15–22 DSGVO)
-Ihnen stehen umfangreiche Rechte zu, von denen Sie die meisten direkt in der App ausüben können:
-- **Auskunft & Datenübertragbarkeit (Art. 15 & 20)**: Sie können Ihre lokalen Daten jederzeit über den "Data Export"-Button in den Einstellungen als JSON exportieren.
-- **Löschung (Art. 17)**: Über die Funktion "Wipe System" in den Einstellungen können Sie Ihre gesamten Daten dauerhaft vom Gerät löschen und die App zurücksetzen.
-- **Berichtigung (Art. 16)**: Einzelne Gewohnheiten können in der App jederzeit bearbeitet oder gelöscht werden.
-- **Widerruf & Widerspruch (Art. 7 & 21)**: Sie können Ihre Werbeeinwilligung jederzeit unter **Einstellungen → ANZEIGENPRÄFERENZEN** in der App widerrufen. Push-Benachrichtigungen können über die OS-Einstellungen Ihres Geräts deaktiviert werden.
+Eine Cyberpunk-App für Gewohnheiten, Routinen, Serien, Premium-Funktionen, Benachrichtigungen, lokale Auswertungen und Rewarded Ads.
 
-## 5. Datenspeicherung
-Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der in dieser Datenschutzerklärung genannten Zwecke erforderlich ist.
-- **Lokale Daten**: Werden auf unbestimmte Zeit auf Ihrem Gerät gespeichert, bis Sie die App löschen oder die Funktion "Wipe System" verwenden.
-- **Kaufhistorie**: Wird von RevenueCat und den App Stores verwaltet, sofern dies für die Einhaltung finanz- und steuerrechtlicher Vorgaben sowie zur Abonnementverwaltung erforderlich ist.
+## Daten und Zwecke
 
-## 6. Datenschutz für Kinder (COPPA & DSGVO)
+- Lokale Gewohnheits- und Routinedaten, Ausführungsprotokolle, Serien, XP, Credits, Fraktions-/Akzent-Einstellungen, Stimmungs- und Energieprotokolle, Erfolge, lokale Auswertungen, Export-/Importstatus und Zurücksetzstatus werden auf dem Gerät gespeichert.
+- RevenueCat und die App Stores verarbeiten Kauf- und Abonnementstatus. Google Mobile Ads kann Gerätekennungen, IP-Adresse, Einwilligungsstatus, Anzeigeninteraktionen und Rewarded-Ad-Ereignisse verarbeiten, wenn Werbung genutzt wird.
+- Lokale Benachrichtigungen und Home-Widgets verarbeiten Erinnerungs-, Zeitplan- und Zusammenfassungsdaten auf dem Gerät. Ein NeonRoutine-Konto oder Cloud-Sync wird derzeit nicht angeboten.
 
-Die App besitzt eine 4+-Altersfreigabe und kann von Nutzern jeden Alters, einschließlich Kindern, verwendet werden. Wir erfüllen die Anforderungen des US-amerikanischen Children's Online Privacy Protection Act (COPPA) sowie der anwendbaren kinderspezifischen Datenschutzgesetze.
+## Auftragsverarbeiter und Drittanbieter
 
-Alle Gewohnheitsdaten werden ausschließlich auf dem Gerät des Nutzers gespeichert und weder an unsere Server übermittelt noch an Dritte weitergegeben.
+RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, Plattform-Benachrichtigungsdienste sowie Betriebssystem-Speicher- und Widget-Dienste.
 
-Werbeinhalte sind auf eine PG-Bewertung (Parental Guidance) beschränkt. Die Personalisierung von Werbung setzt eine ausdrückliche Einwilligung des Nutzers gemäß Abschnitt 2 voraus. Ohne Einwilligung findet kein Behavioral Profiling statt.
+## Rechtsgrundlagen für Nutzer im EWR
 
-Wenn Sie als Elternteil oder Vormund der Ansicht sind, dass Ihr Kind uns oder unseren Drittanbietern ohne angemessene Einwilligung personenbezogene Daten übermittelt hat, kontaktieren Sie uns unter dev@timonply.com. Wir werden umgehend tätig und löschen die betroffenen Daten, soweit dies möglich ist.
+Für Nutzer im EWR beruht die Kernverarbeitung auf der Vertragserfüllung oder auf vom Nutzer angeforderten Funktionen. Optionale Werbung, Tracking, Benachrichtigungen oder Berechtigungen beruhen auf Einwilligung, soweit dies erforderlich ist. Sicherheit, Missbrauchsvermeidung und minimale Diagnostik können auf berechtigten Interessen beruhen, soweit zulässig.
 
-## 6a. Elterliche Einwilligung
+## Speicherung, Löschung und Nutzerkontrollen
 
-Kinder unter 13 Jahren (bzw. unter 16 Jahren in der EU/im EWR) müssen eine nachweisbare Einwilligung eines Elternteils oder Erziehungsberechtigten einholen, bevor sie Funktionen nutzen, die eine Verarbeitung durch Drittanbieter beinhalten, einschließlich In-App-Käufen und werbefinanzierten Inhalten. Ein Elternteil oder Erziehungsberechtigter, der diese Datenschutzerklärung im Namen des Kindes akzeptiert, bestätigt, dass er sie gelesen hat und im Namen des Kindes einwilligt.
+NeonRoutine bietet derzeit kein App-Konto und keine Cloud-Synchronisierung. Es gibt kein entferntes Konto zu löschen; verwenden Sie die In-App-Lösch-/Zurücksetzfunktionen, die Betriebssystem-Speicherkontrollen oder deinstallieren Sie die App, um lokale Daten vom Gerät zu entfernen.
 
-## 7. Kalifornische Datenschutzrechte (CCPA/CPRA)
-Wenn Sie im Bundesstaat Kalifornien ansässig sind, haben Sie das Recht zu erfahren, welche personenbezogenen Daten wir sammeln, das Recht auf deren Löschung und das Recht, dem „Verkauf" oder „Teilen" dieser Daten zu widersprechen.
-Da wir Google AdMob für Werbung nutzen, kann dies nach kalifornischem Recht als "Verkauf" oder "Teilen" angesehen werden. Sie können jederzeit über **Einstellungen → ANZEIGENPRÄFERENZEN** in der App widersprechen (Opt-out).
+Wenn Sie die In-App-Kontrollen nicht nutzen können, kontaktieren Sie dev@timonply.com von der mit dem Konto verbundenen E-Mail-Adresse, soweit anwendbar. Vor der Bearbeitung kann eine angemessene Verifizierung erforderlich sein.
 
-## 8. Internationale Datenübermittlung
-Da einige unserer Drittanbieter (wie Google und RevenueCat) ihren Sitz außerhalb des Europäischen Wirtschaftsraums (EWR) haben, können Ihre Daten auf Server außerhalb Ihres Staates, Ihrer Provinz oder Ihres Landes übertragen und dort gespeichert werden. Diese Übermittlungen sind durch Standardvertragsklauseln (SCCs) und die Einhaltung des EU-US Data Privacy Frameworks geschützt, sofern anwendbar.
+## Ihre Datenschutzrechte
 
-## 9. Änderungen dieser Datenschutzerklärung
-Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden Sie über jegliche Änderungen informieren, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen und das "Zuletzt aktualisiert"-Datum oben in diesem Dokument anpassen.
+Je nach Standort können Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Widerruf einer Einwilligung und Beschwerde bei einer Aufsichtsbehörde bestehen. Kontaktieren Sie dev@timonply.com für Anliegen, die nicht direkt in der App erledigt werden können.
 
-## 10. Kontakt
-Bei Fragen zur Datenschutzerklärung oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:
-**E-Mail:** dev@timonply.com
+## Kinder und Altersanforderungen
+
+Die App ist nicht für unbeaufsichtigte Nutzung durch Kinder unterhalb des digitalen Einwilligungsalters ihres Landes bestimmt. Eltern oder Erziehungsberechtigte müssen App, Käufe, Werbung und Datenkontrollen vor der Nutzung durch ein Kind prüfen.
+
+## Sicherheit
+
+Wir verwenden angemessene technische und organisatorische Schutzmaßnahmen, begrenzen die Erhebung auf den aktuellen Produktumfang und bitten Nutzer nicht, Passwörter, Authentifizierungscodes oder unnötige sensible Daten per E-Mail zu senden.
+
+## Internationale Übermittlungen
+
+Einige Dienstleister können Daten außerhalb des EWR verarbeiten. Soweit die DSGVO-Regeln für Übermittlungen gelten, beruhen Übermittlungen auf geeigneten Garantien wie Angemessenheitsbeschlüssen, dem EU-US Data Privacy Framework, soweit anwendbar, oder Standardvertragsklauseln.
+
+## Automatisierte Entscheidungen
+
+Die App trifft keine automatisierten Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung. Personalisierte Werbung oder Store-/SDK-Entscheidungen können automatisiert erfolgen, soweit der jeweilige Dienst dies vorsieht und eine erforderliche Einwilligung vorliegt.
+
+## Änderungen
+
+Wir können dieses Dokument aktualisieren, wenn sich App, Rechtslage oder Store-Offenlegungspflichten ändern. Das Datum oben zeigt die aktuelle Version.
+
+## Verwandte öffentliche Pfade
+
+- Datenschutzerklärung: [https://timonply.com/neonroutine/privacy.de/](https://timonply.com/neonroutine/privacy.de/)
+- Nutzungsbedingungen: [https://timonply.com/neonroutine/terms.de/](https://timonply.com/neonroutine/terms.de/)
+- Barrierefreiheitserklärung: [https://timonply.com/neonroutine/accessibility.de/](https://timonply.com/neonroutine/accessibility.de/)
+- Löschung und Datenkontrollen: [https://timonply.com/neonroutine/deletion.de/](https://timonply.com/neonroutine/deletion.de/)
+- Impressum: [https://timonply.com/neonroutine/impressum.de/](https://timonply.com/neonroutine/impressum.de/)
+- Support: [https://timonply.com/support.html](https://timonply.com/support.html)

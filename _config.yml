@@ -1,3 +1,5 @@
 title: Timon Polley - Applications
 description: Applications, support information, and legal documents for projects by Timon Polley.
 theme: jekyll-theme-minimal
+plugins:
+  - jekyll-redirect-from
