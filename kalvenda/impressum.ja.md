@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /kalvenda/impressum.ja/
 redirect_from:
-  - /kalvenda/impressum.ja
   - /kalvenda/impressum.ja.html
   - /kalvenda/impressum.ja.md
 ---

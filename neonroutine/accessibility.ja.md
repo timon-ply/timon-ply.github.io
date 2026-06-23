@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /neonroutine/accessibility.ja/
 redirect_from:
-  - /neonroutine/accessibility.ja
   - /neonroutine/accessibility.ja.html
   - /neonroutine/accessibility.ja.md
 ---

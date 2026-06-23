@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /flatnest/csae.en/
 redirect_from:
-  - /flatnest/csae.en
   - /flatnest/csae.en.html
   - /flatnest/csae.en.md
 ---

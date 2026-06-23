@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /flatnest/csae.ja/
 redirect_from:
-  - /flatnest/csae.ja
   - /flatnest/csae.ja.html
   - /flatnest/csae.ja.md
 ---

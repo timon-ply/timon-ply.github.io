@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /neonroutine/terms.es/
 redirect_from:
-  - /neonroutine/terms.es
   - /neonroutine/terms.es.html
   - /neonroutine/terms.es.md
 ---

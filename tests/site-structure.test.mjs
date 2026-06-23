@@ -54,6 +54,32 @@ function legalMarkdownFiles() {
   return files;
 }
 
+function frontMatter(path) {
+  const text = read(path);
+  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  return match?.[1] ?? '';
+}
+
+function yamlListValues(frontmatter, key) {
+  const lines = frontmatter.split('\n');
+  const index = lines.findIndex((line) => line === `${key}:`);
+  if (index === -1) return [];
+
+  const values = [];
+  for (const line of lines.slice(index + 1)) {
+    if (!line.startsWith('  - ')) break;
+    values.push(line.slice(4).trim());
+  }
+  return values;
+}
+
+function normalizedJekyllOutput(route) {
+  const clean = route.replace(/^\/+/, '').replace(/\/+$/, '');
+  if (!clean) return 'index.html';
+  if (/\.[a-z0-9]+$/i.test(clean)) return clean;
+  return `${clean}/index.html`;
+}
+
 test('home page exposes the app legal repository and all app route groups', () => {
   const html = read('index.html');
 
@@ -108,9 +134,9 @@ test('multilingual app legal corpus is complete and has redirect aliases', () =>
         assert.match(text, /^---\nlayout: legal/m, `${path} missing legal front matter`);
         assert.match(text, new RegExp(`^language_code: ${lang}$`, 'm'), `${path} missing language code`);
         assert.match(text, new RegExp(`^permalink: /${app}/${doc}\\.${lang}/$`, 'm'), `${path} missing canonical permalink`);
-        assert.match(text, new RegExp(`  - /${app}/${doc}\\.${lang}$`, 'm'), `${path} missing extensionless redirect`);
         assert.match(text, new RegExp(`  - /${app}/${doc}\\.${lang}\\.html$`, 'm'), `${path} missing html redirect`);
         assert.match(text, new RegExp(`  - /${app}/${doc}\\.${lang}\\.md$`, 'm'), `${path} missing md redirect`);
+        assert.doesNotMatch(text, new RegExp(`  - /${app}/${doc}\\.${lang}$`, 'm'), `${path} has a redirect alias that collides with its canonical permalink`);
         assert.doesNotMatch(text, /ec\.europa\.eu\/consumers\/odr/i, `${path} contains discontinued ODR URL`);
         assert.doesNotMatch(text, /[ÃÂ]|â€|ã[€‚ƒ]/, `${path} contains likely mojibake`);
       }
@@ -126,6 +152,7 @@ test('shared legal notices, route matrix, and regulatory notes are publishable',
     assert.match(text, /^---\nlayout: legal/m);
     assert.match(text, new RegExp(`^permalink: /impressum\\.${lang}/$`, 'm'));
     assert.match(text, new RegExp(`  - /impressum\\.${lang}\\.html$`, 'm'));
+    assert.doesNotMatch(text, new RegExp(`  - /impressum\\.${lang}$`, 'm'));
     assert.doesNotMatch(text, /ec\.europa\.eu\/consumers\/odr/i);
   }
 
@@ -140,6 +167,33 @@ test('shared legal notices, route matrix, and regulatory notes are publishable',
   assert.match(review, /^---\nlayout: legal/m);
   assert.match(review, /^permalink: \/docs\/regulatory-review\/$/m);
   assert.match(review, /EU ODR platform discontinuation as of 20 July 2025/);
+});
+
+test('redirect aliases do not collide with canonical Jekyll output paths', () => {
+  const outputs = new Map();
+
+  for (const file of legalMarkdownFiles()) {
+    const fm = frontMatter(file);
+    const permalink = fm.match(/^permalink:\s*(.+)$/m)?.[1]?.trim();
+    if (!permalink) continue;
+
+    const canonicalOutput = normalizedJekyllOutput(permalink);
+    assert.equal(outputs.has(canonicalOutput), false, `${file} duplicates output ${canonicalOutput}`);
+    outputs.set(canonicalOutput, `${file} permalink`);
+  }
+
+  for (const file of legalMarkdownFiles()) {
+    const fm = frontMatter(file);
+    for (const redirect of yamlListValues(fm, 'redirect_from')) {
+      const redirectOutput = normalizedJekyllOutput(redirect);
+      assert.equal(
+        outputs.has(redirectOutput),
+        false,
+        `${file} redirect_from ${redirect} collides with ${outputs.get(redirectOutput)}`,
+      );
+      outputs.set(redirectOutput, `${file} redirect_from ${redirect}`);
+    }
+  }
 });
 
 test('stylesheet has accessible responsive behavior without viewport-scaled type', () => {

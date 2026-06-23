@@ -138,16 +138,18 @@ route aliases, or the route matrix:
 node tools\generate_legal_docs.mjs
 ```
 
-The generator adds redirect aliases for current and legacy app routes:
+The generator adds redirect aliases for legacy app routes:
 
 ```text
 /app/document.lang/
-/app/document.lang
 /app/document.lang.html
 /app/document.lang.md
 ```
 
-GitHub Pages needs `jekyll-redirect-from`, configured in `_config.yml`, for those
+The canonical `/app/document.lang/` directory URL is the source page. Do not add
+`/app/document.lang` as a `redirect_from` alias; Jekyll normalizes that to the
+same output path and the Pages build can fail. GitHub Pages needs
+`jekyll-redirect-from`, configured in `_config.yml`, for the `.html` and `.md`
 aliases to work after deployment.
 
 ## URL Patterns

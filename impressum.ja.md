@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /impressum.ja/
 redirect_from:
-  - /impressum.ja
   - /impressum.ja.html
   - /impressum.ja.md
 ---

@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /neonroutine/accessibility.en/
 redirect_from:
-  - /neonroutine/accessibility.en
   - /neonroutine/accessibility.en.html
   - /neonroutine/accessibility.en.md
 ---

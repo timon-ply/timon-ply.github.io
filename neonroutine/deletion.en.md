@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /neonroutine/deletion.en/
 redirect_from:
-  - /neonroutine/deletion.en
   - /neonroutine/deletion.en.html
   - /neonroutine/deletion.en.md
 ---

@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /exactake/terms.ja/
 redirect_from:
-  - /exactake/terms.ja
   - /exactake/terms.ja.html
   - /exactake/terms.ja.md
 ---

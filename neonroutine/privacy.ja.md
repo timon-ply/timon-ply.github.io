@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /neonroutine/privacy.ja/
 redirect_from:
-  - /neonroutine/privacy.ja
   - /neonroutine/privacy.ja.html
   - /neonroutine/privacy.ja.md
 ---

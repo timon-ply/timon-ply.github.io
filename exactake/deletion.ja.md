@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /exactake/deletion.ja/
 redirect_from:
-  - /exactake/deletion.ja
   - /exactake/deletion.ja.html
   - /exactake/deletion.ja.md
 ---

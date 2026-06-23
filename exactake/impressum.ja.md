@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /exactake/impressum.ja/
 redirect_from:
-  - /exactake/impressum.ja
   - /exactake/impressum.ja.html
   - /exactake/impressum.ja.md
 ---

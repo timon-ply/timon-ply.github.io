@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /neonroutine/privacy.de/
 redirect_from:
-  - /neonroutine/privacy.de
   - /neonroutine/privacy.de.html
   - /neonroutine/privacy.de.md
 ---

@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /kalvenda/accessibility.en/
 redirect_from:
-  - /kalvenda/accessibility.en
   - /kalvenda/accessibility.en.html
   - /kalvenda/accessibility.en.md
 ---

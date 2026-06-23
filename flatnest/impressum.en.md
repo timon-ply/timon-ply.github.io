@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /flatnest/impressum.en/
 redirect_from:
-  - /flatnest/impressum.en
   - /flatnest/impressum.en.html
   - /flatnest/impressum.en.md
 ---

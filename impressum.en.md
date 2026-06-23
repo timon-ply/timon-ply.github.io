@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /impressum.en/
 redirect_from:
-  - /impressum.en
   - /impressum.en.html
   - /impressum.en.md
 ---

@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /exactake/impressum.es/
 redirect_from:
-  - /exactake/impressum.es
   - /exactake/impressum.es.html
   - /exactake/impressum.es.md
 ---

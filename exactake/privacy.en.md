@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /exactake/privacy.en/
 redirect_from:
-  - /exactake/privacy.en
   - /exactake/privacy.en.html
   - /exactake/privacy.en.md
 ---

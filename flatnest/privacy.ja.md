@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /flatnest/privacy.ja/
 redirect_from:
-  - /flatnest/privacy.ja
   - /flatnest/privacy.ja.html
   - /flatnest/privacy.ja.md
 ---

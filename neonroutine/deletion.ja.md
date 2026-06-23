@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /neonroutine/deletion.ja/
 redirect_from:
-  - /neonroutine/deletion.ja
   - /neonroutine/deletion.ja.html
   - /neonroutine/deletion.ja.md
 ---

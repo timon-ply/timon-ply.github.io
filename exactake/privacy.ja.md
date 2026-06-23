@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /exactake/privacy.ja/
 redirect_from:
-  - /exactake/privacy.ja
   - /exactake/privacy.ja.html
   - /exactake/privacy.ja.md
 ---

@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /exactake/accessibility.en/
 redirect_from:
-  - /exactake/accessibility.en
   - /exactake/accessibility.en.html
   - /exactake/accessibility.en.md
 ---

@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /kalvenda/impressum.es/
 redirect_from:
-  - /kalvenda/impressum.es
   - /kalvenda/impressum.es.html
   - /kalvenda/impressum.es.md
 ---

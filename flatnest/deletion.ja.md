@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /flatnest/deletion.ja/
 redirect_from:
-  - /flatnest/deletion.ja
   - /flatnest/deletion.ja.html
   - /flatnest/deletion.ja.md
 ---

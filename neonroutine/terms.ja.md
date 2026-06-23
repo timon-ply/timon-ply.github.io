@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /neonroutine/terms.ja/
 redirect_from:
-  - /neonroutine/terms.ja
   - /neonroutine/terms.ja.html
   - /neonroutine/terms.ja.md
 ---

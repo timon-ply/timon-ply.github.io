@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /exactake/deletion.de/
 redirect_from:
-  - /exactake/deletion.de
   - /exactake/deletion.de.html
   - /exactake/deletion.de.md
 ---

@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /kalvenda/privacy.ja/
 redirect_from:
-  - /kalvenda/privacy.ja
   - /kalvenda/privacy.ja.html
   - /kalvenda/privacy.ja.md
 ---

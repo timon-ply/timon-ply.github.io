@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /flatnest/deletion.es/
 redirect_from:
-  - /flatnest/deletion.es
   - /flatnest/deletion.es.html
   - /flatnest/deletion.es.md
 ---

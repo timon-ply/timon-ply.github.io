@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /kalvenda/terms.ja/
 redirect_from:
-  - /kalvenda/terms.ja
   - /kalvenda/terms.ja.html
   - /kalvenda/terms.ja.md
 ---

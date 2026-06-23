@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /neonroutine/impressum.es/
 redirect_from:
-  - /neonroutine/impressum.es
   - /neonroutine/impressum.es.html
   - /neonroutine/impressum.es.md
 ---

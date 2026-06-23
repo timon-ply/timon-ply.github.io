@@ -9,7 +9,6 @@ language_code: es
 language_order: 3
 permalink: /flatnest/privacy.es/
 redirect_from:
-  - /flatnest/privacy.es
   - /flatnest/privacy.es.html
   - /flatnest/privacy.es.md
 ---

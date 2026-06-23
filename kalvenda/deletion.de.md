@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /kalvenda/deletion.de/
 redirect_from:
-  - /kalvenda/deletion.de
   - /kalvenda/deletion.de.html
   - /kalvenda/deletion.de.md
 ---

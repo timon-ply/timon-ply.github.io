@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /flatnest/terms.de/
 redirect_from:
-  - /flatnest/terms.de
   - /flatnest/terms.de.html
   - /flatnest/terms.de.md
 ---

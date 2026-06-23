@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /kalvenda/csae.en/
 redirect_from:
-  - /kalvenda/csae.en
   - /kalvenda/csae.en.html
   - /kalvenda/csae.en.md
 ---

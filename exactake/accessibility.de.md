@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /exactake/accessibility.de/
 redirect_from:
-  - /exactake/accessibility.de
   - /exactake/accessibility.de.html
   - /exactake/accessibility.de.md
 ---

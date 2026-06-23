@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /kalvenda/accessibility.ja/
 redirect_from:
-  - /kalvenda/accessibility.ja
   - /kalvenda/accessibility.ja.html
   - /kalvenda/accessibility.ja.md
 ---

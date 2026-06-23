@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /neonroutine/impressum.ja/
 redirect_from:
-  - /neonroutine/impressum.ja
   - /neonroutine/impressum.ja.html
   - /neonroutine/impressum.ja.md
 ---

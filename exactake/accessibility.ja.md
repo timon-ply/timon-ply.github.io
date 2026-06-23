@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /exactake/accessibility.ja/
 redirect_from:
-  - /exactake/accessibility.ja
   - /exactake/accessibility.ja.html
   - /exactake/accessibility.ja.md
 ---

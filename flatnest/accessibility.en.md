@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /flatnest/accessibility.en/
 redirect_from:
-  - /flatnest/accessibility.en
   - /flatnest/accessibility.en.html
   - /flatnest/accessibility.en.md
 ---

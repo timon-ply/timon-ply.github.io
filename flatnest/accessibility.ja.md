@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /flatnest/accessibility.ja/
 redirect_from:
-  - /flatnest/accessibility.ja
   - /flatnest/accessibility.ja.html
   - /flatnest/accessibility.ja.md
 ---

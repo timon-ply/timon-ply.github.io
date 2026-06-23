@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /kalvenda/deletion.ja/
 redirect_from:
-  - /kalvenda/deletion.ja
   - /kalvenda/deletion.ja.html
   - /kalvenda/deletion.ja.md
 ---

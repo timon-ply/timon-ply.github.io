@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /exactake/terms.en/
 redirect_from:
-  - /exactake/terms.en
   - /exactake/terms.en.html
   - /exactake/terms.en.md
 ---

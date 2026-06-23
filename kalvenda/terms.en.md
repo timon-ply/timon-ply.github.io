@@ -9,7 +9,6 @@ language_code: en
 language_order: 2
 permalink: /kalvenda/terms.en/
 redirect_from:
-  - /kalvenda/terms.en
   - /kalvenda/terms.en.html
   - /kalvenda/terms.en.md
 ---

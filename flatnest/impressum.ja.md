@@ -9,7 +9,6 @@ language_code: ja
 language_order: 4
 permalink: /flatnest/impressum.ja/
 redirect_from:
-  - /flatnest/impressum.ja
   - /flatnest/impressum.ja.html
   - /flatnest/impressum.ja.md
 ---

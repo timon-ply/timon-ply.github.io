@@ -35,7 +35,7 @@ This is an engineering compliance checklist, not legal advice or a certification
 - Added app-scoped legal notices so app-specific Impressum links resolve.
 - Added web deletion/data-control pages for every app, including no-account local-first apps.
 - Added CSAE standards for apps with social or user-generated-content surfaces: Kalvenda and Flatnest.
-- Added redirect aliases for legacy `.html`, `.md`, and extensionless app legal links used by current app code.
+- Added redirect aliases for legacy `.html` and `.md` app legal links used by current app code.
 - Added route matrix paths for all four languages: German, English, Spanish, and Japanese.
 
 ## Remaining legal review points

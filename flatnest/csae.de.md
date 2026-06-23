@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /flatnest/csae.de/
 redirect_from:
-  - /flatnest/csae.de
   - /flatnest/csae.de.html
   - /flatnest/csae.de.md
 ---

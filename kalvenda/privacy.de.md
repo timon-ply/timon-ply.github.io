@@ -9,7 +9,6 @@ language_code: de
 language_order: 1
 permalink: /kalvenda/privacy.de/
 redirect_from:
-  - /kalvenda/privacy.de
   - /kalvenda/privacy.de.html
   - /kalvenda/privacy.de.md
 ---
