@@ -3,8 +3,9 @@ set -eu
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 artifact_dir="$repo_root/.remote-artifacts"; port=${PORT:-4173}
 mkdir -p "$artifact_dir"; cd "$repo_root"; node tools/generate_legal_docs.mjs
-chrome=''
+chrome=${CHROME_BIN:-}
 for candidate in google-chrome-stable google-chrome chromium chromium-browser; do
+  [ -z "$chrome" ] || break
   if command -v "$candidate" >/dev/null 2>&1; then chrome=$candidate; break; fi
 done
 if [ -z "$chrome" ]; then
