@@ -1,0 +1,9 @@
+.remote-artifacts/
+node_modules/
+.env
+.env.*
+*.p8
+*.p12
+*.pem
+*.key
+.prod-agent/

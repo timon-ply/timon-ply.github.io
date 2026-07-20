@@ -1,0 +1,25 @@
+schema: 1
+id: legal-docs
+repository: timon-ply/timon-ply.github.io
+default_branch: main
+stack: node
+runtime:
+  node: 22
+commands:
+  bootstrap: sh scripts/remote/bootstrap.sh
+  doctor: sh scripts/remote/doctor.sh
+  verify: sh scripts/remote/verify.sh
+  preview: sh scripts/remote/preview.sh
+network:
+  setup_only: true
+  domains: []
+  agent_phase: disabled
+secrets:
+  codex_setup: []
+  github_actions_release: []
+production:
+  permitted_from_agent_task: false
+  manual_workflow: existing_github_pages
+visual_evidence:
+  cloud: generated_site_phone_screenshot
+  external_gates: [legal_review, public_domain, github_pages_deployment]
