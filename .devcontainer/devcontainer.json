@@ -1,0 +1,12 @@
+{
+  "name": "Legal docs remote",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/node:1": {"version": "22"}
+  },
+  "postCreateCommand": "sh scripts/remote/bootstrap.sh",
+  "forwardPorts": [4173],
+  "portsAttributes": {"4173": {"label": "Legal site preview", "onAutoForward": "notify", "protocol": "http"}},
+  "remoteUser": "vscode"
+}
