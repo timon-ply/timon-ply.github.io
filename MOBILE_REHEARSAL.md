@@ -1,3 +1,3 @@
 # Mobile rehearsal
 
-Created solely to verify vacation remote delegation. Do not publish.
+Verified from an iPad without using the development PC. Do not publish.
