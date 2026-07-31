@@ -11,18 +11,30 @@
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+  {% assign is_french = false %}
+  {% if page.language_code == 'fr' %}{% assign is_french = true %}{% endif %}
+  {% assign legal_notice_url = '/impressum.en/' %}
+  {% case page.language_code %}
+    {% when 'de' %}{% assign legal_notice_url = '/impressum.de/' %}
+    {% when 'es' %}{% assign legal_notice_url = '/impressum.es/' %}
+    {% when 'ja' %}{% assign legal_notice_url = '/impressum.ja/' %}
+    {% when 'fr' %}
+      {% if page.app_name == 'NeonRoutine' %}
+        {% assign legal_notice_url = '/neonroutine/impressum.fr/' %}
+      {% endif %}
+  {% endcase %}
   <header class="site-header">
-    <a class="brand" href="/index.html" aria-label="Timon Polley home">
+    <a class="brand" href="/index.html" aria-label="{% if is_french %}Accueil Timon Polley{% else %}Timon Polley home{% endif %}">
       <span class="brand-mark">TP</span>
       <span>
         <strong>Timon Polley</strong>
-        <small>Legal documents</small>
+        <small>{% if is_french %}Documents juridiques{% else %}Legal documents{% endif %}</small>
       </span>
     </a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/index.html#apps">Apps</a>
-      <a href="/impressum.en/" aria-current="page">Legal notice</a>
-      <a class="nav-action" href="/support.html">Support</a>
+    <nav class="nav" aria-label="{% if is_french %}Navigation principale{% else %}Primary navigation{% endif %}">
+      <a href="/index.html#apps">{% if is_french %}Applications{% else %}Apps{% endif %}</a>
+      <a href="{{ legal_notice_url }}"{% if page.url == legal_notice_url %} aria-current="page"{% endif %}>{% if is_french %}Mentions légales{% else %}Legal notice{% endif %}</a>
+      <a class="nav-action" href="/support.html">{% if is_french %}Assistance{% else %}Support{% endif %}</a>
     </nav>
   </header>
 
@@ -31,14 +43,14 @@
       <header class="legal-header">
         <p class="eyebrow">{{ page.doc_type | default: 'Legal document' }}</p>
         <h1>{{ page.title }}</h1>
-        <div class="legal-meta" aria-label="Document information">
+        <div class="legal-meta" aria-label="{% if is_french %}Informations sur le document{% else %}Document information{% endif %}">
           {% if page.app_name %}<span>{{ page.app_name }}</span>{% endif %}
           <span>{{ page.language | default: page.language_code | upcase }}</span>
         </div>
       </header>
 
-      <nav class="legal-language" aria-label="Language options">
-        <span>Language</span>
+      <nav class="legal-language" aria-label="{% if is_french %}Options de langue{% else %}Language options{% endif %}">
+        <span>{% if is_french %}Langue{% else %}Language{% endif %}</span>
         <div class="language-list">
           {% assign versions = site.pages | where: "doc_id", page.doc_id | sort: "language_order" %}
           {% for version in versions %}
@@ -59,9 +71,9 @@
   <footer class="site-footer">
     <p>&copy; <span id="year">2026</span> Timon Polley</p>
     <div>
-      <a href="/index.html">Home</a>
-      <a href="/support.html">Support</a>
-      <a href="/index.html#apps">App documents</a>
+      <a href="/index.html">{% if is_french %}Accueil{% else %}Home{% endif %}</a>
+      <a href="/support.html">{% if is_french %}Assistance{% else %}Support{% endif %}</a>
+      <a href="/index.html#apps">{% if is_french %}Documents des applications{% else %}App documents{% endif %}</a>
     </div>
   </footer>
 

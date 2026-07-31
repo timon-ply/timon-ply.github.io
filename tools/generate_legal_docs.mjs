@@ -3,13 +3,16 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const updated = 'June 23, 2026';
+const updated = 'July 31, 2026';
 
 const languages = [
   { code: 'de', name: 'Deutsch', order: 1 },
   { code: 'en', name: 'English', order: 2 },
   { code: 'es', name: 'Español', order: 3 },
   { code: 'ja', name: '日本語', order: 4 },
+];
+const neonroutineOnlyLanguages = [
+  { code: 'fr', name: 'Français', order: 5 },
 ];
 
 const tr = {
@@ -244,6 +247,83 @@ const tr = {
     localOnlyNoAccount: (app) => `${app} no ofrece actualmente una cuenta de app ni sincronización en la nube. No hay una cuenta remota que eliminar; use los controles de eliminación/restablecimiento de la app, los controles de almacenamiento del sistema operativo o desinstale la app para retirar datos locales del dispositivo.`,
     accountDeletion: (app) => `${app} ofrece controles relacionados con cuentas dentro de la app. Eliminar una cuenta borra o anonimiza los datos vinculados a la cuenta salvo que sea necesaria la conservación por seguridad, prevención de fraude, cumplimiento legal, gestión de disputas o preservación de registros compartidos de otros usuarios.`,
   },
+  fr: {
+    lastUpdated: 'Dernière mise à jour',
+    controller: 'Responsable du traitement et contact',
+    scope: 'Fonctionnement de l’application',
+    data: 'Données et finalités',
+    sharing: 'Sous-traitants et services tiers',
+    legalBasis: 'Bases juridiques pour les utilisateurs de l’EEE',
+    retention: 'Conservation, suppression et contrôles utilisateur',
+    rights: 'Vos droits en matière de protection des données',
+    children: 'Enfants et conditions d’âge',
+    security: 'Sécurité',
+    transfers: 'Transferts internationaux',
+    changes: 'Modifications',
+    contact: 'Contact',
+    related: 'Pages publiques associées',
+    date: '31 juillet 2026',
+    productScope: 'Champ d’application du produit',
+    userRespHeading: 'Responsabilité de l’utilisateur',
+    accountsSafety: 'Comptes, contenu et sécurité',
+    purchasesAds: 'Achats, abonnements et publicité',
+    thirdParty: 'Services tiers et sources de données',
+    availability: 'Disponibilité et modifications',
+    warranty: 'Garanties et responsabilité',
+    governing: 'Droit applicable et règlement des litiges',
+    automated: 'Prise de décision automatisée',
+    commitment: 'Engagement',
+    conformanceStatus: 'État de conformité',
+    accessibilityFeatures: 'Fonctionnalités d’accessibilité',
+    knownLimitations: 'Limites connues',
+    feedbackEnforcement: 'Retours et voies de recours',
+    primaryMethod: 'Méthode principale',
+    inAppControls: 'Contrôles dans l’application',
+    manualRequest: 'Demande manuelle',
+    retentionExceptions: 'Exceptions de conservation',
+    zeroTolerance: 'Tolérance zéro',
+    prohibitedConduct: 'Comportements interdits',
+    reporting: 'Signalement',
+    enforcement: 'Application',
+    pointOfContact: 'Point de contact',
+    providerInfo: 'Informations sur le fournisseur',
+    consumerDispute: 'Règlement extrajudiciaire des litiges de consommation',
+    appSpecificNotices: 'Mentions légales propres aux applications',
+    preRelease: 'Ce document reflète le périmètre actuel de l’implémentation avant publication et doit être réexaminé avant tout lancement externe.',
+    termsIntro: 'En téléchargeant l’application, en y accédant ou en l’utilisant, vous acceptez les présentes conditions. Si vous ne les acceptez pas, n’utilisez pas l’application.',
+    privacyIntro: (app) => `La présente Politique de confidentialité explique comment Timon Polley traite les informations dans le cadre de ${app}.`,
+    controllerText: 'Timon Polley, Gutenbergstraße 5, 51469 Bergisch Gladbach, Allemagne. E-mail : [dev@timonply.com](mailto:dev@timonply.com).',
+    bases: 'Pour les utilisateurs de l’EEE, les traitements nécessaires au fonctionnement principal reposent sur l’exécution du contrat ou sur les fonctionnalités demandées par l’utilisateur. Les publicités, le suivi, les notifications ou les autorisations facultatives reposent sur le consentement lorsqu’il est requis. La sécurité, la prévention des abus et les diagnostics techniques minimaux peuvent reposer sur l’intérêt légitime lorsque la loi le permet.',
+    rightsText: 'Selon votre lieu de résidence, vous pouvez disposer de droits d’accès, de rectification, d’effacement, de limitation, d’opposition, de portabilité, de retrait du consentement et de réclamation auprès d’une autorité de contrôle. Contactez dev@timonply.com pour les demandes qui ne peuvent pas être effectuées directement dans l’application.',
+    childrenText: 'L’application n’est pas destinée à être utilisée sans surveillance par des enfants n’ayant pas atteint l’âge du consentement numérique dans leur pays. Un parent ou représentant légal doit examiner l’application, les achats, les publicités et les contrôles de données avant qu’un enfant ne l’utilise.',
+    securityText: 'Nous appliquons des mesures techniques et organisationnelles raisonnables, limitons la collecte au périmètre actif du produit et ne demandons pas aux utilisateurs d’envoyer par e-mail des mots de passe, des codes d’authentification ou des données sensibles non nécessaires.',
+    transfersText: 'Certains prestataires peuvent traiter des données en dehors de l’EEE. Lorsque les règles du RGPD relatives aux transferts s’appliquent, ceux-ci reposent sur des garanties appropriées, telles qu’une décision d’adéquation, le cadre de protection des données UE–États-Unis lorsqu’il est applicable, ou les clauses contractuelles types.',
+    changesText: 'Nous pouvons mettre à jour ce document lorsque l’application, les exigences légales ou les obligations de transparence des boutiques évoluent. La date indiquée en haut correspond à la version actuelle.',
+    termsTitle: 'Conditions d’utilisation',
+    privacyTitle: 'Politique de confidentialité',
+    accessibilityTitle: 'Déclaration d’accessibilité',
+    deletionTitle: 'Suppression et contrôle des données',
+    csaeTitle: 'Normes relatives à la protection des enfants',
+    impressumTitle: 'Mentions légales',
+    support: 'Assistance',
+    appDocs: 'Documents de l’application',
+    noMedical: 'L’application est destinée uniquement à l’information personnelle, à l’organisation et au bien-être. Elle ne constitue ni un dispositif médical, ni un outil de diagnostic ou de traitement, ni un service d’urgence, et ne remplace pas les conseils d’un professionnel qualifié.',
+    userResponsibility: 'Vous devez vérifier les saisies, paramètres, contenus partagés, quantités, dates, autorisations et résultats avant de vous y fier.',
+    stores: 'Si vous installez l’application depuis l’Apple App Store ou Google Play, les conditions de la boutique concernée ainsi que ses règles de facturation, de résiliation, de remboursement et de gestion des abonnements s’appliquent également.',
+    liability: 'Aucune disposition des présentes conditions ne limite la responsabilité en cas de faute intentionnelle, de négligence grave, d’atteinte à la vie, à l’intégrité physique ou à la santé, ni toute responsabilité qui ne peut légalement être limitée. Les droits impératifs des consommateurs restent inchangés.',
+    dispute: 'Nous ne sommes ni disposés ni tenus de participer à une procédure de règlement des litiges devant un organisme allemand de médiation de la consommation au titre de la loi allemande sur le règlement des litiges de consommation (VSBG).',
+    govLaw: 'Les présentes conditions sont régies par le droit allemand, sans préjudice des dispositions impératives de protection des consommateurs applicables dans votre pays de résidence.',
+    accessibilityCommitment: (app) => `Timon Polley s’efforce de rendre ${app} utilisable par les personnes en situation de handicap et d’améliorer son accessibilité à mesure que le produit évolue.`,
+    conformance: 'L’application est actuellement partiellement conforme aux WCAG 2.2 niveau AA et aux exigences de la norme EN 301 549 dans la mesure où elles s’appliquent aux applications mobiles. Certaines interactions complexes ou propres à la plateforme peuvent nécessiter des améliorations supplémentaires.',
+    feedback: 'Signalez les obstacles d’accessibilité en précisant le nom de l’écran, l’appareil et la plateforme, la technologie d’assistance utilisée ainsi que le comportement attendu, à l’adresse dev@timonply.com.',
+    deletionContact: 'Si vous ne pouvez pas utiliser les contrôles intégrés à l’application, contactez dev@timonply.com. Une vérification raisonnable peut être nécessaire avant le traitement de votre demande.',
+    csaeIntro: (app) => `${app} interdit les abus et l’exploitation sexuels d’enfants, les contenus d’abus sexuels sur enfants, la sollicitation sexuelle de mineurs et tout contenu ou comportement mettant des enfants en danger.`,
+    csaeReport: 'Signalez immédiatement tout soupçon au moyen des outils de signalement intégrés lorsqu’ils sont disponibles et par e-mail à dev@timonply.com. Si un enfant est en danger immédiat, contactez d’abord les services d’urgence ou les autorités compétentes.',
+    csaeEnforce: 'Nous pouvons supprimer des contenus, restreindre des fonctionnalités, suspendre ou fermer des comptes, conserver des preuves lorsque la loi le permet et signaler les contenus confirmés ou les menaces imminentes aux autorités compétentes.',
+    csaeContact: 'Point de contact pour la sécurité des enfants : dev@timonply.com. Les communications peuvent être envoyées en français, en anglais ou en allemand.',
+    localOnlyNoAccount: (app) => `${app} ne propose actuellement ni compte dans l’application ni synchronisation dans le cloud. Il n’existe donc aucun compte distant à supprimer. Utilisez les fonctions de suppression ou de réinitialisation intégrées, les contrôles de stockage du système d’exploitation, ou désinstallez l’application pour supprimer les données locales de l’appareil.`,
+    accountDeletion: (app) => `${app} propose des contrôles liés au compte dans l’application. La suppression d’un compte efface ou anonymise les données qui lui sont associées, sauf lorsqu’une conservation est nécessaire pour la sécurité, la prévention de la fraude, le respect d’obligations légales, le traitement de litiges ou la préservation des données partagées d’autres utilisateurs.`,
+  },
   ja: {
     lastUpdated: '最終更新日',
     controller: '管理者および連絡先',
@@ -330,24 +410,28 @@ const apps = {
       en: 'July 31, 2026',
       de: '31. Juli 2026',
       es: '31 de julio de 2026',
+      fr: '31 juillet 2026',
       ja: '2026年7月31日',
     },
     kind: {
       en: 'A cyberpunk habit, routine, streak, premium, notification, local analytics, and rewarded-ad app.',
       de: 'Eine Cyberpunk-App für Gewohnheiten, Routinen, Serien, Premium-Funktionen, Benachrichtigungen, lokale Auswertungen und Rewarded Ads.',
       es: 'Una app cyberpunk de hábitos, rutinas, rachas, funciones premium, notificaciones, analítica local y anuncios recompensados.',
+      fr: 'Une application cyberpunk de suivi des habitudes, des routines et des séries, avec fonctionnalités premium, notifications, analyses locales et annonces récompensées.',
       ja: '習慣、ルーティン、連続記録、プレミアム機能、通知、ローカル分析、リワード広告を扱うサイバーパンク風アプリです。',
     },
     data: {
       en: ['Local habit and routine data, execution logs, streaks, XP, credits, faction/accent settings, mood and energy logs, achievements, local analytics, export/import state, and factory-reset state are stored on the device.', 'RevenueCat and the app stores process purchase and subscription status. Google Mobile Ads may process device identifiers, IP address, consent state, ad interactions, and rewarded-ad events when ads are used.', 'On iOS, the Identifier for Advertisers (IDFA) may be available only after the user accepts Apple App Tracking Transparency. In the EEA and UK, Google UMP presents consent choices before applicable personalized ads; the choice can be changed or withdrawn from Settings > AD PREFERENCES. See the [Google Privacy Policy](https://policies.google.com/privacy).', 'Local notifications and home widgets process reminder, schedule, and summary data on the device. No NeonRoutine account or cloud sync is currently provided.', 'With explicit permission, the app may read only the selected activity metric from Apple HealthKit or Android Health Connect: steps, workouts, sleep duration, active energy, hydration, and—on HealthKit only—mindful sessions. The app uses that reading only on the device to support the user-triggered habit or goal action, does not write health data, does not send it to advertising or purchase analytics, and access can be revoked in system settings.', 'Health sync is manual or runs only in the foreground when the app opens or resumes for an explicitly enabled mapping; denial, revocation, or an empty read leaves manual habit execution available. Deleting the sensor cache clears only local sync timestamps and never deletes platform health records.'],
       de: ['Lokale Gewohnheits- und Routinedaten, Ausführungsprotokolle, Serien, XP, Credits, Fraktions-/Akzent-Einstellungen, Stimmungs- und Energieprotokolle, Erfolge, lokale Auswertungen, Export-/Importstatus und Zurücksetzstatus werden auf dem Gerät gespeichert.', 'RevenueCat und die App Stores verarbeiten Kauf- und Abonnementstatus. Google Mobile Ads kann Gerätekennungen, IP-Adresse, Einwilligungsstatus, Anzeigeninteraktionen und Rewarded-Ad-Ereignisse verarbeiten, wenn Werbung genutzt wird.', 'Unter iOS kann die Werbe-ID (IDFA) nur verfügbar sein, nachdem der Nutzer Apple App Tracking Transparency zugestimmt hat. Im EWR und Vereinigten Königreich zeigt Google UMP vor entsprechender personalisierter Werbung Einwilligungsoptionen; die Auswahl kann unter Einstellungen > AD PREFERENCES geändert oder widerrufen werden. Siehe die [Google-Datenschutzrichtlinie](https://policies.google.com/privacy).', 'Lokale Benachrichtigungen und Home-Widgets verarbeiten Erinnerungs-, Zeitplan- und Zusammenfassungsdaten auf dem Gerät. Ein NeonRoutine-Konto oder Cloud-Sync wird derzeit nicht angeboten.', 'Mit ausdrücklicher Berechtigung darf die App aus Apple HealthKit oder Android Health Connect nur den ausgewählten Aktivitätswert lesen: Schritte, Trainingseinheiten, Schlafdauer, aktive Energie, Flüssigkeitsaufnahme und—nur in HealthKit—Achtsamkeitseinheiten. Die App verwendet diesen Wert ausschließlich auf dem Gerät zur Unterstützung der vom Nutzer ausgelösten Gewohnheits- oder Zielaktion, schreibt keine Gesundheitsdaten, übermittelt sie nicht an Werbe- oder Kaufanalysen und der Zugriff kann in den Systemeinstellungen widerrufen werden.', 'Die Gesundheitssynchronisierung erfolgt manuell oder nur im Vordergrund beim Öffnen oder Fortsetzen der App für eine ausdrücklich aktivierte Zuordnung; bei Ablehnung, Widerruf oder leerem Ergebnis bleibt die manuelle Gewohnheitsausführung verfügbar. Das Löschen des Sensor-Caches entfernt nur lokale Synchronisierungszeitstempel und niemals Gesundheitsdaten der Plattform.'],
       es: ['Los datos locales de hábitos y rutinas, registros de ejecución, rachas, XP, créditos, ajustes de facción/acento, registros de ánimo y energía, logros, analítica local, exportación/importación y restablecimiento se almacenan en el dispositivo.', 'RevenueCat y las tiendas de aplicaciones tratan el estado de compras y suscripciones. Google Mobile Ads puede tratar identificadores de dispositivo, dirección IP, estado de consentimiento, interacciones con anuncios y eventos de anuncios recompensados cuando se usan anuncios.', 'En iOS, el identificador para anunciantes (IDFA) solo puede estar disponible después de aceptar la Transparencia de seguimiento de Apple. En el EEE y Reino Unido, Google UMP muestra opciones de consentimiento antes de los anuncios personalizados aplicables; la elección puede cambiarse o retirarse en Ajustes > AD PREFERENCES. Consulte la [Política de Privacidad de Google](https://policies.google.com/privacy).', 'Las notificaciones locales y widgets de inicio tratan recordatorios, horarios y resúmenes en el dispositivo. Actualmente no hay cuenta NeonRoutine ni sincronización en la nube.', 'Con permiso explícito, la app puede leer únicamente la métrica de actividad seleccionada de Apple HealthKit o Android Health Connect: pasos, entrenamientos, duración del sueño, energía activa, hidratación y—solo en HealthKit—sesiones de atención plena. La usa solo en el dispositivo para apoyar la acción de hábito u objetivo iniciada por la persona usuaria, no escribe datos de salud, no los envía a analítica publicitaria o de compras y el acceso puede revocarse en los ajustes del sistema.', 'La sincronización de salud es manual o se ejecuta únicamente en primer plano cuando la app se abre o se reanuda para una vinculación habilitada explícitamente; la denegación, revocación o una lectura vacía mantiene disponible la ejecución manual del hábito. Borrar la caché del sensor elimina solo las marcas de tiempo locales y nunca los registros de salud de la plataforma.'],
+      fr: ['Les données locales relatives aux habitudes et aux routines, les journaux d’exécution, les séries, les XP, les crédits, les paramètres de faction et de couleur d’accentuation, les journaux d’humeur et d’énergie, les succès, les analyses locales, l’état des exportations et importations ainsi que l’état de réinitialisation sont stockés sur l’appareil.', 'RevenueCat et les boutiques d’applications traitent l’état des achats et des abonnements. Lorsque des publicités sont utilisées, Google Mobile Ads peut traiter des identifiants de l’appareil, l’adresse IP, l’état du consentement, les interactions publicitaires et les événements liés aux annonces récompensées.', 'Sous iOS, l’identifiant publicitaire (IDFA) ne peut être disponible qu’après l’acceptation de l’App Tracking Transparency (ATT) d’Apple. Dans l’EEE et au Royaume-Uni, Google User Messaging Platform (UMP) présente les choix de consentement avant toute publicité personnalisée concernée ; ce choix peut être modifié ou retiré dans Réglages > AD PREFERENCES. Consultez la [Politique de confidentialité de Google](https://policies.google.com/privacy).', 'Les notifications locales et les widgets de l’écran d’accueil traitent sur l’appareil les données de rappel, de planification et de synthèse. Aucun compte NeonRoutine ni aucune synchronisation dans le cloud ne sont actuellement proposés.', 'Avec une autorisation explicite, l’application peut lire uniquement la mesure d’activité sélectionnée depuis Apple HealthKit ou Android Health Connect : nombre de pas, séances d’entraînement, durée du sommeil, énergie active, hydratation et — uniquement avec HealthKit — séances de pleine conscience. Cette mesure est utilisée exclusivement sur l’appareil pour prendre en charge l’action d’habitude ou d’objectif déclenchée par l’utilisateur ; l’application n’écrit aucune donnée de santé, ne la transmet ni aux systèmes publicitaires ni aux analyses d’achats, et l’accès peut être révoqué dans les réglages système.', 'La synchronisation des données de santé est manuelle ou s’exécute uniquement au premier plan lorsque l’application s’ouvre ou reprend pour une association activée explicitement ; un refus, une révocation ou une lecture vide laisse disponible l’exécution manuelle de l’habitude. La suppression du cache des capteurs efface uniquement les horodatages locaux de synchronisation et ne supprime jamais les données de santé conservées par la plateforme.'],
       ja: ['ローカルの習慣・ルーティンデータ、実行ログ、連続記録、XP、クレジット、派閥/アクセント設定、気分・エネルギー記録、実績、ローカル分析、エクスポート/インポート状態、初期化状態は端末上に保存されます。', 'RevenueCatおよびアプリストアは購入・サブスクリプション状態を処理します。広告を使用する場合、Google Mobile Adsは端末識別子、IPアドレス、同意状態、広告操作、リワード広告イベントを処理する場合があります。', 'iOSでは、Apple App Tracking Transparencyに同意した場合にのみ広告識別子（IDFA）が利用可能になることがあります。EEAおよび英国では、該当するパーソナライズ広告の前にGoogle UMPが同意の選択肢を表示し、設定 > AD PREFERENCESから変更または撤回できます。[Googleプライバシーポリシー](https://policies.google.com/privacy)をご覧ください。', 'ローカル通知とホームウィジェットは、リマインダー、スケジュール、概要データを端末上で処理します。現在、NeonRoutineアカウントまたはクラウド同期は提供していません。', '明示的な許可がある場合、アプリはApple HealthKitまたはAndroid Health Connectから選択されたアクティビティ指標（歩数、ワークアウト、睡眠時間、アクティブエネルギー、水分摂取、およびHealthKitのみのマインドフルセッション）のみを読み取ります。この値はユーザーが開始した習慣または目標の操作を支援するために端末上でのみ使用され、健康データへの書き込み、広告・購入分析への送信は行われず、アクセスはシステム設定から取り消せます。', '健康同期は手動、または明示的に有効化されたマッピングについてアプリの起動・再開時にフォアグラウンドでのみ実行されます。拒否、取り消し、空の読み取りでも習慣の手動実行は利用でき、センサーキャッシュの削除はローカルの同期時刻だけを消去し、プラットフォームの健康記録を削除しません。'],
     },
     processors: {
       en: 'RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, platform notification services, and operating-system storage/widget services.',
       de: 'RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, Plattform-Benachrichtigungsdienste sowie Betriebssystem-Speicher- und Widget-Dienste.',
       es: 'RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, servicios de notificaciones de plataforma y servicios de almacenamiento/widgets del sistema operativo.',
+      fr: 'RevenueCat, Apple App Store, Google Play, Google Mobile Ads/AdMob, les services de notification de la plateforme ainsi que les services de stockage et de widgets du système d’exploitation.',
       ja: 'RevenueCat、Apple App Store、Google Play、Google Mobile Ads/AdMob、プラットフォーム通知サービス、OSのストレージおよびウィジェットサービス。',
     },
     account: false,
@@ -356,7 +440,11 @@ const apps = {
       en: ['High-motion HUD animations, glow effects, shader overlays, and timer screens may need further tuning for some assistive technology combinations.', 'Rewarded-ad and purchase provider dialogs are partly controlled by third-party SDKs or app stores.'],
       de: ['Bewegungsreiche HUD-Animationen, Leuchteffekte, Shader-Overlays und Timer-Bildschirme können für manche Kombinationen assistiver Technologien weitere Anpassungen benötigen.', 'Rewarded-Ad- und Kaufdialoge werden teilweise durch Drittanbieter-SDKs oder App Stores kontrolliert.'],
       es: ['Las animaciones HUD con mucho movimiento, efectos de brillo, superposiciones shader y pantallas de temporizador pueden requerir ajustes adicionales para algunas combinaciones de tecnologías asistivas.', 'Los diálogos de anuncios recompensados y compras son controlados parcialmente por SDKs de terceros o tiendas de apps.'],
+      fr: ['Les animations très dynamiques de l’interface HUD, les effets lumineux, les superpositions de shaders et les écrans de minuterie peuvent nécessiter des ajustements supplémentaires avec certaines technologies d’assistance.', 'Les boîtes de dialogue relatives aux annonces récompensées et aux achats sont en partie contrôlées par des SDK tiers ou par les boutiques d’applications.'],
       ja: ['動きの多いHUDアニメーション、発光効果、シェーダーオーバーレイ、タイマー画面は、一部の支援技術との組み合わせで追加調整が必要な場合があります。', 'リワード広告および購入ダイアログは、第三者SDKまたはアプリストアにより一部制御されます。'],
+    },
+    deletionDetails: {
+      fr: 'La commande permettant d’effacer le cache des capteurs supprime uniquement les horodatages locaux de synchronisation. Elle ne supprime jamais les données enregistrées dans Apple HealthKit ou Android Health Connect. Pour retirer ces données de la plateforme de santé, utilisez les contrôles proposés par iOS ou Android.',
     },
   },
   kalvenda: {
@@ -450,10 +538,86 @@ const apps = {
   },
 };
 
+const localizedCopy = {
+  automatedDecision: {
+    de: 'Die App trifft keine automatisierten Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung. Personalisierte Werbung oder Store-/SDK-Entscheidungen können automatisiert erfolgen, soweit der jeweilige Dienst dies vorsieht und eine erforderliche Einwilligung vorliegt.',
+    en: 'The app does not make automated decisions with legal or similarly significant effects. Personalized ads or store/SDK decisions may be automated where the provider offers them and required consent exists.',
+    es: 'La app no toma decisiones automatizadas con efectos jurídicos o similares significativos. La publicidad personalizada o decisiones de SDK/tienda pueden ser automatizadas cuando el proveedor las ofrece y exista el consentimiento requerido.',
+    fr: 'L’application ne prend aucune décision automatisée produisant des effets juridiques ou des effets similaires significatifs. La personnalisation des publicités ou certaines décisions prises par les boutiques ou les SDK peuvent être automatisées lorsque le fournisseur le prévoit et que le consentement requis a été donné.',
+    ja: '本アプリは、法的または同様に重大な効果をもつ自動意思決定を行いません。パーソナライズ広告やストア/SDK側の判断は、各サービスの範囲内で、必要な同意がある場合に自動化されることがあります。',
+  },
+  noAccountResponsibility: {
+    de: 'Die aktuelle Version bietet kein App-Konto. Lokale Daten, Backups und Exportdateien liegen in Ihrer Verantwortung.',
+    en: 'The current version does not provide an app account. Local data, backups, and exported files are your responsibility.',
+    es: 'La versión actual no ofrece cuenta de app. Los datos locales, copias de seguridad y archivos exportados son responsabilidad del usuario.',
+    fr: 'La version actuelle ne propose pas de compte dans l’application. Vous êtes responsable de vos données locales, de vos sauvegardes et de vos fichiers exportés.',
+    ja: '現在の版はアプリアカウントを提供しません。ローカルデータ、バックアップ、エクスポートファイルはユーザーの責任です。',
+  },
+  paidTerms: {
+    de: 'Preise, Verlängerungen, Kündigung, Erstattung und Wiederherstellung werden vor dem Kauf durch die jeweilige Store- oder Zahlungsoberfläche angezeigt. Bezahlte Funktionen dürfen nicht missbraucht, übertragen oder umgangen werden.',
+    en: 'Prices, renewal, cancellation, refunds, and restore options are shown before purchase by the applicable store or payment interface. Paid features must not be abused, transferred, or bypassed.',
+    es: 'Precios, renovación, cancelación, reembolsos y restauración se muestran antes de la compra mediante la tienda o interfaz de pago correspondiente. Las funciones de pago no deben abusarse, transferirse ni eludirse.',
+    fr: 'Les prix, renouvellements, résiliations, remboursements et options de restauration sont présentés avant l’achat dans l’interface de la boutique ou de paiement concernée. Les fonctionnalités payantes ne doivent pas être détournées, transférées ou contournées.',
+    ja: '価格、更新、解約、返金、復元は、購入前に該当するストアまたは支払い画面で表示されます。有料機能を不正利用、譲渡、回避してはなりません。',
+  },
+  availability: {
+    de: 'Funktionen können geändert, eingeschränkt, unterbrochen oder entfernt werden. Lokale, Store-, Netzwerk- und Drittanbieterbedingungen können die Verfügbarkeit beeinflussen.',
+    en: 'Features may change, be limited, interrupted, or removed. Local, store, network, and third-party conditions can affect availability.',
+    es: 'Las funciones pueden cambiar, limitarse, interrumpirse o retirarse. Condiciones locales, de tienda, red o terceros pueden afectar la disponibilidad.',
+    fr: 'Les fonctionnalités peuvent être modifiées, limitées, interrompues ou supprimées. Les conditions locales, celles des boutiques, du réseau ou de services tiers peuvent affecter leur disponibilité.',
+    ja: '機能は変更、制限、中断、削除される場合があります。ローカル環境、ストア、ネットワーク、第三者サービスの条件が利用可能性に影響することがあります。',
+  },
+  accessibilityFeatures: {
+    de: '- Unterstützung für Plattform-Screenreader und semantische Labels, soweit implementiert.\n- Unterstützung für größere Schrift und Betriebssystem-Einstellungen, soweit die jeweilige Oberfläche dies zulässt.\n- Fokus auf ausreichenden Kontrast, klare Aktionen und reduzierte Bewegung, wo verfügbar.',
+    en: '- Support for platform screen readers and semantic labels where implemented.\n- Support for larger text and operating-system settings where the surface allows it.\n- Focus on sufficient contrast, clear actions, and reduced motion where available.',
+    es: '- Compatibilidad con lectores de pantalla de plataforma y etiquetas semánticas donde estén implementadas.\n- Soporte para texto más grande y ajustes del sistema operativo donde la superficie lo permita.\n- Enfoque en contraste suficiente, acciones claras y reducción de movimiento cuando esté disponible.',
+    fr: '- Prise en charge des lecteurs d’écran de la plateforme et des libellés sémantiques lorsqu’ils sont disponibles.\n- Prise en charge d’un texte agrandi et des réglages du système d’exploitation lorsque l’interface le permet.\n- Attention portée à un contraste suffisant, à des actions clairement identifiées et à la réduction des animations lorsqu’elle est disponible.',
+    ja: '- 実装されている範囲で、プラットフォームのスクリーンリーダーとセマンティックラベルをサポートします。\n- 画面が許す範囲で、大きな文字とOS設定をサポートします。\n- 十分なコントラスト、明確な操作、利用可能な場合の動きの低減を重視します。',
+  },
+  accessibilityEnforcement: {
+    de: 'Für Verbraucherprodukte und -dienstleistungen in Deutschland kann die zuständige Marktüberwachungsbehörde nach dem BFSG zusätzlich kontaktiert werden, wenn ein Anliegen nicht angemessen gelöst wird.',
+    en: 'For consumer products and services in Germany, the competent market surveillance authority under the BFSG may also be contacted if an issue is not resolved appropriately.',
+    es: 'Para productos y servicios de consumo en Alemania, la autoridad competente de vigilancia del mercado bajo el BFSG puede contactarse adicionalmente si una incidencia no se resuelve adecuadamente.',
+    fr: 'Pour les produits et services destinés aux consommateurs en Allemagne, l’autorité de surveillance du marché compétente au titre du BFSG peut également être saisie si un problème n’est pas résolu de manière appropriée.',
+    ja: 'ドイツの消費者向け製品・サービスについて、問題が適切に解決されない場合、BFSGに基づく所管の市場監視当局へ連絡できる場合があります。',
+  },
+  localDeletionControls: {
+    de: 'Verwenden Sie Export-, Import-, Zurücksetz- oder Löschfunktionen in den App-Einstellungen, sofern verfügbar. Exportdateien können sensible Daten enthalten und sollten sicher gespeichert werden.',
+    en: 'Use export, import, reset, or deletion features in app settings where available. Export files may contain sensitive data and should be stored securely.',
+    es: 'Use las funciones de exportación, importación, restablecimiento o eliminación en los ajustes cuando estén disponibles. Los archivos exportados pueden contener datos sensibles y deben guardarse de forma segura.',
+    fr: 'Utilisez, lorsqu’elles sont disponibles, les fonctions d’exportation, d’importation, de réinitialisation ou de suppression dans les réglages de l’application. Les fichiers exportés peuvent contenir des données sensibles et doivent être conservés de manière sécurisée.',
+    ja: '利用可能な場合は、アプリ設定のエクスポート、インポート、リセット、削除機能を使用してください。エクスポートファイルには機微データが含まれる場合があり、安全に保存してください。',
+  },
+  retentionExceptions: {
+    de: 'Einige Daten können aufbewahrt werden, soweit dies für Sicherheit, Betrugsprävention, Abrechnung, gesetzliche Pflichten, Nachweisführung, Streitbeilegung, Missbrauchsberichte oder die Rechte anderer Nutzer erforderlich ist. Nicht mehr benötigte Daten werden gelöscht oder anonymisiert.',
+    en: 'Some data may be retained where necessary for security, fraud prevention, billing, legal obligations, evidence, dispute resolution, abuse reports, or other users rights. Data no longer needed is deleted or anonymized.',
+    es: 'Algunos datos pueden conservarse cuando sea necesario por seguridad, prevención de fraude, facturación, obligaciones legales, pruebas, resolución de disputas, reportes de abuso o derechos de otros usuarios. Los datos que ya no sean necesarios se eliminan o anonimizan.',
+    fr: 'Certaines données traitées par les boutiques ou les prestataires peuvent être conservées lorsque cela est nécessaire à la sécurité, à la prévention de la fraude, à la facturation, au respect d’obligations légales, à la preuve ou au règlement de litiges. Les données qui ne sont plus nécessaires sont supprimées ou anonymisées conformément aux règles du prestataire concerné.',
+    ja: 'セキュリティ、不正防止、請求、法的義務、証拠保全、紛争解決、乱用報告、他ユーザーの権利のために必要な場合、一部データを保存することがあります。不要になったデータは削除または匿名化されます。',
+  },
+  appProviderInfo: {
+    de: 'Angaben nach § 5 DDG für dieses App-Angebot. Die allgemeine Impressumsseite ist ebenfalls verfügbar.',
+    en: 'Provider information under Section 5 DDG for this app offering. The general legal notice is also available.',
+    es: 'Información del proveedor conforme al § 5 DDG para esta oferta de app. También está disponible el aviso legal general.',
+    fr: 'Informations sur le fournisseur communiquées conformément à l’article 5 du DDG allemand pour cette application. Les mentions légales générales sont également disponibles.',
+    ja: '本アプリ提供に関するDDG第5条に基づく提供者情報です。一般の運営者情報ページも利用できます。',
+  },
+};
+
+function copyFor(section, code) {
+  return localizedCopy[section][code] ?? localizedCopy[section].en;
+}
+
 function file(path, content) {
   const full = join(root, path);
+  const normalizedContent = path === 'docs/regulatory-review.md'
+    ? content.replace(
+        'Added route matrix paths for all four languages: German, English, Spanish, and Japanese.',
+        'Added route matrix paths for the four portfolio languages (German, English, Spanish, and Japanese) plus the NeonRoutine-only French routes.',
+      )
+    : content;
   mkdirSync(dirname(full), { recursive: true });
-  writeFileSync(full, `${content.trim()}\n`, 'utf8');
+  writeFileSync(full, `${normalizedContent.trim()}\n`, 'utf8');
 }
 
 function yamlList(items) {
@@ -494,6 +658,7 @@ function related(appKey, app, code, includeCsae = app.csae) {
 function titleFor(langCode, docTitle, appName) {
   if (langCode === 'de') return `${docTitle} für ${appName}`;
   if (langCode === 'es') return `${docTitle} de ${appName}`;
+  if (langCode === 'fr') return `${docTitle} de ${appName}`;
   if (langCode === 'ja') return `${appName} ${docTitle}`;
   return `${docTitle} for ${appName}`;
 }
@@ -506,27 +671,34 @@ function privacyDoc(appKey, app, lang) {
   const l = tr[lang.code];
   const title = titleFor(lang.code, l.privacyTitle, app.name);
   const privacyDate = app.privacyUpdated?.[lang.code] ?? l.date;
-  return `${frontmatter({ title, docId: `${appKey}-privacy`, docType: l.privacyTitle, appName: app.name, lang, permalink: `/${appKey}/privacy.${lang.code}/`, redirects: docRedirects(appKey, 'privacy', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${privacyDate}\n\n${l.privacyIntro(app.name)}\n\n## ${l.controller}\n\n${l.controllerText}\n\n## ${l.scope}\n\n${app.kind[lang.code]}${app.health ? `\n\n${l.noMedical}` : ''}${app.prerelease ? `\n\n${l.preRelease}` : ''}\n\n## ${l.data}\n\n${app.data[lang.code].map((line) => `- ${line}`).join('\n')}\n\n## ${l.sharing}\n\n${processors(app, lang.code)}\n\n## ${l.legalBasis}\n\n${l.bases}\n\n## ${l.retention}\n\n${app.account ? l.accountDeletion(app.name) : l.localOnlyNoAccount(app.name)}\n\n${l.deletionContact}\n\n## ${l.rights}\n\n${l.rightsText}\n\n## ${l.children}\n\n${l.childrenText}\n\n## ${l.security}\n\n${l.securityText}\n\n## ${l.transfers}\n\n${l.transfersText}\n\n## ${l.automated}\n\n${lang.code === 'de' ? 'Die App trifft keine automatisierten Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung. Personalisierte Werbung oder Store-/SDK-Entscheidungen können automatisiert erfolgen, soweit der jeweilige Dienst dies vorsieht und eine erforderliche Einwilligung vorliegt.' : lang.code === 'es' ? 'La app no toma decisiones automatizadas con efectos jurídicos o similares significativos. La publicidad personalizada o decisiones de SDK/tienda pueden ser automatizadas cuando el proveedor las ofrece y exista el consentimiento requerido.' : lang.code === 'ja' ? '本アプリは、法的または同様に重大な効果をもつ自動意思決定を行いません。パーソナライズ広告やストア/SDK側の判断は、各サービスの範囲内で、必要な同意がある場合に自動化されることがあります。' : 'The app does not make automated decisions with legal or similarly significant effects. Personalized ads or store/SDK decisions may be automated where the provider offers them and required consent exists.'}\n\n## ${l.changes}\n\n${l.changesText}\n\n${related(appKey, app, lang.code)}`;
+  return `${frontmatter({ title, docId: `${appKey}-privacy`, docType: l.privacyTitle, appName: app.name, lang, permalink: `/${appKey}/privacy.${lang.code}/`, redirects: docRedirects(appKey, 'privacy', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${privacyDate}\n\n${l.privacyIntro(app.name)}\n\n## ${l.controller}\n\n${l.controllerText}\n\n## ${l.scope}\n\n${app.kind[lang.code]}${app.health ? `\n\n${l.noMedical}` : ''}${app.prerelease ? `\n\n${l.preRelease}` : ''}\n\n## ${l.data}\n\n${app.data[lang.code].map((line) => `- ${line}`).join('\n')}\n\n## ${l.sharing}\n\n${processors(app, lang.code)}\n\n## ${l.legalBasis}\n\n${l.bases}\n\n## ${l.retention}\n\n${app.account ? l.accountDeletion(app.name) : l.localOnlyNoAccount(app.name)}\n\n${l.deletionContact}\n\n## ${l.rights}\n\n${l.rightsText}\n\n## ${l.children}\n\n${l.childrenText}\n\n## ${l.security}\n\n${l.securityText}\n\n## ${l.transfers}\n\n${l.transfersText}\n\n## ${l.automated}\n\n${copyFor('automatedDecision', lang.code)}\n\n## ${l.changes}\n\n${l.changesText}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function termsDoc(appKey, app, lang) {
   const l = tr[lang.code];
   const title = titleFor(lang.code, l.termsTitle, app.name);
   const ugc = app.csae ? (lang.code === 'de' ? 'Nutzerinhalte dürfen nicht rechtswidrig, missbräuchlich, belästigend, diskriminierend, sexuell ausbeuterisch, kindergefährdend oder verletzend sein. Wir können Meldungen prüfen, Inhalte entfernen, Funktionen einschränken und Konten sperren.' : lang.code === 'es' ? 'El contenido de usuarios no puede ser ilegal, abusivo, acosador, discriminatorio, sexualmente explotador, peligroso para menores o lesivo. Podemos revisar reportes, retirar contenido, restringir funciones y suspender cuentas.' : lang.code === 'ja' ? 'ユーザーコンテンツは、違法、虐待的、嫌がらせ、差別的、性的搾取、子どもを危険にさらすもの、または権利侵害であってはなりません。当社は報告を確認し、コンテンツ削除、機能制限、アカウント停止を行う場合があります。' : 'User content must not be unlawful, abusive, harassing, discriminatory, sexually exploitative, child-endangering, or infringing. We may review reports, remove content, restrict features, and suspend accounts.') : '';
-  const paid = lang.code === 'de' ? 'Preise, Verlängerungen, Kündigung, Erstattung und Wiederherstellung werden vor dem Kauf durch die jeweilige Store- oder Zahlungsoberfläche angezeigt. Bezahlte Funktionen dürfen nicht missbraucht, übertragen oder umgangen werden.' : lang.code === 'es' ? 'Precios, renovación, cancelación, reembolsos y restauración se muestran antes de la compra mediante la tienda o interfaz de pago correspondiente. Las funciones de pago no deben abusarse, transferirse ni eludirse.' : lang.code === 'ja' ? '価格、更新、解約、返金、復元は、購入前に該当するストアまたは支払い画面で表示されます。有料機能を不正利用、譲渡、回避してはなりません。' : 'Prices, renewal, cancellation, refunds, and restore options are shown before purchase by the applicable store or payment interface. Paid features must not be abused, transferred, or bypassed.';
-  return `${frontmatter({ title, docId: `${appKey}-terms`, docType: l.termsTitle, appName: app.name, lang, permalink: `/${appKey}/terms.${lang.code}/`, redirects: docRedirects(appKey, 'terms', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## 1. ${l.termsTitle}\n\n${l.termsIntro}\n\n${l.controllerText}\n\n## 2. ${l.productScope}\n\n${app.kind[lang.code]}\n\n${app.health || appKey === 'neonroutine' ? l.noMedical : ''}\n\n## 3. ${l.userRespHeading}\n\n${l.userResponsibility}\n\n## 4. ${l.accountsSafety}\n\n${app.account ? (lang.code === 'de' ? 'Sie sind für die Sicherheit Ihres Kontos, korrekte Angaben und zulässige Nutzung geteilter Bereiche verantwortlich.' : lang.code === 'es' ? 'Usted es responsable de la seguridad de su cuenta, de datos correctos y del uso permitido de espacios compartidos.' : lang.code === 'ja' ? 'アカウントの安全、正確な情報、共有領域の適切な利用について責任を負います。' : 'You are responsible for account security, accurate information, and lawful use of shared spaces.') : (lang.code === 'de' ? 'Die aktuelle Version bietet kein App-Konto. Lokale Daten, Backups und Exportdateien liegen in Ihrer Verantwortung.' : lang.code === 'es' ? 'La versión actual no ofrece cuenta de app. Los datos locales, copias de seguridad y archivos exportados son responsabilidad del usuario.' : lang.code === 'ja' ? '現在の版はアプリアカウントを提供しません。ローカルデータ、バックアップ、エクスポートファイルはユーザーの責任です。' : 'The current version does not provide an app account. Local data, backups, and exported files are your responsibility.')}\n\n${ugc}\n\n## 5. ${l.purchasesAds}\n\n${paid}\n\n${l.stores}\n\n## 6. ${l.thirdParty}\n\n${processors(app, lang.code)}\n\n${appKey === 'exactake' ? (lang.code === 'de' ? 'Lebensmittel- und Nährwertdaten von Drittanbietern können unvollständig, veraltet oder falsch sein. Prüfen Sie Quellen, Labels, Mengen und Unsicherheiten selbst.' : lang.code === 'es' ? 'Los datos alimentarios y nutricionales de terceros pueden estar incompletos, desactualizados o ser incorrectos. Revise fuentes, etiquetas, cantidades e incertidumbre.' : lang.code === 'ja' ? '第三者の食品・栄養データは不完全、古い、または誤っている場合があります。ソース、ラベル、数量、不確実性を確認してください。' : 'Third-party food and nutrition data can be incomplete, outdated, or wrong. Review sources, labels, quantities, and uncertainty yourself.') : ''}\n\n## 7. ${l.availability}\n\n${lang.code === 'de' ? 'Funktionen können geändert, eingeschränkt, unterbrochen oder entfernt werden. Lokale, Store-, Netzwerk- und Drittanbieterbedingungen können die Verfügbarkeit beeinflussen.' : lang.code === 'es' ? 'Las funciones pueden cambiar, limitarse, interrumpirse o retirarse. Condiciones locales, de tienda, red o terceros pueden afectar la disponibilidad.' : lang.code === 'ja' ? '機能は変更、制限、中断、削除される場合があります。ローカル環境、ストア、ネットワーク、第三者サービスの条件が利用可能性に影響することがあります。' : 'Features may change, be limited, interrupted, or removed. Local, store, network, and third-party conditions can affect availability.'}\n\n## 8. ${l.warranty}\n\n${l.liability}\n\n## 9. ${l.governing}\n\n${l.govLaw}\n\n${l.dispute}\n\n## 10. ${l.changes}\n\n${l.changesText}\n\n${related(appKey, app, lang.code)}`;
+  const paid = copyFor('paidTerms', lang.code);
+  const accountResponsibility = app.account
+    ? (lang.code === 'de' ? 'Sie sind für die Sicherheit Ihres Kontos, korrekte Angaben und zulässige Nutzung geteilter Bereiche verantwortlich.' : lang.code === 'es' ? 'Usted es responsable de la seguridad de su cuenta, de datos correctos y del uso permitido de espacios compartidos.' : lang.code === 'ja' ? 'アカウントの安全、正確な情報、共有領域の適切な利用について責任を負います。' : 'You are responsible for account security, accurate information, and lawful use of shared spaces.')
+    : copyFor('noAccountResponsibility', lang.code);
+  return `${frontmatter({ title, docId: `${appKey}-terms`, docType: l.termsTitle, appName: app.name, lang, permalink: `/${appKey}/terms.${lang.code}/`, redirects: docRedirects(appKey, 'terms', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## 1. ${l.termsTitle}\n\n${l.termsIntro}\n\n${l.controllerText}\n\n## 2. ${l.productScope}\n\n${app.kind[lang.code]}\n\n${app.health || appKey === 'neonroutine' ? l.noMedical : ''}\n\n## 3. ${l.userRespHeading}\n\n${l.userResponsibility}\n\n## 4. ${l.accountsSafety}\n\n${accountResponsibility}\n\n${ugc}\n\n## 5. ${l.purchasesAds}\n\n${paid}\n\n${l.stores}\n\n## 6. ${l.thirdParty}\n\n${processors(app, lang.code)}\n\n${appKey === 'exactake' ? (lang.code === 'de' ? 'Lebensmittel- und Nährwertdaten von Drittanbietern können unvollständig, veraltet oder falsch sein. Prüfen Sie Quellen, Labels, Mengen und Unsicherheiten selbst.' : lang.code === 'es' ? 'Los datos alimentarios y nutricionales de terceros pueden estar incompletos, desactualizados o ser incorrectos. Revise fuentes, etiquetas, cantidades e incertidumbre.' : lang.code === 'ja' ? '第三者の食品・栄養データは不完全、古い、または誤っている場合があります。ソース、ラベル、数量、不確実性を確認してください。' : 'Third-party food and nutrition data can be incomplete, outdated, or wrong. Review sources, labels, quantities, and uncertainty yourself.') : ''}\n\n## 7. ${l.availability}\n\n${copyFor('availability', lang.code)}\n\n## 8. ${l.warranty}\n\n${l.liability}\n\n## 9. ${l.governing}\n\n${l.govLaw}\n\n${l.dispute}\n\n## 10. ${l.changes}\n\n${l.changesText}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function accessibilityDoc(appKey, app, lang) {
   const l = tr[lang.code];
   const title = titleFor(lang.code, l.accessibilityTitle, app.name);
-  return `${frontmatter({ title, docId: `${appKey}-accessibility`, docType: l.accessibilityTitle, appName: app.name, lang, permalink: `/${appKey}/accessibility.${lang.code}/`, redirects: docRedirects(appKey, 'accessibility', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.commitment}\n\n${l.accessibilityCommitment(app.name)}\n\n## ${l.conformanceStatus}\n\n${l.conformance}\n\n## ${l.accessibilityFeatures}\n\n${lang.code === 'de' ? '- Unterstützung für Plattform-Screenreader und semantische Labels, soweit implementiert.\n- Unterstützung für größere Schrift und Betriebssystem-Einstellungen, soweit die jeweilige Oberfläche dies zulässt.\n- Fokus auf ausreichenden Kontrast, klare Aktionen und reduzierte Bewegung, wo verfügbar.' : lang.code === 'es' ? '- Compatibilidad con lectores de pantalla de plataforma y etiquetas semánticas donde estén implementadas.\n- Soporte para texto más grande y ajustes del sistema operativo donde la superficie lo permita.\n- Enfoque en contraste suficiente, acciones claras y reducción de movimiento cuando esté disponible.' : lang.code === 'ja' ? '- 実装されている範囲で、プラットフォームのスクリーンリーダーとセマンティックラベルをサポートします。\n- 画面が許す範囲で、大きな文字とOS設定をサポートします。\n- 十分なコントラスト、明確な操作、利用可能な場合の動きの低減を重視します。' : '- Support for platform screen readers and semantic labels where implemented.\n- Support for larger text and operating-system settings where the surface allows it.\n- Focus on sufficient contrast, clear actions, and reduced motion where available.'}\n\n## ${l.knownLimitations}\n\n${app.limitations[lang.code].map((item) => `- ${item}`).join('\n')}\n\n## ${l.feedbackEnforcement}\n\n${l.feedback}\n\n${lang.code === 'de' ? 'Für Verbraucherprodukte und -dienstleistungen in Deutschland kann die zuständige Marktüberwachungsbehörde nach dem BFSG zusätzlich kontaktiert werden, wenn ein Anliegen nicht angemessen gelöst wird.' : lang.code === 'es' ? 'Para productos y servicios de consumo en Alemania, la autoridad competente de vigilancia del mercado bajo el BFSG puede contactarse adicionalmente si una incidencia no se resuelve adecuadamente.' : lang.code === 'ja' ? 'ドイツの消費者向け製品・サービスについて、問題が適切に解決されない場合、BFSGに基づく所管の市場監視当局へ連絡できる場合があります。' : 'For consumer products and services in Germany, the competent market surveillance authority under the BFSG may also be contacted if an issue is not resolved appropriately.'}\n\n${related(appKey, app, lang.code)}`;
+  return `${frontmatter({ title, docId: `${appKey}-accessibility`, docType: l.accessibilityTitle, appName: app.name, lang, permalink: `/${appKey}/accessibility.${lang.code}/`, redirects: docRedirects(appKey, 'accessibility', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.commitment}\n\n${l.accessibilityCommitment(app.name)}\n\n## ${l.conformanceStatus}\n\n${l.conformance}\n\n## ${l.accessibilityFeatures}\n\n${copyFor('accessibilityFeatures', lang.code)}\n\n## ${l.knownLimitations}\n\n${app.limitations[lang.code].map((item) => `- ${item}`).join('\n')}\n\n## ${l.feedbackEnforcement}\n\n${l.feedback}\n\n${copyFor('accessibilityEnforcement', lang.code)}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function deletionDoc(appKey, app, lang) {
   const l = tr[lang.code];
   const title = titleFor(lang.code, l.deletionTitle, app.name);
-  return `${frontmatter({ title, docId: `${appKey}-deletion`, docType: l.deletionTitle, appName: app.name, lang, permalink: `/${appKey}/deletion.${lang.code}/`, redirects: docRedirects(appKey, 'deletion', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.primaryMethod}\n\n${app.account ? l.accountDeletion(app.name) : l.localOnlyNoAccount(app.name)}\n\n## ${l.inAppControls}\n\n${app.account ? (lang.code === 'de' ? 'Verwenden Sie die Konto-, Datenschutz- oder Einstellungen-Bereiche der App, um Konto-, Export-, Lösch- oder Zustimmungskontrollen aufzurufen.' : lang.code === 'es' ? 'Use las áreas de cuenta, privacidad o ajustes de la app para acceder a controles de cuenta, exportación, eliminación o consentimiento.' : lang.code === 'ja' ? 'アプリ内のアカウント、プライバシー、設定画面から、アカウント、エクスポート、削除、同意管理にアクセスしてください。' : 'Use the app account, privacy, or settings areas to access account, export, deletion, or consent controls.') : (lang.code === 'de' ? 'Verwenden Sie Export-, Import-, Zurücksetz- oder Löschfunktionen in den App-Einstellungen, sofern verfügbar. Exportdateien können sensible Daten enthalten und sollten sicher gespeichert werden.' : lang.code === 'es' ? 'Use las funciones de exportación, importación, restablecimiento o eliminación en los ajustes cuando estén disponibles. Los archivos exportados pueden contener datos sensibles y deben guardarse de forma segura.' : lang.code === 'ja' ? '利用可能な場合は、アプリ設定のエクスポート、インポート、リセット、削除機能を使用してください。エクスポートファイルには機微データが含まれる場合があり、安全に保存してください。' : 'Use export, import, reset, or deletion features in app settings where available. Export files may contain sensitive data and should be stored securely.')}\n\n## ${l.manualRequest}\n\n${l.deletionContact}\n\n## ${l.retentionExceptions}\n\n${lang.code === 'de' ? 'Einige Daten können aufbewahrt werden, soweit dies für Sicherheit, Betrugsprävention, Abrechnung, gesetzliche Pflichten, Nachweisführung, Streitbeilegung, Missbrauchsberichte oder die Rechte anderer Nutzer erforderlich ist. Nicht mehr benötigte Daten werden gelöscht oder anonymisiert.' : lang.code === 'es' ? 'Algunos datos pueden conservarse cuando sea necesario por seguridad, prevención de fraude, facturación, obligaciones legales, pruebas, resolución de disputas, reportes de abuso o derechos de otros usuarios. Los datos que ya no sean necesarios se eliminan o anonimizan.' : lang.code === 'ja' ? 'セキュリティ、不正防止、請求、法的義務、証拠保全、紛争解決、乱用報告、他ユーザーの権利のために必要な場合、一部データを保存することがあります。不要になったデータは削除または匿名化されます。' : 'Some data may be retained where necessary for security, fraud prevention, billing, legal obligations, evidence, dispute resolution, abuse reports, or other users rights. Data no longer needed is deleted or anonymized.'}\n\n${related(appKey, app, lang.code)}`;
+  const inAppControls = app.account
+    ? (lang.code === 'de' ? 'Verwenden Sie die Konto-, Datenschutz- oder Einstellungen-Bereiche der App, um Konto-, Export-, Lösch- oder Zustimmungskontrollen aufzurufen.' : lang.code === 'es' ? 'Use las áreas de cuenta, privacidad o ajustes de la app para acceder a controles de cuenta, exportación, eliminación o consentimiento.' : lang.code === 'ja' ? 'アプリ内のアカウント、プライバシー、設定画面から、アカウント、エクスポート、削除、同意管理にアクセスしてください。' : 'Use the app account, privacy, or settings areas to access account, export, deletion, or consent controls.')
+    : copyFor('localDeletionControls', lang.code);
+  const deletionDetails = app.deletionDetails?.[lang.code];
+  return `${frontmatter({ title, docId: `${appKey}-deletion`, docType: l.deletionTitle, appName: app.name, lang, permalink: `/${appKey}/deletion.${lang.code}/`, redirects: docRedirects(appKey, 'deletion', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.primaryMethod}\n\n${app.account ? l.accountDeletion(app.name) : l.localOnlyNoAccount(app.name)}\n\n## ${l.inAppControls}\n\n${inAppControls}${deletionDetails ? `\n\n${deletionDetails}` : ''}\n\n## ${l.manualRequest}\n\n${l.deletionContact}\n\n## ${l.retentionExceptions}\n\n${copyFor('retentionExceptions', lang.code)}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function csaeDoc(appKey, app, lang) {
@@ -538,7 +710,10 @@ function csaeDoc(appKey, app, lang) {
 function appImpressum(appKey, app, lang) {
   const l = tr[lang.code];
   const title = titleFor(lang.code, l.impressumTitle, app.name);
-  return `${frontmatter({ title, docId: `${appKey}-impressum`, docType: l.impressumTitle, appName: app.name, lang, permalink: `/${appKey}/impressum.${lang.code}/`, redirects: docRedirects(appKey, 'impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\nGermany\n\nEmail: [dev@timonply.com](mailto:dev@timonply.com)<br>\nPhone: +49 178 9702884\n\n## ${l.providerInfo}\n\n${lang.code === 'de' ? 'Angaben nach § 5 DDG für dieses App-Angebot. Die allgemeine Impressumsseite ist ebenfalls verfügbar.' : lang.code === 'es' ? 'Información del proveedor conforme al § 5 DDG para esta oferta de app. También está disponible el aviso legal general.' : lang.code === 'ja' ? '本アプリ提供に関するDDG第5条に基づく提供者情報です。一般の運営者情報ページも利用できます。' : 'Provider information under Section 5 DDG for this app offering. The general legal notice is also available.'}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n${related(appKey, app, lang.code)}`;
+  const country = lang.code === 'fr' ? 'Allemagne' : 'Germany';
+  const emailLabel = lang.code === 'fr' ? 'E-mail' : 'Email';
+  const phoneLabel = lang.code === 'fr' ? 'Téléphone' : 'Phone';
+  return `${frontmatter({ title, docId: `${appKey}-impressum`, docType: l.impressumTitle, appName: app.name, lang, permalink: `/${appKey}/impressum.${lang.code}/`, redirects: docRedirects(appKey, 'impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\n${country}\n\n${emailLabel}: [dev@timonply.com](mailto:dev@timonply.com)<br>\n${phoneLabel}: +49 178 9702884\n\n## ${l.providerInfo}\n\n${copyFor('appProviderInfo', lang.code)}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function generalImpressum(lang) {
@@ -547,16 +722,24 @@ function generalImpressum(lang) {
   return `${frontmatter({ title, docId: 'impressum', docType: l.impressumTitle, appName: 'General', lang, permalink: `/impressum.${lang.code}/`, redirects: generalRedirects('impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\nGermany\n\nEmail: [dev@timonply.com](mailto:dev@timonply.com)<br>\nPhone: +49 178 9702884\n\n## ${l.providerInfo}\n\n${lang.code === 'de' ? 'Angaben gemäß § 5 DDG.' : lang.code === 'es' ? 'Información conforme al § 5 DDG.' : lang.code === 'ja' ? 'DDG第5条に基づく情報。' : 'Information in accordance with Section 5 DDG.'}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n## ${l.appSpecificNotices}\n\n${Object.entries(apps).map(([key, app]) => `- [${app.name}](https://timonply.com/${key}/impressum.${lang.code}/)`).join('\n')}`;
 }
 
+function generateAppDocuments(key, app, lang) {
+  file(`${key}/privacy.${lang.code}.md`, privacyDoc(key, app, lang));
+  file(`${key}/terms.${lang.code}.md`, termsDoc(key, app, lang));
+  file(`${key}/accessibility.${lang.code}.md`, accessibilityDoc(key, app, lang));
+  file(`${key}/deletion.${lang.code}.md`, deletionDoc(key, app, lang));
+  file(`${key}/impressum.${lang.code}.md`, appImpressum(key, app, lang));
+  if (app.csae) file(`${key}/csae.${lang.code}.md`, csaeDoc(key, app, lang));
+}
+
 for (const lang of languages) {
   file(`impressum.${lang.code}.md`, generalImpressum(lang));
   for (const [key, app] of Object.entries(apps)) {
-    file(`${key}/privacy.${lang.code}.md`, privacyDoc(key, app, lang));
-    file(`${key}/terms.${lang.code}.md`, termsDoc(key, app, lang));
-    file(`${key}/accessibility.${lang.code}.md`, accessibilityDoc(key, app, lang));
-    file(`${key}/deletion.${lang.code}.md`, deletionDoc(key, app, lang));
-    file(`${key}/impressum.${lang.code}.md`, appImpressum(key, app, lang));
-    if (app.csae) file(`${key}/csae.${lang.code}.md`, csaeDoc(key, app, lang));
+    generateAppDocuments(key, app, lang);
   }
+}
+
+for (const lang of neonroutineOnlyLanguages) {
+  generateAppDocuments('neonroutine', apps.neonroutine, lang);
 }
 
 file('flatnest/privacy.md', `---\nlayout: legal\ntitle: "Flatnest Privacy Policy"\ndoc_id: flatnest-privacy-legacy\ndoc_type: "Privacy Policy"\napp_name: "Flatnest"\nlanguage: "English"\nlanguage_code: en\nlanguage_order: 2\npermalink: /flatnest/privacy/\nredirect_to: /flatnest/privacy.en/\n---\n# Flatnest Privacy Policy\n\nThe current English privacy policy is available at [https://timonply.com/flatnest/privacy.en/](https://timonply.com/flatnest/privacy.en/).\n\nUse the language selector there for German, Spanish, and Japanese versions.`);
@@ -582,15 +765,18 @@ matrixLines.push(
   '',
   `Last updated: ${updated}`,
   '',
-  'Canonical public routes for app, store, support, and dashboard configuration. Language codes: `de`, `en`, `es`, `ja`.',
+  'Canonical public routes for app, store, support, and dashboard configuration. Portfolio language codes: `de`, `en`, `es`, `ja`; NeonRoutine additionally publishes `fr`.',
   '',
 );
 for (const [key, app] of Object.entries(apps)) {
-  matrixLines.push(`## ${app.name}`, '', `Application workspace checked: ${key === 'exactake' ? 'C:\\\\coding\\\\applications\\\\exactake' : key === 'neonroutine' ? 'C:\\\\coding\\\\Flutter-Learning\\\\neon_routine' : `C:\\\\coding\\\\Flutter-Learning\\\\${key}`}`, '', '| Document | de | en | es | ja |', '|---|---|---|---|---|');
+  const routeLanguages = key === 'neonroutine'
+    ? [...languages, ...neonroutineOnlyLanguages]
+    : languages;
+  matrixLines.push(`## ${app.name}`, '', `Application workspace checked: ${key === 'exactake' ? 'C:\\\\coding\\\\applications\\\\exactake' : key === 'neonroutine' ? 'C:\\\\coding\\\\Flutter-Learning\\\\neon_routine' : `C:\\\\coding\\\\Flutter-Learning\\\\${key}`}`, '', `| Document | ${routeLanguages.map((lang) => lang.code).join(' | ')} |`, `|${[null, ...routeLanguages].map(() => '---').join('|')}|`);
   const docs = ['privacy', 'terms', 'accessibility', 'deletion', 'impressum'];
   if (app.csae) docs.splice(4, 0, 'csae');
   for (const doc of docs) {
-    matrixLines.push(`| ${doc} | ${languages.map((lang) => `[${doc}.${lang.code}](https://timonply.com/${key}/${doc}.${lang.code}/)`).join(' | ')} |`);
+    matrixLines.push(`| ${doc} | ${routeLanguages.map((lang) => `[${doc}.${lang.code}](https://timonply.com/${key}/${doc}.${lang.code}/)`).join(' | ')} |`);
   }
   matrixLines.push('');
 }
