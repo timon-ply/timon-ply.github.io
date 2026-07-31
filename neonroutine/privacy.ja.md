@@ -14,7 +14,7 @@ redirect_from:
 ---
 # NeonRoutine プライバシーポリシー
 
-最終更新日: 2026年6月23日
+最終更新日: 2026年7月31日
 
 本プライバシーポリシーは、NeonRoutineに関連してTimon Polleyが情報をどのように処理するかを説明します。
 

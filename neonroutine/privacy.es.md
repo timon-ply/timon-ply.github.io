@@ -14,7 +14,7 @@ redirect_from:
 ---
 # Política de Privacidad de NeonRoutine
 
-Última actualización: 23 de junio de 2026
+Última actualización: 31 de julio de 2026
 
 Esta Política de Privacidad explica cómo Timon Polley trata información en relación con NeonRoutine.
 

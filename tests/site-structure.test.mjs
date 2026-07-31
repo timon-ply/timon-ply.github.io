@@ -176,6 +176,19 @@ test('NeonRoutine privacy pages disclose ATT, EEA consent controls, and Google p
   }
 });
 
+test('NeonRoutine privacy pages publish the current revision date', () => {
+  const expected = {
+    de: /Zuletzt aktualisiert: 31\. Juli 2026/,
+    en: /Last Updated: July 31, 2026/,
+    es: /Última actualización: 31 de julio de 2026/,
+    ja: /最終更新日: 2026年7月31日/,
+  };
+
+  for (const lang of languages) {
+    assert.match(read(`neonroutine/privacy.${lang}.md`), expected[lang]);
+  }
+});
+
 test('shared legal notices, route matrix, and regulatory notes are publishable', () => {
   for (const lang of languages) {
     const path = `impressum.${lang}.md`;

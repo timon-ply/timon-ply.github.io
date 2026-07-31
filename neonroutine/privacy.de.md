@@ -14,7 +14,7 @@ redirect_from:
 ---
 # Datenschutzerklärung für NeonRoutine
 
-Zuletzt aktualisiert: 23. Juni 2026
+Zuletzt aktualisiert: 31. Juli 2026
 
 Diese Datenschutzerklärung erklärt, wie Timon Polley Informationen im Zusammenhang mit NeonRoutine verarbeitet.
 
