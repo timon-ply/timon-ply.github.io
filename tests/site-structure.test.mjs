@@ -146,10 +146,10 @@ test('multilingual app legal corpus is complete and has redirect aliases', () =>
 
 test('NeonRoutine privacy pages disclose bounded health access in every language', () => {
   const expected = {
-    de: /Apple HealthKit oder Android Health Connect.*ausschließlich auf dem Gerät.*schreibt keine Gesundheitsdaten.*Werbe- oder Kaufanalysen.*widerrufen/s,
-    en: /Apple HealthKit or Android Health Connect.*only on the device.*does not write health data.*advertising or purchase analytics.*revoked/s,
-    es: /Apple HealthKit o Android Health Connect.*solo en el dispositivo.*no escribe datos de salud.*analítica publicitaria o de compras.*revocarse/s,
-    ja: /Apple HealthKitまたはAndroid Health Connect.*端末上でのみ.*健康データへの書き込み.*広告・購入分析への送信.*取り消せます/s,
+    de: /Apple HealthKit oder Android Health Connect.*Schritte.*Schlafdauer.*Flüssigkeitsaufnahme.*ausschließlich auf dem Gerät.*schreibt keine Gesundheitsdaten.*Werbe- oder Kaufanalysen.*widerrufen.*manuell.*Vordergrund.*Sensor-Caches.*niemals Gesundheitsdaten der Plattform/s,
+    en: /Apple HealthKit or Android Health Connect.*steps.*sleep duration.*hydration.*only on the device.*does not write health data.*advertising or purchase analytics.*revoked.*manual.*foreground.*sensor cache.*never deletes platform health records/s,
+    es: /Apple HealthKit o Android Health Connect.*pasos.*duración del sueño.*hidratación.*solo en el dispositivo.*no escribe datos de salud.*analítica publicitaria o de compras.*revocarse.*manual.*primer plano.*caché del sensor.*nunca los registros de salud de la plataforma/s,
+    ja: /Apple HealthKitまたはAndroid Health Connect.*歩数.*睡眠時間.*水分摂取.*端末上でのみ.*健康データへの書き込み.*広告・購入分析への送信.*取り消せます.*手動.*フォアグラウンド.*センサーキャッシュ.*健康記録を削除しません/s,
   };
 
   for (const lang of languages) {
