@@ -16,3 +16,4 @@ server_pid=$!; trap 'kill "$server_pid" 2>/dev/null || true' EXIT INT TERM
 i=0
 until curl -fsS "http://127.0.0.1:$port/" >/dev/null 2>&1; do i=$((i+1)); [ "$i" -lt 30 ] || exit 1; sleep 1; done
 "$chrome" --headless --no-sandbox --disable-dev-shm-usage --hide-scrollbars --window-size=390,844 --screenshot="$artifact_dir/legal-site-phone.png" "http://127.0.0.1:$port/"
+"$chrome" --headless --no-sandbox --disable-dev-shm-usage --hide-scrollbars --window-size=960,1200 --screenshot="$artifact_dir/legal-site-medium.png" "http://127.0.0.1:$port/"

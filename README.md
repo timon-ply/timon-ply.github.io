@@ -28,13 +28,15 @@ and users:
 
 ## Applications Covered
 
-Each canonical document is published in four languages:
+Each canonical document is published in four portfolio languages, with French
+additionally available for NeonRoutine:
 
 ```text
 de  German
 en  English
 es  Spanish
 ja  Japanese
+fr  French (NeonRoutine only)
 ```
 
 ### NeonRoutine
@@ -45,11 +47,11 @@ RevenueCat purchases, Google Mobile Ads rewarded ads, and consent handling.
 Documents:
 
 ```text
-neonroutine/privacy.{de,en,es,ja}.md
-neonroutine/terms.{de,en,es,ja}.md
-neonroutine/accessibility.{de,en,es,ja}.md
-neonroutine/deletion.{de,en,es,ja}.md
-neonroutine/impressum.{de,en,es,ja}.md
+neonroutine/privacy.{de,en,es,ja,fr}.md
+neonroutine/terms.{de,en,es,ja,fr}.md
+neonroutine/accessibility.{de,en,es,ja,fr}.md
+neonroutine/deletion.{de,en,es,ja,fr}.md
+neonroutine/impressum.{de,en,es,ja,fr}.md
 ```
 
 ### Kalvenda

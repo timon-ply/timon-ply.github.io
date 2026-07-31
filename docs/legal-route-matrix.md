@@ -11,21 +11,21 @@ permalink: /docs/legal-route-matrix/
 ---
 # Legal Route Matrix
 
-Last updated: June 23, 2026
+Last updated: July 31, 2026
 
-Canonical public routes for app, store, support, and dashboard configuration. Language codes: `de`, `en`, `es`, `ja`.
+Canonical public routes for app, store, support, and dashboard configuration. Portfolio language codes: `de`, `en`, `es`, `ja`; NeonRoutine additionally publishes `fr`.
 
 ## NeonRoutine
 
 Application workspace checked: C:\\coding\\Flutter-Learning\\neon_routine
 
-| Document | de | en | es | ja |
-|---|---|---|---|---|
-| privacy | [privacy.de](https://timonply.com/neonroutine/privacy.de/) | [privacy.en](https://timonply.com/neonroutine/privacy.en/) | [privacy.es](https://timonply.com/neonroutine/privacy.es/) | [privacy.ja](https://timonply.com/neonroutine/privacy.ja/) |
-| terms | [terms.de](https://timonply.com/neonroutine/terms.de/) | [terms.en](https://timonply.com/neonroutine/terms.en/) | [terms.es](https://timonply.com/neonroutine/terms.es/) | [terms.ja](https://timonply.com/neonroutine/terms.ja/) |
-| accessibility | [accessibility.de](https://timonply.com/neonroutine/accessibility.de/) | [accessibility.en](https://timonply.com/neonroutine/accessibility.en/) | [accessibility.es](https://timonply.com/neonroutine/accessibility.es/) | [accessibility.ja](https://timonply.com/neonroutine/accessibility.ja/) |
-| deletion | [deletion.de](https://timonply.com/neonroutine/deletion.de/) | [deletion.en](https://timonply.com/neonroutine/deletion.en/) | [deletion.es](https://timonply.com/neonroutine/deletion.es/) | [deletion.ja](https://timonply.com/neonroutine/deletion.ja/) |
-| impressum | [impressum.de](https://timonply.com/neonroutine/impressum.de/) | [impressum.en](https://timonply.com/neonroutine/impressum.en/) | [impressum.es](https://timonply.com/neonroutine/impressum.es/) | [impressum.ja](https://timonply.com/neonroutine/impressum.ja/) |
+| Document | de | en | es | ja | fr |
+|---|---|---|---|---|---|
+| privacy | [privacy.de](https://timonply.com/neonroutine/privacy.de/) | [privacy.en](https://timonply.com/neonroutine/privacy.en/) | [privacy.es](https://timonply.com/neonroutine/privacy.es/) | [privacy.ja](https://timonply.com/neonroutine/privacy.ja/) | [privacy.fr](https://timonply.com/neonroutine/privacy.fr/) |
+| terms | [terms.de](https://timonply.com/neonroutine/terms.de/) | [terms.en](https://timonply.com/neonroutine/terms.en/) | [terms.es](https://timonply.com/neonroutine/terms.es/) | [terms.ja](https://timonply.com/neonroutine/terms.ja/) | [terms.fr](https://timonply.com/neonroutine/terms.fr/) |
+| accessibility | [accessibility.de](https://timonply.com/neonroutine/accessibility.de/) | [accessibility.en](https://timonply.com/neonroutine/accessibility.en/) | [accessibility.es](https://timonply.com/neonroutine/accessibility.es/) | [accessibility.ja](https://timonply.com/neonroutine/accessibility.ja/) | [accessibility.fr](https://timonply.com/neonroutine/accessibility.fr/) |
+| deletion | [deletion.de](https://timonply.com/neonroutine/deletion.de/) | [deletion.en](https://timonply.com/neonroutine/deletion.en/) | [deletion.es](https://timonply.com/neonroutine/deletion.es/) | [deletion.ja](https://timonply.com/neonroutine/deletion.ja/) | [deletion.fr](https://timonply.com/neonroutine/deletion.fr/) |
+| impressum | [impressum.de](https://timonply.com/neonroutine/impressum.de/) | [impressum.en](https://timonply.com/neonroutine/impressum.en/) | [impressum.es](https://timonply.com/neonroutine/impressum.es/) | [impressum.ja](https://timonply.com/neonroutine/impressum.ja/) | [impressum.fr](https://timonply.com/neonroutine/impressum.fr/) |
 
 ## Kalvenda
 

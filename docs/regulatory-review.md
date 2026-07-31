@@ -11,7 +11,7 @@ permalink: /docs/regulatory-review/
 ---
 # Regulatory Review Notes
 
-Last updated: June 23, 2026
+Last updated: July 31, 2026
 
 This is an engineering compliance checklist, not legal advice or a certification. It records the public sources and repository changes used for the current legal-document update.
 
@@ -36,7 +36,7 @@ This is an engineering compliance checklist, not legal advice or a certification
 - Added web deletion/data-control pages for every app, including no-account local-first apps.
 - Added CSAE standards for apps with social or user-generated-content surfaces: Kalvenda and Flatnest.
 - Added redirect aliases for legacy `.html` and `.md` app legal links used by current app code.
-- Added route matrix paths for all four languages: German, English, Spanish, and Japanese.
+- Added route matrix paths for the four portfolio languages (German, English, Spanish, and Japanese) plus the NeonRoutine-only French routes.
 
 ## Remaining legal review points
 
