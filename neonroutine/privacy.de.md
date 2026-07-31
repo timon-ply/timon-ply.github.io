@@ -31,6 +31,7 @@ Eine Cyberpunk-App für Gewohnheiten, Routinen, Serien, Premium-Funktionen, Bena
 - Lokale Gewohnheits- und Routinedaten, Ausführungsprotokolle, Serien, XP, Credits, Fraktions-/Akzent-Einstellungen, Stimmungs- und Energieprotokolle, Erfolge, lokale Auswertungen, Export-/Importstatus und Zurücksetzstatus werden auf dem Gerät gespeichert.
 - RevenueCat und die App Stores verarbeiten Kauf- und Abonnementstatus. Google Mobile Ads kann Gerätekennungen, IP-Adresse, Einwilligungsstatus, Anzeigeninteraktionen und Rewarded-Ad-Ereignisse verarbeiten, wenn Werbung genutzt wird.
 - Lokale Benachrichtigungen und Home-Widgets verarbeiten Erinnerungs-, Zeitplan- und Zusammenfassungsdaten auf dem Gerät. Ein NeonRoutine-Konto oder Cloud-Sync wird derzeit nicht angeboten.
+- Mit ausdrücklicher Berechtigung darf die App nur den ausgewählten Aktivitätswert aus Apple HealthKit oder Android Health Connect lesen. Die App verwendet diesen Wert ausschließlich auf dem Gerät zur Unterstützung der vom Nutzer ausgelösten Gewohnheits- oder Zielaktion, schreibt keine Gesundheitsdaten, übermittelt sie nicht an Werbe- oder Kaufanalysen und der Zugriff kann in den Systemeinstellungen widerrufen werden.
 
 ## Auftragsverarbeiter und Drittanbieter
 
