@@ -336,6 +336,8 @@ test('French legal chrome preserves locale and current-page semantics', () => {
   assert.match(verifyScript, /git status --porcelain --untracked-files=all/);
   const previewScript = read('scripts/remote/preview.sh');
   assert.match(previewScript, /--window-size=960,1200/);
+  const remoteWorkflow = read('.github/workflows/remote-evidence.yml');
+  assert.match(remoteWorkflow, /include-hidden-files:\s*true/);
 });
 
 test('public pages only link to existing local documents, files, and image assets', () => {
