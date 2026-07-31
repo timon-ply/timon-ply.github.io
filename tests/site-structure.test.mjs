@@ -163,6 +163,19 @@ test('NeonRoutine privacy pages disclose bounded health access in every language
   );
 });
 
+test('NeonRoutine privacy pages disclose ATT, EEA consent controls, and Google privacy', () => {
+  const expected = {
+    de: /IDFA.*Apple App Tracking Transparency.*EWR.*Google UMP.*AD PREFERENCES.*geändert oder widerrufen.*https:\/\/policies\.google\.com\/privacy/s,
+    en: /IDFA.*Apple App Tracking Transparency.*EEA.*Google UMP.*changed or withdrawn.*AD PREFERENCES.*https:\/\/policies\.google\.com\/privacy/s,
+    es: /IDFA.*Transparencia de seguimiento de Apple.*EEE.*Google UMP.*cambiarse o retirarse.*AD PREFERENCES.*https:\/\/policies\.google\.com\/privacy/s,
+    ja: /Apple App Tracking Transparency.*IDFA.*EEA.*Google UMP.*AD PREFERENCES.*変更または撤回.*https:\/\/policies\.google\.com\/privacy/s,
+  };
+
+  for (const lang of languages) {
+    assert.match(read(`neonroutine/privacy.${lang}.md`), expected[lang]);
+  }
+});
+
 test('shared legal notices, route matrix, and regulatory notes are publishable', () => {
   for (const lang of languages) {
     const path = `impressum.${lang}.md`;
