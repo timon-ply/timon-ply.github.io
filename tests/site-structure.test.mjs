@@ -144,6 +144,25 @@ test('multilingual app legal corpus is complete and has redirect aliases', () =>
   }
 });
 
+test('NeonRoutine privacy pages disclose bounded health access in every language', () => {
+  const expected = {
+    de: /Apple HealthKit oder Android Health Connect.*ausschließlich auf dem Gerät.*schreibt keine Gesundheitsdaten.*Werbe- oder Kaufanalysen.*widerrufen/s,
+    en: /Apple HealthKit or Android Health Connect.*only on the device.*does not write health data.*advertising or purchase analytics.*revoked/s,
+    es: /Apple HealthKit o Android Health Connect.*solo en el dispositivo.*no escribe datos de salud.*analítica publicitaria o de compras.*revocarse/s,
+    ja: /Apple HealthKitまたはAndroid Health Connect.*端末上でのみ.*健康データへの書き込み.*広告・購入分析への送信.*取り消せます/s,
+  };
+
+  for (const lang of languages) {
+    assert.match(read(`neonroutine/privacy.${lang}.md`), expected[lang]);
+  }
+
+  assert.match(
+    read('neonroutine/privacy.en.md'),
+    /^  - \/neonroutine\/privacy\/$/m,
+    'English privacy page must own the stable generic store URL',
+  );
+});
+
 test('shared legal notices, route matrix, and regulatory notes are publishable', () => {
   for (const lang of languages) {
     const path = `impressum.${lang}.md`;
