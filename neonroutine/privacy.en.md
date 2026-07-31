@@ -15,7 +15,7 @@ redirect_from:
 ---
 # Privacy Policy for NeonRoutine
 
-Last Updated: June 23, 2026
+Last Updated: July 31, 2026
 
 This Privacy Policy explains how Timon Polley processes information in connection with NeonRoutine.
 
