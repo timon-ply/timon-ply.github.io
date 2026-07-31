@@ -32,7 +32,8 @@ A cyberpunk habit, routine, streak, premium, notification, local analytics, and 
 - Local habit and routine data, execution logs, streaks, XP, credits, faction/accent settings, mood and energy logs, achievements, local analytics, export/import state, and factory-reset state are stored on the device.
 - RevenueCat and the app stores process purchase and subscription status. Google Mobile Ads may process device identifiers, IP address, consent state, ad interactions, and rewarded-ad events when ads are used.
 - Local notifications and home widgets process reminder, schedule, and summary data on the device. No NeonRoutine account or cloud sync is currently provided.
-- With explicit permission, the app may read only the selected activity metric from Apple HealthKit or Android Health Connect. The app uses that reading only on the device to support the user-triggered habit or goal action, does not write health data, does not send it to advertising or purchase analytics, and access can be revoked in system settings.
+- With explicit permission, the app may read only the selected activity metric from Apple HealthKit or Android Health Connect: steps, workouts, sleep duration, active energy, hydration, and—on HealthKit only—mindful sessions. The app uses that reading only on the device to support the user-triggered habit or goal action, does not write health data, does not send it to advertising or purchase analytics, and access can be revoked in system settings.
+- Health sync is manual or runs only in the foreground when the app opens or resumes for an explicitly enabled mapping; denial, revocation, or an empty read leaves manual habit execution available. Deleting the sensor cache clears only local sync timestamps and never deletes platform health records.
 
 ## Processors and third-party services
 
