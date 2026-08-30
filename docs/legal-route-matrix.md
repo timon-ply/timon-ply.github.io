@@ -11,7 +11,7 @@ permalink: /docs/legal-route-matrix/
 ---
 # Legal Route Matrix
 
-Last updated: July 31, 2026
+Last updated: August 30, 2026
 
 Canonical public routes for app, store, support, and dashboard configuration. Portfolio language codes: `de`, `en`, `es`, `ja`; NeonRoutine additionally publishes `fr`.
 
@@ -70,5 +70,7 @@ Application workspace checked: C:\\coding\\Flutter-Learning\\flatnest
 | Route | Purpose |
 |---|---|
 | [https://timonply.com/support.html](https://timonply.com/support.html) | Support, privacy requests, accessibility feedback, and safety reports. |
+| [https://timonply.com/privacy.en/](https://timonply.com/privacy.en/) | Website privacy notice in English. |
+| [https://timonply.com/privacy.de/](https://timonply.com/privacy.de/) | Website privacy notice in German. |
 | [https://timonply.com/app-ads.txt](https://timonply.com/app-ads.txt) | Authorized seller declaration for Google ad inventory. |
 | [https://timonply.com/impressum.en/](https://timonply.com/impressum.en/) | General legal notice. |

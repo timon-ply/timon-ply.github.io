@@ -34,6 +34,10 @@ Information in accordance with Section 5 DDG.
 
 We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board under the German Consumer Dispute Resolution Act (VSBG).
 
+## Website privacy
+
+- [Information about website visits and email contact](https://timonply.com/privacy.en/)
+
 ## App-specific legal notices
 
 - [NeonRoutine](https://timonply.com/neonroutine/impressum.en/)

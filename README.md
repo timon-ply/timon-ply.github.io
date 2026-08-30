@@ -119,11 +119,19 @@ support uploads, or production legal publication.
 index.html                     Public app/document index
 support.html                   Support and request intake
 debug.html                     Public route QA page
+privacy.en.md                  Website privacy notice (English)
+privacy.de.md                  Website privacy notice (German)
 docs/legal-route-matrix.md     Canonical route matrix for all languages
 docs/regulatory-review.md      Engineering compliance review notes
 impressum.{de,en,es,ja}.md     General legal notice pages
 app-ads.txt                    Ad network seller declaration
 ```
+
+The public homepage uses one language picker per app to update that app's
+document links without cookies or browser storage. The complete static route
+matrix remains available for app-store reviewers, SDK dashboards, and no-script
+fallback. The site's own frontend uses same-origin CSS, JavaScript, and icons;
+it does not include analytics, advertising, or third-party web fonts.
 
 ## Generated Documents
 
@@ -197,7 +205,9 @@ node --test tests\site-structure.test.mjs
 ```
 
 For website presentation changes, run a local static server and inspect the actual
-rendered pages at desktop and mobile widths.
+rendered pages at desktop and mobile widths. Confirm the app language picker,
+contact routes, legal-page contents navigation, keyboard focus, and 320 CSS pixel
+reflow in addition to visual layout.
 
 ## Adding Or Updating An App
 

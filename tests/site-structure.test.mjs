@@ -46,6 +46,8 @@ function legalMarkdownFiles() {
     'README.md',
     'docs/legal-route-matrix.md',
     'docs/regulatory-review.md',
+    'privacy.de.md',
+    'privacy.en.md',
     ...languages.map((lang) => `impressum.${lang}.md`),
   ];
 
@@ -85,29 +87,34 @@ function normalizedJekyllOutput(route) {
   return `${clean}/index.html`;
 }
 
-test('home page exposes the app legal repository and all app route groups', () => {
+test('home page exposes one clear app and document chooser', () => {
   const html = read('index.html');
+  const script = read('assets/site.js');
 
-  assert.match(html, /Legal pages, support routes, and app compliance references\./);
-  assert.match(html, /class="[^"]*\bportfolio-hero\b/);
+  assert.match(html, /Legal documents for Timon Polley apps\./);
+  assert.match(html, /class="[^"]*\bhome-hero\b/);
   assert.match(html, /class="[^"]*\bapp-showcase\b/);
   assert.match(html, /docs\/legal-route-matrix/);
-  assert.match(html, /docs\/regulatory-review/);
+  assert.match(html, /href="\/support\.html"/);
+  assert.match(html, /href="\/privacy\.en\/"/);
+  assert.match(html, /class="skip-link" href="#main-content"/);
 
   for (const app of Object.keys(apps)) {
     assert.match(html, new RegExp(`id="${app}"`));
+    assert.match(html, new RegExp(`data-app="${app}"`));
     for (const doc of apps[app]) {
-      for (const lang of languagesForApp(app)) {
-        assert.match(html, new RegExp(`/${app}/${doc}\\.${lang}/`));
-      }
+      assert.match(html, new RegExp(`/${app}/${doc}\\.en/`));
+      assert.match(html, new RegExp(`data-document="${doc}"`));
     }
   }
 
+  assert.equal((html.match(/data-language-picker/g) ?? []).length, 4);
+  assert.match(html, /Français \(FR\)/);
+  assert.match(script, /`\/\$\{app\}\/\$\{link\.dataset\.document\}\.\$\{language\}\/`/);
+  assert.doesNotMatch(script, /localStorage|sessionStorage|document\.cookie/);
   assert.match(html, /assets\/icons\/exactake-192\.png/);
-  assert.doesNotMatch(html, /Documents and support for NeonRoutine and Kalvenda\./);
-  assert.doesNotMatch(html, /Live index/i);
-  assert.doesNotMatch(html, /signal-grid/);
-  assert.doesNotMatch(html, /class="[^"]*\blegal-command\b/);
+  assert.doesNotMatch(html, /Legal pages, support routes, and app compliance references\./);
+  assert.doesNotMatch(html, /class="[^"]*\broute-row\b/);
 });
 
 test('support and debug pages expose privacy, safety, accessibility, and QA routes', () => {
@@ -116,9 +123,12 @@ test('support and debug pages expose privacy, safety, accessibility, and QA rout
 
   assert.match(support, /mailto:dev@timonply\.com/);
   assert.match(support, /Exactake, Flatnest, Kalvenda, or NeonRoutine/);
+  assert.match(support, /id="privacy-requests"/);
+  assert.match(support, /id="safety-reports"/);
+  assert.match(support, /Email is not an emergency channel/);
   assert.match(support, /\/flatnest\/deletion\.en\//);
   assert.match(support, /\/kalvenda\/csae\.en\//);
-  assert.match(support, /\/docs\/legal-route-matrix\//);
+  assert.match(support, /\/privacy\.en\//);
 
   assert.match(debug, /Route checks for app metadata/);
   assert.match(debug, /\/docs\/legal-route-matrix\//);
@@ -252,21 +262,40 @@ test('shared legal notices, route matrix, and regulatory notes are publishable',
     assert.match(text, new RegExp(`  - /impressum\\.${lang}\\.html$`, 'm'));
     assert.doesNotMatch(text, new RegExp(`  - /impressum\\.${lang}$`, 'm'));
     assert.doesNotMatch(text, /ec\.europa\.eu\/consumers\/odr/i);
+    assert.match(text, /privacy\.(?:de|en)\//);
   }
 
   const matrix = read('docs/legal-route-matrix.md');
   const review = read('docs/regulatory-review.md');
+  const websitePrivacyEn = read('privacy.en.md');
+  const websitePrivacyDe = read('privacy.de.md');
 
   assert.match(matrix, /^---\nlayout: legal/m);
   assert.match(matrix, /^permalink: \/docs\/legal-route-matrix\/$/m);
   assert.match(matrix, /Application workspace checked: C:\\\\coding\\\\applications\\\\exactake/);
   assert.match(matrix, /flatnest\/csae\.en\//);
+  assert.match(matrix, /privacy\.en\//);
+  assert.match(matrix, /privacy\.de\//);
 
   assert.match(review, /^---\nlayout: legal/m);
   assert.match(review, /^permalink: \/docs\/regulatory-review\/$/m);
   assert.match(review, /EU ODR platform discontinuation as of 20 July 2025/);
   assert.match(review, /four portfolio languages.*NeonRoutine-only French routes/);
+  assert.match(review, /GitHub Pages visitor IP logging/);
+  assert.match(review, /Removed third-party web-font requests/);
   assert.doesNotMatch(review, /paths for all four languages/);
+
+  for (const [path, text, language] of [
+    ['privacy.en.md', websitePrivacyEn, 'en'],
+    ['privacy.de.md', websitePrivacyDe, 'de'],
+  ]) {
+    assert.match(text, /^---\nlayout: legal/m, `${path} missing legal layout`);
+    assert.match(text, new RegExp(`^language_code: ${language}$`, 'm'));
+    assert.match(text, /GitHub Pages/);
+    assert.match(text, /Article 6\(1\)\(f\)|Art\. 6 Abs\. 1 Buchst\. f/);
+    assert.match(text, /analytics|Analyse/);
+    assert.match(text, /supervisory authority|Datenschutzaufsichtsbehörde/);
+  }
 });
 
 test('redirect aliases do not collide with canonical Jekyll output paths', () => {
@@ -302,13 +331,12 @@ test('stylesheet has accessible responsive behavior without viewport-scaled type
 
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /:focus-visible/);
-  assert.match(css, /@media \(max-width: 640px\)/);
-  assert.match(css, /\.route-row/);
-  assert.match(
-    css,
-    /@media \(max-width: 960px\)[\s\S]*?\.app-showcase\s*\{\s*grid-template-columns:\s*1fr;/,
-  );
-  assert.match(css, /\.route-row-five\s*\{\s*grid-template-columns:[^}]*repeat\(5,/);
+  assert.match(css, /@media \(max-width: 560px\)/);
+  assert.match(css, /\.skip-link/);
+  assert.match(css, /\.app-showcase/);
+  assert.match(css, /\.legal-reading-layout/);
+  assert.match(css, /overflow-wrap:\s*anywhere/);
+  assert.match(css, /@media print/);
   assert.equal(
     fontSizeRules.some((rule) => rule.includes('vw')),
     false,
@@ -316,9 +344,9 @@ test('stylesheet has accessible responsive behavior without viewport-scaled type
   );
 });
 
-test('French legal chrome preserves locale and current-page semantics', () => {
+test('legal chrome localizes every supported language and preserves current-page semantics', () => {
   const layout = read('_layouts/legal.html');
-  assert.match(layout, /page\.language_code == 'fr'/);
+  assert.match(layout, /when 'fr'/);
   assert.match(layout, /\/neonroutine\/impressum\.fr\//);
   assert.match(layout, /page\.url == legal_notice_url/);
   assert.doesNotMatch(layout, /href="\/impressum\.en\/" aria-current="page"/);
@@ -327,10 +355,19 @@ test('French legal chrome preserves locale and current-page semantics', () => {
     'Navigation principale',
     'Mentions légales',
     'Options de langue',
-    'Documents des applications',
+    'Tous les documents',
+    'Rechtliche Dokumente',
+    'Hauptnavigation',
+    'Documentos legales',
+    'Navegación principal',
+    '法的文書',
+    'メインナビゲーション',
   ]) {
     assert.match(layout, new RegExp(label));
   }
+  assert.match(layout, /class="skip-link"/);
+  assert.match(layout, /data-legal-toc-list/);
+  assert.match(layout, /href="\{\{ website_privacy_url \}\}"/);
 
   const verifyScript = read('scripts/remote/verify.sh');
   assert.match(verifyScript, /git status --porcelain --untracked-files=all/);
@@ -338,6 +375,17 @@ test('French legal chrome preserves locale and current-page semantics', () => {
   assert.match(previewScript, /--window-size=960,1200/);
   const remoteWorkflow = read('.github/workflows/remote-evidence.yml');
   assert.match(remoteWorkflow, /include-hidden-files:\s*true/);
+});
+
+test('public interface avoids pre-consent third-party frontend requests', () => {
+  for (const page of ['index.html', 'support.html', 'debug.html', '_layouts/legal.html']) {
+    const html = read(page);
+    assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/i, `${page} loads external fonts`);
+    assert.doesNotMatch(html, /<(?:script|iframe)[^>]+https?:\/\//i, `${page} embeds a third-party frontend`);
+  }
+
+  const script = read('assets/site.js');
+  assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|WebSocket/);
 });
 
 test('public pages only link to existing local documents, files, and image assets', () => {
@@ -374,11 +422,13 @@ test('exactake icons and generated document tooling are present', () => {
 test('feature registry documents app route and debug surfaces', () => {
   const registry = read('feature_registry.md');
 
-  assert.match(registry, /Portfolio Design Overhaul/);
+  assert.match(registry, /App Documents And Support Experience/);
   assert.match(registry, /Debug Functionality Register/);
   assert.match(registry, /\/debug\.html/);
   assert.match(registry, /legal document routes/);
   assert.match(registry, /app-scoped route checks/);
+  assert.match(registry, /language selectors/);
+  assert.match(registry, /website privacy notices/);
 });
 
 test('all owned legal markdown documents avoid the discontinued EU ODR URL', () => {

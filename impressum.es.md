@@ -34,6 +34,10 @@ Información conforme al § 5 DDG.
 
 No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante una junta arbitral de consumo conforme a la ley alemana VSBG.
 
+## Privacidad de este sitio web
+
+- [Información sobre visitas al sitio y contacto por correo electrónico (en inglés)](https://timonply.com/privacy.en/)
+
 ## Avisos legales específicos de app
 
 - [NeonRoutine](https://timonply.com/neonroutine/impressum.es/)

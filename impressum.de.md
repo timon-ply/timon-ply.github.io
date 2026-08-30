@@ -34,6 +34,10 @@ Angaben gemäß § 5 DDG.
 
 Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nach dem VSBG teilzunehmen.
 
+## Datenschutz dieser Website
+
+- [Hinweise zu Website-Aufrufen und E-Mail-Kontakt](https://timonply.com/privacy.de/)
+
 ## App-spezifische Impressen
 
 - [NeonRoutine](https://timonply.com/neonroutine/impressum.de/)

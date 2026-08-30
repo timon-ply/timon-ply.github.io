@@ -1,18 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ page.language_code | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ page.title | escape }}{% if page.app_name %} for {{ page.app_name | escape }}{% endif %}.">
+  <meta name="theme-color" content="#f4f7f6">
   <title>{{ page.title }} | Timon Polley</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
-  {% assign is_french = false %}
-  {% if page.language_code == 'fr' %}{% assign is_french = true %}{% endif %}
+  {% assign ui_skip = 'Skip to main content' %}
+  {% assign ui_home = 'Home' %}
+  {% assign ui_brand = 'Legal documents' %}
+  {% assign ui_apps = 'Apps &amp; documents' %}
+  {% assign ui_legal = 'Legal notice' %}
+  {% assign ui_support = 'Contact' %}
+  {% assign ui_nav = 'Primary navigation' %}
+  {% assign ui_document_info = 'Document information' %}
+  {% assign ui_language = 'Language' %}
+  {% assign ui_language_options = 'Language options' %}
+  {% assign ui_on_page = 'On this page' %}
+  {% assign ui_back_apps = 'All app documents' %}
+  {% assign ui_website_privacy = 'Website privacy' %}
+  {% assign ui_footer_nav = 'Footer navigation' %}
+  {% assign ui_default_type = 'Legal document' %}
+  {% assign website_privacy_url = '/privacy.en/' %}
+
+  {% case page.language_code %}
+    {% when 'de' %}
+      {% assign ui_skip = 'Zum Hauptinhalt springen' %}
+      {% assign ui_home = 'Startseite' %}
+      {% assign ui_brand = 'Rechtliche Dokumente' %}
+      {% assign ui_apps = 'Apps &amp; Dokumente' %}
+      {% assign ui_legal = 'Impressum' %}
+      {% assign ui_support = 'Kontakt' %}
+      {% assign ui_nav = 'Hauptnavigation' %}
+      {% assign ui_document_info = 'Dokumentinformationen' %}
+      {% assign ui_language = 'Sprache' %}
+      {% assign ui_language_options = 'Sprachauswahl' %}
+      {% assign ui_on_page = 'Auf dieser Seite' %}
+      {% assign ui_back_apps = 'Alle App-Dokumente' %}
+      {% assign ui_website_privacy = 'Website-Datenschutz' %}
+      {% assign ui_footer_nav = 'Navigation im Seitenfuß' %}
+      {% assign ui_default_type = 'Rechtliches Dokument' %}
+      {% assign website_privacy_url = '/privacy.de/' %}
+    {% when 'es' %}
+      {% assign ui_skip = 'Saltar al contenido principal' %}
+      {% assign ui_home = 'Inicio' %}
+      {% assign ui_brand = 'Documentos legales' %}
+      {% assign ui_apps = 'Apps y documentos' %}
+      {% assign ui_legal = 'Aviso legal' %}
+      {% assign ui_support = 'Contacto' %}
+      {% assign ui_nav = 'Navegación principal' %}
+      {% assign ui_document_info = 'Información del documento' %}
+      {% assign ui_language = 'Idioma' %}
+      {% assign ui_language_options = 'Opciones de idioma' %}
+      {% assign ui_on_page = 'En esta página' %}
+      {% assign ui_back_apps = 'Todos los documentos' %}
+      {% assign ui_website_privacy = 'Privacidad del sitio' %}
+      {% assign ui_footer_nav = 'Navegación del pie' %}
+      {% assign ui_default_type = 'Documento legal' %}
+    {% when 'ja' %}
+      {% assign ui_skip = 'メインコンテンツへ移動' %}
+      {% assign ui_home = 'ホーム' %}
+      {% assign ui_brand = '法的文書' %}
+      {% assign ui_apps = 'アプリと文書' %}
+      {% assign ui_legal = '法的通知' %}
+      {% assign ui_support = 'お問い合わせ' %}
+      {% assign ui_nav = 'メインナビゲーション' %}
+      {% assign ui_document_info = '文書情報' %}
+      {% assign ui_language = '言語' %}
+      {% assign ui_language_options = '言語オプション' %}
+      {% assign ui_on_page = 'このページの内容' %}
+      {% assign ui_back_apps = 'アプリ文書一覧' %}
+      {% assign ui_website_privacy = 'ウェブサイトのプライバシー' %}
+      {% assign ui_footer_nav = 'フッターナビゲーション' %}
+      {% assign ui_default_type = '法的文書' %}
+    {% when 'fr' %}
+      {% assign ui_skip = 'Aller au contenu principal' %}
+      {% assign ui_home = 'Accueil' %}
+      {% assign ui_brand = 'Documents juridiques' %}
+      {% assign ui_apps = 'Applications et documents' %}
+      {% assign ui_legal = 'Mentions légales' %}
+      {% assign ui_support = 'Contact' %}
+      {% assign ui_nav = 'Navigation principale' %}
+      {% assign ui_document_info = 'Informations sur le document' %}
+      {% assign ui_language = 'Langue' %}
+      {% assign ui_language_options = 'Options de langue' %}
+      {% assign ui_on_page = 'Sur cette page' %}
+      {% assign ui_back_apps = 'Tous les documents' %}
+      {% assign ui_website_privacy = 'Confidentialité du site' %}
+      {% assign ui_footer_nav = 'Navigation de pied de page' %}
+      {% assign ui_default_type = 'Document juridique' %}
+  {% endcase %}
+
   {% assign legal_notice_url = '/impressum.en/' %}
   {% case page.language_code %}
     {% when 'de' %}{% assign legal_notice_url = '/impressum.de/' %}
@@ -23,62 +106,84 @@
         {% assign legal_notice_url = '/neonroutine/impressum.fr/' %}
       {% endif %}
   {% endcase %}
+
+  {% assign app_anchor = 'apps' %}
+  {% case page.app_name %}
+    {% when 'NeonRoutine' %}{% assign app_anchor = 'neonroutine' %}
+    {% when 'Kalvenda' %}{% assign app_anchor = 'kalvenda' %}
+    {% when 'Exactake' %}{% assign app_anchor = 'exactake' %}
+    {% when 'Flatnest' %}{% assign app_anchor = 'flatnest' %}
+  {% endcase %}
+
+  <a class="skip-link" href="#main-content">{{ ui_skip }}</a>
+
   <header class="site-header">
-    <a class="brand" href="/index.html" aria-label="{% if is_french %}Accueil Timon Polley{% else %}Timon Polley home{% endif %}">
-      <span class="brand-mark">TP</span>
+    <a class="brand" href="/index.html" aria-label="{{ ui_home }} — Timon Polley">
+      <span class="brand-mark" aria-hidden="true">TP</span>
       <span>
         <strong>Timon Polley</strong>
-        <small>{% if is_french %}Documents juridiques{% else %}Legal documents{% endif %}</small>
+        <small>{{ ui_brand }}</small>
       </span>
     </a>
-    <nav class="nav" aria-label="{% if is_french %}Navigation principale{% else %}Primary navigation{% endif %}">
-      <a href="/index.html#apps">{% if is_french %}Applications{% else %}Apps{% endif %}</a>
-      <a href="{{ legal_notice_url }}"{% if page.url == legal_notice_url %} aria-current="page"{% endif %}>{% if is_french %}Mentions légales{% else %}Legal notice{% endif %}</a>
-      <a class="nav-action" href="/support.html">{% if is_french %}Assistance{% else %}Support{% endif %}</a>
+    <nav class="nav" aria-label="{{ ui_nav }}">
+      <a href="/index.html#apps">{{ ui_apps }}</a>
+      <a href="/support.html">{{ ui_support }}</a>
+      <a href="{{ legal_notice_url }}"{% if page.url == legal_notice_url %} aria-current="page"{% endif %}>{{ ui_legal }}</a>
     </nav>
   </header>
 
-  <main class="legal-page document-page">
-    <div class="section-shell legal-narrow">
+  <main id="main-content" class="legal-page document-page">
+    <div class="section-shell legal-shell">
       <header class="legal-header">
-        <p class="eyebrow">{{ page.doc_type | default: 'Legal document' }}</p>
+        <p class="eyebrow">{{ page.doc_type | default: ui_default_type }}</p>
         <h1>{{ page.title }}</h1>
-        <div class="legal-meta" aria-label="{% if is_french %}Informations sur le document{% else %}Document information{% endif %}">
+        <div class="legal-meta" role="group" aria-label="{{ ui_document_info }}">
           {% if page.app_name %}<span>{{ page.app_name }}</span>{% endif %}
           <span>{{ page.language | default: page.language_code | upcase }}</span>
         </div>
       </header>
 
-      <nav class="legal-language" aria-label="{% if is_french %}Options de langue{% else %}Language options{% endif %}">
-        <span>{% if is_french %}Langue{% else %}Language{% endif %}</span>
-        <div class="language-list">
-          {% assign versions = site.pages | where: "doc_id", page.doc_id | sort: "language_order" %}
-          {% for version in versions %}
-            <a href="{{ version.url }}" {% if version.url == page.url %}aria-current="page"{% endif %}>
-              <span>{{ version.language | default: version.language_code }}</span>
-              <small>{{ version.language_code | upcase }}</small>
-            </a>
-          {% endfor %}
-        </div>
-      </nav>
+      {% assign versions = site.pages | where: "doc_id", page.doc_id | sort: "language_order" %}
+      {% if versions.size > 1 %}
+        <nav class="legal-language" aria-label="{{ ui_language_options }}">
+          <span>{{ ui_language }}</span>
+          <div class="language-list">
+            {% for version in versions %}
+              <a href="{{ version.url }}"{% if version.url == page.url %} aria-current="page"{% endif %}>
+                <span>{{ version.language | default: version.language_code }}</span>
+                <small>{{ version.language_code | upcase }}</small>
+              </a>
+            {% endfor %}
+          </div>
+        </nav>
+      {% endif %}
 
-      <article class="legal-content">
-        {{ content }}
-      </article>
+      <div class="legal-reading-layout">
+        <aside class="legal-tools" aria-label="{{ ui_on_page }}">
+          <details class="legal-toc" data-legal-toc open>
+            <summary>{{ ui_on_page }}</summary>
+            <ol data-legal-toc-list></ol>
+          </details>
+          <a class="back-link" href="/index.html#{{ app_anchor }}"><span aria-hidden="true">←</span> {{ ui_back_apps }}</a>
+        </aside>
+
+        <article class="legal-content" data-legal-content>
+          {{ content }}
+        </article>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year">2026</span> Timon Polley</p>
-    <div>
-      <a href="/index.html">{% if is_french %}Accueil{% else %}Home{% endif %}</a>
-      <a href="/support.html">{% if is_french %}Assistance{% else %}Support{% endif %}</a>
-      <a href="/index.html#apps">{% if is_french %}Documents des applications{% else %}App documents{% endif %}</a>
+    <div class="footer-summary">
+      <p>&copy; <span data-current-year>2026</span> Timon Polley</p>
     </div>
+    <nav aria-label="{{ ui_footer_nav }}">
+      <a href="/index.html">{{ ui_home }}</a>
+      <a href="/support.html">{{ ui_support }}</a>
+      <a href="{{ website_privacy_url }}">{{ ui_website_privacy }}</a>
+      <a href="{{ legal_notice_url }}">{{ ui_legal }}</a>
+    </nav>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

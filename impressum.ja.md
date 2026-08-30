@@ -34,6 +34,10 @@ DDG第5条に基づく情報。
 
 当社は、ドイツ消費者紛争解決法（VSBG）に基づく消費者仲裁機関での紛争解決手続に参加する意思も義務もありません。
 
+## このウェブサイトのプライバシー
+
+- [サイト閲覧とメール連絡に関する情報（英語）](https://timonply.com/privacy.en/)
+
 ## アプリ別運営者情報
 
 - [NeonRoutine](https://timonply.com/neonroutine/impressum.ja/)

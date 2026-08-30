@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,29 +6,30 @@
   <meta name="robots" content="noindex">
   <meta name="description" content="Public route QA entrypoint for the Timon Polley app legal document site.">
   <title>App QA | Timon Polley</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header">
     <a class="brand" href="/index.html" aria-label="Timon Polley home">
-      <span class="brand-mark">TP</span>
+      <span class="brand-mark" aria-hidden="true">TP</span>
       <span>
         <strong>Timon Polley</strong>
         <small>App QA</small>
       </span>
     </a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="/index.html#apps">Apps</a>
+      <a href="/index.html#apps">Apps &amp; documents</a>
       <a href="/docs/legal-route-matrix/">Route matrix</a>
-      <a href="/support.html">Support</a>
+      <a href="/support.html">Contact</a>
       <a class="nav-action" href="/debug.html" aria-current="page">QA</a>
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero section-shell">
       <p class="eyebrow">App QA</p>
       <h1>Route checks for app metadata</h1>
@@ -119,16 +120,15 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year">2026</span> Timon Polley</p>
-    <div>
-      <a href="/index.html">Home</a>
-      <a href="/support.html">Support</a>
-      <a href="/impressum.en/">Legal notice</a>
+    <div class="footer-summary">
+      <p>&copy; <span data-current-year>2026</span> Timon Polley</p>
     </div>
+    <nav aria-label="Footer navigation">
+      <a href="/index.html">Home</a>
+      <a href="/support.html">Contact</a>
+      <a href="/privacy.en/">Website privacy</a>
+      <a href="/impressum.en/">Legal notice</a>
+    </nav>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
