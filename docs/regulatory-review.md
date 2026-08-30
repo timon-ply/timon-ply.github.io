@@ -37,14 +37,14 @@ This is an engineering compliance checklist, not legal advice or a certification
 
 - Removed live references to the discontinued EU ODR platform from generated terms and legal notices.
 - Added app-scoped legal notices so app-specific Impressum links resolve.
-- Added web deletion/data-control pages for every app, including no-account local-first apps.
-- Added CSAE standards for apps with social or user-generated-content surfaces: Kalvenda and Flatnest.
+- Added web deletion/data-control pages for every app, including apps without accounts.
+- Added CSAE standards for apps with social or user-generated-content surfaces.
 - Added redirect aliases for legacy `.html` and `.md` app legal links used by current app code.
 - Added English and German website privacy notices covering GitHub Pages access logs and support email.
 - Removed third-party web-font requests; the public interface now loads only same-origin styles, scripts, and app icons.
 - Added skip navigation, legal-page contents navigation, localized document chrome, visible focus, and long-URL reflow.
-- Reduced the homepage route matrix to one language selector and one document list per app.
-- Added route matrix paths for the four portfolio languages (German, English, Spanish, and Japanese) plus the NeonRoutine-only French routes.
+- Simplified the public site to current applications, factual product descriptions, verified store links, and one document selector per app.
+- Removed the public route-directory feature while preserving canonical document URLs.
 
 ## Remaining legal review points
 
@@ -52,5 +52,5 @@ This is an engineering compliance checklist, not legal advice or a certification
 - Re-check GitHub Pages hosting behavior, HTTPS enforcement, and privacy terms after publication.
 - Confirm each app-store privacy/data-safety form matches the shipped SDK and feature flags immediately before submission.
 - Confirm production ads and personalized ads remain behind valid consent where required.
-- Confirm Flatnest legal text again before external launch because the app is pre-release and live production services are approval-gated.
+- Confirm pre-release legal text again before external launch because live production services are approval-gated.
 - Confirm any future accounts, cloud sync, remote telemetry, support uploads, paid features, or moderation automation before release.

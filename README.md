@@ -121,17 +121,17 @@ support.html                   Support and request intake
 debug.html                     Public route QA page
 privacy.en.md                  Website privacy notice (English)
 privacy.de.md                  Website privacy notice (German)
-docs/legal-route-matrix.md     Canonical route matrix for all languages
 docs/regulatory-review.md      Engineering compliance review notes
 impressum.{de,en,es,ja}.md     General legal notice pages
 app-ads.txt                    Ad network seller declaration
 ```
 
 The public homepage uses one language picker per app to update that app's
-document links without cookies or browser storage. The complete static route
-matrix remains available for app-store reviewers, SDK dashboards, and no-script
-fallback. The site's own frontend uses same-origin CSS, JavaScript, and icons;
-it does not include analytics, advertising, or third-party web fonts.
+document links without cookies or browser storage. It presents NeonRoutine,
+Kalvenda, and Exactake with factual product descriptions and links to verified
+store listings where available. The site's own frontend uses same-origin CSS,
+JavaScript, and icons; it does not include analytics, advertising, or
+third-party web fonts.
 
 ## Generated Documents
 
@@ -142,7 +142,7 @@ tools/generate_legal_docs.mjs
 ```
 
 Regenerate after changing app legal facts, document wording, language variants,
-route aliases, or the route matrix:
+or route aliases:
 
 ```powershell
 node tools\generate_legal_docs.mjs
@@ -174,7 +174,6 @@ https://timonply.com/{app}/deletion.en/
 https://timonply.com/{app}/impressum.en/
 https://timonply.com/{app}/csae.en/
 https://timonply.com/impressum.en/
-https://timonply.com/docs/legal-route-matrix/
 https://timonply.com/support.html
 ```
 

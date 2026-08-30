@@ -610,36 +610,8 @@ function copyFor(section, code) {
 
 function file(path, content) {
   const full = join(root, path);
-  let normalizedContent = content;
-  if (path === 'docs/regulatory-review.md') {
-    normalizedContent = content
-      .replace(
-        '- GDPR Article 13 transparency requirements: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02016R0679-20160504',
-        '- GDPR Articles 12 and 13 transparency requirements: https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng',
-      )
-      .replace(
-        '- German TDDDG terminal-device consent, Section 25: https://www.gesetze-im-internet.de/ttdsg/__25.html',
-        '- German TDDDG terminal-device consent, Section 25: https://www.gesetze-im-internet.de/ttdsg/__25.html\n- GitHub Pages visitor IP logging: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection\n- GitHub General Privacy Statement: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement',
-      )
-      .replace(
-        '- European Accessibility Act: https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng',
-        '- German BFSG accessibility requirements and microenterprise exception, Section 3: https://www.gesetze-im-internet.de/bfsg/__3.html\n- WCAG 2.2 reflow, bypass-block, focus, and navigation criteria: https://www.w3.org/WAI/WCAG22/quickref/\n- European Accessibility Act: https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng',
-      )
-      .replace(
-        '- Added redirect aliases for legacy `.html` and `.md` app legal links used by current app code.',
-        '- Added redirect aliases for legacy `.html` and `.md` app legal links used by current app code.\n- Added English and German website privacy notices covering GitHub Pages access logs and support email.\n- Removed third-party web-font requests; the public interface now loads only same-origin styles, scripts, and app icons.\n- Added skip navigation, legal-page contents navigation, localized document chrome, visible focus, and long-URL reflow.\n- Reduced the homepage route matrix to one language selector and one document list per app.',
-      )
-      .replace(
-        'Added route matrix paths for all four languages: German, English, Spanish, and Japanese.',
-        'Added route matrix paths for the four portfolio languages (German, English, Spanish, and Japanese) plus the NeonRoutine-only French routes.',
-      )
-      .replace(
-        '## Remaining legal review points\n\n',
-        '## Remaining legal review points\n\n- Have qualified counsel review the website privacy notice, controller/provider roles, legal bases, transfer wording, and retention language before treating it as legally complete.\n- Re-check GitHub Pages hosting behavior, HTTPS enforcement, and privacy terms after publication.\n',
-      );
-  }
   mkdirSync(dirname(full), { recursive: true });
-  writeFileSync(full, `${normalizedContent.trim()}\n`, 'utf8');
+  writeFileSync(full, `${content.trim()}\n`, 'utf8');
 }
 
 function yamlList(items) {
@@ -773,41 +745,61 @@ file('flatnest/terms.md', `---\nlayout: legal\ntitle: "Flatnest Terms of Service
 
 file('flatnest/LEGAL_REVIEW_REQUIRED.md', `# Flatnest Legal Review Notes\n\nFlatnest is pre-release. The public legal documents in this repository reflect the current local implementation contracts and must be reviewed again before external launch, store submission, live Firebase activation, paid features, RevenueCat, advertising, analytics, support uploads, or production legal publication.\n\nCurrent canonical routes:\n\n- Privacy: https://timonply.com/flatnest/privacy.en/\n- Terms: https://timonply.com/flatnest/terms.en/\n- Accessibility: https://timonply.com/flatnest/accessibility.en/\n- Deletion and data controls: https://timonply.com/flatnest/deletion.en/\n- CSAE standards: https://timonply.com/flatnest/csae.en/\n- Legal notice: https://timonply.com/flatnest/impressum.en/`);
 
-const matrixLines = [];
-matrixLines.push(
-  '---',
-  'layout: legal',
-  'title: "Legal Route Matrix"',
-  'doc_id: legal-route-matrix',
-  'doc_type: "Route Matrix"',
-  'app_name: "Portfolio"',
-  'language: "English"',
-  'language_code: en',
-  'language_order: 2',
-  'permalink: /docs/legal-route-matrix/',
-  '---',
-  '# Legal Route Matrix',
-  '',
-  `Last updated: ${updated}`,
-  '',
-  'Canonical public routes for app, store, support, and dashboard configuration. Portfolio language codes: `de`, `en`, `es`, `ja`; NeonRoutine additionally publishes `fr`.',
-  '',
-);
-for (const [key, app] of Object.entries(apps)) {
-  const routeLanguages = key === 'neonroutine'
-    ? [...languages, ...neonroutineOnlyLanguages]
-    : languages;
-  matrixLines.push(`## ${app.name}`, '', `Application workspace checked: ${key === 'exactake' ? 'C:\\\\coding\\\\applications\\\\exactake' : key === 'neonroutine' ? 'C:\\\\coding\\\\Flutter-Learning\\\\neon_routine' : `C:\\\\coding\\\\Flutter-Learning\\\\${key}`}`, '', `| Document | ${routeLanguages.map((lang) => lang.code).join(' | ')} |`, `|${[null, ...routeLanguages].map(() => '---').join('|')}|`);
-  const docs = ['privacy', 'terms', 'accessibility', 'deletion', 'impressum'];
-  if (app.csae) docs.splice(4, 0, 'csae');
-  for (const doc of docs) {
-    matrixLines.push(`| ${doc} | ${routeLanguages.map((lang) => `[${doc}.${lang.code}](https://timonply.com/${key}/${doc}.${lang.code}/)`).join(' | ')} |`);
-  }
-  matrixLines.push('');
-}
-matrixLines.push('## Shared routes', '', '| Route | Purpose |', '|---|---|', '| [https://timonply.com/support.html](https://timonply.com/support.html) | Support, privacy requests, accessibility feedback, and safety reports. |', '| [https://timonply.com/privacy.en/](https://timonply.com/privacy.en/) | Website privacy notice in English. |', '| [https://timonply.com/privacy.de/](https://timonply.com/privacy.de/) | Website privacy notice in German. |', '| [https://timonply.com/app-ads.txt](https://timonply.com/app-ads.txt) | Authorized seller declaration for Google ad inventory. |', '| [https://timonply.com/impressum.en/](https://timonply.com/impressum.en/) | General legal notice. |');
-file('docs/legal-route-matrix.md', matrixLines.join('\n'));
+file('docs/regulatory-review.md', `---
+layout: legal
+title: "Regulatory Review Notes"
+doc_id: regulatory-review
+doc_type: "Review Notes"
+app_name: "Portfolio"
+language: "English"
+language_code: en
+language_order: 2
+permalink: /docs/regulatory-review/
+---
+# Regulatory Review Notes
 
-file('docs/regulatory-review.md', `---\nlayout: legal\ntitle: "Regulatory Review Notes"\ndoc_id: regulatory-review\ndoc_type: "Review Notes"\napp_name: "Portfolio"\nlanguage: "English"\nlanguage_code: en\nlanguage_order: 2\npermalink: /docs/regulatory-review/\n---\n# Regulatory Review Notes\n\nLast updated: ${updated}\n\nThis is an engineering compliance checklist, not legal advice or a certification. It records the public sources and repository changes used for the current legal-document update.\n\n## Sources checked\n\n- GDPR Article 13 transparency requirements: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02016R0679-20160504\n- German DDG provider information, Section 5: https://www.gesetze-im-internet.de/ddg/__5.html\n- German TDDDG terminal-device consent, Section 25: https://www.gesetze-im-internet.de/ttdsg/__25.html\n- Google Play app account deletion requirements: https://support.google.com/googleplay/android-developer/answer/13327111?hl=en\n- Google Play child safety standards policy: https://support.google.com/googleplay/android-developer/answer/9878809?hl=en\n- Google EU User Consent Policy: https://www.google.com/about/company/user-consent-policy/\n- Apple App Privacy Details and privacy links: https://developer.apple.com/app-store/app-privacy-details/\n- Apple App Review broken-link/support/privacy expectation: https://developer.apple.com/distribute/app-review/\n- EU Digital Services Act baseline terms/contact and moderation transparency: https://eur-lex.europa.eu/eli/reg/2022/2065/oj/eng\n- European Accessibility Act: https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng\n- EU ODR platform discontinuation as of 20 July 2025: https://consumer-redress.ec.europa.eu/site-relocation_en\n\n## Changes made from this review\n\n- Removed live references to the discontinued EU ODR platform from generated terms and legal notices.\n- Added app-scoped legal notices so app-specific Impressum links resolve.\n- Added web deletion/data-control pages for every app, including no-account local-first apps.\n- Added CSAE standards for apps with social or user-generated-content surfaces: Kalvenda and Flatnest.\n- Added redirect aliases for legacy \`.html\` and \`.md\` app legal links used by current app code.\n- Added route matrix paths for all four languages: German, English, Spanish, and Japanese.\n\n## Remaining legal review points\n\n- Confirm each app-store privacy/data-safety form matches the shipped SDK and feature flags immediately before submission.\n- Confirm production ads and personalized ads remain behind valid consent where required.\n- Confirm Flatnest legal text again before external launch because the app is pre-release and live production services are approval-gated.\n- Confirm any future accounts, cloud sync, remote telemetry, support uploads, paid features, or moderation automation before release.`);
+Last updated: ${updated}
 
-console.log('Generated multilingual legal documents and route matrix.');
+This is an engineering compliance checklist, not legal advice or a certification. It records the public sources and repository changes used for the current legal-document update.
+
+## Sources checked
+
+- GDPR Articles 12 and 13 transparency requirements: https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng
+- German DDG provider information, Section 5: https://www.gesetze-im-internet.de/ddg/__5.html
+- German TDDDG terminal-device consent, Section 25: https://www.gesetze-im-internet.de/ttdsg/__25.html
+- GitHub Pages visitor IP logging: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection
+- GitHub General Privacy Statement: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+- Google Play app account deletion requirements: https://support.google.com/googleplay/android-developer/answer/13327111?hl=en
+- Google Play child safety standards policy: https://support.google.com/googleplay/android-developer/answer/9878809?hl=en
+- Google EU User Consent Policy: https://www.google.com/about/company/user-consent-policy/
+- Apple App Privacy Details and privacy links: https://developer.apple.com/app-store/app-privacy-details/
+- Apple App Review broken-link/support/privacy expectation: https://developer.apple.com/distribute/app-review/
+- EU Digital Services Act baseline terms/contact and moderation transparency: https://eur-lex.europa.eu/eli/reg/2022/2065/oj/eng
+- German BFSG accessibility requirements and microenterprise exception, Section 3: https://www.gesetze-im-internet.de/bfsg/__3.html
+- WCAG 2.2 reflow, bypass-block, focus, and navigation criteria: https://www.w3.org/WAI/WCAG22/quickref/
+- European Accessibility Act: https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng
+- EU ODR platform discontinuation as of 20 July 2025: https://consumer-redress.ec.europa.eu/site-relocation_en
+
+## Changes made from this review
+
+- Removed live references to the discontinued EU ODR platform from generated terms and legal notices.
+- Added app-scoped legal notices so app-specific Impressum links resolve.
+- Added web deletion/data-control pages for every app, including apps without accounts.
+- Added CSAE standards for apps with social or user-generated-content surfaces.
+- Added redirect aliases for legacy \`.html\` and \`.md\` app legal links used by current app code.
+- Added English and German website privacy notices covering GitHub Pages access logs and support email.
+- Removed third-party web-font requests; the public interface now loads only same-origin styles, scripts, and app icons.
+- Added skip navigation, legal-page contents navigation, localized document chrome, visible focus, and long-URL reflow.
+- Simplified the public site to current applications, factual product descriptions, verified store links, and one document selector per app.
+- Removed the public route-directory feature while preserving canonical document URLs.
+
+## Remaining legal review points
+
+- Have qualified counsel review the website privacy notice, controller/provider roles, legal bases, transfer wording, and retention language before treating it as legally complete.
+- Re-check GitHub Pages hosting behavior, HTTPS enforcement, and privacy terms after publication.
+- Confirm each app-store privacy/data-safety form matches the shipped SDK and feature flags immediately before submission.
+- Confirm production ads and personalized ads remain behind valid consent where required.
+- Confirm pre-release legal text again before external launch because live production services are approval-gated.
+- Confirm any future accounts, cloud sync, remote telemetry, support uploads, paid features, or moderation automation before release.`);
+
+console.log('Generated multilingual legal documents.');

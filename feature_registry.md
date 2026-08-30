@@ -4,10 +4,11 @@
 
 Abstraction: Static GitHub Pages app-document site made from `index.html`, `support.html`, `_layouts/legal.html`, `debug.html`, shared behavior in `assets/site.js`, and shared styling in `assets/site.css`.
 
-Purpose: Let a visitor choose an app, choose one document language, open the needed legal document, or reach the correct contact route without navigating a public developer-oriented route matrix.
+Purpose: Let a visitor choose a current app, visit its verified store listing when available, choose one document language, open the needed legal document, or reach the correct contact route.
 
 Connected features:
-- App portfolio and document entries for NeonRoutine, Kalvenda, Exactake, and Flatnest.
+- Public app and document entries for NeonRoutine, Kalvenda, and Exactake.
+- Verified Apple App Store links for NeonRoutine and Kalvenda; no unverified placeholder destination for Exactake.
 - Legal document routes generated from markdown files through the shared Jekyll legal layout.
 - App-scoped language selectors that update document links without cookies or browser storage.
 - Support, privacy-request, accessibility-feedback, and safety-report contact routes through `support.html`.
@@ -24,7 +25,7 @@ Possible conflicts:
 Validation:
 - Run `node --test tests/site-structure.test.mjs`.
 - Open `/index.html`, `/support.html`, `/debug.html`, and representative legal document routes.
-- Confirm the home page has one app-document section, all four language pickers update their card links, and there is no horizontal overflow at 320 CSS pixels.
+- Confirm the home page has one app-document section, all three language pickers update their card links, and there is no horizontal overflow at 320 CSS pixels.
 - Confirm legal pages provide a single visible title, localized navigation, language switching, on-page contents, and printable content.
 
 ## Debug Functionality Register
@@ -32,7 +33,7 @@ Validation:
 Single entrypoint: `/debug.html`.
 
 Debug features:
-- App-scoped route checks for NeonRoutine, Kalvenda, Exactake, and Flatnest legal documents.
+- App-scoped route checks for NeonRoutine, Kalvenda, and Exactake legal documents.
 - Shared app support, provider notice, and app ads verification links.
 - Representative legal document routes for quick manual verification.
 

@@ -13,6 +13,7 @@ const apps = {
   exactake: ['privacy', 'terms', 'accessibility', 'deletion', 'impressum'],
   flatnest: ['privacy', 'terms', 'accessibility', 'deletion', 'csae', 'impressum'],
 };
+const featuredApps = ['neonroutine', 'kalvenda', 'exactake'];
 
 function languagesForApp(app) {
   return app === 'neonroutine' ? neonroutineLanguages : languages;
@@ -44,7 +45,6 @@ function localSrcs(html) {
 function legalMarkdownFiles() {
   const files = [
     'README.md',
-    'docs/legal-route-matrix.md',
     'docs/regulatory-review.md',
     'privacy.de.md',
     'privacy.en.md',
@@ -94,12 +94,12 @@ test('home page exposes one clear app and document chooser', () => {
   assert.match(html, /Legal documents for Timon Polley apps\./);
   assert.match(html, /class="[^"]*\bhome-hero\b/);
   assert.match(html, /class="[^"]*\bapp-showcase\b/);
-  assert.match(html, /docs\/legal-route-matrix/);
+  assert.doesNotMatch(html, /legal-route-matrix|route matrix|route directory/i);
   assert.match(html, /href="\/support\.html"/);
   assert.match(html, /href="\/privacy\.en\/"/);
   assert.match(html, /class="skip-link" href="#main-content"/);
 
-  for (const app of Object.keys(apps)) {
+  for (const app of featuredApps) {
     assert.match(html, new RegExp(`id="${app}"`));
     assert.match(html, new RegExp(`data-app="${app}"`));
     for (const doc of apps[app]) {
@@ -108,31 +108,40 @@ test('home page exposes one clear app and document chooser', () => {
     }
   }
 
-  assert.equal((html.match(/data-language-picker/g) ?? []).length, 4);
+  assert.equal((html.match(/data-language-picker/g) ?? []).length, 3);
+  assert.equal((html.match(/class="app-store-link"/g) ?? []).length, 2);
+  assert.match(html, /https:\/\/apps\.apple\.com\/app\/neonroutine\/id6760037822/);
+  assert.match(html, /https:\/\/apps\.apple\.com\/app\/kalvenda\/id6760579319/);
+  assert.match(html, /cyberpunk habit tracker where completed tasks earn XP, build streaks/);
+  assert.match(html, /organize events, member roles, group invites, and alerts/);
+  assert.match(html, /science-focused, low-cost calorie and nutrient tracker/);
   assert.match(html, /Français \(FR\)/);
   assert.match(script, /`\/\$\{app\}\/\$\{link\.dataset\.document\}\.\$\{language\}\/`/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|document\.cookie/);
   assert.match(html, /assets\/icons\/exactake-192\.png/);
+  assert.doesNotMatch(html, /Flatnest|data-app="flatnest"|Routine tracking|Group planning|Nutrition tracking|Local-first|Account-based|Stable links/i);
+  assert.doesNotMatch(html, /task-panel|trust-list|reviewer-note|app-state/);
   assert.doesNotMatch(html, /Legal pages, support routes, and app compliance references\./);
   assert.doesNotMatch(html, /class="[^"]*\broute-row\b/);
 });
 
-test('support and debug pages expose privacy, safety, accessibility, and QA routes', () => {
+test('support and debug pages expose current privacy, safety, accessibility, and QA routes', () => {
   const support = read('support.html');
   const debug = read('debug.html');
 
   assert.match(support, /mailto:dev@timonply\.com/);
-  assert.match(support, /Exactake, Flatnest, Kalvenda, or NeonRoutine/);
+  assert.match(support, /Exactake, Kalvenda, or NeonRoutine/);
   assert.match(support, /id="privacy-requests"/);
   assert.match(support, /id="safety-reports"/);
-  assert.match(support, /Email is not an emergency channel/);
-  assert.match(support, /\/flatnest\/deletion\.en\//);
+  assert.doesNotMatch(support, /Email is not an emergency channel|Flatnest|\/flatnest\//i);
+  assert.equal((support.match(/class="support-app-card"/g) ?? []).length, 3);
   assert.match(support, /\/kalvenda\/csae\.en\//);
   assert.match(support, /\/privacy\.en\//);
 
   assert.match(debug, /Route checks for app metadata/);
-  assert.match(debug, /\/docs\/legal-route-matrix\//);
-  assert.match(debug, /\/flatnest\/privacy\.en\//);
+  assert.match(debug, /\/docs\/regulatory-review\//);
+  assert.match(debug, /\/app-ads\.txt/);
+  assert.doesNotMatch(debug, /legal-route-matrix|route matrix|Flatnest|\/flatnest\//i);
   assert.match(debug, /\/exactake\/accessibility\.en\//);
   assert.match(debug, /\/neonroutine\/deletion\.en\//);
   assert.doesNotMatch(debug, /design regression|Visual regression|viewport widths/i);
@@ -247,12 +256,9 @@ test('French generation is scoped to NeonRoutine only', () => {
   }
 
   assert.equal(exists('impressum.fr.md'), false, 'the shared legal notice must remain four-language');
-  const matrix = read('docs/legal-route-matrix.md');
-  assert.match(matrix, /neonroutine\/privacy\.fr\//);
-  assert.doesNotMatch(matrix, /(?:kalvenda|exactake|flatnest)\/[^\s)]+\.fr\//);
 });
 
-test('shared legal notices, route matrix, and regulatory notes are publishable', () => {
+test('shared legal notices and regulatory notes are publishable', () => {
   for (const lang of languages) {
     const path = `impressum.${lang}.md`;
     const text = read(path);
@@ -265,25 +271,19 @@ test('shared legal notices, route matrix, and regulatory notes are publishable',
     assert.match(text, /privacy\.(?:de|en)\//);
   }
 
-  const matrix = read('docs/legal-route-matrix.md');
   const review = read('docs/regulatory-review.md');
   const websitePrivacyEn = read('privacy.en.md');
   const websitePrivacyDe = read('privacy.de.md');
 
-  assert.match(matrix, /^---\nlayout: legal/m);
-  assert.match(matrix, /^permalink: \/docs\/legal-route-matrix\/$/m);
-  assert.match(matrix, /Application workspace checked: C:\\\\coding\\\\applications\\\\exactake/);
-  assert.match(matrix, /flatnest\/csae\.en\//);
-  assert.match(matrix, /privacy\.en\//);
-  assert.match(matrix, /privacy\.de\//);
-
   assert.match(review, /^---\nlayout: legal/m);
   assert.match(review, /^permalink: \/docs\/regulatory-review\/$/m);
   assert.match(review, /EU ODR platform discontinuation as of 20 July 2025/);
-  assert.match(review, /four portfolio languages.*NeonRoutine-only French routes/);
   assert.match(review, /GitHub Pages visitor IP logging/);
   assert.match(review, /Removed third-party web-font requests/);
-  assert.doesNotMatch(review, /paths for all four languages/);
+  assert.match(review, /Simplified the public site to current applications/);
+  assert.doesNotMatch(review, /route matrix|legal-route-matrix/i);
+  assert.equal(exists('docs/legal-route-matrix.md'), false);
+  assert.doesNotMatch(read('tools/generate_legal_docs.mjs'), /route matrix|legal-route-matrix/i);
 
   for (const [path, text, language] of [
     ['privacy.en.md', websitePrivacyEn, 'en'],
