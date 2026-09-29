@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f3ea">
+    <meta name="description" content="Eine Wunschkiste für Kindergeburtstage: Wünsche sammeln, Link teilen und Geschenke einfach abstimmen.">
+    <meta property="og:title" content="Wunschkiste — Kleine Wünsche. Große Vorfreude.">
+    <meta property="og:description" content="Sammle Geburtstagswünsche in einer Kiste und teile sie mit deinen Gästen.">
+    <meta property="og:type" content="website">
+    <title>Wunschkiste — Kleine Wünsche. Große Vorfreude.</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Wunschkiste Startseite">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 19h32v22H8zM5 14h38v8H5zM24 14v27M24 14c-12 0-13-10-6-10 5 0 6 10 6 10Zm0 0c12 0 13-10 6-10-5 0-6 10-6 10Z"/><path d="M19 29h10M24 26v9"/></svg></span>
+          <span>Wunschkiste</span>
+        </a>
+        <nav class="topnav" aria-label="Hauptnavigation">
+          <a href="#so-gehts" data-nav="how">So funktioniert’s</a>
+          <a href="?meine=1" data-nav="mine">Meine Kisten</a>
+          <button class="button button-small button-outline" type="button" data-action="open-create">Wunschkiste erstellen</button>
+        </nav>
+        <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" data-action="toggle-menu"><span></span><span></span></button>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <div id="app" aria-busy="true">
+          <div class="loading-state" role="status"><span class="loading-dot"></span> Die Kiste wird geöffnet …</div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-brand" href="./">Wunschkiste</a>
+        <span>Mit Vorfreude gemacht <span aria-hidden="true">✳</span></span>
+        <a href="https://timonply.com/" rel="noopener noreferrer">Zur Website von Timon Polley</a>
+      </footer>
+    </div>
+
+    <dialog class="dialog" id="create-dialog" aria-labelledby="create-title">
+      <form class="dialog-panel" id="create-form" novalidate>
+        <button class="dialog-close" type="button" aria-label="Schließen" data-action="close-dialog">×</button>
+        <p class="eyebrow">DEINE KLEINE GESCHENKEBOX</p>
+        <h2 id="create-title">Womit feiern wir?</h2>
+        <p class="dialog-intro">Gib deiner Kiste einen Namen. Datum und ein kurzer Gruß sind ganz optional.</p>
+        <label for="list-title">Name der Wunschkiste <span class="required-mark">*</span></label>
+        <input id="list-title" name="title" type="text" maxlength="80" required placeholder="z. B. Mias 7. Geburtstag" autocomplete="off">
+        <p class="field-error" id="list-title-error" hidden>Gib deiner Wunschkiste einen Namen.</p>
+        <label for="list-date">Wann wird gefeiert? <span class="optional-label">optional</span></label>
+        <input id="list-date" name="date" type="date">
+        <label for="list-message">Ein Gruß an die Gäste <span class="optional-label">optional</span></label>
+        <textarea id="list-message" name="message" rows="3" maxlength="180" placeholder="Ich freue mich auf einen bunten Nachmittag mit euch!"></textarea>
+        <p class="privacy-hint"><span aria-hidden="true">✳</span> Ein Vorname genügt. Bitte trage keine Adresse oder andere privaten Daten ein.</p>
+        <button class="button button-primary button-wide" type="submit">Kiste anlegen <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="wish-dialog" aria-labelledby="wish-title">
+      <form class="dialog-panel" id="wish-form" novalidate>
+        <button class="dialog-close" type="button" aria-label="Schließen" data-action="close-dialog">×</button>
+        <p class="eyebrow">EIN WUNSCH FÜR DIE KISTE</p>
+        <h2 id="wish-title">Was wünscht sich das Geburtstagskind?</h2>
+        <p class="dialog-intro">Ein Produkt oder eine eigene Idee – beides passt in die Kiste.</p>
+        <label for="wish-name">Wunsch <span class="required-mark">*</span></label>
+        <input id="wish-name" name="title" type="text" maxlength="90" required placeholder="z. B. Ein gemeinsamer Kinobesuch" autocomplete="off">
+        <p class="field-error" id="wish-name-error" hidden>Wie heißt der Wunsch?</p>
+        <label for="wish-url">Produktlink <span class="optional-label">optional</span></label>
+        <input id="wish-url" name="url" type="url" inputmode="url" maxlength="500" placeholder="https://…" autocomplete="url">
+        <p class="field-error" id="wish-url-error" hidden>Bitte einen gültigen http- oder https-Link eintragen.</p>
+        <div class="field-row">
+          <div class="field-grow">
+            <label for="wish-price">Preis ungefähr <span class="optional-label">optional</span></label>
+            <div class="input-suffix"><input id="wish-price" name="price" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 25,00"><span>€</span></div>
+          </div>
+          <div class="field-grow">
+            <label for="wish-kind">Bildmotiv</label>
+            <select id="wish-kind" name="kind">
+              <option value="tiles">Bunte Bausteine</option>
+              <option value="train">Holzeisenbahn</option>
+              <option value="pencils">Buntstifte</option>
+              <option value="book">Bilderbuch</option>
+              <option value="idea">Eigene Idee</option>
+            </select>
+          </div>
+        </div>
+        <label for="wish-note">Kleiner Hinweis <span class="optional-label">optional</span></label>
+        <textarea id="wish-note" name="note" rows="2" maxlength="140" placeholder="Farbe, Größe oder ein anderer Tipp"></textarea>
+        <button class="button button-primary button-wide" type="submit">Wunsch hinzufügen <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="share-dialog" aria-labelledby="share-title">
+      <div class="dialog-panel share-panel">
+        <button class="dialog-close" type="button" aria-label="Schließen" data-action="close-dialog">×</button>
+        <p class="eyebrow">DEINE KISTE TEILEN</p>
+        <h2 id="share-title">Zwei Links, zwei Aufgaben.</h2>
+        <p class="dialog-intro">Den Gästelink kannst du in die Einladung oder Familiengruppe setzen. Den Verwaltungslink behältst du für dich.</p>
+        <div class="share-link-group">
+          <label for="guest-link">Für deine Gäste</label>
+          <div class="copy-row"><input id="guest-link" type="text" readonly><button class="button button-small button-outline" type="button" data-action="copy" data-copy="guest-link">Kopieren</button></div>
+          <p>Alle mit diesem Link können die Wünsche ansehen und auswählen.</p>
+        </div>
+        <div class="share-link-group share-link-private">
+          <label for="owner-link">Für dich zum Verwalten</label>
+          <div class="copy-row"><input id="owner-link" type="text" readonly><button class="button button-small button-outline" type="button" data-action="copy" data-copy="owner-link">Kopieren</button></div>
+          <p>Dieser Link berechtigt zum Ändern der Kiste. Teile ihn nicht mit Gästen.</p>
+        </div>
+        <div class="preview-callout"><strong>Vorschau auf dieser Website</strong><br>Beide Links funktionieren nur in demselben Browser. Eine gemeinsame Liste über verschiedene Geräte braucht noch einen Server.</div>
+        <button class="button button-primary button-wide" type="button" data-action="close-dialog">Alles klar</button>
+      </div>
+    </dialog>
+
+    <dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+      <div class="dialog-panel confirm-panel">
+        <button class="dialog-close" type="button" aria-label="Schließen" data-action="close-dialog">×</button>
+        <p class="eyebrow">KLEINER HINWEIS</p>
+        <h2 id="confirm-title">Diesen Wunsch wieder freigeben?</h2>
+        <p class="dialog-intro" id="confirm-copy">Andere Gäste können ihn danach wieder auswählen.</p>
+        <div class="dialog-actions"><button class="button button-outline" type="button" data-action="cancel-confirm">Doch nicht</button><button class="button button-primary" type="button" id="confirm-accept">Freigeben</button></div>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript><p class="noscript-message">Bitte aktiviere JavaScript, um die Wunschkiste-Vorschau zu verwenden.</p></noscript>
+  </body>
+</html>
