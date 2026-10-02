@@ -18,7 +18,7 @@
 - Owner Add remains at the same bottom position for empty and filled lists, with exactly one Add button. Empty state contains only Noch keine Wünsche.
 - Owner detail: Bearbeiten primary; domain is the single secondary shop link, at least44px tall. Remove is text. No competing shop primary or redundant navigation.
 - Guest detail: Reservieren primary while open, Shop secondary. After own reservation Shop becomes primary; bought/release controls secondary. Another guest's claimed wish cannot be reserved and exposes no shopping action.
-- Forms retain necessary accessible field labels; optional fields stay collapsed. Share/menu controls are secondary, 44px targets. The menu contains only edit-list and guest-view actions; management link remains in sharing.
+- Forms retain necessary accessible field labels; optional fields stay collapsed. Share/menu controls are secondary, 44px targets. Owner menu contains edit-list, guest-view and new-list actions; guest menu contains new-list only. Management link remains in sharing.
 - Functional busy, conflict, inline errors, toast and Undo only;160ms toast transition with reduced-motion alternative. Native dialogs provide modal containment and escape dismissal.
 - Backend and Free-only limits remain those documented in v3 and tools/wunschkiste-backend/README.md. Final acceptance requires actual mobile/desktop screenshots, functional guest/owner checks and verified Pages deployment.
 
@@ -27,3 +27,15 @@
 On2026-10-02 the user accepted the displayed actual V4 mobile list: "genau so. Setz dies nun genauso um", explicitly authorizing implementation and website publication. The screenshot in that response is the accepted visible layout. Preserve its list, hierarchy, palette and one-action pattern.
 
 The requested descriptions/date refinement is content within this accepted layout, not a new visual concept: date including year remains under the title; optional list description follows the header at full content width, with no extra heading or box. It is absent when empty. Up to240 characters, multiline plain text,15px/1.55 muted type; wraps arbitrary long words. Editing keeps name, date and description together. Wish descriptions remain in the details only and under optional fields while editing. Menu action is Liste bearbeiten. Same motion/accessibility rules; no new animation or navigation.
+
+## Public creation refinement
+
+User subsequently requested that other people can create their own Wunschkisten.
+Root entry always presents Wunschkiste erstellen as its single filled primary;
+Einladungslink öffnen and the browser's last management link are secondary text
+actions. Invitations open the same existing sheet primitive, with a required link
+label and inline error. No hero, explainer, tiles or counters. Existing list/detail
+layout is unchanged. Neue Wunschkiste in the owner/guest menu opens creation
+directly. Lists are independent; management links and anonymous claims are scoped
+to each list. Existing data is migrated intact. Public creation remains within
+documented Free-only test limits; no accounts or additional provider.

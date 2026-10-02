@@ -111,25 +111,27 @@ async function route(request, env) {
   const db = env.DB;
   const path = new URL(request.url).pathname.replace(/^\/api/, "").replace(/\/$/, "");
   if (path === "/list" && request.method === "GET") {
-    return { exists: Boolean(await db.prepare("SELECT id FROM lists WHERE slot = 1").first()) };
+    // Earlier clients use this flag to decide whether to offer creation.
+    return { exists: false };
   }
   if (path === "/lists" && request.method === "POST") {
-    if (env.DEV_MODE !== "true" && (!env.SETUP_KEY || request.headers.get("x-setup-key") !== env.SETUP_KEY)) {
-      fail(403, "Zum Anlegen bitte den Einrichtungslink öffnen.");
-    }
     const body = await jsonBody(request);
     const title = text(body.title, 80, true);
     const eventDate = date(body.date || "");
     const description = text(body.description === undefined ? "" : body.description, 240);
     const id = randomHex(12);
     const ownerKey = body.ownerKey;
-    if (!KEY.test(ownerKey || "")) fail(400, "Bitte die Einrichtung erneut öffnen.");
+    if (!KEY.test(ownerKey || "")) fail(400, "Bitte die Erstellung erneut öffnen.");
     const ownerHash = await hash(ownerKey);
-    const result = await db.prepare("INSERT OR IGNORE INTO lists (slot, id, title, event_date, description, owner_hash, created_at) VALUES (1, ?, ?, ?, ?, ?, ?)")
-      .bind(id, title, eventDate, description, ownerHash, Date.now()).run();
+    const now = Date.now();
+    // The pre-existing secret only salts the abuse counter; visitors need no setup key.
+    if (env.DEV_MODE !== "true" && !env.SETUP_KEY) fail(503, "Die Erstellung ist gerade nicht verfügbar.");
+    const creatorHash = await hash((env.SETUP_KEY || "local") + ":" + (request.headers.get("cf-connecting-ip") || "local"));
+    const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash) SELECT ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5")
+      .bind(id, title, eventDate, description, ownerHash, now, creatorHash, creatorHash, now - 3600000).run();
     if (!result.meta.changes) {
-      const existing = await db.prepare("SELECT * FROM lists WHERE slot = 1").first();
-      if (!existing || existing.owner_hash !== ownerHash) fail(409, "Die Testliste wurde bereits angelegt.");
+      const existing = await db.prepare("SELECT * FROM lists WHERE owner_hash = ?").bind(ownerHash).first();
+      if (!existing) fail(429, "Gerade können keine weiteren Wunschkisten erstellt werden. Bitte später erneut versuchen.");
       const replay = new Request(request.url, { headers: { ...Object.fromEntries(request.headers), Authorization:"Bearer " + ownerKey } });
       return { ...await listData(db, existing, replay), ownerKey };
     }

@@ -6,6 +6,13 @@ export function createDatabase(path = ":memory:") {
   if(!database.prepare("PRAGMA table_info(lists)").all().some(column=>column.name==="description")) {
     database.exec(readFileSync(new URL("migrations/0001_list_description.sql",import.meta.url),"utf8"));
   }
+  if(!database.prepare("PRAGMA table_info(lists)").all().some(column=>column.name==="creator_hash")) {
+    database.exec("BEGIN");
+    try {
+      database.exec(readFileSync(new URL("migrations/0002_multiple_lists.sql",import.meta.url),"utf8"));
+      database.exec("COMMIT");
+    } catch(error) { database.exec("ROLLBACK"); throw error; }
+  }
   return {
     close: () => database.close(),
     prepare(sql) {

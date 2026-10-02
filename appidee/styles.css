@@ -43,6 +43,8 @@ main { padding:0 0 110px; }
 .add-dock .primary { pointer-events:auto; width:min(100%,400px); padding:12px 22px; min-height:50px; }
 .add-dock .plus { font-size:25px; font-weight:350; line-height:1; }
 .empty { min-height:300px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px 0; }
+.start { gap:10px; }
+.start .text-button { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
 .empty p { color:var(--muted); max-width:310px; line-height:1.5; margin:0 0 20px; font-size:15px; }
 .empty .open-link-form { width:min(100%,390px); display:grid; gap:12px; }
 .loading { min-height:200px; display:grid; place-items:center; color:var(--muted); }

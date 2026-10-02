@@ -1,6 +1,6 @@
 # Wunschkiste test backend
 
-One shared list for `/appidee/`, backed by a Cloudflare Worker and D1. No accounts,
+Independent shared lists for `/appidee/`, backed by a Cloudflare Worker and D1. No accounts,
 payment, analytics, product scraping, cron, queues or paid services. Shopping links
 open the exact entered destination; purchases are made independently in the shop.
 
@@ -17,9 +17,13 @@ before applying the additive description migration and publishing its Worker.
 
 Official limits: https://developers.cloudflare.com/workers/platform/pricing/ and
 https://developers.cloudflare.com/d1/platform/pricing/ . Visible pages refresh at
-most every 20 seconds; hidden pages stop polling. One list, max30 active wishes,
-max100 retained wish rows. D1 stores only bounded text/URLs, cents, revisions and
-hashed capabilities. Thumbnails load directly from entered HTTPS URLs.
+most every 20 seconds; hidden pages stop polling. The public test is bounded to
+500 lists, five new lists per connecting IP per rolling hour, max30 active wishes
+and max100 retained wish rows per list. Exceeding creation bounds returns429;
+idempotent recovery of an existing list still works. D1 stores bounded text/URLs,
+cents, revisions, hashed capabilities and an internal IP hash salted with the
+pre-existing secret. Raw IP addresses and creation hashes are never returned.
+Thumbnails load directly from entered HTTPS URLs.
 
 ## Authorization and recovery
 
@@ -29,10 +33,21 @@ rows show only name, price/shop and availability. Missing metadata adds no label
 or empty space. Earlier clients can omit the list description on PATCH without
 clearing it.
 
-- A private setup secret gates creation; a database singleton enforces one list.
+- Everyone can create a list from the root page without a setup link. The old
+  SETUP_KEY secret now only salts the internal creation limit; it is never
+  sent by visitors or exposed in public links. No extra service is used.
+- Each list has its own ID and private owner capability; queries and mutations
+  remain scoped to that ID. The menu offers a new list to owners and guests.
+- The root page always offers creation and invitations; the last management
+  link saved on that browser is a secondary shortcut. Creating another list
+  keeps earlier lists accessible through their saved management links.
 - The browser saves its cryptographically random management key **before**
   creation. Replaying creation with that key recovers the same list if the first
   response was lost. Only its hash is stored in D1.
+- Pending drafts are keyed by their individual creation capability, also kept in
+  the tab's private `#erstellen` fragment. Reload/retry recovers that operation;
+  separate tabs/new-list actions receive distinct keys and cannot remove another
+  tab's pending draft. No automatic creation request runs on the start page.
 - The management key is a URL fragment and separate local storage value. Keep
   it private. Guest invitation URLs never contain it.
 - Guests hold their own random claim key in their browser. D1 stores only its
@@ -56,7 +71,7 @@ node --test appidee/domain.test.mjs appidee/ui-contract.test.mjs tools/wunschkis
 ```
 
 The local server uses Node's experimental SQLite module and exactly the Worker
-router/SQL, with creation enabled only for localhost. Disposable state is in
+router/SQL. Disposable state is in
 ignored `.local/`. Open http://127.0.0.1:8765/appidee/ . This is not proof of a
 remote deployment. `config.js` is replaced with the local API only by this server.
 
@@ -74,21 +89,24 @@ No credentials, setup key or management link belong in this repository.
 2. Copy `wrangler.example.json` to ignored `wrangler.local.json`, supply the
    account/D1 identifiers, and retain only the DB and allowed-origin bindings.
 3. Create D1 once, apply `schema.sql` and then `wrangler d1 migrations apply
-   wunschkiste-test --remote` to it, deploy the Worker, then provision a
+   wunschkiste-test --remote` to it, provision a
    cryptographically random `SETUP_KEY` with `wrangler secret bulk` or `secret put`.
-4. Create the one list with a persisted random management key and setup secret;
-   save the private management link outside the repository.
+4. Deploy the Worker. Visitors create lists with their persisted random management
+   keys. Save private management links outside the repository.
 5. Set only the public API endpoint in `appidee/config.js`, publish Pages, and
    exercise owner and independent guest operations on the live endpoint.
 
-Existing databases use the same additive migration command before deploying the
-description-enabled Worker. It preserves list IDs, management hashes, wishes and
-claims, adds an empty description, and records the migration. The local SQLite
-adapter applies the same column migration only if it is missing. No data reset.
+Existing databases use the same migration command before deploying the Worker.
+0001 adds descriptions; 0002 rebuilds the list table without its singleton check,
+preserving existing IDs, hashes, metadata, wishes and claims. Foreign keys are
+deferred within the migration transaction and restored before completion.
+The local SQLite adapter applies the same migrations only if their marker columns
+are missing. No data reset.
 
-API: `GET /api/list` checks whether setup exists; `POST /api/lists` creates/replays
-setup. List GET/PATCH, item POST/PATCH/DELETE, item `/restore`, and item
+API: legacy `GET /api/list` returns exists:false to permit older clients to create;
+`POST /api/lists` publicly creates/replays one owner's list. List GET/PATCH,
+item POST/PATCH/DELETE, item `/restore`, and item
 `/reservation` POST are under `/api/lists/:id`. Owner uses bearer capability;
-guest uses `X-Claim-Key`; setup uses `X-Setup-Key`. Mutations require JSON with
+guest uses `X-Claim-Key`. Mutations require JSON with
 max16KB body. Invalid input/auth/conflict errors are explicit; no failed request
 is rendered as a successful write.

@@ -1,4 +1,4 @@
-import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=4.3";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=4.4";
 
 const $ = id => document.getElementById(id);
 const KEY = /^[a-f0-9]{64}$/;
@@ -6,7 +6,7 @@ const ID = /^[a-f0-9]{24}$/;
 const storageKeys = { owner:"wk.v2.owner", list:"wk.v2.list", guest:"wk.v2.guest", pending:"wk.v2.pending" };
 const more = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></svg>';
 const share = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V2m-4 4 4-4 4 4M8 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-3"/></svg>';
-let list = null, ownerKey = "", guestKey = "", routeId = "", setupKey = "";
+let list = null, ownerKey = "", guestKey = "", routeId = "";
 let snapshotMode = false, apiBase = String(window.WUNSCHKISTE_API || "").replace(/\/$/, "");
 let detailId = "", busy = false, refreshing = false, serial = 0, toastTimer, undoAction = null;
 const online = () => Boolean(apiBase && !snapshotMode);
@@ -57,7 +57,6 @@ function requestHeaders(json = false) {
 }
 async function api(path, method = "GET", body) {
   const headers = requestHeaders(body !== undefined);
-  if (setupKey && path === "/lists") headers["X-Setup-Key"] = setupKey;
   let response;
   try {
     response = await fetch(apiBase + path, {
@@ -120,7 +119,7 @@ function render(restoreFocus = null) {
   const focus = restoreFocus || focusState();
   $("app").setAttribute("aria-busy","false");
   $("app-actions").innerHTML = list ? '<button class="icon-button" type="button" data-action="share" aria-label="Liste teilen">' + share + '</button>' +
-    (list.isOwner ? '<button class="icon-button" type="button" data-action="menu" aria-label="Listenmenü">' + more + '</button>' : "") : "";
+    '<button class="icon-button" type="button" data-action="menu" aria-label="Listenmenü">' + more + '</button>' : "";
   $("add-dock").innerHTML = list?.isOwner ? '<button class="primary" type="button" data-action="add"><span class="plus" aria-hidden="true">+</span>Wunsch hinzufügen</button>' : "";
   if (!list) return;
   setHeading(list.title,list.date,!online());
@@ -144,24 +143,13 @@ function emptyView(kind = "new", message = "") {
   $("app").setAttribute("aria-busy","false"); $("app-actions").innerHTML = ""; $("add-dock").innerHTML = "";
   document.title = "Wunschkiste";
   setHeading("Wunschkiste");
-  if (kind === "exists") {
-    setHeading("Einladungslink öffnen");
-    $("app").innerHTML = '<section class="empty"><form class="open-link-form" id="open-link-form"><input id="invite-url" aria-label="Einladungslink" placeholder="Link einfügen" inputmode="url" required><button class="primary" type="submit">Öffnen</button></form></section>';
-    $("open-link-form").addEventListener("submit", event => {
-      event.preventDefault();
-      try {
-        const url = new URL($("invite-url").value);
-        if (url.origin !== location.origin || url.pathname !== location.pathname) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
-        if (!ID.test(url.searchParams.get("kiste") || "") && !new URLSearchParams(url.hash.slice(1)).has("liste")) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
-        location.assign(url.href);
-      } catch(error) { toast(error.message); }
-    });
-  } else if (kind === "error") {
+  if (kind === "error") {
     setHeading("Liste nicht erreichbar");
     $("app").innerHTML = '<section class="empty"><p>' + esc(message) + '</p><button class="primary" type="button" data-action="retry">Erneut versuchen</button></section>';
   } else {
-    setHeading("Deine Wunschliste");
-    $("app").innerHTML = '<section class="empty"><button class="primary" type="button" data-action="create">Liste erstellen</button></section>';
+    const saved = readStorage(storageKeys.owner);
+    const recent = ID.test(saved?.id || "") && KEY.test(saved?.key || "") ? '<a class="text-button" href="' + esc(routeUrl(saved.id,saved.key)) + '">Meine letzte Wunschkiste öffnen</a>' : "";
+    $("app").innerHTML = '<section class="empty start"><button class="primary" type="button" data-action="create">Wunschkiste erstellen</button><button class="text-button" type="button" data-action="open-invite">Einladungslink öffnen</button>' + recent + '</section>';
   }
 }
 async function load() {
@@ -172,7 +160,6 @@ async function load() {
     if (!KEY.test(guestKey || "")) { guestKey = randomKey(); storeValue(storageKeys.guest, guestKey); }
     const params = new URLSearchParams(location.search);
     const hash = new URLSearchParams(location.hash.slice(1));
-    setupKey = KEY.test(hash.get("setup") || "") ? hash.get("setup") : "";
     if (hash.has("liste")) {
       snapshotMode = true;
       const decoded = decodeSnapshot(hash.get("liste"));
@@ -185,17 +172,7 @@ async function load() {
     const savedOwner = readStorage(storageKeys.owner);
     routeId = ID.test(params.get("kiste") || "") ? params.get("kiste") : "";
     ownerKey = KEY.test(hash.get("verwalten") || "") ? hash.get("verwalten") : "";
-    if (!routeId && !params.has("kiste") && ID.test(savedOwner?.id || "") && KEY.test(savedOwner?.key || "")) {
-      routeId = savedOwner.id; ownerKey = savedOwner.key;
-      setOwnerRoute(routeId, ownerKey);
-    }
     if (online()) {
-      const pending = readStorage(storageKeys.pending);
-      if (!routeId && KEY.test(pending?.ownerKey || "")) {
-        const data = await api("/lists","POST",pending);
-        if (currentSerial !== serial) return;
-        finishCreation(data); return;
-      }
       if (routeId) {
         const data = await api("/lists/" + routeId);
         if (currentSerial !== serial) return;
@@ -203,8 +180,7 @@ async function load() {
         if (ownerKey && data.isOwner) { try { storeValue(storageKeys.owner, {id:routeId,key:ownerKey}); } catch { toast("Sichere deinen Verwaltungslink."); } }
         render();
       } else {
-        const result = await api("/list");
-        if (currentSerial === serial) emptyView(result.exists ? "exists" : "new");
+        if (currentSerial === serial) { emptyView(); if(params.get("neu") === "1" || KEY.test(hash.get("erstellen") || "")) openList(); }
       }
     } else {
       const raw = readStorage(storageKeys.list);
@@ -249,9 +225,18 @@ async function mutate(path, method, body, localChange) {
 }
 function openList(edit = false) {
   $("list-form").reset(); $("list-form").dataset.edit = edit ? "1" : "";
-  $("list-name").value = edit ? list.title : "";
-  $("list-date").value = edit ? list.date : "";
-  $("list-description-input").value = edit ? list.description || "" : "";
+  let creationKey = "";
+  if(!edit) {
+    const url = new URL(location.href), hash = new URLSearchParams(url.hash.slice(1));
+    creationKey = KEY.test(hash.get("erstellen") || "") ? hash.get("erstellen") : randomKey();
+    url.hash = new URLSearchParams({erstellen:creationKey}).toString();
+    history.replaceState({},"",url.href);
+  }
+  $("list-form").dataset.creationKey = creationKey;
+  const pending = edit ? null : readStorage(storageKeys.pending + "." + creationKey);
+  $("list-name").value = edit ? list.title : pending?.title || "";
+  $("list-date").value = edit ? list.date : pending?.date || "";
+  $("list-description-input").value = edit ? list.description || "" : pending?.description || "";
   $("list-dialog-title").textContent = edit ? "Liste bearbeiten" : "Liste erstellen";
   $("list-submit").textContent = edit ? "Speichern" : "Erstellen";
   showError("list-error","");
@@ -332,7 +317,7 @@ async function reservation(id, action) {
 function finishCreation(data) {
   ownerKey = data.ownerKey; routeId = data.id; list = data;
   setOwnerRoute(routeId,ownerKey);
-  try { storeValue(storageKeys.owner,{id:routeId,key:ownerKey}); localStorage.removeItem(storageKeys.pending); }
+  try { storeValue(storageKeys.owner,{id:routeId,key:ownerKey}); localStorage.removeItem(storageKeys.pending + "." + ownerKey); }
   catch { toast("Sichere deinen Verwaltungslink."); }
   list.isOwner = true; render();
 }
@@ -349,9 +334,9 @@ $("list-form").addEventListener("submit", async event => {
       busy = true; $("list-submit").disabled = true;
       let data;
       if (online()) {
-        const previous = readStorage(storageKeys.pending);
-        const pending = {title,date,description,ownerKey:KEY.test(previous?.ownerKey || "") ? previous.ownerKey : randomKey()};
-        storeValue(storageKeys.pending,pending);
+        const creationKey = $("list-form").dataset.creationKey;
+        const pending = {title,date,description,ownerKey:creationKey};
+        storeValue(storageKeys.pending + "." + creationKey,pending);
         data = await api("/lists","POST",pending);
       }
       else {
@@ -402,7 +387,14 @@ document.addEventListener("click", async event=>{
     else if(action==="add") openWish();
     else if(action==="edit-wish") openWish(id);
     else if(action==="detail") openDetail(id);
-    else if(action==="menu") openSheet("menu-dialog");
+    else if(action==="menu") {
+      $("menu-title").textContent = list.isOwner ? "Deine Liste" : "Wunschkiste";
+      $("menu-edit").hidden = !list.isOwner;
+      $("menu-guest").hidden = !list.isOwner;
+      openSheet("menu-dialog");
+    }
+    else if(action==="new-list") { const url=new URL(location.href); url.search="?neu=1"; url.hash=""; location.assign(url.href); }
+    else if(action==="open-invite") { $("open-link-form").reset(); showError("invite-error",""); openSheet("invite-dialog","invite-url"); }
     else if(action==="share") openShare();
     else if(action==="retry") await load();
     else if(action==="guest-view") location.assign(guestLink());
@@ -421,6 +413,15 @@ document.addEventListener("click", async event=>{
       });
     }
   } catch(error) { if($("detail-dialog").open) showError("detail-error",error.message); else toast(error.message); }
+});
+$("open-link-form").addEventListener("submit", event => {
+  event.preventDefault();
+  try {
+    const url = new URL($("invite-url").value.trim());
+    if (url.origin !== location.origin || url.pathname !== location.pathname) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
+    if (!ID.test(url.searchParams.get("kiste") || "") && !new URLSearchParams(url.hash.slice(1)).has("liste")) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
+    location.assign(url.href);
+  } catch(error) { showError("invite-error",error.message,"invite-url"); }
 });
 $("undo-button").addEventListener("click",()=>{const undo=undoAction;undoAction=null;$("toast").classList.remove("show");if(undo)undo();});
 document.querySelectorAll("dialog").forEach(dialog=>{

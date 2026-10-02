@@ -8,9 +8,9 @@
   <meta name="referrer" content="no-referrer">
   <title>Wunschkiste</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4.3">
-  <script src="config.js?v=4.3"></script>
-  <script src="app.js?v=4.3" type="module"></script>
+  <link rel="stylesheet" href="styles.css?v=4.4">
+  <script src="config.js?v=4.4"></script>
+  <script src="app.js?v=4.4" type="module"></script>
 </head>
 <body>
   <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -25,6 +25,15 @@
     </main>
   </div>
   <div id="add-dock" class="add-dock"></div>
+  <dialog class="sheet" id="invite-dialog" aria-labelledby="invite-title">
+    <form class="sheet-body" id="open-link-form" novalidate>
+      <div class="sheet-heading"><h2 id="invite-title">Einladungslink öffnen</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
+      <label for="invite-url">Einladungslink</label>
+      <input id="invite-url" inputmode="url" placeholder="https://…" required autocomplete="off" autocapitalize="off" spellcheck="false">
+      <p class="field-error" id="invite-error" role="alert" hidden></p>
+      <button class="primary full" type="submit">Öffnen</button>
+    </form>
+  </dialog>
   <dialog class="sheet" id="list-dialog" aria-labelledby="list-dialog-title">
     <form id="list-form" class="sheet-body" novalidate>
       <div class="sheet-heading"><h2 id="list-dialog-title">Liste erstellen</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
@@ -81,8 +90,9 @@
   <dialog class="sheet" id="menu-dialog" aria-labelledby="menu-title">
     <div class="sheet-body">
       <div class="sheet-heading"><h2 id="menu-title">Deine Liste</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
-      <button class="menu-row" data-action="edit-list" type="button">Liste bearbeiten <span>›</span></button>
-      <button class="menu-row" data-action="guest-view" type="button">Gästeansicht <span>›</span></button>
+      <button class="menu-row" id="menu-edit" data-action="edit-list" type="button">Liste bearbeiten <span>›</span></button>
+      <button class="menu-row" id="menu-guest" data-action="guest-view" type="button">Gästeansicht <span>›</span></button>
+      <button class="menu-row" data-action="new-list" type="button">Neue Wunschkiste <span>›</span></button>
     </div>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text"></span><button type="button" id="undo-button" hidden>Rückgängig</button></div>
