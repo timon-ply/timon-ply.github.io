@@ -109,7 +109,7 @@ function card(item, index) {
 }
 function focusState() {
   const active=document.activeElement;
-  return active?.matches("button,a") ? {scope:active.closest("dialog")?.id || (active.closest("header") ? "app-actions" : "main"),action:active.dataset.action,id:active.dataset.id,href:active.getAttribute("href")} : null;
+  return active?.matches("button,a") ? {scope:active.closest("dialog")?.id || (active.closest("header") ? "app-actions" : active.closest("#add-dock") ? "add-dock" : "main"),action:active.dataset.action,id:active.dataset.id,href:active.getAttribute("href")} : null;
 }
 function render(restoreFocus = null) {
   const active = document.activeElement;
@@ -227,7 +227,7 @@ async function mutate(path, method, body, localChange) {
   if (busy) return null;
   const focus=focusState();
   busy = true; ++serial;
-  document.querySelectorAll('button[data-action="reserve"], #detail-dialog button, #wish-submit, #list-submit').forEach(button => button.disabled = true);
+  document.querySelectorAll('button[data-action="reserve"], #detail-dialog button:not([data-action="close"]), #wish-submit, #list-submit').forEach(button => button.disabled = true);
   try {
     const data = online() ? await api(path, method, body) : localMutation(localChange);
     list = data;
@@ -418,11 +418,18 @@ document.addEventListener("click", async event=>{
   } catch(error) { if($("detail-dialog").open) showError("detail-error",error.message); else toast(error.message); }
 });
 $("undo-button").addEventListener("click",()=>{const undo=undoAction;undoAction=null;$("toast").classList.remove("show");if(undo)undo();});
-document.querySelectorAll("dialog").forEach(dialog=>dialog.addEventListener("click",event=>{
+document.querySelectorAll("dialog").forEach(dialog=>{
+dialog.addEventListener("close",()=>{
+  if(document.querySelector("dialog[open]") || document.activeElement!==document.body) return;
+  const row=detailId && [...document.querySelectorAll('[data-action="detail"]')].find(button=>button.dataset.id===detailId);
+  (row || document.querySelector('[data-action="add"]') || $("app-actions").querySelector("button") || $("main")).focus({preventScroll:true});
+});
+dialog.addEventListener("click",event=>{
   if(event.target!==dialog) return;
   const rect=dialog.getBoundingClientRect();
   if(event.clientX<rect.left || event.clientX>rect.right || event.clientY<rect.top || event.clientY>rect.bottom) dialog.close();
-}));
+});
+});
 document.querySelectorAll("input,textarea").forEach(input=>input.addEventListener("input",()=>input.removeAttribute("aria-invalid")));
 window.addEventListener("popstate",load); window.addEventListener("hashchange",load);
 window.addEventListener("storage",()=>{if(!online()&&!busy)load();});
