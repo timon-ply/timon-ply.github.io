@@ -31,7 +31,9 @@ function showError(id, message, field) {
 }
 function closeAll() { document.querySelectorAll("dialog[open]").forEach(dialog => dialog.close()); }
 function openSheet(id, focus) {
+  const trigger=focusState();
   closeAll();
+  $(id).returnFocus=trigger;
   $(id).showModal();
   if (focus) requestAnimationFrame(() => $(focus).focus());
 }
@@ -420,9 +422,13 @@ document.addEventListener("click", async event=>{
 $("undo-button").addEventListener("click",()=>{const undo=undoAction;undoAction=null;$("toast").classList.remove("show");if(undo)undo();});
 document.querySelectorAll("dialog").forEach(dialog=>{
 dialog.addEventListener("close",()=>{
-  if(document.querySelector("dialog[open]") || document.activeElement!==document.body) return;
-  const row=detailId && [...document.querySelectorAll('[data-action="detail"]')].find(button=>button.dataset.id===detailId);
-  (row || document.querySelector('[data-action="add"]') || $("app-actions").querySelector("button") || $("main")).focus({preventScroll:true});
+  requestAnimationFrame(()=>{
+    if(document.querySelector("dialog[open]")) return;
+    const trigger=dialog.returnFocus;
+    const buttons=[...document.querySelectorAll('button[data-action]')].filter(button=>!button.closest("dialog"));
+    const target=trigger?.id ? buttons.find(button=>button.dataset.action==="detail" && button.dataset.id===trigger.id) : buttons.find(button=>button.dataset.action===trigger?.action);
+    (target || (trigger?.action==="edit-list" ? buttons.find(button=>button.dataset.action==="menu") : null) || buttons.find(button=>button.dataset.action==="add") || $("app-actions").querySelector("button") || $("main")).focus({preventScroll:true});
+  });
 });
 dialog.addEventListener("click",event=>{
   if(event.target!==dialog) return;
