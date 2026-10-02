@@ -1,4 +1,4 @@
-import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.0";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.1";
 
 const $ = id => document.getElementById(id);
 const KEY = /^[a-f0-9]{64}$/;
@@ -252,7 +252,7 @@ function emptyView(kind = "new", message = "") {
   } else {
     const saved = readStorage(storageKeys.owner);
     const recent = savedOwners().length ? '<button class="text-button" type="button" data-action="saved-lists">Meine Wunschkisten</button>' : ID.test(saved?.id || "") && KEY.test(saved?.key || "") ? '<a class="text-button" href="' + esc(routeUrl(saved.id,saved.key)) + '">Meine letzte Wunschkiste öffnen</a>' : "";
-    $("app").innerHTML = '<section class="empty start"><button class="primary" type="button" data-action="create">Wunschkiste erstellen</button><button class="text-button" type="button" data-action="open-invite">Einladungslink öffnen</button>' + recent + '</section>';
+    $("app").innerHTML = '<section class="empty start"><button class="primary" type="button" data-action="create">Wunschkiste erstellen</button><button class="text-button" type="button" data-action="open-invite">Einladungslink öffnen</button>' + recent + '</section><nav class="start-links" aria-label="Weitere Informationen"><a href="android.html">Android-App</a><a href="hilfe.html">Hilfe</a><a href="datenschutz.html">Deine Daten</a></nav>';
   }
 }
 async function load() {

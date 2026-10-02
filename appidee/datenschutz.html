@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Deine Daten · Wunschkiste</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="info.css">
+</head>
+<body><main>
+  <nav><a href="./">Zur Wunschkiste</a></nav>
+  <h1>Deine Daten</h1>
+  <p>Wunschkiste speichert deine Listen, damit du sie bearbeiten und mit Gästen teilen kannst. Gäste können die Web-Version ohne Konto und ohne App verwenden.</p>
+  <h2>Was gespeichert wird</h2>
+  <p>Im Backend liegen Kontoname, Listentitel, Datum, Beschreibung und Wünsche mit Produktlink, Bildlink, Preis und Notiz. Reservierungen enthalten einen technischen Zuordnungsschlüssel und ihren Status. Andere Gäste sehen keine Namen der reservierenden Personen.</p>
+  <p>Kontoschlüssel, Gerätesitzungen und die Schlüssel anonymer Gäste werden auf dem Server nur als Hash gespeichert. Sitzungen laufen nach 30 Tagen ab und lassen sich in der App widerrufen. Begrenzungen gegen Missbrauch verwenden einen intern gesalzenen IP-Hash beziehungsweise feste Zähler; die App speichert keine rohe IP-Adresse in ihrer Datenbank.</p>
+  <h2>Auf deinem Gerät</h2>
+  <p>Android schützt Kontoschlüssel und Sitzungen mit dem Android Keystore und schließt diese Daten von Gerätebackups aus. Die Web-Version hält Verwaltungs- und Reservierungsschlüssel im lokalen Browserspeicher. Ein gesicherter Verwaltungslink stellt die Verwaltung einer Web-Liste wieder her. Nach dem Löschen des Browserspeichers lassen sich anonyme Reservierungen jedoch nicht mehr dir zuordnen oder von dir bearbeiten. Bei einem Android-Konto kannst du dich mit deinem gesicherten Kontoschlüssel wieder anmelden.</p>
+  <p>Ein bewusst exportierter Kontoschlüssel ist eine unverschlüsselte Datei am von dir gewählten Ort. Bewahre ihn privat auf: Wer ihn besitzt, kann sich bei deinem Konto anmelden.</p>
+  <h2>Geteilte Links und Produktbilder</h2>
+  <p>Jeder mit einem Gästelink kann die zugehörige Liste ansehen und freie Wünsche reservieren. Teile deshalb keine vertraulichen Informationen in Titeln oder Beschreibungen. Private Verwaltungslinks gehören nur dir.</p>
+  <p>Bilder werden direkt von ihrer hinterlegten Adresse geladen. Der Bildanbieter erhält dabei technisch notwendige Verbindungsdaten wie die IP-Adresse. Bei einem unterstützten Produktlink ruft unser Backend öffentliche Shopdaten ab. Es übermittelt dabei keine Kontoschlüssel oder Reservierungsdaten. Wenn du einen Shop öffnest, gelten dessen eigene Datenschutzhinweise.</p>
+  <h2>Hosting und Aufbewahrung</h2>
+  <p>Die Webseite wird über GitHub Pages bereitgestellt. Die API und Datenbank laufen bei Cloudflare Workers und D1. Diese Anbieter verarbeiten technisch notwendige Verbindungsdaten für Betrieb und Sicherheit. Wunschkiste verwendet keine Werbe-SDKs, Analyse-SDKs oder Tracking-Cookies.</p>
+  <p>Kontodaten und Listen bleiben bis zur Löschung erhalten. Entfernte Wünsche bleiben zur Wiederherstellung in der Datenbank. Beim Löschen eines Kontos werden seine Listen, Wünsche, Sitzungen und gespeicherten Einladungen gelöscht und seine Reservierungen in fremden Listen freigegeben. Technische Sicherungen können Daten noch bis zu ihrem Ablauf enthalten.</p>
+  <h2>Kontakt</h2>
+  <p>Verantwortlicher und Kontakt stehen im <a href="/impressum.de/">Impressum</a>. Dort kannst du auch die Entfernung einer alten Web-Liste anfragen. Gib dabei keine privaten Schlüssel in einer öffentlichen Nachricht weiter.</p>
+  <p class="muted">Stand: 2. Oktober 2026 · Hinweise zur Android- und Web-Testversion.</p>
+  <footer><a href="hilfe.html">Hilfe</a> · <a href="/privacy.de/">Datenschutzhinweise der Website</a></footer>
+</main></body></html>

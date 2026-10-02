@@ -120,3 +120,6 @@ button:active:not(:disabled),.saved-row:active { background-color:#e1e7dc; }
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; }
 }
+/* Secondary information stays below the one primary create action. */
+.start-links { display:flex; justify-content:center; flex-wrap:wrap; gap:8px 20px; padding:20px; font-size:13px; color:#59665f; }
+.start-links a { padding:12px 0; text-underline-offset:4px; }
