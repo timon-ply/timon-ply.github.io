@@ -1,7 +1,7 @@
 const SHOP_HOSTS = new Set([
   "amazon.de", "www.amazon.de", "amazon.com", "www.amazon.com", "amzn.eu", "amzn.to",
-  "www.lego.com", "www.ikea.com", "www.otto.de", "www.dm.de", "www.thalia.de",
-  "www.lidl.de", "www.decathlon.de", "www.mediamarkt.de", "www.saturn.de", "www.zalando.de"
+  "lego.com", "www.lego.com", "ikea.com", "www.ikea.com", "otto.de", "www.otto.de", "dm.de", "www.dm.de", "thalia.de", "www.thalia.de",
+  "lidl.de", "www.lidl.de", "decathlon.de", "www.decathlon.de", "mediamarkt.de", "www.mediamarkt.de", "saturn.de", "www.saturn.de", "zalando.de", "www.zalando.de"
 ]);
 const SHORT_HOSTS = new Set(["amzn.eu", "amzn.to"]);
 const AMAZON_HOSTS = new Set(["amazon.de", "www.amazon.de", "amazon.com", "www.amazon.com"]);
@@ -55,13 +55,16 @@ function cents(value) {
   const result = Math.round(Number(amount) * 100);
   return Number.isSafeInteger(result) && result >= 0 && result <= 100000000 ? result : null;
 }
+function schemaTypes(value) {
+  return (Array.isArray(value) ? value : [value]).map(type => typeof type === "string" ? type.replace(/^https?:\/\/schema\.org\//, "") : "");
+}
 function offerPrice(product) {
   const offers = Array.isArray(product.offers) ? product.offers : [product.offers];
   const prices = new Set();
   if (offers.length > 16) return null;
   for (const offer of offers) {
     if (!offer || typeof offer !== "object") continue;
-    const types = Array.isArray(offer["@type"]) ? offer["@type"] : [offer["@type"]];
+    const types = schemaTypes(offer["@type"]);
     if (!types.includes("Offer") || types.includes("AggregateOffer")) return null;
     const specification = offer.priceSpecification;
     const currency = offer.priceCurrency || specification?.priceCurrency;
@@ -77,7 +80,7 @@ function imageUrl(value, page) {
   if (typeof raw !== "string" || raw.length > 2000) return "";
   let url;
   try { url = new URL(decode(raw), page); } catch { return ""; }
-  const shop = AMAZON_HOSTS.has(page.hostname) ? "amazon" : page.hostname.split(".")[1];
+  const shop = AMAZON_HOSTS.has(page.hostname) ? "amazon" : page.hostname.replace(/^www\./, "").split(".")[0];
   const domains = IMAGE_HOSTS[shop] || [];
   if (url.protocol !== "https:" || url.username || url.password || url.port || url.href.length > 2000 ||
       !domains.some(domain => url.hostname === domain || url.hostname.endsWith("." + domain))) return "";
@@ -88,7 +91,48 @@ function samePage(value, page) {
   try { const url = new URL(value, page); return url.origin === page.origin && url.pathname.replace(/\/$/, "") === page.pathname.replace(/\/$/, ""); }
   catch { return false; }
 }
+function publicElement(html, lower, id, index) {
+  // Only a few fixed public product elements are inspected, never executable
+  // scripts or page-wide price text. Both opening tag and text are bounded.
+  const start = html.lastIndexOf("<", index), end = html.indexOf(">", index);
+  if (start < 0 || end < 0 || end - start > 10000 || html.slice(start, index).includes(">")) return null;
+  const opening = html.slice(start, end + 1), name = /^<([a-z][a-z0-9]*)\b/i.exec(opening)?.[1]?.toLowerCase();
+  if (!name || !["span", "h1", "img"].includes(name)) return null;
+  const attributes = attrs(opening);
+  if (attributes.id !== id) return null;
+  const closing = name === "img" ? end : lower.indexOf("</" + name, end + 1);
+  return { attributes, content: closing >= end && closing - end < 4000 ? html.slice(end + 1, closing) : "" };
+}
+function amazonDetails(html, lower, page) {
+  const elements = new Map();
+  const pattern = /\bid\s*=\s*["'](productTitle|landingImage|imgBlkFront|apex-pricetopay-accessibility-label|priceblock_ourprice|priceblock_dealprice|priceblock_saleprice)["']/g;
+  let found, count = 0;
+  while ((found = pattern.exec(html)) && count++ < 32) {
+    const element = publicElement(html, lower, found[1], found.index);
+    if (element && !elements.has(found[1])) elements.set(found[1], element);
+  }
+  const title = plain(elements.get("productTitle")?.content);
+  const photo = elements.get("landingImage") || elements.get("imgBlkFront");
+  const candidates = [photo?.attributes["data-old-hires"], photo?.attributes.src];
+  if (photo?.attributes["data-a-dynamic-image"]?.length <= 8000) {
+    try {
+      const dynamic = JSON.parse(photo.attributes["data-a-dynamic-image"]);
+      if (dynamic && typeof dynamic === "object" && !Array.isArray(dynamic)) candidates.push(...Object.keys(dynamic).slice(0, 16));
+    } catch { /* An incomplete optional image map cannot block manual entry. */ }
+  }
+  const prices = new Set();
+  for (const id of ["apex-pricetopay-accessibility-label", "priceblock_ourprice", "priceblock_dealprice", "priceblock_saleprice"]) {
+    const value = plain(elements.get(id)?.content, 100);
+    // Require an explicit EUR symbol/currency and one complete amount. No
+    // installment, struck-through, recommended or range prices are inferred.
+    const amount = /^(?:EUR\s*)?(\d[\d.,]*)\s*(?:€|EUR)$/.exec(value) || /^EUR\s+(\d[\d.,]*)$/.exec(value);
+    const price = amount ? cents(amount[1]) : null;
+    if (price !== null) prices.add(price);
+  }
+  return { title, imageUrl: candidates.map(value => imageUrl(value, page)).find(Boolean) || "", priceCents: prices.size === 1 ? [...prices][0] : null };
+}
 export function extractProduct(html, page) {
+  html = String(html).slice(0, MAX_BYTES);
   const result = empty();
   const lower = html.toLowerCase();
   // A challenge/login document must never supply a misleading product preview.
@@ -115,7 +159,7 @@ export function extractProduct(html, page) {
   function visit(value, depth = 0) {
     if (!value || typeof value !== "object" || depth > 8 || ++nodes > 128) return;
     if (Array.isArray(value)) { for (const entry of value.slice(0, 32)) visit(entry, depth + 1); return; }
-    const types = Array.isArray(value["@type"]) ? value["@type"] : [value["@type"]];
+    const types = schemaTypes(value["@type"]);
     if (types.includes("Product")) products.push(value);
     if (value["@graph"]) visit(value["@graph"], depth + 1);
     if (value.mainEntity) visit(value.mainEntity, depth + 1);
@@ -140,16 +184,21 @@ export function extractProduct(html, page) {
   const matching = products.filter(product => samePage(product.url || product["@id"], page));
   const product = matching.length === 1 ? matching[0] : products.length === 1 ? products[0] : null;
   if (products.length > 1 && !product) return result;
-  const productPage = Boolean(product) || metadata["og:type"] === "product" ||
-    (AMAZON_HOSTS.has(page.hostname) && /\/(?:dp|gp\/product)\/[A-Z0-9]{10}(?:\/|$)/i.test(page.pathname));
+  const amazonProduct = AMAZON_HOSTS.has(page.hostname) && /\/(?:dp|gp\/product)\/[A-Z0-9]{10}(?:\/|$)/i.test(page.pathname);
+  const amazon = amazonProduct ? amazonDetails(html, lower, page) : null;
+  // A /dp/ URL may return a generic 200 error page with Amazon's social title
+  // and logo. URL shape alone is not evidence that a product was delivered.
+  const productPage = Boolean(product) || metadata["og:type"]?.toLowerCase() === "product" ||
+    (!AMAZON_HOSTS.has(page.hostname) && metadata["twitter:card"]?.toLowerCase() === "product") || Boolean(amazon?.title);
   if (!productPage) return result;
-  result.title = plain(product?.name || metadata["og:title"]);
-  result.imageUrl = imageUrl(product?.image || metadata["og:image"] || metadata["og:image:secure_url"], page);
+  result.title = [product?.name, metadata["og:title"], metadata["twitter:title"], amazon?.title].map(value => plain(value)).find(Boolean) || "";
+  result.imageUrl = [product?.image, metadata["og:image:secure_url"], metadata["og:image"], metadata["twitter:image"], metadata["twitter:image:src"], amazon?.imageUrl].map(value => imageUrl(value, page)).find(Boolean) || "";
   result.priceCents = product ? offerPrice(product) : null;
   // A range/ambiguous Product offer must not be replaced by a single display price.
   if (!product?.offers && metadata["product:price:currency"]?.toUpperCase() === "EUR") {
     result.priceCents = cents(metadata["product:price:amount"]);
   }
+  if (!product?.offers && result.priceCents === null && amazon) result.priceCents = amazon.priceCents;
   if (!result.title && !result.imageUrl && result.priceCents === null) return empty();
   result.message = result.title && result.imageUrl && result.priceCents !== null ? "" : "Bitte fehlende Angaben ergänzen.";
   return result;

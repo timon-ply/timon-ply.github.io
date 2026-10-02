@@ -30,17 +30,18 @@ async function initialized() {
 }
 const item = { title:"Ein Buch", url:"https://example.com/book?edition=2", imageUrl:"", priceCents:4999, note:"Deutsch" };
 
-test("setup gate and singleton are enforced at the database boundary", async () => {
+test("public creation accepts independent lists and requires a retry key", async () => {
   const h = harness();
   try {
     assert.deepEqual((await h.call("/list")).data, {exists:false});
-    assert.equal((await h.call("/lists","POST",{title:"Liste"})).status,403);
+    assert.equal((await h.call("/lists","POST",{title:"Liste"})).status,400);
     const responses = await Promise.all([
       h.call("/lists","POST",{title:"Liste A",ownerKey:"d".repeat(64)},{setup:SETUP}),
       h.call("/lists","POST",{title:"Liste B",ownerKey:"e".repeat(64)},{setup:SETUP})
     ]);
-    assert.deepEqual(responses.map(x=>x.status).sort(),[200,409]);
-    assert.deepEqual((await h.call("/list")).data,{exists:true});
+    assert.deepEqual(responses.map(x=>x.status).sort(),[200,200]);
+    assert.notEqual(responses[0].data.id,responses[1].data.id);
+    assert.deepEqual((await h.call("/list")).data,{exists:false});
   } finally {h.DB.close();}
 });
 
@@ -52,10 +53,10 @@ test("creation can be replayed after losing the response without losing manageme
     assert.equal(replay.status,200);
     assert.equal(replay.data.ownerKey,ownerKey);
     assert.equal((await h.call("/lists/"+replay.data.id,"GET",undefined,{owner:ownerKey})).data.isOwner,true);
-    assert.equal((await h.call("/lists","POST",{...body,ownerKey:"e".repeat(64)},{setup:SETUP})).status,409);
+    assert.equal((await h.call("/lists","POST",{...body,ownerKey:"e".repeat(64)},{setup:SETUP})).status,200);
     assert.equal((await h.call("/lists","POST",{title:"No key"},{setup:SETUP})).status,400);
     const count=await h.DB.prepare("SELECT COUNT(*) AS count FROM lists").first();
-    assert.equal(count.count,1);
+    assert.equal(count.count,2);
   } finally {h.DB.close();}
 });
 

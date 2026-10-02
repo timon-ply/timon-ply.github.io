@@ -1,4 +1,6 @@
 import { productUrl, previewProduct } from "./product-preview.mjs";
+import { accountService } from "./accounts.mjs";
+const requestAccounts = new WeakMap();
 const MAX_BODY = 16384;
 const KEY = /^[a-f0-9]{64}$/;
 const ID = /^[a-f0-9]{24}$/;
@@ -81,13 +83,17 @@ function bearer(request) {
   return value.slice(7);
 }
 async function owner(request, list) {
+  const account = requestAccounts.get(request);
+  if (account && list.account_id === account.id) return true;
   const key = bearer(request);
-  return Boolean(key && (await hash(key)) === list.owner_hash);
+  return Boolean(list.owner_link_enabled && key && (await hash(key)) === list.owner_hash);
 }
 async function requireOwner(request, list) {
   if (!await owner(request, list)) fail(403, "Nur mit dem Verwaltungslink möglich.");
 }
 async function claimHash(request, required = false) {
+  const account = requestAccounts.get(request);
+  if (account) return hash("account:" + account.id);
   const key = request.headers.get("x-claim-key") || "";
   if (!key && !required) return "";
   if (!KEY.test(key)) fail(400, "Bitte die Seite erneut öffnen.");
@@ -95,7 +101,7 @@ async function claimHash(request, required = false) {
 }
 async function listData(db, list, request) {
   const mine = await claimHash(request);
-  const isOwner = await owner(request, list);
+  const isOwner = new URL(request.url).searchParams.get("guest") !== "1" && await owner(request, list);
   const data = await db.prepare("SELECT * FROM items WHERE list_id = ? AND deleted = 0 ORDER BY created_at, id").bind(list.id).all();
   return {
     id: list.id, title: list.title, date: list.event_date, description:list.description || "", isOwner,
@@ -111,6 +117,11 @@ async function route(request, env) {
   if (!env.DB) fail(503, "Die Liste ist gerade nicht erreichbar.");
   const db = env.DB;
   const path = new URL(request.url).pathname.replace(/^\/api/, "").replace(/\/$/, "");
+  const accounts = accountService(request, env, { fail, hash, randomHex, text, jsonBody });
+  const accountResult = await accounts.route(path);
+  if (accountResult !== null) return accountResult;
+  const account = await accounts.session();
+  if (account) requestAccounts.set(request, account);
   if (path === "/list" && request.method === "GET") {
     // Earlier clients use this flag to decide whether to offer creation.
     return { exists: false };
@@ -128,12 +139,14 @@ async function route(request, env) {
     // The pre-existing secret only salts the abuse counter; visitors need no setup key.
     if (env.DEV_MODE !== "true" && !env.SETUP_KEY) fail(503, "Die Erstellung ist gerade nicht verfügbar.");
     const creatorHash = await hash((env.SETUP_KEY || "local") + ":" + (request.headers.get("cf-connecting-ip") || "local"));
-    const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash) SELECT ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5")
-      .bind(id, title, eventDate, description, ownerHash, now, creatorHash, creatorHash, now - 3600000).run();
+    const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash, account_id, owner_link_enabled) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5 AND (? IS NULL OR (SELECT COUNT(*) FROM lists WHERE account_id = ?) < 20)")
+      .bind(id, title, eventDate, description, ownerHash, now, creatorHash, account?.id || null, account ? 0 : 1, creatorHash, now - 3600000, account?.id || null, account?.id || null).run();
     if (!result.meta.changes) {
       const existing = await db.prepare("SELECT * FROM lists WHERE owner_hash = ?").bind(ownerHash).first();
       if (!existing) fail(429, "Gerade können keine weiteren Wunschkisten erstellt werden. Bitte später erneut versuchen.");
+      if (!existing.owner_link_enabled && existing.account_id !== account?.id) fail(403, "Bitte mit dem zugehörigen Konto anmelden.");
       const replay = new Request(request.url, { headers: { ...Object.fromEntries(request.headers), Authorization:"Bearer " + ownerKey } });
+      if (account) requestAccounts.set(replay, account);
       return { ...await listData(db, existing, replay), ownerKey };
     }
     return { id, title, date: eventDate, description, ownerKey, isOwner: true, items: [] };
@@ -188,8 +201,9 @@ async function route(request, env) {
     let result;
     if (action === "reserve") {
       if (existing.claim_hash === mine) return listData(db, list, request);
-      result = await db.prepare("UPDATE items SET claim_hash = ?, reserved_at = ?, purchased = 0 WHERE id = ? AND list_id = ? AND deleted = 0 AND claim_hash IS NULL")
-        .bind(mine, Date.now(), itemId, list.id).run();
+      result = await db.prepare("UPDATE items SET claim_hash = ?, reserved_at = ?, purchased = 0 WHERE id = ? AND list_id = ? AND deleted = 0 AND claim_hash IS NULL AND (? = 0 OR (SELECT COUNT(*) FROM items WHERE claim_hash = ? AND deleted = 0) < 50)")
+        .bind(mine, Date.now(), itemId, list.id, account ? 1 : 0, mine).run();
+      if (!result.meta.changes && account && !existing.claim_hash) fail(409, "Du kannst höchstens 50 Geschenke gleichzeitig reservieren.");
     } else if (action === "release") {
       if (await owner(request, list)) {
         result = await db.prepare("UPDATE items SET claim_hash = NULL, reserved_at = NULL, purchased = 0 WHERE id = ? AND list_id = ? AND deleted = 0")
@@ -207,8 +221,8 @@ async function route(request, env) {
   }
   await requireOwner(request, list);
   if (match[4] === "restore" && request.method === "POST") {
-    const result = await db.prepare("UPDATE items SET deleted = 0, revision = revision + 1 WHERE id = ? AND list_id = ? AND deleted = 1 AND (SELECT COUNT(*) FROM items WHERE list_id = ? AND deleted = 0) < 30")
-      .bind(itemId, list.id, list.id).run();
+    const result = await db.prepare("UPDATE items SET deleted = 0, revision = revision + 1 WHERE id = ? AND list_id = ? AND deleted = 1 AND (SELECT COUNT(*) FROM items WHERE list_id = ? AND deleted = 0) < 30 AND (? IS NULL OR NOT EXISTS (SELECT 1 FROM accounts WHERE claim_hash = ?) OR (SELECT COUNT(*) FROM items WHERE claim_hash = ? AND deleted = 0) < 50)")
+      .bind(itemId, list.id, list.id, existing.claim_hash, existing.claim_hash, existing.claim_hash).run();
     if (!result.meta.changes) fail(409, "Der Wunsch konnte nicht wiederhergestellt werden.");
     return listData(db, list, request);
   }
@@ -238,7 +252,7 @@ export default {
     };
     if (allowed) Object.assign(headers, {
       "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Claim-Key, X-Setup-Key"
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Claim-Key, X-Setup-Key, X-Session-Token"
     });
     if (request.method === "OPTIONS") return new Response(null, { status: allowed ? 204 : 403, headers });
     if (origin && !allowed) return new Response(JSON.stringify({ error: "Diese Website hat keinen Zugriff." }), { status: 403, headers });

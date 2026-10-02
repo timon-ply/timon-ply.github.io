@@ -1,7 +1,8 @@
 # Wunschkiste test backend
 
-Independent shared lists for `/appidee/`, backed by a Cloudflare Worker and D1. No accounts,
-payment, analytics, scheduled scraping, cron, queues or paid services. Shopping links
+Independent shared lists for `/appidee/` and a native Android client, backed by a
+Cloudflare Worker and D1. Accounts are optional for guests. No payment, analytics,
+scheduled scraping, cron, queues or paid services. Shopping links
 open the exact entered destination; purchases are made independently in the shop.
 
 ## Zero-cost boundary
@@ -14,6 +15,7 @@ exhaustion is an unavailable-service condition, not permission to pay.
 
 Workers Free / Current plan / $0 was reconfirmed in the dashboard on2026-10-02
 before publishing V5; only the existing Free Workers/D1 resources are used.
+It was reconfirmed again before the Android account migration/deployment that day.
 
 Official limits: https://developers.cloudflare.com/workers/platform/pricing/ and
 https://developers.cloudflare.com/d1/platform/pricing/ . Visible pages refresh at
@@ -29,7 +31,8 @@ polled or tracked. No new external API, account, credential or package is used.
 
 ## Product link import
 
-`POST /api/lists/:id/product-preview` requires the existing bearer owner key and
+`POST /api/lists/:id/product-preview` requires an owning account session or an
+enabled legacy bearer owner key and
 a bounded JSON body `{ "url": "https://…" }`. It returns
 `{ title, imageUrl, priceCents, message }`: empty strings/null for unavailable
 values, a short manual-entry hint for partial/blocked pages, and no persistence
@@ -53,7 +56,11 @@ agent and accept header; they never forward user bearer keys, claim keys,
 cookies, Origin, or other incoming headers. No login/CAPTCHA/access restriction
 is bypassed.
 
-Extraction uses bounded public Open Graph and JSON-LD Product metadata, with
+Extraction uses bounded public Open Graph, Twitter and JSON-LD Product metadata,
+including full Schema.org type URLs. Supported shops also accept their bare
+domains. Accessible Amazon product pages can fall back to fixed public product
+title, main-image and explicit current-EUR-price elements. These selectors never
+use page-wide price text, installment prices or inferred values. Output has
 plain text, a maximum90-character title and approved shop/CDN HTTPS image
 domains. At most eight JSON-LD blocks of128KB and128 visited nodes are parsed.
 Only a single unambiguous EUR Offer value is accepted; AggregateOffer ranges,
@@ -75,6 +82,10 @@ official Creators API requires affiliate eligibility/credentials that this
 prototype does not have; there is no claim that every Amazon link auto-fills.
 The deployed V5 Worker also returned the real Lidl title, image and37.49EUR on
 2026-10-02. This is one successful live shop probe, not universal shop support.
+After the Android update, the deployed Worker successfully imported
+https://www.amazon.de/dp/B09BTVP2GQ on2026-10-02: LEGO Halloween40493, a real
+media-amazon image and39.99EUR. A blocked LEGO page still correctly requires
+manual entry. This proves these sampled pages, not every Amazon or shop link.
 
 ## Authorization and recovery
 
@@ -120,7 +131,52 @@ clearing it.
   the owner can release it from the wish's details. Clearing owner storage
   requires the saved management link.
 - Wish removal is soft deletion. The UI offers Undo for ten seconds; the owner
-  capability also authorizes the `/restore` API. No hard-delete route exists.
+  capability or owning account session also authorizes the `/restore` API.
+  Account deletion is separately authenticated and permanently deletes its lists.
+
+## Android accounts (migration 0004)
+
+Android uses the same API and guest URLs as the browser. Guests need no install
+or account. Native account login uses a client-generated random256-bit account
+key, not a human password; the server stores SHA-256 hashes only. The Android
+client encrypts credentials with Android Keystore and excludes them from backup.
+There is no email recovery service: save the key before relying on the account.
+
+Send a fresh random64-hex `sessionToken` and `deviceName` with `POST /accounts`
+(`name`, `accountKey`) or `POST /sessions` (`accountKey`). Persist the key and
+token before sending, and reuse that token only when retrying the same attempt.
+Successful responses include `account`, `sessionToken`, `expiresAt` (30days).
+Authenticated requests use `X-Session-Token`; secrets never appear in guest URLs.
+
+- `GET/PATCH /account`: profile; PATCH accepts `name`.
+- `GET /account/lists`: server-owned lists; POST `/lists` with the session creates
+  an account-owned list. Its persisted `ownerKey` is only an idempotency key:
+  retry requires the matching account session. It cannot authorize edits.
+- `POST /account/lists/attach` with `listId`, `ownerKey`: explicitly attach an old
+  web list using its private management capability. Existing legacy links remain
+  valid for these old lists; the UI explains this before attachment.
+- `POST /account/join` with `listId`: save an invitation.
+- `GET /account/gifts`: saved invitations and the account's own reservations.
+  `GET /lists/:id?guest=1` forces guest presentation, even for the owning account.
+- `GET /account/sessions`, `DELETE /account/sessions/:id`, `POST /account/logout`:
+  list devices and revoke access. New account-owned lists have no legacy bypass.
+- `POST /account/rotate-key` with `currentKey`, `newKey`, `sessionToken`,
+  `deviceName`: persist the new values first. Rotation atomically invalidates old
+  session versions. Retrying the same rotation recovers its same usable session.
+- `DELETE /account` with `currentKey`: one SQLite trigger/statement removes owned
+  data, dependent invitations and sessions, and releases claims in other lists.
+  The client must request explicit irreversible-deletion confirmation.
+
+Native clients may omit Origin; browser CORS remains limited to the configured
+site. Limits are500 accounts,20 owned lists/account,10 active sessions/account,
+50 joined lists/account and50 active reservations/account (including restore).
+Auth abuse counters occupy at most256 fixed rows. Gifts are grouped in one pass.
+No cron, paid auth provider, additional database or billing plan is introduced.
+
+The independent review on2026-10-02 approved this security slice after21/21 local
+SQLite/Worker tests passed, including lost responses, concurrent rotations,
+revocation, legacy attachment, deletion and capacity limits. This evidence does
+not substitute for the separate deployed-Worker and native flow checks.
 
 ## Local checks
 
