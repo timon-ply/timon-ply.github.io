@@ -97,7 +97,7 @@ async function listData(db, list, request) {
   const isOwner = await owner(request, list);
   const data = await db.prepare("SELECT * FROM items WHERE list_id = ? AND deleted = 0 ORDER BY created_at, id").bind(list.id).all();
   return {
-    id: list.id, title: list.title, date: list.event_date, isOwner,
+    id: list.id, title: list.title, date: list.event_date, description:list.description || "", isOwner,
     items: data.results.map(row => ({
       id: row.id, title: row.title, url: row.url, imageUrl: row.image_url,
       priceCents: row.price_cents, note: row.note, revision: row.revision,
@@ -120,19 +120,20 @@ async function route(request, env) {
     const body = await jsonBody(request);
     const title = text(body.title, 80, true);
     const eventDate = date(body.date || "");
+    const description = text(body.description === undefined ? "" : body.description, 240);
     const id = randomHex(12);
     const ownerKey = body.ownerKey;
     if (!KEY.test(ownerKey || "")) fail(400, "Bitte die Einrichtung erneut öffnen.");
     const ownerHash = await hash(ownerKey);
-    const result = await db.prepare("INSERT OR IGNORE INTO lists (slot, id, title, event_date, owner_hash, created_at) VALUES (1, ?, ?, ?, ?, ?)")
-      .bind(id, title, eventDate, ownerHash, Date.now()).run();
+    const result = await db.prepare("INSERT OR IGNORE INTO lists (slot, id, title, event_date, description, owner_hash, created_at) VALUES (1, ?, ?, ?, ?, ?, ?)")
+      .bind(id, title, eventDate, description, ownerHash, Date.now()).run();
     if (!result.meta.changes) {
       const existing = await db.prepare("SELECT * FROM lists WHERE slot = 1").first();
       if (!existing || existing.owner_hash !== ownerHash) fail(409, "Die Testliste wurde bereits angelegt.");
       const replay = new Request(request.url, { headers: { ...Object.fromEntries(request.headers), Authorization:"Bearer " + ownerKey } });
       return { ...await listData(db, existing, replay), ownerKey };
     }
-    return { id, title, date: eventDate, ownerKey, isOwner: true, items: [] };
+    return { id, title, date: eventDate, description, ownerKey, isOwner: true, items: [] };
   }
   const match = path.match(/^\/lists\/([a-f0-9]{24})(?:\/items(?:\/([a-f0-9]{24})(?:\/(reservation|restore))?)?)?$/);
   if (!match || !ID.test(match[1])) fail(404, "Dieser Link wurde nicht gefunden.");
@@ -144,9 +145,15 @@ async function route(request, env) {
   if (!isItemsPath && request.method === "PATCH") {
     await requireOwner(request, list);
     const body = await jsonBody(request);
-    await db.prepare("UPDATE lists SET title = ?, event_date = ? WHERE id = ?")
-      .bind(text(body.title, 80, true), date(body.date || ""), list.id).run();
-    return listData(db, { ...list, title: body.title.trim(), event_date: body.date || "" }, request);
+    const title=text(body.title,80,true), eventDate=date(body.date || "");
+    if(body.description===undefined) {
+      await db.prepare("UPDATE lists SET title = ?, event_date = ? WHERE id = ?").bind(title,eventDate,list.id).run();
+    } else {
+      const description=text(body.description,240);
+      await db.prepare("UPDATE lists SET title = ?, event_date = ?, description = ? WHERE id = ?")
+        .bind(title,eventDate,description,list.id).run();
+    }
+    return listData(db,await db.prepare("SELECT * FROM lists WHERE id = ?").bind(list.id).first(),request);
   }
   if (isItemsPath && !itemId && request.method === "POST") {
     await requireOwner(request, list);

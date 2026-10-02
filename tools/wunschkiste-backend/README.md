@@ -12,6 +12,9 @@ add payment information, enable paid extras or automatically upgrade. Verify the
 Free plan before every future deployment. Free limits reject requests/queries;
 exhaustion is an unavailable-service condition, not permission to pay.
 
+Workers Free / Current plan / $0 was reconfirmed in the dashboard on2026-10-02
+before applying the additive description migration and publishing its Worker.
+
 Official limits: https://developers.cloudflare.com/workers/platform/pricing/ and
 https://developers.cloudflare.com/d1/platform/pricing/ . Visible pages refresh at
 most every 20 seconds; hidden pages stop polling. One list, max30 active wishes,
@@ -19,6 +22,12 @@ max100 retained wish rows. D1 stores only bounded text/URLs, cents, revisions an
 hashed capabilities. Thumbnails load directly from entered HTTPS URLs.
 
 ## Authorization and recovery
+
+List descriptions are optional, bounded to240 characters, and visible to invited
+guests under the list title/date. Item descriptions remain in the wish details;
+rows show only name, price/shop and availability. Missing metadata adds no labels
+or empty space. Earlier clients can omit the list description on PATCH without
+clearing it.
 
 - A private setup secret gates creation; a database singleton enforces one list.
 - The browser saves its cryptographically random management key **before**
@@ -64,12 +73,18 @@ No credentials, setup key or management link belong in this repository.
 1. Check the account's Workers Free plan.
 2. Copy `wrangler.example.json` to ignored `wrangler.local.json`, supply the
    account/D1 identifiers, and retain only the DB and allowed-origin bindings.
-3. Create D1 once, apply `schema.sql` to it, deploy the Worker, then provision a
+3. Create D1 once, apply `schema.sql` and then `wrangler d1 migrations apply
+   wunschkiste-test --remote` to it, deploy the Worker, then provision a
    cryptographically random `SETUP_KEY` with `wrangler secret bulk` or `secret put`.
 4. Create the one list with a persisted random management key and setup secret;
    save the private management link outside the repository.
 5. Set only the public API endpoint in `appidee/config.js`, publish Pages, and
    exercise owner and independent guest operations on the live endpoint.
+
+Existing databases use the same additive migration command before deploying the
+description-enabled Worker. It preserves list IDs, management hashes, wishes and
+claims, adds an empty description, and records the migration. The local SQLite
+adapter applies the same column migration only if it is missing. No data reset.
 
 API: `GET /api/list` checks whether setup exists; `POST /api/lists` creates/replays
 setup. List GET/PATCH, item POST/PATCH/DELETE, item `/restore`, and item

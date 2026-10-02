@@ -20,6 +20,7 @@ h1 { font-size:28px; line-height:1.2; letter-spacing:-.8px; font-weight:700; mar
 .icon-button:hover { background:#eceee7; }
 .icon-button svg { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 main { padding:0 0 110px; }
+.list-description { margin:0 0 16px; max-width:560px; color:var(--muted); font-size:15px; line-height:1.55; white-space:pre-line; overflow-wrap:anywhere; }
 .wish-row { border-bottom:1px solid var(--line); }
 .wish-row:last-child { border-bottom:0; }
 .row-open { width:100%; display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:78px; padding:15px 0; background:transparent; color:var(--ink); text-align:left; border-radius:0; }

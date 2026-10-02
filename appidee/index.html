@@ -8,9 +8,9 @@
   <meta name="referrer" content="no-referrer">
   <title>Wunschkiste</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4.2">
-  <script src="config.js?v=4.2"></script>
-  <script src="app.js?v=4.2" type="module"></script>
+  <link rel="stylesheet" href="styles.css?v=4.3">
+  <script src="config.js?v=4.3"></script>
+  <script src="app.js?v=4.3" type="module"></script>
 </head>
 <body>
   <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -20,6 +20,7 @@
       <nav class="app-actions" aria-label="Listenaktionen" id="app-actions"></nav>
     </header>
     <main id="main" tabindex="-1">
+      <p id="list-description" class="list-description" hidden></p>
       <div id="app" aria-busy="true"><div class="loading" role="status">Liste wird geladen …</div></div>
     </main>
   </div>
@@ -32,6 +33,8 @@
       <p class="field-error" id="list-error" role="alert" hidden></p>
       <label for="list-date">Datum <span class="optional">optional</span></label>
       <input id="list-date" name="date" type="date">
+      <label for="list-description-input">Beschreibung</label>
+      <textarea id="list-description-input" name="description" rows="2" maxlength="240" placeholder="Was sollen deine Gäste wissen?"></textarea>
       <button class="primary full" type="submit" id="list-submit">Erstellen</button>
     </form>
   </dialog>
@@ -46,7 +49,7 @@
         <summary>Weitere Angaben</summary>
         <label for="wish-price">Preis (€)</label>
         <input id="wish-price" name="price" inputmode="decimal" maxlength="12" placeholder="z. B. 49,99">
-        <label for="wish-note">Notiz</label>
+        <label for="wish-note">Beschreibung</label>
         <textarea id="wish-note" name="note" rows="2" maxlength="240" placeholder="Farbe, Größe …"></textarea>
         <label for="wish-image">Bildlink</label>
         <input id="wish-image" name="imageUrl" inputmode="url" maxlength="2000" placeholder="https://…" autocapitalize="off" spellcheck="false">
@@ -78,7 +81,7 @@
   <dialog class="sheet" id="menu-dialog" aria-labelledby="menu-title">
     <div class="sheet-body">
       <div class="sheet-heading"><h2 id="menu-title">Deine Liste</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
-      <button class="menu-row" data-action="edit-list" type="button">Name und Datum bearbeiten <span>›</span></button>
+      <button class="menu-row" data-action="edit-list" type="button">Liste bearbeiten <span>›</span></button>
       <button class="menu-row" data-action="guest-view" type="button">Gästeansicht <span>›</span></button>
     </div>
   </dialog>

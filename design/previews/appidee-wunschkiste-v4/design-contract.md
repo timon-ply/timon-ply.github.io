@@ -21,3 +21,9 @@
 - Forms retain necessary accessible field labels; optional fields stay collapsed. Share/menu controls are secondary, 44px targets. The menu contains only edit-list and guest-view actions; management link remains in sharing.
 - Functional busy, conflict, inline errors, toast and Undo only;160ms toast transition with reduced-motion alternative. Native dialogs provide modal containment and escape dismissal.
 - Backend and Free-only limits remain those documented in v3 and tools/wunschkiste-backend/README.md. Final acceptance requires actual mobile/desktop screenshots, functional guest/owner checks and verified Pages deployment.
+
+## User acceptance and metadata refinement
+
+On2026-10-02 the user accepted the displayed actual V4 mobile list: "genau so. Setz dies nun genauso um", explicitly authorizing implementation and website publication. The screenshot in that response is the accepted visible layout. Preserve its list, hierarchy, palette and one-action pattern.
+
+The requested descriptions/date refinement is content within this accepted layout, not a new visual concept: date including year remains under the title; optional list description follows the header at full content width, with no extra heading or box. It is absent when empty. Up to240 characters, multiline plain text,15px/1.55 muted type; wraps arbitrary long words. Editing keeps name, date and description together. Wish descriptions remain in the details only and under optional fields while editing. Menu action is Liste bearbeiten. Same motion/accessibility rules; no new animation or navigation.

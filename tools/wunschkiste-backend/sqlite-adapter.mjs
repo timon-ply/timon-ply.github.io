@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 export function createDatabase(path = ":memory:") {
   const database = new DatabaseSync(path);
   database.exec(readFileSync(new URL("schema.sql", import.meta.url), "utf8"));
+  if(!database.prepare("PRAGMA table_info(lists)").all().some(column=>column.name==="description")) {
+    database.exec(readFileSync(new URL("migrations/0001_list_description.sql",import.meta.url),"utf8"));
+  }
   return {
     close: () => database.close(),
     prepare(sql) {

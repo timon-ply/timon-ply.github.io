@@ -1,4 +1,4 @@
-import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=4.3";
 
 const $ = id => document.getElementById(id);
 const KEY = /^[a-f0-9]{64}$/;
@@ -97,9 +97,11 @@ function localMutation(change) {
 function setHeading(title, date = "", local = false) {
   $("list-title").textContent=title;
   const parts=[];
-  if(date) parts.push(new Intl.DateTimeFormat("de-DE",{day:"numeric",month:"long"}).format(new Date(date+"T12:00:00")));
+  if(date) parts.push(new Intl.DateTimeFormat("de-DE",{day:"numeric",month:"long",year:"numeric"}).format(new Date(date+"T12:00:00")));
   if(local) parts.push("Lokaler Test");
   $("list-date-label").textContent=parts.join(" · "); $("list-date-label").hidden=!parts.length;
+  $("list-description").textContent=list?.description || "";
+  $("list-description").hidden=!list?.description;
 }
 function artwork(item, index, detail = false) {
   return item.imageUrl ? '<img class="wish-image' + (detail ? ' detail-art' : '') + '" src="' + esc(item.imageUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" data-image>' : "";
@@ -249,6 +251,7 @@ function openList(edit = false) {
   $("list-form").reset(); $("list-form").dataset.edit = edit ? "1" : "";
   $("list-name").value = edit ? list.title : "";
   $("list-date").value = edit ? list.date : "";
+  $("list-description-input").value = edit ? list.description || "" : "";
   $("list-dialog-title").textContent = edit ? "Liste bearbeiten" : "Liste erstellen";
   $("list-submit").textContent = edit ? "Speichern" : "Erstellen";
   showError("list-error","");
@@ -336,25 +339,25 @@ function finishCreation(data) {
 
 $("list-form").addEventListener("submit", async event => {
   event.preventDefault(); if (busy) return;
-  const title = $("list-name").value.trim(), date = $("list-date").value;
+  const title = $("list-name").value.trim(), date = $("list-date").value, description=$("list-description-input").value.trim();
   if (!title) { showError("list-error","Gib der Liste einen Namen.","list-name"); return; }
   showError("list-error","");
   try {
     if ($("list-form").dataset.edit) {
-      await mutate("/lists/" + routeId,"PATCH",{title,date},raw => {raw.title=title;raw.date=date;});
+      await mutate("/lists/" + routeId,"PATCH",{title,date,description},raw => {raw.title=title;raw.date=date;raw.description=description;});
     } else {
       busy = true; $("list-submit").disabled = true;
       let data;
       if (online()) {
         const previous = readStorage(storageKeys.pending);
-        const pending = {title,date,ownerKey:KEY.test(previous?.ownerKey || "") ? previous.ownerKey : randomKey()};
+        const pending = {title,date,description,ownerKey:KEY.test(previous?.ownerKey || "") ? previous.ownerKey : randomKey()};
         storeValue(storageKeys.pending,pending);
         data = await api("/lists","POST",pending);
       }
       else {
         if (readStorage(storageKeys.list)) throw new Error("Es gibt bereits eine Liste auf diesem Gerät.");
-        data = {id:randomKey(12),ownerKey:randomKey(),title,date,isOwner:true,items:[]};
-        storeValue(storageKeys.list,{id:data.id,title,date,items:[]});
+        data = {id:randomKey(12),ownerKey:randomKey(),title,date,description,isOwner:true,items:[]};
+        storeValue(storageKeys.list,{id:data.id,title,date,description,items:[]});
       }
       finishCreation(data);
     }

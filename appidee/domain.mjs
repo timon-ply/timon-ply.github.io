@@ -41,8 +41,10 @@ export function cleanPublicList(list) {
     throw new Error("Dieser Listenlink ist ungültig.");
   }
   const seen = new Set();
+  const description=list.description ?? "";
+  if(typeof description!=="string" || description.length>240) throw new Error("Dieser Listenlink ist ungültig.");
   return {
-    id:list.id, title:list.title.trim(), date:eventDate,
+    id:list.id, title:list.title.trim(), date:eventDate, description:description.trim(),
     items:list.items.map(item => {
       if (!item || !/^[a-f0-9]{24}$/.test(item.id) || seen.has(item.id) ||
           typeof item.title !== "string" || !item.title.trim() || item.title.length > 90 ||
