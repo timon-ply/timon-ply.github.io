@@ -1,683 +1,432 @@
-(() => {
-  "use strict";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs";
 
-  const app = document.getElementById("app");
-  const createDialog = document.getElementById("create-dialog");
-  const wishDialog = document.getElementById("wish-dialog");
-  const shareDialog = document.getElementById("share-dialog");
-  const confirmDialog = document.getElementById("confirm-dialog");
-  const toast = document.getElementById("toast");
-  const LISTS_KEY = "wunschkiste.v1.lists";
-  const PICKS_KEY = "wunschkiste.v1.picks";
-  let activeListId = null;
-  let toastTimer = null;
-  let pendingConfirm = null;
+const $ = id => document.getElementById(id);
+const KEY = /^[a-f0-9]{64}$/;
+const ID = /^[a-f0-9]{24}$/;
+const storageKeys = { owner:"wk.v2.owner", list:"wk.v2.list", guest:"wk.v2.guest", pending:"wk.v2.pending" };
+const more = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></svg>';
+const share = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V2m-4 4 4-4 4 4M8 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-3"/></svg>';
+let list = null, ownerKey = "", guestKey = "", routeId = "", setupKey = "";
+let snapshotMode = false, apiBase = String(window.WUNSCHKISTE_API || "").replace(/\/$/, "");
+let detailId = "", busy = false, refreshing = false, serial = 0, toastTimer, undoAction = null;
+const online = () => Boolean(apiBase && !snapshotMode);
 
-  const sampleDate = (() => {
-    const date = new Date();
-    date.setDate(date.getDate() + 12);
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-  })();
-
-  const sampleList = {
-    id: "beispiel",
-    title: "Mias 7. Geburtstag",
-    date: sampleDate,
-    message: "Ich freue mich auf einen bunten Nachmittag mit euch!",
-    isSample: true,
-    items: [
-      { id: "sample-tiles", title: "Magnetbausteine – Creative Set", price: 49.99, note: "Bunte Farben zum Immer-wieder-Bauen.", kind: "tiles" },
-      { id: "sample-train", title: "Holzeisenbahn – Klassiker", price: 39.95, note: "Ein Zug mit ein paar bunten Waggons.", kind: "train" },
-      { id: "sample-pencils", title: "Aquarellstifte, 24 Farben", price: 22.99, note: "Für die nächsten großen Kunstwerke.", kind: "pencils" },
-      { id: "sample-book", title: "Bilderbuch: Der wunderbare Baum", price: 18, note: "Eine Geschichte über Freundschaft und Mut.", kind: "book", sampleClaimed: true },
-      { id: "sample-idea", title: "Ein gemeinsamer Kinobesuch", price: null, note: "Zusammen Popcorn teilen.", kind: "idea", sampleClaimed: true }
-    ]
-  };
-
-  const iconLock = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
-
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
-  }
-
-  function readArray(key) {
-    try {
-      const value = JSON.parse(localStorage.getItem(key) || "[]");
-      return Array.isArray(value) ? value : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function readObject(key) {
-    try {
-      const value = JSON.parse(localStorage.getItem(key) || "{}");
-      return value && typeof value === "object" && !Array.isArray(value) ? value : {};
-    } catch {
-      return {};
-    }
-  }
-
-  function writeJson(key, value) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-      return true;
-    } catch {
-      showToast("Speichern ging gerade nicht. Prüfe bitte den freien Speicher in diesem Browser.");
-      return false;
-    }
-  }
-
-  function lists() { return readArray(LISTS_KEY); }
-  function picks() { return readObject(PICKS_KEY); }
-  function saveLists(value) { return writeJson(LISTS_KEY, value); }
-  function savePicks(value) { return writeJson(PICKS_KEY, value); }
-  function getList(id) { return lists().find((list) => list.id === id) || null; }
-  function pickKey(listId, itemId) { return `${listId}:${itemId}`; }
-
-  function makeId() {
-    if (window.crypto?.randomUUID) return window.crypto.randomUUID().replaceAll("-", "").slice(0, 20);
-    return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
-  }
-
-  function currentUrl() {
-    const url = new URL(window.location.href);
-    url.search = "";
-    url.hash = "";
-    return url;
-  }
-
-  function navigate(params = {}) {
-    const url = currentUrl();
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === null || value === undefined || value === "") url.searchParams.delete(key);
-      else url.searchParams.set(key, value);
+function readStorage(key) { try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; } }
+function storeValue(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); }
+  catch { throw new Error("Der Browser konnte nicht speichern. Bitte den Speicher prüfen."); }
+}
+function toast(message, undo = null) {
+  $("toast-text").textContent = message;
+  undoAction = undo;
+  $("undo-button").hidden = !undo;
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { $("toast").classList.remove("show"); undoAction = null; }, undo ? 10000 : 4000);
+}
+function showError(id, message, field) {
+  $(id).textContent = message;
+  $(id).hidden = !message;
+  if (field) { $(field).setAttribute("aria-invalid", "true"); $(field).focus(); }
+}
+function closeAll() { document.querySelectorAll("dialog[open]").forEach(dialog => dialog.close()); }
+function openSheet(id, focus) {
+  closeAll();
+  $(id).showModal();
+  if (focus) requestAnimationFrame(() => $(focus).focus());
+}
+function routeUrl(id, key = "") {
+  const url = new URL(location.href);
+  url.search = ""; url.hash = "";
+  url.searchParams.set("kiste", id);
+  if (key) url.hash = new URLSearchParams({ verwalten:key }).toString();
+  return url.href;
+}
+function setOwnerRoute(id, key) {
+  history.replaceState({}, "", routeUrl(id, key));
+  routeId = id; ownerKey = key;
+}
+function requestHeaders(json = false) {
+  const headers = {};
+  if (json) headers["Content-Type"] = "application/json";
+  if (ownerKey) headers.Authorization = "Bearer " + ownerKey;
+  if (guestKey) headers["X-Claim-Key"] = guestKey;
+  return headers;
+}
+async function api(path, method = "GET", body) {
+  const headers = requestHeaders(body !== undefined);
+  if (setupKey && path === "/lists") headers["X-Setup-Key"] = setupKey;
+  let response;
+  try {
+    response = await fetch(apiBase + path, {
+      method, headers, body:body === undefined ? undefined : JSON.stringify(body),
+      cache:"no-store", credentials:"omit", signal:AbortSignal.timeout(12000)
     });
-    window.history.pushState({}, "", url);
-    closeMenu();
-    render();
-    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  } catch { throw new Error("Die Liste ist gerade nicht erreichbar. Bitte erneut versuchen."); }
+  const data = await response.json().catch(() => ({ error:"Die Liste ist gerade nicht erreichbar." }));
+  if (!response.ok) { const error = new Error(data.error || "Speichern gerade nicht möglich."); error.status = response.status; throw error; }
+  return data;
+}
+function publicState(raw, isOwner) {
+  const clean = cleanPublicList(raw);
+  return { ...clean, isOwner, items:clean.items.map(item => {
+    const original = raw.items.find(entry => entry.id === item.id);
+    return { ...item, status:["reserved","purchased"].includes(original.status) ? original.status : "open",
+      mine:Boolean(original.claimKey && original.claimKey === guestKey),
+      claimKey:original.claimKey || "", revision:original.revision || 1 };
+  }) };
+}
+function localStorageKey() {
+  const own = readStorage(storageKeys.list);
+  return own?.id === routeId ? storageKeys.list : "wk.v2.shared." + routeId;
+}
+function saveLocal(raw) {
+  storeValue(localStorageKey(), raw);
+  list = publicState(raw, Boolean(ownerKey && readStorage(storageKeys.owner)?.key === ownerKey));
+}
+function localMutation(change) {
+  const raw = readStorage(localStorageKey()) || list;
+  if (!raw) throw new Error("Diese Liste wurde nicht gefunden.");
+  const next = structuredClone(raw);
+  change(next);
+  saveLocal(next);
+  return list;
+}
+function setHeading(title, date = "", local = false) {
+  $("list-title").textContent=title;
+  const parts=[];
+  if(date) parts.push(new Intl.DateTimeFormat("de-DE",{day:"numeric",month:"long"}).format(new Date(date+"T12:00:00")));
+  if(local) parts.push("Lokaler Test");
+  $("list-date-label").textContent=parts.join(" · "); $("list-date-label").hidden=!parts.length;
+}
+function artwork(item, index, detail = false) {
+  return item.imageUrl ? '<img class="wish-image' + (detail ? ' detail-art' : '') + '" src="' + esc(item.imageUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" data-image>' : "";
+}
+function card(item, index) {
+  const meta=[priceText(item.priceCents),shopDomain(item.url)].filter(Boolean).join(" · ");
+  const status=!list.isOwner && item.status!=="open" ? '<span class="wish-status' + (item.mine ? " is-mine" : "") + '">' + (item.mine ? "Für dich" : "Vergeben") + '</span>' : "";
+  return '<article class="wish-row"><button type="button" class="row-open" data-action="detail" data-id="' + item.id + '" aria-label="Details: ' + esc(item.title) + '"><div class="row-copy"><h2>' + esc(item.title) + '</h2>' + (meta ? '<p class="wish-meta">' + esc(meta) + '</p>' : "") + status + '</div>' + artwork(item,index) + '<svg class="row-chevron" viewBox="0 0 16 24" aria-hidden="true"><path d="m5 6 6 6-6 6"/></svg></button></article>';
+}
+function focusState() {
+  const active=document.activeElement;
+  return active?.matches("button,a") ? {scope:active.closest("dialog")?.id || (active.closest("header") ? "app-actions" : "main"),action:active.dataset.action,id:active.dataset.id,href:active.getAttribute("href")} : null;
+}
+function render(restoreFocus = null) {
+  const active = document.activeElement;
+  const focus = restoreFocus || focusState();
+  $("app").setAttribute("aria-busy","false");
+  $("app-actions").innerHTML = list ? '<button class="icon-button" type="button" data-action="share" aria-label="Liste teilen">' + share + '</button>' +
+    (list.isOwner ? '<button class="icon-button" type="button" data-action="menu" aria-label="Listenmenü">' + more + '</button>' : "") : "";
+  $("add-dock").innerHTML = list?.isOwner ? '<button class="primary" type="button" data-action="add"><span class="plus" aria-hidden="true">+</span>Wunsch hinzufügen</button>' : "";
+  if (!list) return;
+  setHeading(list.title,list.date,!online());
+  document.title = list.title + " · Wunschkiste";
+  const content = list.items.length ? '<section class="wish-list" aria-label="Wünsche">' + list.items.map(card).join("") + '</section>' :
+    '<section class="empty"><p>Noch keine Wünsche</p></section>';
+  $("app").innerHTML = content;
+  attachImageFallback();
+  if ($("detail-dialog").open) renderDetail();
+  if (focus && (restoreFocus || !active.isConnected)) {
+    const scope = $(focus.scope);
+    const next = [...scope.querySelectorAll("button,a")].find(element => focus.action ? element.dataset.action === focus.action && element.dataset.id === focus.id : element.getAttribute("href") === focus.href);
+    const fallback = focus.id ? [...scope.querySelectorAll("[data-action='detail']")].find(element => element.dataset.id === focus.id) : null;
+    (next || fallback || scope.querySelector("[data-action='close']") || $("main")).focus({preventScroll:true});
   }
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("is-visible");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 3200);
-  }
-
-  function openDialog(dialog, focusId) {
-    if (!dialog.open) dialog.showModal();
-    if (focusId) requestAnimationFrame(() => document.getElementById(focusId)?.focus());
-  }
-
-  function closeMenu() {
-    document.querySelector(".topnav")?.classList.remove("is-open");
-    document.querySelector(".menu-toggle")?.setAttribute("aria-expanded", "false");
-  }
-
-  function formatPrice(price) {
-    if (price === null || price === undefined || price === "" || Number.isNaN(Number(price))) return "";
-    return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 2 }).format(Number(price));
-  }
-
-  function dateLabel(value) {
-    if (!value) return "";
-    const [year, month, day] = value.split("-").map(Number);
-    if (!year || !month || !day) return "";
-    const date = new Date(year, month - 1, day);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const delta = Math.round((date.getTime() - today.getTime()) / 86400000);
-    const formatted = new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "long" }).format(date);
-    if (delta === 0) return `${formatted} · heute wird gefeiert`;
-    if (delta === 1) return `${formatted} · noch 1 Tag`;
-    if (delta > 1) return `${formatted} · noch ${delta} Tage`;
-    return formatted;
-  }
-
-  function safeShopUrl(value) {
-    if (!value) return null;
-    try {
-      const url = new URL(value);
-      return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
-    } catch {
-      return null;
-    }
-  }
-
-  function shopHost(value) {
-    const safe = safeShopUrl(value);
-    if (!safe) return "";
-    try { return new URL(safe).hostname.replace(/^www\./, ""); } catch { return ""; }
-  }
-
-  function previewDisclosure() {
-    return `<aside class="demo-ribbon" aria-label="Hinweis zur Vorschau"><span class="demo-icon" aria-hidden="true">i</span><span><strong>Web-Vorschau:</strong> Nur in diesem Browser gespeichert. Keine Synchronisierung zwischen Geräten.</span></aside>`;
-  }
-
-  function itemCounts(list) {
-    const itemList = list.items || [];
-    let claimed = 0;
-    itemList.forEach((item) => {
-      if (item.sampleClaimed || item.claimed || picks()[pickKey(list.id, item.id)]) claimed += 1;
-    });
-    return { total: itemList.length, claimed, open: itemList.length - claimed };
-  }
-
-  function renderHome() {
-    return `
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">DIE DIGITALE GESCHENKEBOX FÜR DEN KINDERGEBURTSTAG</p>
-          <h1 id="hero-title">Kleine Wünsche.<em>Große Vorfreude.</em></h1>
-          <p class="hero-lede">Sammle Geburtstagswünsche in einer Kiste. Teile den Link. Deine Gäste suchen sich anonym ein Geschenk aus.</p>
-          <div class="hero-actions">
-            <button class="button button-primary" type="button" data-action="open-create">Wunschkiste erstellen <span aria-hidden="true">→</span></button>
-            <button class="button button-outline" type="button" data-action="example">Beispiel ansehen</button>
-          </div>
-          <p class="hero-note"><span class="leaf" aria-hidden="true">✳</span> Für Gäste ohne App und ohne Konto.</p>
-        </div>
-        <div class="hero-art" aria-label="Illustration einer geöffneten Wunschkiste">
-          <span class="hero-tag">Etwas Schönes<br>wartet schon …</span>
-          <img class="hero-box" src="assets/wunschkiste-box.webp" alt="Eine offene Geschenkbox mit grüner Schleife und Papiersternen" width="1280" height="1280">
-          <div class="hero-mini-card" aria-hidden="true">
-            <div class="hero-mini-top"><span>Gästeliste</span><span>✳</span></div>
-            <div class="hero-mini-title">Mias Geburtstag</div>
-            <div class="hero-mini-item"><span>✦</span><span>Magnetbausteine</span></div>
-            <div class="hero-mini-item is-taken"><span>✓</span><span>Ein Bilderbuch</span></div>
-            <div class="hero-mini-line"></div>
-            <div class="hero-mini-foot">Noch 3 Wünsche offen</div>
-          </div>
-        </div>
-      </section>
-      ${previewDisclosure()}
-      <section class="how-section" id="so-gehts" aria-labelledby="how-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <p class="eyebrow">DREI KLEINE SCHRITTE</p>
-            <h2 id="how-title">Ein Wunschzettel, der mitdenkt.</h2>
-            <p>Weniger Suchen und doppelte Geschenke. Mehr Zeit für den Geburtstag.</p>
-          </div>
-          <div class="steps">
-            <article class="step"><span class="step-number" aria-hidden="true">1</span><h3>Wünsche sammeln</h3><p>Produkte verlinken oder eigene Ideen eintragen – ganz ohne Shop-Vorgabe.</p></article>
-            <article class="step"><span class="step-number" aria-hidden="true">2</span><h3>Einmal teilen</h3><p>Ein Gästelink reicht. Deine Gäste brauchen dafür weder Konto noch App.</p></article>
-            <article class="step"><span class="step-number" aria-hidden="true">3</span><h3>Freude verschenken</h3><p>Ein Wunsch wird vorgemerkt und für andere als vergeben angezeigt – ohne Namen.</p></article>
-          </div>
-        </div>
-      </section>
-      <section class="sample-section" aria-labelledby="sample-title">
-        <div class="section-inner">
-          <div class="sample-head">
-            <div><p class="eyebrow">SO KANN EINE KISTE AUSSEHEN</p><h2 id="sample-title">Schon eine Idee im Kopf?</h2><p>Probier die Auswahl einmal selbst aus – ganz ohne Anmeldung.</p></div>
-            <button class="button button-primary" type="button" data-action="example">Beispiel öffnen <span aria-hidden="true">→</span></button>
-          </div>
-          <div class="sample-preview">
-            <div class="sample-preview-top"><div><h3>Mias 7. Geburtstag</h3><p>Ein paar Wünsche, die das Schenken leichter machen.</p></div><span class="open-count"><span aria-hidden="true">✳</span> 3 noch offen</span></div>
-            <div class="preview-items">
-              <div class="preview-item"><div class="preview-item-title"><span class="preview-icon" aria-hidden="true">✦</span> Magnetbausteine</div><p>Ein buntes Set für viele Bauideen</p></div>
-              <div class="preview-item"><div class="preview-item-title"><span class="preview-icon" aria-hidden="true">✦</span> Holzeisenbahn</div><p>Ein Klassiker für die Spielzeugkiste</p></div>
-              <div class="preview-item"><div class="preview-item-title"><span class="preview-icon" aria-hidden="true">✓</span> Bilderbuch</div><p>Schon ausgesucht – bleibt eine Überraschung</p></div>
-            </div>
-          </div>
-        </div>
-      </section>`;
-  }
-
-  function renderMyLists() {
-    const all = lists();
-    const cards = all.length ? `<div class="my-list-grid">${all.map((list) => {
-      const counts = itemCounts(list);
-      return `<article class="my-list-card"><div><h2>${escapeHtml(list.title)}</h2><p>${counts.total} ${counts.total === 1 ? "Wunsch" : "Wünsche"}${list.date ? ` · ${escapeHtml(dateLabel(list.date))}` : ""}</p></div><a class="button button-small button-outline" href="${escapeHtml(ownerHref(list))}">Öffnen <span aria-hidden="true">→</span></a></article>`;
-    }).join("")}</div>` : `<div class="empty-state"><img class="empty-state-art" src="assets/wunschkiste-box.webp" alt="" width="1280" height="1280"><h2>Noch ist die Kiste leer.</h2><p>Lege deine erste Wunschkiste an und sammle die Geschenkideen an einem Ort.</p><button class="button button-primary" type="button" data-action="open-create">Wunschkiste erstellen <span aria-hidden="true">→</span></button></div>`;
-    return `<section class="content-wrap" aria-labelledby="mine-title"><div class="manager-header my-lists-heading"><p class="eyebrow">DEINE ÜBERSICHT</p><div class="header-row"><div><h1 id="mine-title">Meine Kisten</h1><p class="subline">Deine Wunschkisten werden lokal in diesem Browser aufbewahrt.</p></div><div class="header-actions"><button class="button button-primary" type="button" data-action="open-create">Neue Kiste <span aria-hidden="true">+</span></button></div></div></div>${previewDisclosure()}${cards}</section>`;
-  }
-
-  function cardArtwork(item) {
-    if (item.kind === "idea") return `<div class="wish-art" data-kind="idea" aria-hidden="true"><span class="idea-art-mark">✳</span></div>`;
-    return `<div class="wish-art" data-kind="${escapeHtml(item.kind || "tiles")}" role="img" aria-label="${escapeHtml(item.title)}"></div>`;
-  }
-
-  function renderWishCard(list, item, owner) {
-    const selectedState = picks()[pickKey(list.id, item.id)];
-    const isClaimed = Boolean(item.sampleClaimed || item.claimed || selectedState);
-    const mine = Boolean(selectedState);
-    const bought = selectedState === "bought";
-    const price = formatPrice(item.price);
-    const safeUrl = safeShopUrl(item.url);
-    const host = shopHost(item.url);
-    let action = "";
-    if (owner) {
-      action = isClaimed
-        ? `<span class="status-button"><span class="status-check" aria-hidden="true">✓</span> Schon ausgesucht</span><button type="button" class="button-text" data-action="release-owner" data-item="${escapeHtml(item.id)}">Wunsch wieder freigeben</button>`
-        : `<span class="status-button"><span class="status-check" aria-hidden="true">·</span> Noch offen</span>`;
-    } else if (mine) {
-      action = `<span class="status-button is-owned"><span class="status-check" aria-hidden="true">✓</span>${bought ? "Schon besorgt" : "Für dich vorgemerkt"}</span>${safeUrl ? `<a class="shop-button" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">Zum Shop <span aria-hidden="true">↗</span></a>` : ""}<button type="button" class="button-text" data-action="release" data-item="${escapeHtml(item.id)}">Auswahl freigeben</button>${!bought ? `<button type="button" class="button-text" data-action="mark-bought" data-item="${escapeHtml(item.id)}">Als gekauft markieren</button>` : ""}`;
-    } else if (isClaimed) {
-      action = `<span class="status-button" aria-label="Schon ausgesucht"><span class="status-check" aria-hidden="true">✓</span> Schon ausgesucht</span>`;
-    } else {
-      action = `<button class="button button-primary wish-action" type="button" data-action="claim" data-item="${escapeHtml(item.id)}"><span class="gift-symbol" aria-hidden="true">✳</span> Das schenke ich</button>`;
-    }
-    const priceHtml = price ? `<span class="price">ca. ${escapeHtml(price)}</span>` : "";
-    const noteHtml = item.note ? `<p class="wish-note">${escapeHtml(item.note)}</p>` : `<p class="wish-note"></p>`;
-    const metaLinkHtml = safeUrl
-      ? `<a class="shop-link" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host)} <span aria-hidden="true">↗</span></a>`
-      : `<span>${item.kind === "idea" ? "Eine eigene Idee" : "Mit Liebe ausgesucht"}</span>`;
-    const ownerToolsHtml = owner
-      ? `<div class="wish-card-actions">${action}<div class="owner-actions"><button type="button" data-action="edit-wish" data-item="${escapeHtml(item.id)}">Bearbeiten</button><button class="destructive-link" type="button" data-action="delete-wish" data-item="${escapeHtml(item.id)}">Entfernen</button></div></div>`
-      : "";
-    const guestActionHtml = owner ? "" : `<div class="wish-card-actions">${action}</div>`;
-    const cardBodyHtml = `<div class="wish-card-body"><div class="wish-card-heading"><h3>${escapeHtml(item.title)}</h3>${priceHtml}</div>${noteHtml}<div class="wish-card-meta">${metaLinkHtml}<span>${isClaimed ? "für andere nicht verfügbar" : ""}</span></div>${guestActionHtml}</div>`;
-    return `<article class="wish-card${isClaimed ? " is-claimed" : ""}" data-card="${escapeHtml(item.id)}">${cardArtwork(item)}${cardBodyHtml}${ownerToolsHtml}</article>`;
-  }
-
-  function ownerHref(list) {
-    const url = currentUrl();
-    url.searchParams.set("kiste", list.id);
-    url.searchParams.set("verwalten", list.ownerToken);
-    return url.toString();
-  }
-
-  function guestHref(list) {
-    const url = currentUrl();
-    url.searchParams.set("kiste", list.id);
-    url.searchParams.delete("verwalten");
-    url.searchParams.delete("meine");
-    return url.toString();
-  }
-
-  function renderOwner(list) {
-    const counts = itemCounts(list);
-    const cards = list.items.length ? `<div class="wish-grid">${list.items.map((item) => renderWishCard(list, item, true)).join("")}</div>` : `<div class="empty-state"><img class="empty-state-art" src="assets/wunschkiste-box.webp" alt="" width="1280" height="1280"><h2>Der erste Wunsch macht den Anfang.</h2><p>Füge ein Produkt oder eine eigene Idee hinzu. Danach kannst du den Gästelink mit der Einladung teilen.</p><button class="button button-primary" type="button" data-action="open-wish">Wunsch hinzufügen <span aria-hidden="true">+</span></button></div>`;
-    return `<section class="content-wrap" aria-labelledby="owner-title"><div class="manager-header"><p class="eyebrow">DEIN VERWALTUNGSBEREICH · NUR AUF DIESEM BROWSER</p><div class="header-row"><div><h1 id="owner-title">${escapeHtml(list.title)}</h1><p class="subline">Hier fügst du Wünsche hinzu und teilst den Gästelink. Namen von Schenkenden werden nicht gespeichert.</p></div><div class="header-actions"><button class="button button-primary" type="button" data-action="share">Link teilen <span aria-hidden="true">↗</span></button></div></div>${list.message ? `<p class="list-welcome">“${escapeHtml(list.message)}”</p>` : ""}<div class="list-status-row"><span>${counts.total ? `${counts.claimed} von ${counts.total} Wünschen schon ausgesucht` : "Noch keine Wünsche hinzugefügt"}</span>${counts.total ? `<span class="progress-track" aria-label="${counts.claimed} von ${counts.total} Wünschen ausgesucht"><span class="progress-fill" style="width:${Math.round(counts.claimed / counts.total * 100)}%"></span></span>` : ""}${list.date ? `<span>${escapeHtml(dateLabel(list.date))}</span>` : ""}</div></div>${previewDisclosure()}<div class="wishlist-section"><div class="wishlist-section-title"><h2>Die Wünsche</h2><span>${counts.total} ${counts.total === 1 ? "Eintrag" : "Einträge"}</span></div>${cards}</div><div class="wishlist-section"><button class="button button-outline" type="button" data-action="open-wish">+ Wunsch hinzufügen</button> <button class="button-text" type="button" data-action="edit-list">Kistentitel und Gruß bearbeiten</button> <button class="button-text" type="button" data-action="delete-list">Kiste auf diesem Browser löschen</button></div></section>`;
-  }
-
-  function renderGuest(list) {
-    const counts = itemCounts(list);
-    const openItems = list.items.filter((item) => !(item.sampleClaimed || item.claimed || picks()[pickKey(list.id, item.id)]));
-    const claimedItems = list.items.filter((item) => item.sampleClaimed || item.claimed || picks()[pickKey(list.id, item.id)]);
-    const selectedItems = list.items.filter((item) => Boolean(picks()[pickKey(list.id, item.id)]));
-    const openCards = openItems.length ? `<div class="wish-grid">${openItems.map((item) => renderWishCard(list, item, false)).join("")}</div>` : `<div class="empty-state"><h2>Alle Wünsche sind schon ausgesucht.</h2><p>Danke, dass du beim Schenken hilfst. Die Überraschung wartet schon.</p></div>`;
-    const claimedBlock = claimedItems.length ? `<details class="other-wishes"><summary>Auch schon ausgesuchte Wünsche zeigen <span>${claimedItems.length}</span></summary><div class="wish-grid">${claimedItems.map((item) => renderWishCard(list, item, false)).join("")}</div></details>` : "";
-    const selectedBlock = selectedItems.length ? `<section class="selection-section" aria-labelledby="selection-title"><h2 id="selection-title">Deine Auswahl</h2><p>Diese Wünsche sind für dich vorgemerkt. Dein Name wird niemandem angezeigt.</p><div class="selection-chips">${selectedItems.map((item) => `<span class="selection-chip">${escapeHtml(item.title)} <button type="button" aria-label="Auswahl für ${escapeHtml(item.title)} freigeben" data-action="release" data-item="${escapeHtml(item.id)}">×</button></span>`).join("")}</div></section>` : "";
-    return `<section class="content-wrap" aria-labelledby="guest-title"><div class="list-heading"><p class="eyebrow">EINE WUNSCHKISTE FÜR DICH</p><div class="header-row"><div><h1 id="guest-title">${escapeHtml(list.title)}</h1><p class="subline">Such dir einen Wunsch aus – und mach den Geburtstag ein bisschen schöner.</p>${list.date ? `<p class="subline">${escapeHtml(dateLabel(list.date))}</p>` : ""}</div></div>${list.message ? `<p class="list-welcome">“${escapeHtml(list.message)}”</p>` : ""}<div class="list-status-row"><span>${counts.open} ${counts.open === 1 ? "Wunsch noch offen" : "Wünsche noch offen"}</span><span class="progress-track" aria-label="${counts.claimed} von ${counts.total} Wünschen schon ausgesucht"><span class="progress-fill" style="width:${counts.total ? Math.round(counts.claimed / counts.total * 100) : 0}%"></span></span><span>${counts.claimed} schon ausgesucht</span></div><p class="privacy-line"><span class="privacy-lock">${iconLock}</span><span>Die Auswahl bleibt für andere Gäste anonym.</span></p></div>${previewDisclosure()}${selectedBlock}<div class="wishlist-section"><div class="wishlist-section-title"><h2>Such dir einen Wunsch aus</h2><span>${counts.total} ${counts.total === 1 ? "Wunsch" : "Wünsche"} in der Kiste</span></div>${openCards}${claimedBlock}</div></section>`;
-  }
-
-  function renderNotFound() {
-    return `<section class="not-found"><p class="eyebrow">DIE KISTE IST HIER NICHT GESPEICHERT</p><h1>Dieser Link kennt den Wunsch noch nicht.</h1><p>In dieser Vorschau liegen selbst erstellte Kisten nur im Browser, in dem sie angelegt wurden. Bitte öffne den Verwaltungslink auf diesem Gerät oder schau dir unser Beispiel an.</p><button class="button button-primary" type="button" data-action="example">Beispiel ansehen <span aria-hidden="true">→</span></button></section>`;
-  }
-
-  function isOwnerRoute(list) {
-    const token = new URLSearchParams(window.location.search).get("verwalten");
-    return Boolean(token && list.ownerToken && token === list.ownerToken);
-  }
-
-  function render() {
-    const params = new URLSearchParams(window.location.search);
-    const listId = params.get("kiste");
-    activeListId = listId;
-    let content;
-    if (params.get("meine") === "1") {
-      content = renderMyLists();
-      document.title = "Meine Kisten · Wunschkiste";
-    } else if (listId === "beispiel") {
-      content = renderGuest(sampleList);
-      document.title = `${sampleList.title} · Wunschkiste`;
-    } else if (listId) {
-      const list = getList(listId);
-      content = list ? (isOwnerRoute(list) ? renderOwner(list) : renderGuest(list)) : renderNotFound();
-      document.title = `${list ? list.title : "Wunschkiste"} · Wunschkiste`;
-    } else {
-      content = renderHome();
-      document.title = "Wunschkiste — Kleine Wünsche. Große Vorfreude.";
-    }
-    app.innerHTML = content;
-    app.setAttribute("aria-busy", "false");
-    updateNav();
-  }
-
-  function updateNav() {
-    const params = new URLSearchParams(window.location.search);
-    document.querySelector('[data-nav="mine"]')?.setAttribute("aria-current", params.get("meine") === "1" ? "page" : "false");
-    document.querySelector('[data-nav="how"]')?.setAttribute("aria-current", !params.get("kiste") && params.get("meine") !== "1" ? "location" : "false");
-  }
-
-  function showError(id, text, show) {
-    const node = document.getElementById(id);
-    if (!node) return;
-    if (text) node.textContent = text;
-    node.hidden = !show;
-  }
-
-  function closeErrorOnInput(inputId, errorId) {
-    document.getElementById(inputId)?.addEventListener("input", () => showError(errorId, "", false));
-  }
-
-  closeErrorOnInput("list-title", "list-title-error");
-  closeErrorOnInput("wish-name", "wish-name-error");
-  closeErrorOnInput("wish-url", "wish-url-error");
-
-  document.getElementById("create-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const title = String(data.get("title") || "").trim();
-    if (title.length < 3) {
-      showError("list-title-error", "Gib deiner Wunschkiste einen Namen (mindestens 3 Zeichen).", true);
-      document.getElementById("list-title").focus();
-      return;
-    }
-    const editingId = form.dataset.editing || "";
-    if (editingId) {
-      const all = lists();
-      const existing = all.find((entry) => entry.id === editingId);
-      if (!existing || !isOwnerRoute(existing)) {
-        showToast("Diese Wunschkiste lässt sich hier gerade nicht bearbeiten.");
-        return;
-      }
-      existing.title = title.slice(0, 80);
-      existing.date = String(data.get("date") || "");
-      existing.message = String(data.get("message") || "").trim().slice(0, 180);
-      if (!saveLists(all)) return;
-      delete form.dataset.editing;
-      createDialog.close();
-      render();
-      showToast("Deine Kiste wurde aktualisiert.");
-      return;
-    }
-    const list = {
-      id: makeId(),
-      ownerToken: makeId(),
-      title: title.slice(0, 80),
-      date: String(data.get("date") || ""),
-      message: String(data.get("message") || "").trim().slice(0, 180),
-      items: [],
-      createdAt: new Date().toISOString()
-    };
-    const all = lists();
-    all.unshift(list);
-    if (!saveLists(all)) return;
-    createDialog.close();
-    form.reset();
-    closeMenu();
-    const url = currentUrl();
-    url.searchParams.set("kiste", list.id);
-    url.searchParams.set("verwalten", list.ownerToken);
-    window.history.pushState({}, "", url);
-    render();
-    showToast("Deine Kiste ist angelegt. Füge jetzt den ersten Wunsch hinzu.");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  document.getElementById("wish-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const list = getList(activeListId);
-    if (!list || !isOwnerRoute(list)) {
-      wishDialog.close();
-      showToast("Diese Kiste lässt sich hier gerade nicht bearbeiten.");
-      return;
-    }
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const title = String(data.get("title") || "").trim();
-    if (!title) {
-      showError("wish-name-error", "Wie heißt der Wunsch?", true);
-      document.getElementById("wish-name").focus();
-      return;
-    }
-    const rawUrl = String(data.get("url") || "").trim();
-    if (rawUrl && !safeShopUrl(rawUrl)) {
-      showError("wish-url-error", "Bitte einen gültigen http- oder https-Link eintragen.", true);
-      document.getElementById("wish-url").focus();
-      return;
-    }
-    const priceInput = String(data.get("price") || "").trim();
-    const validPriceFormat = /^\d{1,4}(?:[,.]\d{1,2})?$/.test(priceInput);
-    const priceValue = priceInput.replace(",", ".");
-    const price = priceInput === "" ? null : Number(priceValue);
-    if (priceInput !== "" && (!validPriceFormat || !Number.isFinite(price) || price < 0 || price > 9999)) {
-      showToast("Bitte trage einen Preis zwischen 0 und 9.999 € ein.");
-      document.getElementById("wish-price").focus();
-      return;
-    }
-    const editingId = form.dataset.editing || "";
-    const item = { id: editingId || makeId(), title: title.slice(0, 90), url: safeShopUrl(rawUrl) || "", price, kind: String(data.get("kind") || "idea"), note: String(data.get("note") || "").trim().slice(0, 140), claimed: false };
-    const all = lists();
-    const target = all.find((entry) => entry.id === list.id);
-    if (!target) return;
-    if (editingId) {
-      const index = target.items.findIndex((entry) => entry.id === editingId);
-      if (index === -1) return;
-      item.claimed = Boolean(target.items[index].claimed);
-      target.items[index] = item;
-    } else {
-      target.items.push(item);
-    }
-    if (!saveLists(all)) return;
-    wishDialog.close();
-    form.reset();
-    delete form.dataset.editing;
-    render();
-    showToast(editingId ? "Der Wunsch wurde aktualisiert." : "Der Wunsch ist in der Kiste.");
-  });
-
-  document.getElementById("confirm-accept").addEventListener("click", () => {
-    confirmDialog.close();
-    if (typeof pendingConfirm === "function") pendingConfirm();
-    pendingConfirm = null;
-  });
-
-  document.addEventListener("click", async (event) => {
-    const actionButton = event.target.closest("[data-action]");
-    if (!actionButton) return;
-    const action = actionButton.dataset.action;
-
-    if (action === "open-create") {
-      closeMenu();
-      showError("list-title-error", "", false);
-      openDialog(createDialog, "list-title");
-    } else if (action === "example") {
-      navigate({ kiste: "beispiel", verwalten: null, meine: null });
-    } else if (action === "toggle-menu") {
-      const menu = document.querySelector(".topnav");
-      const open = menu?.classList.toggle("is-open") || false;
-      actionButton.setAttribute("aria-expanded", String(open));
-    } else if (action === "close-dialog") {
-      actionButton.closest("dialog")?.close();
-    } else if (action === "cancel-confirm") {
-      pendingConfirm = null;
-      confirmDialog.close();
-    } else if (action === "open-wish") {
-      if (!getList(activeListId)) { showToast("Öffne zuerst deine Wunschkiste."); return; }
-      const form = document.getElementById("wish-form");
-      form.reset();
-      delete form.dataset.editing;
-      document.getElementById("wish-title").textContent = "Was wünscht sich das Geburtstagskind?";
-      showError("wish-name-error", "", false);
-      showError("wish-url-error", "", false);
-      openDialog(wishDialog, "wish-name");
-    } else if (action === "share") {
-      const list = getList(activeListId);
-      if (!list || !isOwnerRoute(list)) return;
-      document.getElementById("guest-link").value = guestHref(list);
-      document.getElementById("owner-link").value = ownerHref(list);
-      openDialog(shareDialog, "guest-link");
-    } else if (action === "share-list") {
-      const list = activeListId === "beispiel" ? sampleList : getList(activeListId);
-      const url = guestHref(list);
-      try {
-        if (navigator.share) {
-          await navigator.share({ title: list.title, text: `Schau dir die Wunschkiste „${list.title}“ an.`, url });
-        } else {
-          await navigator.clipboard.writeText(url);
-          showToast("Der Gästelink wurde kopiert.");
-        }
-      } catch {
-        if (navigator.clipboard) showToast("Der Gästelink konnte nicht geteilt werden. Du kannst ihn aus der Adresszeile kopieren.");
-      }
-    } else if (action === "copy") {
-      const input = document.getElementById(actionButton.dataset.copy);
-      if (!input) return;
-      try {
-        await navigator.clipboard.writeText(input.value);
-        showToast(actionButton.dataset.copy === "owner-link" ? "Verwaltungslink kopiert – bitte für dich behalten." : "Gästelink kopiert. Du kannst ihn in eine Einladung einfügen.");
-      } catch {
-        input.focus();
-        input.select();
-        try { document.execCommand("copy"); } catch { /* The selected URL remains available for manual copying. */ }
-        showToast("Link markiert. Kopiere ihn mit Strg+C oder ⌘C.");
-      }
-    } else if (action === "edit-list") {
-      const list = getList(activeListId);
-      if (!list || !isOwnerRoute(list)) return;
-      document.getElementById("list-title").value = list.title;
-      document.getElementById("list-date").value = list.date || "";
-      document.getElementById("list-message").value = list.message || "";
-      document.getElementById("create-title").textContent = "Deine Kiste bearbeiten";
-      document.querySelector("#create-form .button-primary").innerHTML = "Änderungen speichern <span aria-hidden=\"true\">→</span>";
-      document.getElementById("create-form").dataset.editing = list.id;
-      openDialog(createDialog, "list-title");
-    } else if (action === "edit-wish") {
-      const list = getList(activeListId);
-      const item = list?.items.find((entry) => entry.id === actionButton.dataset.item);
-      if (!list || !isOwnerRoute(list) || !item) return;
-      const form = document.getElementById("wish-form");
-      form.dataset.editing = item.id;
-      form.elements.title.value = item.title;
-      form.elements.url.value = item.url || "";
-      form.elements.price.value = item.price ?? "";
-      form.elements.kind.value = item.kind || "idea";
-      form.elements.note.value = item.note || "";
-      document.getElementById("wish-title").textContent = "Wunsch bearbeiten";
-      document.querySelector("#wish-form .button-primary").innerHTML = "Änderungen speichern <span aria-hidden=\"true\">→</span>";
-      showError("wish-name-error", "", false);
-      showError("wish-url-error", "", false);
-      openDialog(wishDialog, "wish-name");
-    } else if (action === "delete-wish") {
-      const list = getList(activeListId);
-      if (!list || !isOwnerRoute(list)) return;
-      const itemId = actionButton.dataset.item;
-      const item = list.items.find((entry) => entry.id === itemId);
-      document.getElementById("confirm-title").textContent = "Diesen Wunsch entfernen?";
-      document.getElementById("confirm-copy").textContent = `„${item?.title || "Der Wunsch"}“ wird aus der Kiste entfernt.`;
-      document.getElementById("confirm-accept").textContent = "Wunsch entfernen";
-      pendingConfirm = () => {
-        const all = lists();
-        const target = all.find((entry) => entry.id === list.id);
-        if (!target) return;
-        target.items = target.items.filter((entry) => entry.id !== itemId);
-        const allPicks = picks();
-        delete allPicks[pickKey(list.id, itemId)];
-        if (saveLists(all) && savePicks(allPicks)) { render(); showToast("Der Wunsch wurde entfernt."); }
-      };
-      openDialog(confirmDialog);
-    } else if (action === "delete-list") {
-      const list = getList(activeListId);
-      if (!list || !isOwnerRoute(list)) return;
-      document.getElementById("confirm-title").textContent = "Diese Wunschkiste löschen?";
-      document.getElementById("confirm-copy").textContent = "Die Kiste und ihre Wünsche werden aus diesem Browser entfernt. Geteilte Links lassen sich danach hier nicht mehr öffnen.";
-      document.getElementById("confirm-accept").textContent = "Kiste löschen";
-      pendingConfirm = () => {
-        const all = lists().filter((entry) => entry.id !== list.id);
-        const allPicks = picks();
-        Object.keys(allPicks).filter((key) => key.startsWith(`${list.id}:`)).forEach((key) => delete allPicks[key]);
-        if (saveLists(all) && savePicks(allPicks)) {
-          navigate({ kiste: null, verwalten: null, meine: "1" });
-          showToast("Die Kiste wurde aus diesem Browser gelöscht.");
-        }
-      };
-      openDialog(confirmDialog);
-    } else if (action === "release" || action === "release-owner") {
-      const listId = activeListId;
-      const list = listId === "beispiel" ? sampleList : getList(listId);
-      const itemId = actionButton.dataset.item;
-      if (!list) return;
-      if (action === "release-owner" && !isOwnerRoute(list)) return;
-      if (action === "release-owner") {
-        document.getElementById("confirm-title").textContent = "Diesen Wunsch wieder freigeben?";
-        document.getElementById("confirm-copy").textContent = "Andere Gäste können ihn danach wieder auswählen.";
-        document.getElementById("confirm-accept").textContent = "Freigeben";
-        pendingConfirm = () => {
-          if (itemId.startsWith("sample-")) return;
-          const all = lists();
-          const target = all.find((entry) => entry.id === list.id);
-          const targetItem = target?.items.find((entry) => entry.id === itemId);
-          if (targetItem) targetItem.claimed = false;
-          const allPicks = picks();
-          delete allPicks[pickKey(list.id, itemId)];
-          if (saveLists(all) && savePicks(allPicks)) { render(); showToast("Der Wunsch ist wieder offen."); }
-        };
-        openDialog(confirmDialog);
-      } else {
-        const allPicks = picks();
-        delete allPicks[pickKey(list.id, itemId)];
-        if (savePicks(allPicks)) { render(); showToast("Deine Auswahl wurde freigegeben."); }
-      }
-    } else if (action === "claim") {
-      const list = activeListId === "beispiel" ? sampleList : getList(activeListId);
-      const itemId = actionButton.dataset.item;
-      if (!list) return;
-      const item = list.items.find((entry) => entry.id === itemId);
-      if (!item) return;
-      const currentlyClaimed = Boolean(item.sampleClaimed || item.claimed || picks()[pickKey(list.id, item.id)]);
-      if (currentlyClaimed) { render(); showToast("Dieser Wunsch wurde gerade schon ausgesucht. Such dir gern einen anderen aus."); return; }
-      const allPicks = picks();
-      allPicks[pickKey(list.id, item.id)] = "planned";
-      if (activeListId !== "beispiel") {
-        const all = lists();
-        const target = all.find((entry) => entry.id === list.id);
-        const targetItem = target?.items.find((entry) => entry.id === item.id);
-        if (!targetItem || targetItem.claimed) { render(); showToast("Dieser Wunsch wurde gerade schon ausgesucht. Such dir gern einen anderen aus."); return; }
-        targetItem.claimed = true;
-        if (!saveLists(all)) return;
-      }
-      if (savePicks(allPicks)) { render(); showToast("Für dich vorgemerkt. Dein Name wird niemandem angezeigt."); }
-    } else if (action === "mark-bought") {
-      const list = activeListId === "beispiel" ? sampleList : getList(activeListId);
-      if (!list) return;
-      const allPicks = picks();
-      allPicks[pickKey(list.id, actionButton.dataset.item)] = "bought";
-      if (savePicks(allPicks)) { render(); showToast("Als gekauft markiert. Viel Freude beim Verschenken!"); }
-    }
-  });
-
-  document.querySelector('[data-nav="mine"]').addEventListener("click", (event) => {
-    event.preventDefault();
-    navigate({ meine: "1", kiste: null, verwalten: null });
-  });
-
-  document.querySelector('[data-nav="how"]').addEventListener("click", (event) => {
-    const isHome = !new URLSearchParams(window.location.search).has("kiste") && new URLSearchParams(window.location.search).get("meine") !== "1";
-    if (!isHome) {
+}
+function attachImageFallback() {
+  document.querySelectorAll("[data-image]").forEach(image => image.addEventListener("error", () => image.remove(), {once:true}));
+}
+function emptyView(kind = "new", message = "") {
+  $("app").setAttribute("aria-busy","false"); $("app-actions").innerHTML = ""; $("add-dock").innerHTML = "";
+  document.title = "Wunschkiste";
+  setHeading("Wunschkiste");
+  if (kind === "exists") {
+    setHeading("Einladungslink öffnen");
+    $("app").innerHTML = '<section class="empty"><form class="open-link-form" id="open-link-form"><input id="invite-url" aria-label="Einladungslink" placeholder="Link einfügen" inputmode="url" required><button class="primary" type="submit">Öffnen</button></form></section>';
+    $("open-link-form").addEventListener("submit", event => {
       event.preventDefault();
-      navigate({ meine: null, kiste: null, verwalten: null });
-      requestAnimationFrame(() => document.getElementById("so-gehts")?.scrollIntoView({ behavior: "smooth" }));
+      try {
+        const url = new URL($("invite-url").value);
+        if (url.origin !== location.origin || url.pathname !== location.pathname) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
+        if (!ID.test(url.searchParams.get("kiste") || "") && !new URLSearchParams(url.hash.slice(1)).has("liste")) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
+        location.assign(url.href);
+      } catch(error) { toast(error.message); }
+    });
+  } else if (kind === "error") {
+    setHeading("Liste nicht erreichbar");
+    $("app").innerHTML = '<section class="empty"><p>' + esc(message) + '</p><button class="primary" type="button" data-action="retry">Erneut versuchen</button></section>';
+  } else {
+    setHeading("Deine Wunschliste");
+    $("app").innerHTML = '<section class="empty"><button class="primary" type="button" data-action="create">Liste erstellen</button></section>';
+  }
+}
+async function load() {
+  const currentSerial = ++serial;
+  list = null; ownerKey = ""; routeId = ""; snapshotMode = false;
+  try {
+    guestKey = readStorage(storageKeys.guest);
+    if (!KEY.test(guestKey || "")) { guestKey = randomKey(); storeValue(storageKeys.guest, guestKey); }
+    const params = new URLSearchParams(location.search);
+    const hash = new URLSearchParams(location.hash.slice(1));
+    setupKey = KEY.test(hash.get("setup") || "") ? hash.get("setup") : "";
+    if (hash.has("liste")) {
+      snapshotMode = true;
+      const decoded = decodeSnapshot(hash.get("liste"));
+      routeId = decoded.id;
+      const saved = readStorage(localStorageKey());
+      if (!saved) storeValue(localStorageKey(), decoded);
+      list = publicState(saved || decoded, false);
+      render(); return;
     }
+    const savedOwner = readStorage(storageKeys.owner);
+    routeId = ID.test(params.get("kiste") || "") ? params.get("kiste") : "";
+    ownerKey = KEY.test(hash.get("verwalten") || "") ? hash.get("verwalten") : "";
+    if (!routeId && !params.has("kiste") && ID.test(savedOwner?.id || "") && KEY.test(savedOwner?.key || "")) {
+      routeId = savedOwner.id; ownerKey = savedOwner.key;
+      setOwnerRoute(routeId, ownerKey);
+    }
+    if (online()) {
+      const pending = readStorage(storageKeys.pending);
+      if (!routeId && KEY.test(pending?.ownerKey || "")) {
+        const data = await api("/lists","POST",pending);
+        if (currentSerial !== serial) return;
+        finishCreation(data); return;
+      }
+      if (routeId) {
+        const data = await api("/lists/" + routeId);
+        if (currentSerial !== serial) return;
+        list = data;
+        if (ownerKey && data.isOwner) { try { storeValue(storageKeys.owner, {id:routeId,key:ownerKey}); } catch { toast("Sichere deinen Verwaltungslink."); } }
+        render();
+      } else {
+        const result = await api("/list");
+        if (currentSerial === serial) emptyView(result.exists ? "exists" : "new");
+      }
+    } else {
+      const raw = readStorage(storageKeys.list);
+      if (raw && (!routeId || raw.id === routeId)) {
+        routeId = raw.id;
+        list = publicState(raw, Boolean(ownerKey && savedOwner?.key === ownerKey));
+        render();
+      } else if (routeId) emptyView("error", "Dieser Verwaltungslink ist nur auf dem ursprünglichen Gerät verfügbar.");
+      else emptyView();
+    }
+  } catch(error) { if (currentSerial === serial) emptyView("error",error.message); }
+}
+async function refresh() {
+  if (!list || !online() || busy || refreshing) return;
+  refreshing = true;
+  const currentSerial = serial;
+  try {
+    const data = await api("/lists/" + routeId);
+    if (currentSerial === serial && !busy && JSON.stringify(list) !== JSON.stringify(data)) { list = data; render(); }
+  } catch { /* Keep the last list; the next action reports a concrete error. */ }
+  finally { refreshing = false; }
+}
+async function mutate(path, method, body, localChange) {
+  if (busy) return null;
+  const focus=focusState();
+  busy = true; ++serial;
+  document.querySelectorAll('button[data-action="reserve"], #detail-dialog button, #wish-submit, #list-submit').forEach(button => button.disabled = true);
+  try {
+    const data = online() ? await api(path, method, body) : localMutation(localChange);
+    list = data;
+    render(focus);
+    return data;
+  } catch(error) {
+    if (error.status === 409 && online()) {
+      try { list = await api("/lists/" + routeId); render(focus); } catch {}
+    }
+    throw error;
+  } finally {
+    busy = false;
+    document.querySelectorAll("button:disabled").forEach(button => button.disabled = false);
+  }
+}
+function openList(edit = false) {
+  $("list-form").reset(); $("list-form").dataset.edit = edit ? "1" : "";
+  $("list-name").value = edit ? list.title : "";
+  $("list-date").value = edit ? list.date : "";
+  $("list-dialog-title").textContent = edit ? "Liste bearbeiten" : "Liste erstellen";
+  $("list-submit").textContent = edit ? "Speichern" : "Erstellen";
+  showError("list-error","");
+  openSheet("list-dialog","list-name");
+}
+function openWish(id = "") {
+  if (!list?.isOwner) return;
+  const item = list.items.find(entry => entry.id === id);
+  $("wish-form").reset(); $("wish-form").dataset.id = item?.id || "";
+  $("wish-form").dataset.revision = item?.revision || "";
+  for (const [field,value] of Object.entries({ "wish-name":item?.title, "wish-url":item?.url, "wish-note":item?.note, "wish-image":item?.imageUrl })) $(field).value = value || "";
+  $("wish-price").value = item?.priceCents === null || item?.priceCents === undefined ? "" : String(item.priceCents/100).replace(".",",");
+  $("extra-fields").open = Boolean(item && (item.priceCents !== null || item.note || item.imageUrl));
+  $("wish-dialog-title").textContent = item ? "Wunsch bearbeiten" : "Wunsch hinzufügen";
+  $("wish-submit").textContent = item ? "Speichern" : "Hinzufügen";
+  $("wish-form").querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute("aria-invalid"));
+  showError("wish-error","");
+  openSheet("wish-dialog",item ? "wish-name" : "wish-url");
+}
+function renderDetail() {
+  const item = list?.items.find(entry => entry.id === detailId);
+  if (!item) { $("detail-dialog").close(); return; }
+  let actions = "";
+  if (list.isOwner) {
+    actions = '<button class="primary" type="button" data-action="edit-wish" data-id="' + item.id + '">Bearbeiten</button>';
+    if (item.status !== "open") actions += '<button class="secondary" type="button" data-action="release" data-id="' + item.id + '">Wieder freigeben</button>';
+    actions += '<button class="text-button danger" type="button" data-action="remove" data-id="' + item.id + '">Wunsch entfernen</button>';
+  } else if (item.status === "open") {
+    actions = '<button class="primary" type="button" data-action="reserve" data-id="' + item.id + '">' + (online() ? "Reservieren" : "Auf diesem Gerät vormerken") + '</button>';
+  } else if (item.mine) {
+    if (item.status !== "purchased") actions += '<button class="secondary" type="button" data-action="buy" data-id="' + item.id + '">Als gekauft markieren</button>';
+    actions += '<button class="text-button" type="button" data-action="release" data-id="' + item.id + '">Freigeben</button>';
+  }
+  const openGuest = !list.isOwner && item.status === "open";
+  const shop = !list.isOwner && item.url && (openGuest || item.mine) ? '<a class="' + (openGuest ? "secondary" : "primary") + ' full" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">Zum Shop ↗</a>' : "";
+  const domain = item.url ? (list.isOwner ? '<a class="detail-domain domain-link" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">' + esc(shopDomain(item.url)) + ' ↗</a>' : '<span class="detail-domain">' + esc(shopDomain(item.url)) + '</span>') : "";
+  $("detail-content").innerHTML = '<div class="detail-content">' + artwork(item,list.items.indexOf(item),true) +
+    '<h2 id="detail-title">' + esc(item.title) + '</h2>' +
+    (item.priceCents !== null ? '<p class="detail-price">' + esc(priceText(item.priceCents)) + '</p>' : "") + domain +
+    (item.note ? '<p class="detail-note">' + esc(item.note) + '</p>' : "") +
+    (item.status !== "open" ? '<span class="detail-status" role="status">' + (item.mine ? (item.status === "purchased" ? "Von dir besorgt" : "Für dich reserviert") : "Vergeben") + '</span>' : "") +
+    '<div class="detail-buttons">' + (openGuest ? actions + shop : shop + actions) + '</div></div>';
+  attachImageFallback();
+}
+function openDetail(id) { detailId = id; showError("detail-error",""); renderDetail(); openSheet("detail-dialog"); }
+function guestLink() {
+  if (online()) return routeUrl(routeId);
+  const url = new URL(location.href); url.search = ""; url.hash = new URLSearchParams({liste:encodeSnapshot(list)}).toString();
+  return url.href;
+}
+function openShare() {
+  if (!list) return;
+  try {
+    $("guest-link").value = guestLink();
+    $("owner-link").value = list.isOwner ? routeUrl(routeId,ownerKey) : "";
+    $("private-link").hidden = !list.isOwner;
+    $("private-link").open = false;
+    $("share-note").textContent = online() ? "" : "Der Link enthält die Liste. Vormerkungen gelten nur auf dem jeweiligen Gerät.";
+    openSheet("share-dialog");
+  } catch(error) { toast(error.message); }
+}
+async function reservation(id, action) {
+  const item = list.items.find(entry => entry.id === id);
+  if (!item) return;
+  const result = await mutate("/lists/" + routeId + "/items/" + id + "/reservation", "POST", {action}, raw => {
+    const current = raw.items.find(entry => entry.id === id);
+    if (action === "reserve") {
+      if (current.status !== "open" && current.claimKey !== guestKey) throw new Error("Dieser Wunsch ist schon vergeben.");
+      current.claimKey = guestKey; current.status = "reserved";
+    } else if (action === "release") {
+      if (!list.isOwner && current.claimKey !== guestKey) throw new Error("Dieser Wunsch gehört zu einer anderen Auswahl.");
+      current.claimKey = ""; current.status = "open";
+    } else if (action === "buy" && current.claimKey === guestKey) current.status = "purchased";
+    else throw new Error("Diese Aktion ist nicht möglich.");
   });
+  if (result) toast(action === "reserve" ? (online() ? "Für dich reserviert" : "Auf diesem Gerät vorgemerkt") : action === "buy" ? "Als gekauft markiert" : "Wieder verfügbar");
+}
+function finishCreation(data) {
+  ownerKey = data.ownerKey; routeId = data.id; list = data;
+  setOwnerRoute(routeId,ownerKey);
+  try { storeValue(storageKeys.owner,{id:routeId,key:ownerKey}); localStorage.removeItem(storageKeys.pending); }
+  catch { toast("Sichere deinen Verwaltungslink."); }
+  list.isOwner = true; render();
+}
 
-  document.getElementById("create-dialog").addEventListener("close", () => {
-    const form = document.getElementById("create-form");
-    form.reset();
-    delete form.dataset.editing;
-    document.getElementById("create-title").textContent = "Womit feiern wir?";
-    document.querySelector("#create-form .button-primary").innerHTML = "Kiste anlegen <span aria-hidden=\"true\">→</span>";
-  });
-
-  document.getElementById("wish-dialog").addEventListener("close", () => {
-    const form = document.getElementById("wish-form");
-    form.reset();
-    delete form.dataset.editing;
-    document.getElementById("wish-title").textContent = "Was wünscht sich das Geburtstagskind?";
-    document.querySelector("#wish-form .button-primary").innerHTML = "Wunsch hinzufügen <span aria-hidden=\"true\">→</span>";
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
-  });
-  window.addEventListener("popstate", render);
-  window.addEventListener("storage", (event) => {
-    if (event.key === LISTS_KEY || event.key === PICKS_KEY) render();
-  });
-
-  render();
-})();
+$("list-form").addEventListener("submit", async event => {
+  event.preventDefault(); if (busy) return;
+  const title = $("list-name").value.trim(), date = $("list-date").value;
+  if (!title) { showError("list-error","Gib der Liste einen Namen.","list-name"); return; }
+  showError("list-error","");
+  try {
+    if ($("list-form").dataset.edit) {
+      await mutate("/lists/" + routeId,"PATCH",{title,date},raw => {raw.title=title;raw.date=date;});
+    } else {
+      busy = true; $("list-submit").disabled = true;
+      let data;
+      if (online()) {
+        const previous = readStorage(storageKeys.pending);
+        const pending = {title,date,ownerKey:KEY.test(previous?.ownerKey || "") ? previous.ownerKey : randomKey()};
+        storeValue(storageKeys.pending,pending);
+        data = await api("/lists","POST",pending);
+      }
+      else {
+        if (readStorage(storageKeys.list)) throw new Error("Es gibt bereits eine Liste auf diesem Gerät.");
+        data = {id:randomKey(12),ownerKey:randomKey(),title,date,isOwner:true,items:[]};
+        storeValue(storageKeys.list,{id:data.id,title,date,items:[]});
+      }
+      finishCreation(data);
+    }
+    $("list-dialog").close();
+  } catch(error) { showError("list-error",error.message); }
+  finally { busy = false; $("list-submit").disabled = false; }
+});
+$("wish-form").addEventListener("submit", async event => {
+  event.preventDefault(); if (busy || !list?.isOwner) return;
+  let body;
+  const title = $("wish-name").value.trim();
+  if (!title) { showError("wish-error","Wie heißt der Wunsch?","wish-name"); return; }
+  try {
+    let url, imageUrl, priceCents;
+    try { url=normalizeUrl($("wish-url").value); } catch(error) { showError("wish-error",error.message,"wish-url"); return; }
+    try { imageUrl=normalizeUrl($("wish-image").value,true); } catch(error) { $("extra-fields").open=true; showError("wish-error",error.message,"wish-image"); return; }
+    try { priceCents=parsePrice($("wish-price").value); } catch(error) { $("extra-fields").open=true; showError("wish-error",error.message,"wish-price"); return; }
+    body={title,url,imageUrl,priceCents,note:$("wish-note").value.trim()};
+    const id=$("wish-form").dataset.id;
+    if(id) body.revision=Number($("wish-form").dataset.revision);
+    await mutate("/lists/"+routeId+"/items"+(id?"/"+id:""),id?"PATCH":"POST",body,raw=>{
+      if(id) {
+        const item=raw.items.find(entry=>entry.id===id);
+        if(!item || item.revision!==body.revision) throw new Error("Der Wunsch wurde inzwischen geändert.");
+        Object.assign(item,body,{revision:item.revision+1});
+      } else {
+        if(raw.items.length>=30) throw new Error("Die Liste ist voll (maximal 30 Wünsche).");
+        raw.items.push({...body,id:randomKey(12),status:"open",revision:1});
+      }
+    });
+    $("wish-dialog").close(); toast(id?"Wunsch gespeichert":"Wunsch hinzugefügt");
+  } catch(error) { showError("wish-error",error.message); }
+});
+document.addEventListener("click", async event=>{
+  const button=event.target.closest("[data-action]");
+  if(!button || button.disabled) return;
+  const action=button.dataset.action, id=button.dataset.id;
+  try {
+    if(action==="close") button.closest("dialog")?.close();
+    else if(action==="create") openList();
+    else if(action==="edit-list") openList(true);
+    else if(action==="add") openWish();
+    else if(action==="edit-wish") openWish(id);
+    else if(action==="detail") openDetail(id);
+    else if(action==="menu") openSheet("menu-dialog");
+    else if(action==="share") openShare();
+    else if(action==="retry") await load();
+    else if(action==="guest-view") location.assign(guestLink());
+    else if(action==="copy-guest" || action==="copy-owner") {
+      const input=$(action==="copy-guest"?"guest-link":"owner-link");
+      try { await navigator.clipboard.writeText(input.value); button.textContent="Kopiert"; setTimeout(()=>{button.textContent="Kopieren";},2500); }
+      catch { input.focus(); input.select(); button.textContent="Link auswählen"; }
+    } else if(["reserve","release","buy"].includes(action)) await reservation(id, action);
+    else if(action==="remove" && list?.isOwner) {
+      const old=structuredClone(list.items.find(item=>item.id===id));
+      await mutate("/lists/"+routeId+"/items/"+id,"DELETE",undefined,raw=>{raw.items=raw.items.filter(item=>item.id!==id);});
+      $("detail-dialog").close();
+      toast("Wunsch entfernt",async()=>{
+        try { await mutate("/lists/"+routeId+"/items/"+id+"/restore","POST",{},raw=>{raw.items.push(old);}); toast("Wunsch wiederhergestellt"); }
+        catch(error) {toast(error.message);}
+      });
+    }
+  } catch(error) { if($("detail-dialog").open) showError("detail-error",error.message); else toast(error.message); }
+});
+$("undo-button").addEventListener("click",()=>{const undo=undoAction;undoAction=null;$("toast").classList.remove("show");if(undo)undo();});
+document.querySelectorAll("dialog").forEach(dialog=>dialog.addEventListener("click",event=>{
+  if(event.target!==dialog) return;
+  const rect=dialog.getBoundingClientRect();
+  if(event.clientX<rect.left || event.clientX>rect.right || event.clientY<rect.top || event.clientY>rect.bottom) dialog.close();
+}));
+document.querySelectorAll("input,textarea").forEach(input=>input.addEventListener("input",()=>input.removeAttribute("aria-invalid")));
+window.addEventListener("popstate",load); window.addEventListener("hashchange",load);
+window.addEventListener("storage",()=>{if(!online()&&!busy)load();});
+window.addEventListener("focus",refresh);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
+setInterval(()=>{if(document.visibilityState==="visible")refresh();},20000);
+load();

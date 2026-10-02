@@ -1,0 +1,14 @@
+{
+  "name": "wunschkiste-test-api",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "vars": { "ALLOWED_ORIGIN": "https://timonply.com" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wunschkiste-test",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
