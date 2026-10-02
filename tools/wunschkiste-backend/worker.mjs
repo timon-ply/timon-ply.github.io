@@ -1,3 +1,4 @@
+import { productUrl, previewProduct } from "./product-preview.mjs";
 const MAX_BODY = 16384;
 const KEY = /^[a-f0-9]{64}$/;
 const ID = /^[a-f0-9]{24}$/;
@@ -137,11 +138,24 @@ async function route(request, env) {
     }
     return { id, title, date: eventDate, description, ownerKey, isOwner: true, items: [] };
   }
-  const match = path.match(/^\/lists\/([a-f0-9]{24})(?:\/items(?:\/([a-f0-9]{24})(?:\/(reservation|restore))?)?)?$/);
+  const match = path.match(/^\/lists\/([a-f0-9]{24})(?:\/(product-preview)|\/items(?:\/([a-f0-9]{24})(?:\/(reservation|restore))?)?)?$/);
   if (!match || !ID.test(match[1])) fail(404, "Dieser Link wurde nicht gefunden.");
   const list = await db.prepare("SELECT * FROM lists WHERE id = ?").bind(match[1]).first();
   if (!list) fail(404, "Diese Wunschliste wurde nicht gefunden.");
-  const itemId = match[2];
+  if (match[2] === "product-preview") {
+    if (request.method !== "POST") fail(405, "Diese Aktion ist nicht verfügbar.");
+    await requireOwner(request, list);
+    const body = await jsonBody(request);
+    let url;
+    try { url = productUrl(body.url); }
+    catch { fail(400, "Für diesen Link bitte die Angaben selbst ergänzen."); }
+    const now = Date.now(), day = Math.floor(now / 86400000);
+    const budget = await db.prepare("UPDATE lists SET preview_count = CASE WHEN preview_day = ? THEN preview_count + 1 ELSE 1 END, preview_day = ?, preview_at = ? WHERE id = ? AND preview_at <= ? AND (preview_day <> ? OR preview_count < 60)")
+      .bind(day, day, now, list.id, now - 2000, day).run();
+    if (!budget.meta.changes) fail(429, "Bitte kurz warten oder die Angaben selbst ergänzen. Höchstens 60 Linkabrufe je Wunschkiste und Tag.");
+    return previewProduct(url);
+  }
+  const itemId = match[3];
   const isItemsPath = path.includes("/items");
   if (!isItemsPath && request.method === "GET") return listData(db, list, request);
   if (!isItemsPath && request.method === "PATCH") {
@@ -168,7 +182,7 @@ async function route(request, env) {
   if (!itemId) fail(405, "Diese Aktion ist nicht verfügbar.");
   const existing = await db.prepare("SELECT * FROM items WHERE id = ? AND list_id = ?").bind(itemId, list.id).first();
   if (!existing) fail(404, "Dieser Wunsch wurde nicht gefunden.");
-  if (match[3] === "reservation" && request.method === "POST" && !existing.deleted) {
+  if (match[4] === "reservation" && request.method === "POST" && !existing.deleted) {
     const action = (await jsonBody(request)).action;
     const mine = await claimHash(request, action !== "release" || !await owner(request, list));
     let result;
@@ -192,13 +206,13 @@ async function route(request, env) {
     return listData(db, list, request);
   }
   await requireOwner(request, list);
-  if (match[3] === "restore" && request.method === "POST") {
+  if (match[4] === "restore" && request.method === "POST") {
     const result = await db.prepare("UPDATE items SET deleted = 0, revision = revision + 1 WHERE id = ? AND list_id = ? AND deleted = 1 AND (SELECT COUNT(*) FROM items WHERE list_id = ? AND deleted = 0) < 30")
       .bind(itemId, list.id, list.id).run();
     if (!result.meta.changes) fail(409, "Der Wunsch konnte nicht wiederhergestellt werden.");
     return listData(db, list, request);
   }
-  if (!match[3] && request.method === "PATCH" && !existing.deleted) {
+  if (!match[4] && request.method === "PATCH" && !existing.deleted) {
     const body = await jsonBody(request);
     if (body.revision !== existing.revision) fail(409, "Der Wunsch wurde inzwischen geändert. Bitte erneut öffnen.");
     const item = itemInput(body);
@@ -207,7 +221,7 @@ async function route(request, env) {
     if (!result.meta.changes) fail(409, "Der Wunsch wurde inzwischen geändert. Bitte erneut öffnen.");
     return listData(db, list, request);
   }
-  if (!match[3] && request.method === "DELETE" && !existing.deleted) {
+  if (!match[4] && request.method === "DELETE" && !existing.deleted) {
     await db.prepare("UPDATE items SET deleted = 1, revision = revision + 1 WHERE id = ? AND list_id = ?").bind(itemId, list.id).run();
     return listData(db, list, request);
   }

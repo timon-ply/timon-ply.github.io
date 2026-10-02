@@ -8,9 +8,9 @@
   <meta name="referrer" content="no-referrer">
   <title>Wunschkiste</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4.4">
-  <script src="config.js?v=4.4"></script>
-  <script src="app.js?v=4.4" type="module"></script>
+  <link rel="stylesheet" href="styles.css?v=5.0">
+  <script src="config.js?v=5.0"></script>
+  <script src="app.js?v=5.0" type="module"></script>
 </head>
 <body>
   <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -52,12 +52,14 @@
       <div class="sheet-heading"><h2 id="wish-dialog-title">Wunsch hinzufügen</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
       <label for="wish-url">Produktlink</label>
       <input id="wish-url" name="url" type="text" inputmode="url" maxlength="2000" placeholder="https://…" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <p id="import-status" class="import-status" role="status" hidden></p>
+      <div id="import-image" class="import-image" hidden><img id="product-image" alt="" referrerpolicy="no-referrer"><button class="text-button" type="button" data-action="change-image">Bild ändern</button></div>
       <label for="wish-name">Name</label>
       <input id="wish-name" name="title" maxlength="90" required placeholder="Was wünschst du dir?" autocomplete="off">
+      <div id="price-position"></div>
       <details class="extra-fields" id="extra-fields">
         <summary>Weitere Angaben</summary>
-        <label for="wish-price">Preis (€)</label>
-        <input id="wish-price" name="price" inputmode="decimal" maxlength="12" placeholder="z. B. 49,99">
+        <div id="price-field"><label for="wish-price">Preis (€)</label><input id="wish-price" name="price" inputmode="decimal" maxlength="12" placeholder="z. B. 49,99"><p class="small-note" id="price-hint" hidden>Preis bitte prüfen.</p></div>
         <label for="wish-note">Beschreibung</label>
         <textarea id="wish-note" name="note" rows="2" maxlength="240" placeholder="Farbe, Größe …"></textarea>
         <label for="wish-image">Bildlink</label>
@@ -92,7 +94,15 @@
       <div class="sheet-heading"><h2 id="menu-title">Deine Liste</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
       <button class="menu-row" id="menu-edit" data-action="edit-list" type="button">Liste bearbeiten <span>›</span></button>
       <button class="menu-row" id="menu-guest" data-action="guest-view" type="button">Gästeansicht <span>›</span></button>
+      <button class="menu-row" id="menu-lists" data-action="saved-lists" type="button">Meine Wunschkisten <span>›</span></button>
       <button class="menu-row" data-action="new-list" type="button">Neue Wunschkiste <span>›</span></button>
+    </div>
+  </dialog>
+  <dialog class="sheet" id="saved-dialog" aria-labelledby="saved-title">
+    <div class="sheet-body">
+      <div class="sheet-heading"><h2 id="saved-title">Meine Wunschkisten</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
+      <div id="saved-list-rows"></div>
+      <button class="text-button new-list-link" type="button" data-action="new-list">+ Neue Wunschkiste</button>
     </div>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text"></span><button type="button" id="undo-button" hidden>Rückgängig</button></div>

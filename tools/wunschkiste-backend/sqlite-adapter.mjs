@@ -13,6 +13,13 @@ export function createDatabase(path = ":memory:") {
       database.exec("COMMIT");
     } catch(error) { database.exec("ROLLBACK"); throw error; }
   }
+  if(!database.prepare("PRAGMA table_info(lists)").all().some(column=>column.name==="preview_at")) {
+    database.exec("BEGIN");
+    try {
+      database.exec(readFileSync(new URL("migrations/0003_product_preview_budget.sql",import.meta.url),"utf8"));
+      database.exec("COMMIT");
+    } catch(error) { database.exec("ROLLBACK"); throw error; }
+  }
   return {
     close: () => database.close(),
     prepare(sql) {

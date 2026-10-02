@@ -1,7 +1,7 @@
 # Wunschkiste test backend
 
 Independent shared lists for `/appidee/`, backed by a Cloudflare Worker and D1. No accounts,
-payment, analytics, product scraping, cron, queues or paid services. Shopping links
+payment, analytics, scheduled scraping, cron, queues or paid services. Shopping links
 open the exact entered destination; purchases are made independently in the shop.
 
 ## Zero-cost boundary
@@ -13,7 +13,7 @@ Free plan before every future deployment. Free limits reject requests/queries;
 exhaustion is an unavailable-service condition, not permission to pay.
 
 Workers Free / Current plan / $0 was reconfirmed in the dashboard on2026-10-02
-before applying the additive description migration and publishing its Worker.
+before publishing V5; only the existing Free Workers/D1 resources are used.
 
 Official limits: https://developers.cloudflare.com/workers/platform/pricing/ and
 https://developers.cloudflare.com/d1/platform/pricing/ . Visible pages refresh at
@@ -23,7 +23,58 @@ and max100 retained wish rows per list. Exceeding creation bounds returns429;
 idempotent recovery of an existing list still works. D1 stores bounded text/URLs,
 cents, revisions, hashed capabilities and an internal IP hash salted with the
 pre-existing secret. Raw IP addresses and creation hashes are never returned.
-Thumbnails load directly from entered HTTPS URLs.
+Thumbnails load directly from entered or imported HTTPS URLs. Public product
+metadata is fetched only when an owner adds a supported shop link; it is never
+polled or tracked. No new external API, account, credential or package is used.
+
+## Product link import
+
+`POST /api/lists/:id/product-preview` requires the existing bearer owner key and
+a bounded JSON body `{ "url": "https://…" }`. It returns
+`{ title, imageUrl, priceCents, message }`: empty strings/null for unavailable
+values, a short manual-entry hint for partial/blocked pages, and no persistence
+of the result until the owner saves the wish through the existing item API.
+An imported price is a snapshot that the owner should check, not a live-price
+promise. Unsupported/invalid URLs return400; unauthenticated requests403;
+exhausted per-list limits429. Shop/network failures return an empty preview with
+an honest hint and do not prevent manual entry.
+
+Only HTTPS on exact approved hosts is fetched: amazon.de/.com (including www),
+amzn.eu/amzn.to, www.lego.com, www.ikea.com, www.otto.de, www.dm.de,
+www.thalia.de, www.lidl.de, www.decathlon.de, www.mediamarkt.de, www.saturn.de
+and www.zalando.de. Amazon short links must resolve to approved Amazon hosts.
+Other manually entered product links remain supported by the wish API. No IP,
+localhost, arbitrary port, URL credentials, or unapproved redirect destination
+is fetched. Each manual redirect is checked before fetching, with at most three
+redirects, an eight-second overall abort and at most1,250,000 decoded body bytes
+retained for metadata extraction. Larger responses are cancelled; only complete
+metadata within that prefix may be used. Shop requests send an honest app user
+agent and accept header; they never forward user bearer keys, claim keys,
+cookies, Origin, or other incoming headers. No login/CAPTCHA/access restriction
+is bypassed.
+
+Extraction uses bounded public Open Graph and JSON-LD Product metadata, with
+plain text, a maximum90-character title and approved shop/CDN HTTPS image
+domains. At most eight JSON-LD blocks of128KB and128 visited nodes are parsed.
+Only a single unambiguous EUR Offer value is accepted; AggregateOffer ranges,
+conflicting offers, other currencies and "from" prices remain blank. Product
+identity is required; a generic homepage, login, challenge or error document
+cannot populate a wish. No product/title/price is invented from a URL.
+
+An atomic conditional SQL update permits at most60 fetches per owned list per
+UTC day, with at least two seconds between starts. The additive0003 migration
+stores only three counters on the existing bounded list row; no HTML cache or
+unbounded request log is retained. Failed shop fetches consume the budget.
+Creation's existing500-list bound also bounds the import counter storage.
+
+Local network probes on2026-10-02: the Lidl LEGO10328 page supplied a real title,
+Lidl image and EUR37.49 offer. Direct LEGO returned403 with a challenge page;
+the sampled Amazon ASIN returned404. Those failures correctly yield manual
+entry; local probes are not proof of Cloudflare's shop reachability. Amazon's
+official Creators API requires affiliate eligibility/credentials that this
+prototype does not have; there is no claim that every Amazon link auto-fills.
+The deployed V5 Worker also returned the real Lidl title, image and37.49EUR on
+2026-10-02. This is one successful live shop probe, not universal shop support.
 
 ## Authorization and recovery
 
@@ -38,9 +89,20 @@ clearing it.
   sent by visitors or exposed in public links. No extra service is used.
 - Each list has its own ID and private owner capability; queries and mutations
   remain scoped to that ID. The menu offers a new list to owners and guests.
-- The root page always offers creation and invitations; the last management
-  link saved on that browser is a secondary shortcut. Creating another list
-  keeps earlier lists accessible through their saved management links.
+- The root page offers creation, invitations and a simple "Meine Wunschkisten"
+  switcher. The browser keeps confirmed owner capabilities locally in
+  `wk.v3.owners`; the former `wk.v2.owner` capability is preserved and recovered.
+  Titles/dates update after confirmed owner reads/saves. Guest invitation links
+  remain guest views even for lists stored on the same browser. Clearing browser
+  storage requires the separately saved private management links.
+- Pasting a supported product link starts a debounced preview. Only unchanged
+  empty fields are filled; edits stay intact and changing the URL clears only
+  unchanged imported values. Closing/saving/navigation cancels stale previews.
+  One editable form remains; manual saving works when a shop cannot be imported.
+- Sheets open/close with short native-modal transitions, new saved rows animate
+  once and only the changed reservation status fades. Reduced-motion settings
+  disable movement/spin. Pending saves cannot close a later draft or replace a
+  newer route; successful creation capabilities are retained after navigation.
 - The browser saves its cryptographically random management key **before**
   creation. Replaying creation with that key recovers the same list if the first
   response was lost. Only its hash is stored in D1.
@@ -100,6 +162,8 @@ Existing databases use the same migration command before deploying the Worker.
 0001 adds descriptions; 0002 rebuilds the list table without its singleton check,
 preserving existing IDs, hashes, metadata, wishes and claims. Foreign keys are
 deferred within the migration transaction and restored before completion.
+0003 adds the bounded product-preview day/count/start-time columns without
+changing any existing metadata, wishes, capabilities or claims.
 The local SQLite adapter applies the same migrations only if their marker columns
 are missing. No data reset.
 
