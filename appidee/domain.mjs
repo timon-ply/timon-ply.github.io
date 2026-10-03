@@ -45,6 +45,7 @@ export function cleanPublicList(list) {
   if(typeof description!=="string" || description.length>240) throw new Error("Dieser Listenlink ist ungültig.");
   return {
     id:list.id, title:list.title.trim(), date:eventDate, description:description.trim(),
+    coverId:/^cover_(0[1-9]|[12][0-9]|3[0-9]|40)$/.test(list.coverId || "") ? list.coverId : "cover_01",
     items:list.items.map(item => {
       if (!item || !/^[a-f0-9]{24}$/.test(item.id) || seen.has(item.id) ||
           typeof item.title !== "string" || !item.title.trim() || item.title.length > 90 ||

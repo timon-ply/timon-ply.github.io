@@ -1,4 +1,4 @@
-import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.1";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.2";
 
 const $ = id => document.getElementById(id);
 const KEY = /^[a-f0-9]{64}$/;
@@ -6,6 +6,9 @@ const ID = /^[a-f0-9]{24}$/;
 const storageKeys = { owner:"wk.v2.owner", owners:"wk.v3.owners", list:"wk.v2.list", guest:"wk.v2.guest", pending:"wk.v2.pending" };
 const more = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></svg>';
 const share = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V2m-4 4 4-4 4 4M8 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-3"/></svg>';
+let coverCatalog = [], selectedCover = "cover_01";
+const coverPath = id => "assets/covers/" + (/^cover_(0[1-9]|[12][0-9]|3[0-9]|40)$/.test(id || "") ? id : "cover_01") + ".svg";
+const coverBackground = id => {const color=coverCatalog.find(cover=>cover.id===id)?.background;return /^#[a-f0-9]{6}$/i.test(color || "")?color:"#F6F4EF";};
 let list = null, ownerKey = "", guestKey = "", routeId = "";
 let snapshotMode = false, apiBase = String(window.WUNSCHKISTE_API || "").replace(/\/$/, "");
 let detailId = "", busy = false, refreshing = false, serial = 0, toastTimer, undoAction = null;
@@ -204,6 +207,8 @@ function setHeading(title, date = "", local = false) {
   $("list-date-label").textContent=parts.join(" · "); $("list-date-label").hidden=!parts.length;
   $("list-description").textContent=list?.description || "";
   $("list-description").hidden=!list?.description;
+  $("list-cover").hidden=!list;
+  if(list){$("list-cover").src=coverPath(list.coverId);$("list-cover").style.background=coverBackground(list.coverId);}
 }
 function artwork(item, index, detail = false) {
   return item.imageUrl ? '<img class="wish-image' + (detail ? ' detail-art' : '') + '" src="' + esc(item.imageUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" data-image>' : "";
@@ -347,6 +352,10 @@ function openList(edit = false) {
   $("list-name").value = edit ? list.title : pending?.title || "";
   $("list-date").value = edit ? list.date : pending?.date || "";
   $("list-description-input").value = edit ? list.description || "" : pending?.description || "";
+  selectedCover=(edit ? list.coverId : pending?.coverId) || "cover_01";
+  $("selected-cover").src=coverPath(selectedCover);$("cover-select").style.background=coverBackground(selectedCover);
+  renderCoverOptions();
+  $("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");
   $("list-dialog-title").textContent = edit ? "Liste bearbeiten" : "Liste erstellen";
   $("list-submit").textContent = edit ? "Speichern" : "Erstellen";
   showError("list-error","");
@@ -404,6 +413,8 @@ function openShare() {
   if (!list) return;
   try {
     $("guest-link").value = guestLink();
+    $("invite-code-row").hidden=!(list.isOwner && /^[a-f0-9]{10}$/i.test(list.inviteCode || ""));
+    $("invite-code").value=(list.inviteCode || "").toUpperCase().match(/.{1,5}/g)?.join("-") || "";
     $("owner-link").value = list.isOwner ? routeUrl(routeId,ownerKey) : "";
     $("private-link").hidden = !list.isOwner;
     $("private-link").open = false;
@@ -437,12 +448,12 @@ function finishCreation(data) {
 
 $("list-form").addEventListener("submit", async event => {
   event.preventDefault(); if (busy) return;
-  const title = $("list-name").value.trim(), date = $("list-date").value, description=$("list-description-input").value.trim();
+  const title = $("list-name").value.trim(), date = $("list-date").value, description=$("list-description-input").value.trim(), coverId=selectedCover;
   if (!title) { showError("list-error","Gib der Liste einen Namen.","list-name"); return; }
   showError("list-error","");
   try {
     if ($("list-form").dataset.edit) {
-      const result=await mutate("/lists/" + routeId,"PATCH",{title,date,description},raw => {raw.title=title;raw.date=date;raw.description=description;});
+      const result=await mutate("/lists/" + routeId,"PATCH",{title,date,description,coverId},raw => {raw.title=title;raw.date=date;raw.description=description;raw.coverId=coverId;});
       if (!result) return;
     } else {
       busy = true; $("list-submit").disabled = true;
@@ -450,14 +461,14 @@ $("list-form").addEventListener("submit", async event => {
       let data;
       if (online()) {
         const creationKey = $("list-form").dataset.creationKey;
-        const pending = {title,date,description,ownerKey:creationKey};
+        const pending = {title,date,description,coverId,ownerKey:creationKey};
         storeValue(storageKeys.pending + "." + creationKey,pending);
         data = await api("/lists","POST",pending);
       }
       else {
         if (readStorage(storageKeys.list)) throw new Error("Es gibt bereits eine Liste auf diesem Gerät.");
-        data = {id:randomKey(12),ownerKey:randomKey(),title,date,description,isOwner:true,items:[]};
-        storeValue(storageKeys.list,{id:data.id,title,date,description,items:[]});
+        data = {id:randomKey(12),ownerKey:randomKey(),title,date,description,coverId,isOwner:true,items:[]};
+        storeValue(storageKeys.list,{id:data.id,title,date,description,coverId,items:[]});
       }
       rememberOwner({...data,isOwner:true},data.ownerKey,creationSerial===serial);
       if (creationSerial !== serial) return;
@@ -583,3 +594,11 @@ window.addEventListener("focus",refresh);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh();});
 setInterval(()=>{if(document.visibilityState==="visible")refresh();},20000);
 load();
+
+function renderCoverOptions() {
+  $("cover-options").innerHTML=coverCatalog.map(cover=>'<button type="button" style="background:'+coverBackground(cover.id)+'" data-cover="'+esc(cover.id)+'" aria-label="'+esc(cover.title)+'" aria-pressed="'+(cover.id===selectedCover)+'"><img src="'+coverPath(cover.id)+'" alt="" loading="lazy"></button>').join("");
+}
+$("cover-select").addEventListener("click",()=>{const options=$("cover-panel");options.hidden=!options.hidden;$("cover-select").setAttribute("aria-expanded",String(!options.hidden));if(!options.hidden) options.scrollIntoView({block:"nearest",behavior:reducedMotion.matches?"instant":"smooth"});});
+$("cover-options").addEventListener("click",event=>{const button=event.target.closest("[data-cover]");if(!button)return;selectedCover=button.dataset.cover;$("selected-cover").src=coverPath(selectedCover);$("cover-select").style.background=coverBackground(selectedCover);renderCoverOptions();$("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");$("cover-select").focus();});
+$("copy-invite-code").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("invite-code").value);toast("Einladungscode kopiert");}catch{$("invite-code").select();toast("Bitte den Code kopieren.");}});
+fetch("assets/covers/cover-catalog.json").then(response=>{if(!response.ok)throw Error();return response.json();}).then(data=>{coverCatalog=Array.isArray(data)?data:data.presets || [];renderCoverOptions();if(list)$("list-cover").style.background=coverBackground(list.coverId);$("cover-select").style.background=coverBackground(selectedCover);}).catch(()=>{coverCatalog=[];});

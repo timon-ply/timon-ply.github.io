@@ -8,9 +8,9 @@
   <meta name="referrer" content="no-referrer">
   <title>Wunschkiste</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=5.1">
-  <script src="config.js?v=5.1"></script>
-  <script src="app.js?v=5.1" type="module"></script>
+  <link rel="stylesheet" href="styles.css?v=5.2">
+  <script src="config.js?v=5.2"></script>
+  <script src="app.js?v=5.2" type="module"></script>
 </head>
 <body>
   <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -20,6 +20,7 @@
       <nav class="app-actions" aria-label="Listenaktionen" id="app-actions"></nav>
     </header>
     <main id="main" tabindex="-1">
+      <img id="list-cover" class="list-cover" alt="" hidden>
       <p id="list-description" class="list-description" hidden></p>
       <div id="app" aria-busy="true"><div class="loading" role="status">Liste wird geladen …</div></div>
     </main>
@@ -37,6 +38,8 @@
   <dialog class="sheet" id="list-dialog" aria-labelledby="list-dialog-title">
     <form id="list-form" class="sheet-body" novalidate>
       <div class="sheet-heading"><h2 id="list-dialog-title">Liste erstellen</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
+      <button type="button" class="cover-select" id="cover-select" aria-expanded="false" aria-controls="cover-panel"><img id="selected-cover" alt=""><span>Bild auswählen</span></button>
+      <div id="cover-panel" hidden><div id="cover-options" class="cover-grid" role="group" aria-label="Kistenbild auswählen"></div></div>
       <label for="list-name">Name</label>
       <input id="list-name" name="title" maxlength="80" required placeholder="Mein Geburtstag" autocomplete="off">
       <p class="field-error" id="list-error" role="alert" hidden></p>
@@ -79,6 +82,7 @@
   <dialog class="sheet" id="share-dialog" aria-labelledby="share-title">
     <div class="sheet-body">
       <div class="sheet-heading"><h2 id="share-title">Liste teilen</h2><button type="button" class="icon-button close" aria-label="Schließen" data-action="close">×</button></div>
+      <div id="invite-code-row" hidden><label for="invite-code">Einladungscode für die App</label><div class="copy-row"><input id="invite-code" readonly><button type="button" class="secondary" id="copy-invite-code">Kopieren</button></div></div>
       <label for="guest-link">Gästelink</label>
       <div class="copy-row"><input id="guest-link" readonly><button type="button" class="primary" data-action="copy-guest" aria-live="polite">Kopieren</button></div>
       <p class="small-note" id="share-note"></p>

@@ -1,3 +1,4 @@
+import { DEFAULT_COVER, ensureInviteCode } from "./list-metadata.mjs";
 const KEY = /^[a-f0-9]{64}$/;
 const ID = /^[a-f0-9]{24}$/;
 const SESSION_MS = 30 * 86400000;
@@ -24,13 +25,15 @@ export function accountService(request, env, { fail, hash, randomHex, text, json
     if (!KEY.test(value || "")) fail(400, "Bitte einen gültigen Wiederherstellungsschlüssel eingeben.");
     return value;
   }
-  async function throttle() {
-    if (env.DEV_MODE !== "true" && !env.SETUP_KEY) fail(503, "Die Anmeldung ist gerade nicht verfügbar.");
-    const digest = await hash((env.SETUP_KEY || "local") + ":auth:" + (request.headers.get("cf-connecting-ip") || "local"));
+  async function throttle(scope = "auth") {
+    const invites = scope === "invite";
+    const table = invites ? "invite_buckets" : "auth_buckets";
+    if (env.DEV_MODE !== "true" && !env.SETUP_KEY) fail(503, invites ? "Die Einladung ist gerade nicht erreichbar." : "Die Anmeldung ist gerade nicht verfügbar.");
+    const digest = await hash((env.SETUP_KEY || "local") + (invites ? ":invite:" : ":auth:") + (request.headers.get("cf-connecting-ip") || "local"));
     const bucket = parseInt(digest.slice(0, 2), 16), window = Math.floor(Date.now() / 3600000);
-    const result = await db.prepare("INSERT INTO auth_buckets (bucket, window, attempts) VALUES (?, ?, 1) ON CONFLICT(bucket) DO UPDATE SET window = excluded.window, attempts = CASE WHEN auth_buckets.window = excluded.window THEN auth_buckets.attempts + 1 ELSE 1 END WHERE auth_buckets.window <> excluded.window OR auth_buckets.attempts < 30")
+    const result = await db.prepare(`INSERT INTO ${table} (bucket, window, attempts) VALUES (?, ?, 1) ON CONFLICT(bucket) DO UPDATE SET window = excluded.window, attempts = CASE WHEN ${table}.window = excluded.window THEN ${table}.attempts + 1 ELSE 1 END WHERE ${table}.window <> excluded.window OR ${table}.attempts < 30`)
       .bind(bucket, window).run();
-    if (!result.meta.changes) fail(429, "Zu viele Anmeldeversuche. Bitte später erneut versuchen.");
+    if (!result.meta.changes) fail(429, invites ? "Zu viele Codeversuche. Bitte später erneut versuchen." : "Zu viele Anmeldeversuche. Bitte später erneut versuchen.");
   }
   async function issueSession(account, deviceName, keyHash, token) {
     if (!KEY.test(token || "")) fail(400, "Bitte die Anmeldung erneut öffnen.");
@@ -101,7 +104,8 @@ export function accountService(request, env, { fail, hash, randomHex, text, json
     if (path === "/account/lists" && method === "GET") {
       const rows = await db.prepare("SELECT l.*, (SELECT COUNT(*) FROM items i WHERE i.list_id = l.id AND i.deleted = 0) AS item_count FROM lists l WHERE account_id = ? ORDER BY created_at DESC, id")
         .bind(account.id).all();
-      return { lists: rows.results.map(row => ({ id: row.id, title: row.title, date: row.event_date, description: row.description, itemCount: row.item_count })) };
+      return { lists: await Promise.all(rows.results.map(async row => ({ id: row.id, title: row.title, date: row.event_date, description: row.description,
+        coverId: row.cover_id || DEFAULT_COVER, inviteCode: await ensureInviteCode(db, row, randomHex, fail), itemCount: row.item_count }))) };
     }
     if (path === "/account/lists/attach" && method === "POST") {
       const body = await jsonBody(request);
@@ -136,7 +140,7 @@ export function accountService(request, env, { fail, hash, randomHex, text, json
       }
       const lists = [];
       for (const list of rows.results) {
-        lists.push({ id: list.id, title: list.title, date: list.event_date, description: list.description, items: (byList.get(list.id) || []).map(row => ({
+        lists.push({ id: list.id, title: list.title, date: list.event_date, description: list.description, coverId: list.cover_id || DEFAULT_COVER, items: (byList.get(list.id) || []).map(row => ({
           id: row.id, title: row.title, url: row.url, imageUrl: row.image_url, priceCents: row.price_cents, note: row.note, revision: row.revision,
           status: row.purchased ? "purchased" : "reserved", mine: true
         })) });
@@ -155,5 +159,5 @@ export function accountService(request, env, { fail, hash, randomHex, text, json
     }
     fail(404, "Diese Kontoaktion wurde nicht gefunden.");
   }
-  return { session, route };
+  return { session, route, throttle };
 }

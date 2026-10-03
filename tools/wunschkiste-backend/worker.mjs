@@ -1,5 +1,6 @@
 import { productUrl, previewProduct } from "./product-preview.mjs";
 import { accountService } from "./accounts.mjs";
+import { DEFAULT_COVER, validCover, normalizeInviteCode, ensureInviteCode } from "./list-metadata.mjs";
 const requestAccounts = new WeakMap();
 const MAX_BODY = 16384;
 const KEY = /^[a-f0-9]{64}$/;
@@ -38,6 +39,10 @@ function date(value) {
     fail(400, "Bitte ein gültiges Datum eintragen.");
   }
   return result;
+}
+function cover(value) {
+  if (!validCover(value)) fail(400, "Bitte ein verfügbares Cover auswählen.");
+  return value;
 }
 function itemInput(body) {
   const price = body.priceCents ?? null;
@@ -104,7 +109,8 @@ async function listData(db, list, request) {
   const isOwner = new URL(request.url).searchParams.get("guest") !== "1" && await owner(request, list);
   const data = await db.prepare("SELECT * FROM items WHERE list_id = ? AND deleted = 0 ORDER BY created_at, id").bind(list.id).all();
   return {
-    id: list.id, title: list.title, date: list.event_date, description:list.description || "", isOwner,
+    id: list.id, title: list.title, date: list.event_date, description:list.description || "", coverId: list.cover_id || DEFAULT_COVER, isOwner,
+    ...(isOwner ? { inviteCode: await ensureInviteCode(db, list, randomHex, fail) } : {}),
     items: data.results.map(row => ({
       id: row.id, title: row.title, url: row.url, imageUrl: row.image_url,
       priceCents: row.price_cents, note: row.note, revision: row.revision,
@@ -120,6 +126,17 @@ async function route(request, env) {
   const accounts = accountService(request, env, { fail, hash, randomHex, text, jsonBody });
   const accountResult = await accounts.route(path);
   if (accountResult !== null) return accountResult;
+  if (path.startsWith("/invites/")) {
+    if (request.method !== "GET") fail(405, "Diese Aktion ist nicht verfügbar.");
+    await accounts.throttle("invite");
+    let raw;
+    try { raw = decodeURIComponent(path.slice("/invites/".length)); } catch { fail(400, "Bitte den Einladungscode prüfen."); }
+    const code = normalizeInviteCode(raw);
+    if (!code) fail(400, "Bitte den zehnstelligen Einladungscode prüfen.");
+    const preview = await db.prepare("SELECT l.id, l.title, l.event_date, l.description, l.cover_id, (SELECT COUNT(*) FROM items WHERE list_id = l.id AND deleted = 0) AS item_count FROM lists l WHERE l.invite_code = ?").bind(code).first();
+    if (!preview) fail(404, "Dieser Einladungscode wurde nicht gefunden.");
+    return { id: preview.id, title: preview.title, date: preview.event_date, description: preview.description || "", coverId: preview.cover_id || DEFAULT_COVER, itemCount: preview.item_count };
+  }
   const account = await accounts.session();
   if (account) requestAccounts.set(request, account);
   if (path === "/list" && request.method === "GET") {
@@ -131,6 +148,7 @@ async function route(request, env) {
     const title = text(body.title, 80, true);
     const eventDate = date(body.date || "");
     const description = text(body.description === undefined ? "" : body.description, 240);
+    const coverId = body.coverId === undefined ? DEFAULT_COVER : cover(body.coverId);
     const id = randomHex(12);
     const ownerKey = body.ownerKey;
     if (!KEY.test(ownerKey || "")) fail(400, "Bitte die Erstellung erneut öffnen.");
@@ -139,17 +157,22 @@ async function route(request, env) {
     // The pre-existing secret only salts the abuse counter; visitors need no setup key.
     if (env.DEV_MODE !== "true" && !env.SETUP_KEY) fail(503, "Die Erstellung ist gerade nicht verfügbar.");
     const creatorHash = await hash((env.SETUP_KEY || "local") + ":" + (request.headers.get("cf-connecting-ip") || "local"));
-    const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash, account_id, owner_link_enabled) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5 AND (? IS NULL OR (SELECT COUNT(*) FROM lists WHERE account_id = ?) < 20)")
-      .bind(id, title, eventDate, description, ownerHash, now, creatorHash, account?.id || null, account ? 0 : 1, creatorHash, now - 3600000, account?.id || null, account?.id || null).run();
-    if (!result.meta.changes) {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const inviteCode = randomHex(5);
+      const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash, account_id, owner_link_enabled, cover_id, invite_code) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5 AND (? IS NULL OR (SELECT COUNT(*) FROM lists WHERE account_id = ?) < 20)")
+        .bind(id, title, eventDate, description, ownerHash, now, creatorHash, account?.id || null, account ? 0 : 1, coverId, inviteCode, creatorHash, now - 3600000, account?.id || null, account?.id || null).run();
+      if (result.meta.changes) return { id, title, date: eventDate, description, coverId, inviteCode, ownerKey, isOwner: true, items: [] };
       const existing = await db.prepare("SELECT * FROM lists WHERE owner_hash = ?").bind(ownerHash).first();
-      if (!existing) fail(429, "Gerade können keine weiteren Wunschkisten erstellt werden. Bitte später erneut versuchen.");
+      if (!existing) {
+        if (await db.prepare("SELECT id FROM lists WHERE invite_code = ?").bind(inviteCode).first()) continue;
+        fail(429, "Gerade können keine weiteren Wunschkisten erstellt werden. Bitte später erneut versuchen.");
+      }
       if (!existing.owner_link_enabled && existing.account_id !== account?.id) fail(403, "Bitte mit dem zugehörigen Konto anmelden.");
       const replay = new Request(request.url, { headers: { ...Object.fromEntries(request.headers), Authorization:"Bearer " + ownerKey } });
       if (account) requestAccounts.set(replay, account);
       return { ...await listData(db, existing, replay), ownerKey };
     }
-    return { id, title, date: eventDate, description, ownerKey, isOwner: true, items: [] };
+    fail(503, "Die Wunschkiste konnte gerade nicht erstellt werden. Bitte erneut versuchen.");
   }
   const match = path.match(/^\/lists\/([a-f0-9]{24})(?:\/(product-preview)|\/items(?:\/([a-f0-9]{24})(?:\/(reservation|restore))?)?)?$/);
   if (!match || !ID.test(match[1])) fail(404, "Dieser Link wurde nicht gefunden.");
@@ -174,14 +197,14 @@ async function route(request, env) {
   if (!isItemsPath && request.method === "PATCH") {
     await requireOwner(request, list);
     const body = await jsonBody(request);
-    const title=text(body.title,80,true), eventDate=date(body.date || "");
-    if(body.description===undefined) {
-      await db.prepare("UPDATE lists SET title = ?, event_date = ? WHERE id = ?").bind(title,eventDate,list.id).run();
-    } else {
-      const description=text(body.description,240);
-      await db.prepare("UPDATE lists SET title = ?, event_date = ?, description = ? WHERE id = ?")
-        .bind(title,eventDate,description,list.id).run();
-    }
+    // Write only supplied fields: a cover-only edit must not replay stale
+    // title/date values over a concurrent edit from another device.
+    const updates = [], values = [];
+    if (body.title !== undefined) { updates.push("title = ?"); values.push(text(body.title,80,true)); }
+    if (body.date !== undefined) { updates.push("event_date = ?"); values.push(date(body.date || "")); }
+    if (body.description !== undefined) { updates.push("description = ?"); values.push(text(body.description,240)); }
+    if (body.coverId !== undefined) { updates.push("cover_id = ?"); values.push(cover(body.coverId)); }
+    if (updates.length) await db.prepare("UPDATE lists SET " + updates.join(", ") + " WHERE id = ?").bind(...values,list.id).run();
     return listData(db,await db.prepare("SELECT * FROM lists WHERE id = ?").bind(list.id).first(),request);
   }
   if (isItemsPath && !itemId && request.method === "POST") {

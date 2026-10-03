@@ -123,3 +123,10 @@ button:active:not(:disabled),.saved-row:active { background-color:#e1e7dc; }
 /* Secondary information stays below the one primary create action. */
 .start-links { display:flex; justify-content:center; flex-wrap:wrap; gap:8px 20px; padding:20px; font-size:13px; color:#59665f; }
 .start-links a { padding:12px 0; text-underline-offset:4px; }
+
+.list-cover{width:100%;height:140px;object-fit:contain;border-radius:24px;margin:0 0 24px;background:#f6f4ef}
+.cover-select{position:relative;width:100%;height:120px;border:0;border-radius:20px;overflow:hidden;padding:0;cursor:pointer;background:#f6f4ef}
+.cover-select img{width:100%;height:100%;object-fit:contain}.cover-select span{position:absolute;bottom:10px;right:10px;background:white;border-radius:24px;padding:12px 18px;color:#244d3e;font-weight:600}
+#cover-panel{max-height:320px;overflow:auto;padding:2px}.cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cover-grid button{padding:0;overflow:hidden;border:2px solid transparent;border-radius:16px;aspect-ratio:1;cursor:pointer;background:#f6f4ef;min-height:48px}.cover-grid button[aria-pressed=true]{border-color:#244d3e}.cover-grid img{height:100%;width:100%;object-fit:contain}
+@media(max-width:360px){.list-cover{height:100px}}

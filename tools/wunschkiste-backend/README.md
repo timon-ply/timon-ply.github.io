@@ -178,6 +178,80 @@ SQLite/Worker tests passed, including lost responses, concurrent rotations,
 revocation, legacy attachment, deletion and capacity limits. This evidence does
 not substitute for the separate deployed-Worker and native flow checks.
 
+## Covers and invitation codes
+
+`POST /api/lists` accepts optional `coverId`; the default is `cover_01`.
+`PATCH /api/lists/:id` accepts any supplied subset of title, date, description,
+and coverId. Omitted fields remain unchanged, including during concurrent
+edits of other fields. The only accepted cover IDs are `cover_01` through
+`cover_40`; unknown IDs, URLs, null, and non-string values receive400.
+The cover selects a bundled client asset; the backend stores no cover image.
+
+All list responses include `coverId`, including guest lists, account summaries,
+and gifts. Owner list responses and `/api/account/lists` also include `inviteCode`:
+ten lowercase hexadecimal characters from a cryptographic random generator.
+Creation replay retains the original cover/code; editing metadata never changes
+the code. The database enforces code uniqueness. Codes grant public guest access,
+never ownership. Guest-mode responses do not disclose the stored invitation code.
+
+`GET /api/invites/:code` returns only:
+
+```json
+{"id":"24-character-list-id","title":"Geburtstag","date":"2026-12-12","description":"Zusammen feiern","coverId":"cover_12","itemCount":3}
+```
+
+The URL segment accepts uppercase/lowercase and optional spaces/hyphens
+(percent-encode spaces). It returns400 for malformed input and404 for unknown
+codes. No item details, account identity, claim identity, or private capability
+is returned. Lookup is public even with an expired session header, never joins
+a list, and never modifies reservations. After the user confirms the preview,
+the native client may call the existing authenticated `POST /api/account/join`
+with its listId, then open `/api/lists/:id?guest=1`.
+
+Code lookup has its own256 fixed abuse buckets, salted with the existing setup
+secret and keyed by source IP. Each bucket permits30 attempts/hour, including
+invalid/unknown codes. Collisions can share a budget; counters are separate from
+login counters and do not grow with IP count. Exhaustion returns429; there are
+no scheduled jobs, additional services, paid APIs, or billing changes.
+
+### Existing-database migration and backfill
+
+0005 adds checked cover/code columns, their unique index, and the bounded lookup
+counter table. Existing rows receive `cover_01`; existing IDs, ownership,
+reservations, and metadata remain intact. Apply0005 before deploying the updated
+Worker. From this backend directory, using the previously configured Wrangler
+environment and verified Free plan:
+
+```powershell
+wrangler d1 migrations apply wunschkiste-test --remote --config wrangler.local.json
+$inviteWork = Join-Path $env:TEMP ('wunschkiste-invites-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $inviteWork | Out-Null
+wrangler d1 execute wunschkiste-test --remote --config wrangler.local.json --command "SELECT id, invite_code FROM lists ORDER BY id" --json | Set-Content -LiteralPath (Join-Path $inviteWork 'lists.json') -Encoding utf8
+node backfill-invites.mjs (Join-Path $inviteWork 'lists.json') (Join-Path $inviteWork 'backfill.sql')
+wrangler d1 execute wunschkiste-test --remote --config wrangler.local.json --file (Join-Path $inviteWork 'backfill.sql')
+wrangler d1 execute wunschkiste-test --remote --config wrangler.local.json --command "SELECT COUNT(*) AS missing_codes FROM lists WHERE invite_code IS NULL"
+```
+
+Stop if any command fails. The backfill script uses Node `crypto.randomBytes(5)`,
+validates the bounded exported IDs/codes, resolves collisions, and emits only
+conditional UPDATEs. It never connects to a database, overwrites an existing
+code, or replaces an existing output file. Retrying its SQL is safe. If an older
+Worker creates a list during the deployment window, rerun with fresh export/output
+paths after deployment until missing_codes is zero. Owner reads also assign any
+missing code atomically using Workers `crypto.getRandomValues`, with bounded
+collision retries. Local SQLite uses the same additive migration.
+
+Targeted checks:
+
+```powershell
+node --test tools/wunschkiste-backend/invitations.test.mjs tools/wunschkiste-backend/accounts.test.mjs tools/wunschkiste-backend/worker.test.mjs
+```
+
+Run the test command from the repository root. Tests cover all40 presets,
+backward-compatible and concurrent PATCH behavior, unique/replay-stable codes,
+public preview without joining, disclosure boundaries, rate limits, backfill
+collisions, and preservation of legacy data.
+
 ## Local checks
 
 From the repository root, Node22:
