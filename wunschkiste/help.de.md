@@ -13,7 +13,11 @@ permalink: /wunschkiste/help.de/
 
 Stand: 3. Oktober 2026
 
-Diese Website stellt weiterhin Hilfe und rechtliche Informationen bereit. Die bisherige Web-App und Android-Downloads werden hier nicht mehr angeboten. Eine neue öffentliche App-Adresse ist noch nicht eingerichtet.
+Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
+
+## Einführung
+
+Beim ersten Start zeigt die App drei kurze Schritte. Du kannst sie durch Weiter oder Wischen wechseln, zurückgehen oder jederzeit überspringen. Danach kannst du ohne Konto anfangen, ein Konto erstellen oder dich anmelden. Unter „Profil → Hilfe → Einführung ansehen“ kannst du sie erneut öffnen. Bereits vorhandene Konten und Gastkisten werden beim Update nicht unterbrochen.
 
 ## Eine Kiste erstellen
 
@@ -31,11 +35,23 @@ Für ein neues Konto musst du keinen langen Kontoschlüssel abschreiben oder exp
 
 ## Produktdaten übernehmen
 
+Größe und Farbe kannst du als optionale Angaben direkt unter dem Namen eintragen. Gäste sehen diese Angaben in der App und im Browser. Ein Wunsch wird dadurch nicht in mehrere Shopvarianten aufgeteilt.
+
 Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App mit Wunschkiste. Bei unterstützten Shops werden verfügbare Namen, Bilder und Preise geladen. Manche Shops blockieren den Abruf oder liefern nicht alle Angaben. Ergänze fehlende Informationen direkt im Formular. Ein Wunsch ist auch ohne Produktlink möglich. Ein angezeigter Preis ist eine Momentaufnahme; maßgeblich ist der Preis beim Kauf im Shop.
+
+## Deinen Zugang sichern und wiederherstellen
+
+Unter „Profil → Sicherheit“ kannst du optional Passkeys hinzufügen und einen einmaligen Wiederherstellungscode erstellen. Passkeys benötigen Android 9 oder neuer und einen verfügbaren Anbieter auf deinem Gerät. Wunschkiste richtet keinen Anbieter-Account für dich ein. Die Passwortanmeldung bleibt verfügbar.
+
+Sichere den Wiederherstellungscode außerhalb der App, beispielsweise in deinem Passwortmanager. Ein neu erstellter Code ersetzt den alten. Auf der Anmeldeseite führt „Zugang wiederherstellen“ mit Benutzername und gesichertem Code zum neuen Passwort. Danach meldest du dich normal an; alle bisherigen Sitzungen, Passkeys und alten Zugänge sind ungültig. Richte gewünschte Passkeys und einen neuen Code danach erneut ein. Der Support kann fehlende Nachweise nicht ersetzen; es gibt keine Passwort-E-Mail.
+
+## Kisten archivieren
+
+Öffne die Kiste und wähle beim Bearbeiten „Archivieren“. Sie erscheint anschließend im Archiv statt unter den aktiven Kisten. „Rückgängig“ oder „Wiederherstellen“ bringt dieselbe Kiste zurück. Einladungslinks und Reservierungen bleiben während der Archivierung gültig. Archivieren ist keine Löschung; Duplizieren wird nicht angeboten.
 
 ## Einladen und einer Kiste beitreten
 
-Öffne „Teilen“ in deiner Kiste. Du kannst den Einladungscode weitergeben. Bisherige Einladungslinks zur Web-App auf dieser Website sind nach deren Entfernung nicht mehr verfügbar. Verwende in einer bereits installierten App die Eingabe des Einladungscodes; eine neue öffentliche Browser-Adresse ist noch nicht eingerichtet.
+Öffne „Teilen“ in deiner Kiste. Du kannst den Einladungslink über das native Teilen-Menü senden oder den Einladungscode weitergeben. Neue Links öffnen die Webansicht auf der neuen Wunschkiste-Adresse oder bei installierter, zugeordneter Android-App die Kiste direkt. Alte Links zu dieser Website bleiben entfernt; die Einladungscodes bestehender Kisten bleiben verwendbar.
 
 Unter „Geschenke“ kannst du einen Einladungscode eingeben. Die Vorschau zeigt zunächst die Kiste. Erst mit „Beitreten“ nimmst du sie in deine Einladungen auf. Prüfe vorher, ob Name, Datum und Beschreibung zum erwarteten Anlass passen. Einladungslinks und Codes machen die Kiste für Personen zugänglich, die sie kennen; veröffentliche sie deshalb nicht unbeabsichtigt.
 

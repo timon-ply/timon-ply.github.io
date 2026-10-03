@@ -19,6 +19,8 @@ Stand: 3. Oktober 2026
 
 Die Kontolöschung entfernt die dem Konto zugeordneten Kisten, Wünsche, hochgeladenen Titelbilder, Gerätesitzungen und gespeicherten Einladungen. Deine Reservierungen in Kisten anderer Personen werden freigegeben. Die eigenständigen Kisten anderer Personen werden nicht gelöscht. Eine bestätigte Kontolöschung lässt sich über die App nicht rückgängig machen.
 
+Gespeicherte Passkey-Prüfdaten und Wiederherstellungscodes werden ebenfalls entfernt. Archivierte Kisten sind Teil des Kontos und werden bei der Kontolöschung mit gelöscht. Archivieren allein löscht keine Kiste und widerruft keine Einladung.
+
 ## Ohne Zugriff auf die App
 
 Du kannst eine Löschung auch außerhalb der App bei [dev@timonply.com](mailto:dev@timonply.com?subject=Wunschkiste%20%E2%80%93%20L%C3%B6schanfrage) anfragen. Nenne Wunschkiste, deinen Benutzernamen soweit vorhanden und ob das gesamte Konto oder eine bestimmte Gastkiste betroffen ist. Zum Auffinden einer Kiste kannst du ihren öffentlichen Einladungslink nennen.
