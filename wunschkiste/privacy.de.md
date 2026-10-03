@@ -43,7 +43,7 @@ Bei unterstützten Produktlinks ruft das Backend öffentliche Produktinformation
 
 ## Hosting und Empfänger
 
-Die Weboberfläche und diese Dokumente werden über GitHub Pages bereitgestellt. GitHub verarbeitet bei Seitenaufrufen technische Verbindungsdaten; Näheres steht in den [Datenschutzhinweisen der Website](https://timonply.com/privacy.de/). Backend, Datenbank und hochgeladene Titelbilder werden mit Cloudflare Workers und D1 betrieben. Cloudflare verarbeitet Daten zur Bereitstellung und Absicherung dieser Dienste.
+Diese Dokumente werden über GitHub Pages bereitgestellt. Die bisherige Weboberfläche wird auf dieser Website nicht mehr angeboten. GitHub verarbeitet bei Seitenaufrufen technische Verbindungsdaten; Näheres steht in den [Datenschutzhinweisen der Website](https://timonply.com/privacy.de/). Backend, Datenbank und hochgeladene Titelbilder werden mit Cloudflare Workers und D1 betrieben. Cloudflare verarbeitet Daten zur Bereitstellung und Absicherung dieser Dienste.
 
 Diese Anbieter können Daten außerhalb des Europäischen Wirtschaftsraums verarbeiten. Informationen zu ihren Verarbeitungen und Übermittlungsmechanismen finden sich in der [Datenschutzerklärung von GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) und den [Cloudflare-Datenschutzhinweisen](https://www.cloudflare.com/privacypolicy/). Informationen zu den für diesen Dienst geltenden Garantien und gegebenenfalls eine Kopie entsprechender Vereinbarungen kannst du beim Verantwortlichen anfragen.
 

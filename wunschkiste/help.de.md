@@ -13,6 +13,8 @@ permalink: /wunschkiste/help.de/
 
 Stand: 3. Oktober 2026
 
+Diese Website stellt weiterhin Hilfe und rechtliche Informationen bereit. Die bisherige Web-App und Android-Downloads werden hier nicht mehr angeboten. Eine neue öffentliche App-Adresse ist noch nicht eingerichtet.
+
 ## Eine Kiste erstellen
 
 Unter „Kisten“ erstellst du deine Wunschkiste. Wähle einen Namen und ein Titelbild. Datum und Beschreibung sind optional: Sie helfen deinen Gästen, den Anlass und deine Wünsche einzuordnen. Füge anschließend Wünsche hinzu und teile die Einladung.
@@ -33,7 +35,7 @@ Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App m
 
 ## Einladen und einer Kiste beitreten
 
-Öffne „Teilen“ in deiner Kiste. Du kannst den Einladungslink über das normale Teilen-Menü senden oder den Einladungscode weitergeben. Der Link funktioniert auch im Browser, ohne App-Installation. Bei installierter Android-App kann Android ihn direkt in Wunschkiste öffnen; die Zuordnung lässt sich in den Android-Einstellungen für die App ändern.
+Öffne „Teilen“ in deiner Kiste. Du kannst den Einladungscode weitergeben. Bisherige Einladungslinks zur Web-App auf dieser Website sind nach deren Entfernung nicht mehr verfügbar. Verwende in einer bereits installierten App die Eingabe des Einladungscodes; eine neue öffentliche Browser-Adresse ist noch nicht eingerichtet.
 
 Unter „Geschenke“ kannst du einen Einladungscode eingeben. Die Vorschau zeigt zunächst die Kiste. Erst mit „Beitreten“ nimmst du sie in deine Einladungen auf. Prüfe vorher, ob Name, Datum und Beschreibung zum erwarteten Anlass passen. Einladungslinks und Codes machen die Kiste für Personen zugänglich, die sie kennen; veröffentliche sie deshalb nicht unbeabsichtigt.
 

@@ -3,5 +3,3 @@ description: Applications, support information, and legal documents for projects
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-redirect-from
-include:
-  - .well-known
