@@ -1,6 +1,7 @@
 import { productUrl, previewProduct } from "./product-preview.mjs";
 import { accountService } from "./accounts.mjs";
 import { DEFAULT_COVER, validCover, normalizeInviteCode, ensureInviteCode } from "./list-metadata.mjs";
+import { coverImageUrl, getCover, storeCover } from "./custom-covers.mjs";
 const requestAccounts = new WeakMap();
 const MAX_BODY = 16384;
 const KEY = /^[a-f0-9]{64}$/;
@@ -109,7 +110,7 @@ async function listData(db, list, request) {
   const isOwner = new URL(request.url).searchParams.get("guest") !== "1" && await owner(request, list);
   const data = await db.prepare("SELECT * FROM items WHERE list_id = ? AND deleted = 0 ORDER BY created_at, id").bind(list.id).all();
   return {
-    id: list.id, title: list.title, date: list.event_date, description:list.description || "", coverId: list.cover_id || DEFAULT_COVER, isOwner,
+    id: list.id, title: list.title, date: list.event_date, description:list.description || "", coverId: list.cover_id || DEFAULT_COVER, coverImageUrl: coverImageUrl(list, request), isOwner,
     ...(isOwner ? { inviteCode: await ensureInviteCode(db, list, randomHex, fail) } : {}),
     items: data.results.map(row => ({
       id: row.id, title: row.title, url: row.url, imageUrl: row.image_url,
@@ -126,6 +127,8 @@ async function route(request, env) {
   const accounts = accountService(request, env, { fail, hash, randomHex, text, jsonBody });
   const accountResult = await accounts.route(path);
   if (accountResult !== null) return accountResult;
+  const coverMatch = path.match(/^\/lists\/([a-f0-9]{24})\/cover$/);
+  if (coverMatch && request.method === "GET") return getCover(db, coverMatch[1], request, fail);
   if (path.startsWith("/invites/")) {
     if (request.method !== "GET") fail(405, "Diese Aktion ist nicht verfügbar.");
     await accounts.throttle("invite");
@@ -133,12 +136,20 @@ async function route(request, env) {
     try { raw = decodeURIComponent(path.slice("/invites/".length)); } catch { fail(400, "Bitte den Einladungscode prüfen."); }
     const code = normalizeInviteCode(raw);
     if (!code) fail(400, "Bitte den zehnstelligen Einladungscode prüfen.");
-    const preview = await db.prepare("SELECT l.id, l.title, l.event_date, l.description, l.cover_id, (SELECT COUNT(*) FROM items WHERE list_id = l.id AND deleted = 0) AS item_count FROM lists l WHERE l.invite_code = ?").bind(code).first();
+    const preview = await db.prepare("SELECT l.id, l.title, l.event_date, l.description, l.cover_id, l.cover_hash, (SELECT COUNT(*) FROM items WHERE list_id = l.id AND deleted = 0) AS item_count FROM lists l WHERE l.invite_code = ?").bind(code).first();
     if (!preview) fail(404, "Dieser Einladungscode wurde nicht gefunden.");
-    return { id: preview.id, title: preview.title, date: preview.event_date, description: preview.description || "", coverId: preview.cover_id || DEFAULT_COVER, itemCount: preview.item_count };
+    return { id: preview.id, title: preview.title, date: preview.event_date, description: preview.description || "", coverId: preview.cover_id || DEFAULT_COVER, coverImageUrl: coverImageUrl(preview, request), itemCount: preview.item_count };
   }
   const account = await accounts.session();
   if (account) requestAccounts.set(request, account);
+  if (coverMatch) {
+    if (request.method !== "PUT" && request.method !== "POST") fail(405, "Diese Aktion ist nicht verfügbar.");
+    const list = await db.prepare("SELECT * FROM lists WHERE id = ?").bind(coverMatch[1]).first();
+    if (!list) fail(404, "Diese Wunschliste wurde nicht gefunden.");
+    await requireOwner(request, list);
+    await storeCover(db, list, request, fail);
+    return listData(db, await db.prepare("SELECT * FROM lists WHERE id = ?").bind(list.id).first(), request);
+  }
   if (path === "/list" && request.method === "GET") {
     // Earlier clients use this flag to decide whether to offer creation.
     return { exists: false };
@@ -161,7 +172,7 @@ async function route(request, env) {
       const inviteCode = randomHex(5);
       const result = await db.prepare("INSERT OR IGNORE INTO lists (id, title, event_date, description, owner_hash, created_at, creator_hash, account_id, owner_link_enabled, cover_id, invite_code) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? WHERE (SELECT COUNT(*) FROM lists) < 500 AND (SELECT COUNT(*) FROM lists WHERE creator_hash = ? AND created_at > ?) < 5 AND (? IS NULL OR (SELECT COUNT(*) FROM lists WHERE account_id = ?) < 20)")
         .bind(id, title, eventDate, description, ownerHash, now, creatorHash, account?.id || null, account ? 0 : 1, coverId, inviteCode, creatorHash, now - 3600000, account?.id || null, account?.id || null).run();
-      if (result.meta.changes) return { id, title, date: eventDate, description, coverId, inviteCode, ownerKey, isOwner: true, items: [] };
+      if (result.meta.changes) return { id, title, date: eventDate, description, coverId, coverImageUrl: "", inviteCode, ownerKey, isOwner: true, items: [] };
       const existing = await db.prepare("SELECT * FROM lists WHERE owner_hash = ?").bind(ownerHash).first();
       if (!existing) {
         if (await db.prepare("SELECT id FROM lists WHERE invite_code = ?").bind(inviteCode).first()) continue;
@@ -274,12 +285,20 @@ export default {
       "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer", "Vary": "Origin"
     };
     if (allowed) Object.assign(headers, {
-      "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Claim-Key, X-Setup-Key, X-Session-Token"
+      "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Claim-Key, X-Setup-Key, X-Session-Token, If-None-Match"
     });
     if (request.method === "OPTIONS") return new Response(null, { status: allowed ? 204 : 403, headers });
     if (origin && !allowed) return new Response(JSON.stringify({ error: "Diese Website hat keinen Zugriff." }), { status: 403, headers });
-    try { return new Response(JSON.stringify(await route(request, env)), { headers }); }
+    try {
+      const result = await route(request, env);
+      if (result instanceof Response) {
+        const merged = new Headers(headers);
+        result.headers.forEach((value, name) => merged.set(name, value));
+        return new Response(result.body, { status: result.status, headers: merged });
+      }
+      return new Response(JSON.stringify(result), { headers });
+    }
     catch (error) {
       const status = error instanceof ApiError ? error.status : 503;
       if (!(error instanceof ApiError)) console.error("wunschkiste_api_unavailable");

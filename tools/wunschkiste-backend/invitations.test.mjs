@@ -101,7 +101,7 @@ test("public lookup accepts formatted codes and returns only a preview without a
     const formatted = created.data.inviteCode.slice(0, 5).toUpperCase() + " - " + created.data.inviteCode.slice(5).toUpperCase();
     const preview = await h.call("/invites/" + encodeURIComponent(formatted), "GET", undefined, { token: "expired-or-malformed-is-irrelevant" });
     assert.equal(preview.status, 200);
-    assert.deepEqual(preview.data, { id: created.data.id, title: "Gemeinsam", date: "2026-12-12", description: "Nur Vorschau", coverId: "cover_12", itemCount: 1 });
+    assert.deepEqual(preview.data, { id: created.data.id, title: "Gemeinsam", date: "2026-12-12", description: "Nur Vorschau", coverId: "cover_12", coverImageUrl: "", itemCount: 1 });
     assert.equal((await h.DB.prepare("SELECT COUNT(*) AS n FROM account_joins").first()).n, 0);
     assert.equal((await h.call("/account/lists", "GET", undefined, { token: auth.data.sessionToken })).data.lists[0].inviteCode, created.data.inviteCode);
     assert.equal((await h.call("/account/join", "POST", { listId: created.data.id }, { token: auth.data.sessionToken })).status, 200);

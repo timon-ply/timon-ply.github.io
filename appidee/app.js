@@ -1,4 +1,4 @@
-import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.2";
+import { esc, randomKey, normalizeUrl, parsePrice, priceText, shopDomain, cleanPublicList, encodeSnapshot, decodeSnapshot } from "./domain.mjs?v=5.3";
 
 const $ = id => document.getElementById(id);
 const KEY = /^[a-f0-9]{64}$/;
@@ -7,6 +7,7 @@ const storageKeys = { owner:"wk.v2.owner", owners:"wk.v3.owners", list:"wk.v2.li
 const more = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></svg>';
 const share = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V2m-4 4 4-4 4 4M8 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-3"/></svg>';
 let coverCatalog = [], selectedCover = "cover_01";
+let selectedPhoto = "", candidatePhoto = "", existingPhoto = "", removePhoto = false, photoGeneration = 0, photoLoading = false;
 const coverPath = id => "assets/covers/" + (/^cover_(0[1-9]|[12][0-9]|3[0-9]|40)$/.test(id || "") ? id : "cover_01") + ".svg";
 const coverBackground = id => {const color=coverCatalog.find(cover=>cover.id===id)?.background;return /^#[a-f0-9]{6}$/i.test(color || "")?color:"#F6F4EF";};
 let list = null, ownerKey = "", guestKey = "", routeId = "";
@@ -17,6 +18,59 @@ const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const sheetAnimations = new WeakMap();
 let importTimer, importController, importGeneration = 0;
 let dirtyFields = new Set(), importedFields = new Map();
+
+// Custom covers are only served by our configured API. Never render a cover
+// URL supplied by an imported snapshot or pointing at an arbitrary image host.
+function trustedCoverUrl(value, id) {
+  if (!online() || !ID.test(id || "") || !value) return "";
+  try {
+    const url = new URL(value), expected = new URL(apiBase + "/lists/" + id + "/cover",location.href);
+    if (url.origin !== expected.origin || url.pathname !== expected.pathname || url.username || url.password || url.hash ||
+        !KEY.test(url.searchParams.get("v") || "") || [...url.searchParams.keys()].some(key => key !== "v")) return "";
+    return url.href;
+  } catch { return ""; }
+}
+function renderSelectedCover() {
+  const photo = selectedPhoto || (!removePhoto && existingPhoto);
+  $("selected-cover").src = photo || coverPath(selectedCover);
+  $("selected-cover").classList.toggle("is-photo",Boolean(photo));
+  $("cover-select").style.background = photo ? "#F6F4EF" : coverBackground(selectedCover);
+}
+function resetPhotoCandidate() {
+  ++photoGeneration; photoLoading = false; candidatePhoto = "";
+  $("cover-file").value = ""; $("photo-confirm").hidden = true;
+  $("photo-preview").removeAttribute("src"); $("photo-status").hidden = true;
+  $("select-photo").disabled = false;
+}
+function pendingPhoto(value) {
+  return typeof value === "string" && value.length <= 267000 && /^data:image\/jpeg;base64,[A-Za-z0-9+/]+={0,2}$/.test(value) ? value : "";
+}
+async function preparePhoto(file) {
+  if (!file || !["image/jpeg","image/png","image/webp"].includes(file.type) || file.size > 15000000) {
+    throw new Error("Bitte ein JPEG-, PNG- oder WebP-Foto bis 15 MB auswählen.");
+  }
+  // Re-encoding into a bounded canvas removes metadata and makes the visible
+  // 5:3 crop identical to the uploaded file. No object URL enters storage.
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const image = new Image(); image.src = objectUrl; await image.decode();
+    if (!image.naturalWidth || !image.naturalHeight || image.naturalWidth * image.naturalHeight > 40000000) throw new Error("Das Foto ist zu groß. Bitte eine kleinere Version auswählen.");
+    const canvas = document.createElement("canvas");
+    const cropWidth = Math.min(image.naturalWidth,image.naturalHeight * 5 / 3), cropHeight = cropWidth * 3 / 5;
+    canvas.width = Math.min(1200,Math.floor(cropWidth)); canvas.height = Math.max(1,Math.round(canvas.width * 3 / 5));
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Dieses Foto kann im Browser nicht vorbereitet werden.");
+    context.fillStyle = "#fff"; context.fillRect(0,0,canvas.width,canvas.height);
+    context.drawImage(image,(image.naturalWidth-cropWidth)/2,(image.naturalHeight-cropHeight)/2,cropWidth,cropHeight,0,0,canvas.width,canvas.height);
+    for (const quality of [0.85,0.72,0.58,0.42,0.28]) {
+      const encoded = canvas.toDataURL("image/jpeg",quality);
+      if (encoded.startsWith("data:image/jpeg;base64,") && atob(encoded.split(",")[1]).length <= 200000) return encoded;
+    }
+    throw new Error("Das Foto enthält zu viele Details. Bitte ein kleineres oder ruhigeres Bild auswählen.");
+  } catch(error) {
+    throw new Error(error.message?.startsWith("Das Foto") || error.message?.startsWith("Dieses Foto") ? error.message : "Dieses Foto konnte nicht geöffnet werden. Bitte ein anderes auswählen.");
+  } finally { URL.revokeObjectURL(objectUrl); }
+}
 
 function savedOwners() {
   const entries = readStorage(storageKeys.owners);
@@ -162,11 +216,14 @@ function requestHeaders(json = false) {
   return headers;
 }
 async function api(path, method = "GET", body, options = {}) {
-  const headers = requestHeaders(body !== undefined);
+  const binary = body instanceof Blob;
+  const headers = requestHeaders(body !== undefined && !binary);
+  if (binary) headers["Content-Type"] = "image/jpeg";
+  if (options.ownerKey) headers.Authorization = "Bearer " + options.ownerKey;
   let response;
   try {
     response = await fetch(apiBase + path, {
-      method, headers, body:body === undefined ? undefined : JSON.stringify(body),
+      method, headers, body:body === undefined ? undefined : binary ? body : JSON.stringify(body),
       cache:"no-store", credentials:"omit", signal:options.signal ? AbortSignal.any([options.signal,AbortSignal.timeout(12000)]) : AbortSignal.timeout(12000)
     });
   } catch { throw new Error("Die Liste ist gerade nicht erreichbar. Bitte erneut versuchen."); }
@@ -208,7 +265,7 @@ function setHeading(title, date = "", local = false) {
   $("list-description").textContent=list?.description || "";
   $("list-description").hidden=!list?.description;
   $("list-cover").hidden=!list;
-  if(list){$("list-cover").src=coverPath(list.coverId);$("list-cover").style.background=coverBackground(list.coverId);}
+  if(list){const photo=trustedCoverUrl(list.coverImageUrl,list.id);$("list-cover").src=photo || coverPath(list.coverId);$("list-cover").classList.toggle("is-photo",Boolean(photo));$("list-cover").style.background=photo?"#F6F4EF":coverBackground(list.coverId);}
 }
 function artwork(item, index, detail = false) {
   return item.imageUrl ? '<img class="wish-image' + (detail ? ' detail-art' : '') + '" src="' + esc(item.imageUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" data-image>' : "";
@@ -257,7 +314,7 @@ function emptyView(kind = "new", message = "") {
   } else {
     const saved = readStorage(storageKeys.owner);
     const recent = savedOwners().length ? '<button class="text-button" type="button" data-action="saved-lists">Meine Wunschkisten</button>' : ID.test(saved?.id || "") && KEY.test(saved?.key || "") ? '<a class="text-button" href="' + esc(routeUrl(saved.id,saved.key)) + '">Meine letzte Wunschkiste öffnen</a>' : "";
-    $("app").innerHTML = '<section class="empty start"><button class="primary" type="button" data-action="create">Wunschkiste erstellen</button><button class="text-button" type="button" data-action="open-invite">Einladungslink öffnen</button>' + recent + '</section><nav class="start-links" aria-label="Weitere Informationen"><a href="android.html">Android-App</a><a href="hilfe.html">Hilfe</a><a href="datenschutz.html">Deine Daten</a></nav>';
+    $("app").innerHTML = '<section class="empty start"><button class="primary" type="button" data-action="create">Wunschkiste erstellen</button><button class="text-button" type="button" data-action="open-invite">Einladungslink öffnen</button>' + recent + '</section><nav class="start-links" aria-label="Weitere Informationen"><a href="android.html">Android-App</a><a href="../wunschkiste/help.de.html">Hilfe</a><a href="../wunschkiste/privacy.de.html">Datenschutz</a><a href="../wunschkiste/impressum.de.html">Impressum</a></nav>';
   }
 }
 async function load() {
@@ -348,12 +405,14 @@ function openList(edit = false) {
     history.replaceState({},"",url.href);
   }
   $("list-form").dataset.creationKey = creationKey;
-  const pending = edit ? null : readStorage(storageKeys.pending + "." + creationKey);
+  const pending = readStorage(storageKeys.pending + "." + (edit ? ownerKey : creationKey));
   $("list-name").value = edit ? list.title : pending?.title || "";
   $("list-date").value = edit ? list.date : pending?.date || "";
   $("list-description-input").value = edit ? list.description || "" : pending?.description || "";
   selectedCover=(edit ? list.coverId : pending?.coverId) || "cover_01";
-  $("selected-cover").src=coverPath(selectedCover);$("cover-select").style.background=coverBackground(selectedCover);
+  resetPhotoCandidate(); showError("photo-error","");
+  selectedPhoto = pendingPhoto(pending?.photo); existingPhoto = edit ? trustedCoverUrl(list.coverImageUrl,list.id) : ""; removePhoto = false;
+  renderSelectedCover();
   renderCoverOptions();
   $("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");
   $("list-dialog-title").textContent = edit ? "Liste bearbeiten" : "Liste erstellen";
@@ -405,7 +464,9 @@ function renderDetail() {
 }
 function openDetail(id) { if(busy) {toast("Speichern wird abgeschlossen …");return;} detailId = id; showError("detail-error",""); renderDetail(); openSheet("detail-dialog"); }
 function guestLink() {
-  if (online()) return routeUrl(routeId);
+  if (online()) {
+    const url = new URL("./",location.href); url.searchParams.set("kiste",routeId); return url.href;
+  }
   const url = new URL(location.href); url.search = ""; url.hash = new URLSearchParams({liste:encodeSnapshot(list)}).toString();
   return url.href;
 }
@@ -438,31 +499,42 @@ async function reservation(id, action) {
   });
   if (result) { if (!reducedMotion.matches) { const row=[...document.querySelectorAll("[data-action='detail']")].find(button=>button.dataset.id===id); [row?.querySelector(".wish-status"), detailId===id ? document.querySelector(".detail-status") : null].filter(Boolean).forEach(element => element.animate([{opacity:0},{opacity:1}],{duration:120})); } toast(action === "reserve" ? (online() ? "Für dich reserviert" : "Auf diesem Gerät vorgemerkt") : action === "buy" ? "Als gekauft markiert" : "Wieder verfügbar"); }
 }
-function finishCreation(data) {
+function finishCreation(data, keepPending = false) {
   ownerKey = data.ownerKey; routeId = data.id; list = data;
   setOwnerRoute(routeId,ownerKey);
-  try { rememberOwner({...data,isOwner:true}); localStorage.removeItem(storageKeys.pending + "." + ownerKey); }
+  try { rememberOwner({...data,isOwner:true}); if (!keepPending) localStorage.removeItem(storageKeys.pending + "." + ownerKey); }
   catch { toast("Sichere deinen Verwaltungslink."); }
   list.isOwner = true; render();
 }
 
 $("list-form").addEventListener("submit", async event => {
   event.preventDefault(); if (busy) return;
+  if (photoLoading || candidatePhoto) { showError("list-error","Bitte zuerst die Fotovorschau übernehmen oder abbrechen."); return; }
   const title = $("list-name").value.trim(), date = $("list-date").value, description=$("list-description-input").value.trim(), coverId=selectedCover;
   if (!title) { showError("list-error","Gib der Liste einen Namen.","list-name"); return; }
   showError("list-error","");
+  const editing = Boolean($("list-form").dataset.edit), savingPhoto = selectedPhoto;
+  if (savingPhoto && !online()) { showError("list-error","Eigene Fotos benötigen eine Verbindung zur Wunschkiste."); return; }
+  const savingSerial = ++serial;
+  let metadataSaved = false;
+  busy = true;
+  $("list-form").querySelectorAll("button,input,textarea").forEach(control => control.disabled = true);
   try {
-    if ($("list-form").dataset.edit) {
-      const result=await mutate("/lists/" + routeId,"PATCH",{title,date,description,coverId},raw => {raw.title=title;raw.date=date;raw.description=description;raw.coverId=coverId;});
-      if (!result) return;
+    if (editing) {
+      if (!list?.isOwner) throw new Error("Diese Kiste kann hier nicht bearbeitet werden.");
+      if (savingPhoto) storeValue(storageKeys.pending + "." + ownerKey,{title,date,description,coverId,photo:savingPhoto,ownerKey});
+      // Supplying coverId explicitly selects a preset and removes a stored photo.
+      // Ordinary metadata edits must leave a previously uploaded cover untouched.
+      const body = {title,date,description,...(removePhoto ? {coverId} : {})};
+      const result = online() ? await api("/lists/" + routeId,"PATCH",body) : localMutation(raw => {Object.assign(raw,body);});
+      if (savingSerial !== serial) return;
+      list = result; rememberOwner(result); render(); metadataSaved = true;
     } else {
-      busy = true; $("list-submit").disabled = true;
-      const creationSerial=++serial;
       let data;
       if (online()) {
         const creationKey = $("list-form").dataset.creationKey;
         const pending = {title,date,description,coverId,ownerKey:creationKey};
-        storeValue(storageKeys.pending + "." + creationKey,pending);
+        storeValue(storageKeys.pending + "." + creationKey,{...pending,...(savingPhoto ? {photo:savingPhoto} : {})});
         data = await api("/lists","POST",pending);
       }
       else {
@@ -470,13 +542,25 @@ $("list-form").addEventListener("submit", async event => {
         data = {id:randomKey(12),ownerKey:randomKey(),title,date,description,coverId,isOwner:true,items:[]};
         storeValue(storageKeys.list,{id:data.id,title,date,description,coverId,items:[]});
       }
-      rememberOwner({...data,isOwner:true},data.ownerKey,creationSerial===serial);
-      if (creationSerial !== serial) return;
-      finishCreation(data);
+      rememberOwner({...data,isOwner:true},data.ownerKey,savingSerial===serial);
+      if (savingSerial !== serial) return;
+      finishCreation(data,Boolean(savingPhoto)); metadataSaved = true;
+      // Creation is confirmed even when the following upload fails. A retry
+      // edits this same list, while the photo draft survives a page reload.
+      $("list-form").dataset.edit = "1"; $("list-dialog-title").textContent = "Liste bearbeiten"; $("list-submit").textContent = "Speichern";
     }
+    if (savingPhoto) {
+      const bytes = Uint8Array.from(atob(savingPhoto.split(",")[1]),char => char.charCodeAt(0));
+      const data = await api("/lists/" + routeId + "/cover","PUT",new Blob([bytes],{type:"image/jpeg"}),{ownerKey});
+      if (savingSerial !== serial) return;
+      if (data.id !== routeId || !trustedCoverUrl(data.coverImageUrl,routeId)) throw new Error("Das gespeicherte Foto konnte nicht bestätigt werden. Bitte erneut versuchen.");
+      list = data; rememberOwner(data); render();
+    }
+    localStorage.removeItem(storageKeys.pending + "." + ownerKey);
+    selectedPhoto = ""; existingPhoto = trustedCoverUrl(list.coverImageUrl,list.id); removePhoto = false;
     closeSheet($("list-dialog"));
-  } catch(error) { showError("list-error",error.message); }
-  finally { busy = false; $("list-submit").disabled = false; }
+  } catch(error) { if (savingSerial === serial) showError("list-error",(metadataSaved && savingPhoto ? "Die Kiste ist gespeichert. Das Foto noch nicht bestätigt: " : "") + error.message); }
+  finally { busy = false; $("list-form").querySelectorAll("button,input,textarea").forEach(control => control.disabled = false); }
 });
 $("wish-form").addEventListener("submit", async event => {
   event.preventDefault(); if (busy || !list?.isOwner) return;
@@ -533,7 +617,7 @@ document.addEventListener("click", async event=>{
     else if(action==="open-invite") { $("open-link-form").reset(); showError("invite-error",""); openSheet("invite-dialog","invite-url"); }
     else if(action==="share") openShare();
     else if(action==="retry") await load();
-    else if(action==="guest-view") location.assign(guestLink());
+    else if(action==="guest-view") { const url=new URL(guestLink()); url.pathname=new URL("web.html",location.href).pathname; location.assign(url.href); }
     else if(action==="copy-guest" || action==="copy-owner") {
       const input=$(action==="copy-guest"?"guest-link":"owner-link");
       try { await navigator.clipboard.writeText(input.value); button.textContent="Kopiert"; setTimeout(()=>{button.textContent="Kopieren";},2500); }
@@ -557,9 +641,11 @@ $("open-link-form").addEventListener("submit", event => {
   event.preventDefault();
   try {
     const url = new URL($("invite-url").value.trim());
-    if (url.origin !== location.origin || url.pathname !== location.pathname) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
+    const rootPath=new URL("./",location.href).pathname;
+    if (url.origin !== location.origin || ![rootPath,rootPath.slice(0,-1),rootPath+"index.html",rootPath+"web.html"].includes(url.pathname)) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
     if (!ID.test(url.searchParams.get("kiste") || "") && !new URLSearchParams(url.hash.slice(1)).has("liste")) throw new Error("Bitte einen Wunschkiste-Link einfügen.");
     const hash = new URLSearchParams(url.hash.slice(1)); hash.delete("verwalten"); hash.delete("erstellen"); url.hash=hash.toString();
+    url.pathname=rootPath+"web.html";
     location.assign(url.href);
   } catch(error) { showError("invite-error",error.message,"invite-url"); }
 });
@@ -596,9 +682,26 @@ setInterval(()=>{if(document.visibilityState==="visible")refresh();},20000);
 load();
 
 function renderCoverOptions() {
-  $("cover-options").innerHTML=coverCatalog.map(cover=>'<button type="button" style="background:'+coverBackground(cover.id)+'" data-cover="'+esc(cover.id)+'" aria-label="'+esc(cover.title)+'" aria-pressed="'+(cover.id===selectedCover)+'"><img src="'+coverPath(cover.id)+'" alt="" loading="lazy"></button>').join("");
+  const hasPhoto=Boolean(selectedPhoto || (!removePhoto && existingPhoto));
+  $("cover-options").innerHTML=coverCatalog.map(cover=>'<button type="button" style="background:'+coverBackground(cover.id)+'" data-cover="'+esc(cover.id)+'" aria-label="'+esc(cover.title)+'" aria-pressed="'+(!hasPhoto&&cover.id===selectedCover)+'"><img src="'+coverPath(cover.id)+'" alt="" loading="lazy"></button>').join("");
 }
 $("cover-select").addEventListener("click",()=>{const options=$("cover-panel");options.hidden=!options.hidden;$("cover-select").setAttribute("aria-expanded",String(!options.hidden));if(!options.hidden) options.scrollIntoView({block:"nearest",behavior:reducedMotion.matches?"instant":"smooth"});});
-$("cover-options").addEventListener("click",event=>{const button=event.target.closest("[data-cover]");if(!button)return;selectedCover=button.dataset.cover;$("selected-cover").src=coverPath(selectedCover);$("cover-select").style.background=coverBackground(selectedCover);renderCoverOptions();$("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");$("cover-select").focus();});
+$("cover-options").addEventListener("click",event=>{const button=event.target.closest("[data-cover]");if(!button||busy)return;resetPhotoCandidate();selectedCover=button.dataset.cover;selectedPhoto="";removePhoto=true;renderSelectedCover();renderCoverOptions();$("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");$("cover-select").focus();});
+$("select-photo").addEventListener("click",()=>{if(busy)return;if(!online()){showError("photo-error","Eigene Fotos benötigen eine Verbindung zur Wunschkiste.");return;}$("cover-file").click();});
+$("cover-file").addEventListener("change",async()=>{
+  const file=$("cover-file").files[0];if(!file)return;
+  resetPhotoCandidate();showError("photo-error","");const generation=photoGeneration;
+  photoLoading=true;$("select-photo").disabled=true;$("photo-status").textContent="Foto wird vorbereitet …";$("photo-status").hidden=false;
+  try {
+    const photo=await preparePhoto(file);
+    if(generation!==photoGeneration || !$("list-dialog").open)return;
+    candidatePhoto=photo;$("photo-preview").src=photo;$("photo-confirm").hidden=false;
+    $("photo-confirm").scrollIntoView({block:"nearest",behavior:reducedMotion.matches?"instant":"smooth"});
+  }catch(error){if(generation===photoGeneration)showError("photo-error",error.message);}
+  finally{if(generation===photoGeneration){photoLoading=false;$("select-photo").disabled=false;$("photo-status").hidden=true;}}
+});
+$("cancel-photo").addEventListener("click",()=>{resetPhotoCandidate();showError("photo-error","");$("select-photo").focus();});
+$("confirm-photo").addEventListener("click",()=>{if(!candidatePhoto||busy)return;selectedPhoto=candidatePhoto;removePhoto=false;resetPhotoCandidate();renderSelectedCover();renderCoverOptions();$("cover-panel").hidden=true;$("cover-select").setAttribute("aria-expanded","false");$("cover-select").focus();});
+$("list-dialog").addEventListener("close",()=>{resetPhotoCandidate();});
 $("copy-invite-code").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("invite-code").value);toast("Einladungscode kopiert");}catch{$("invite-code").select();toast("Bitte den Code kopieren.");}});
-fetch("assets/covers/cover-catalog.json").then(response=>{if(!response.ok)throw Error();return response.json();}).then(data=>{coverCatalog=Array.isArray(data)?data:data.presets || [];renderCoverOptions();if(list)$("list-cover").style.background=coverBackground(list.coverId);$("cover-select").style.background=coverBackground(selectedCover);}).catch(()=>{coverCatalog=[];});
+fetch("assets/covers/cover-catalog.json").then(response=>{if(!response.ok)throw Error();return response.json();}).then(data=>{coverCatalog=Array.isArray(data)?data:data.presets || [];renderCoverOptions();if(list && !trustedCoverUrl(list.coverImageUrl,list.id))$("list-cover").style.background=coverBackground(list.coverId);renderSelectedCover();}).catch(()=>{coverCatalog=[];});

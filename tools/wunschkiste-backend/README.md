@@ -16,6 +16,13 @@ exhaustion is an unavailable-service condition, not permission to pay.
 Workers Free / Current plan / $0 was reconfirmed in the dashboard on2026-10-02
 before publishing V5; only the existing Free Workers/D1 resources are used.
 It was reconfirmed again before the Android account migration/deployment that day.
+On2026-10-03 the dashboard again showed Free / Current plan / $0 beforeV4.
+Two100000-iteration server verifier operations succeeded in20 consecutive actual
+Free Worker invocations; the disposable no-data probe Worker was removed.
+Live account creation, login, password change, old-session rejection and fresh
+account deletion then passed through the real D1 routes. Wall time was measured,
+not CPU time. The production deployment explicitly sets PASSWORD_AUTH_ENABLED=true;
+omit/disable it if the provider's Free runtime no longer supports the fixed KDF.
 
 Official limits: https://developers.cloudflare.com/workers/platform/pricing/ and
 https://developers.cloudflare.com/d1/platform/pricing/ . Visible pages refresh at
@@ -252,6 +259,117 @@ backward-compatible and concurrent PATCH behavior, unique/replay-stable codes,
 public preview without joining, disclosure boundaries, rate limits, backfill
 collisions, and preservation of legacy data.
 
+## Password credentials (V4, production gate)
+
+Existing random-key accounts, owner links and guest links remain supported.
+Password endpoints require `PASSWORD_AUTH_ENABLED="true"` in production; local
+`DEV_MODE="true"` enables them for fixtures. Do not enable production password
+flows until the complete signup, login and password-change paths have been
+measured on the existing Workers Free deployment. A password change performs
+two server derivations; a local test is not evidence that it fits Free CPU limits.
+
+Usernames are trimmed, ASCII-lowercased and must match
+`[a-z0-9][a-z0-9_]{2,31}`. The native client applies a 15–128-character password
+policy without trimming or Unicode normalization. The server receives a derived
+credential and cannot validate the original password's length or strength.
+
+The version1 protocol is deliberately split:
+
+1. Client: PBKDF2-HMAC-SHA256, 600000 iterations, 32-byte output. Password bytes
+   are UTF-8. Salt bytes are UTF-8 of `wunschkiste:timonply.com:v1:` followed by
+   the random16-byte client salt encoded as 32 lowercase hexadecimal characters.
+2. Request `authSecret`: the client output as 64 lowercase hexadecimal characters.
+   This is a password-equivalent secret. Send only over TLS; never log or persist
+   it. Persist sessions, pending retry tokens/salts and legacy recovery keys only.
+3. Server: decode `authSecret` to32 bytes, derive PBKDF2-HMAC-SHA256 with a separate
+   random16-byte salt, 100000 iterations and32-byte output. Store only this
+   verifier, both salts, KDF version and iteration parameters. A stored verifier
+   is never accepted as a login credential. Comparison uses native HMAC verify.
+
+This is not a claim of 600000 server iterations. The split addresses the
+[workerd PBKDF2 iteration cap](https://github.com/cloudflare/workerd/issues/1346)
+while retaining the client work factor from
+[OWASP's PBKDF2 guidance](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html).
+The actual Workers Free deployment completed the full live credential journey and
+the bounded two-derivation probe20/20. This is execution evidence, not CPU-time
+measurement or load-capacity proof; retain the fail-closed Free limits described above.
+
+All routes below are under `/api`; authenticated routes use `X-Session-Token`.
+
+| Route | Request / response |
+| --- | --- |
+| `GET /auth/parameters?username=…` | `{clientSalt,kdfVersion:1,iterations:600000}`; unknown usernames get a stable HMAC-derived fake salt with the same response shape. |
+| `POST /accounts` | `{name?,username,authSecret,clientSalt,kdfVersion:1,accountKey,sessionToken,deviceName?}`; persist random64hex accountKey and distinct sessionToken before first request for replay. |
+| `POST /sessions` | `{username,authSecret,sessionToken,deviceName?}`; the old accountKey form remains supported. |
+| `PUT /account/credentials` | `{username,authSecret,clientSalt,kdfVersion:1}`; binds once to the authenticated legacy account, without overwriting credentials or another username. |
+| `PUT /account/password` | `{currentAuthSecret,newAuthSecret,clientSalt,kdfVersion:1,sessionToken,deviceName?}`; new salt and sessionToken must be persisted before sending. |
+| `DELETE /account` | `{authSecret}` for fresh password proof, or legacy `{currentKey}`. Deletes account-owned lists, covers, wishes, sessions and account joins; existing reservation cleanup applies. |
+| `POST /account/claims/attach` | `{claimKey}` proves possession of the anonymous guest capability; returns `{attached:true,reservations:number}`. |
+
+Authentication responses contain `{account:{id,name,username,hasPassword},
+sessionToken,expiresAt}`. Credential binding returns `{account}`. Legacy accounts
+have an empty username and `hasPassword:false`. Parameter lookup and expensive
+verification are rate-limited using fixed-size hash buckets; collisions may
+temporarily throttle unrelated users. Invalid username/password logins use one
+generic error. Signup can report an unavailable username.
+
+Password changes atomically replace the verifier and increment the account's
+credential version, invalidating old sessions. A lost-response retry can use the
+same new sessionToken, newAuthSecret and clientSalt even when the old header
+session is invalid; currentAuthSecret is then unnecessary. Replay proof remains
+bound to that exact credential version. Concurrent stale logins/changes cannot
+issue a session for a later password. Clients must never fall back to list owner
+keys after revocation of a session for an account-owned list.
+
+Guest claim transfer replaces only claims matching the supplied random guest
+key, enforces the50-reservation account cap atomically, and is replay-safe
+(a repeated successful transfer reports0). The old key no longer controls those
+transferred claims. This does not automatically join any list or rotate the
+client's guest key. Legacy list ownership is transferred separately through the
+existing `/account/lists/attach` route.
+
+## Custom cover images (V4)
+
+Owners may `PUT` or `POST /api/lists/:id/cover` with raw `image/jpeg` bytes and
+their normal owner authentication. Response is the updated list representation.
+All public, invitation-preview and account-list representations add
+`coverImageUrl` (empty when no custom image exists).
+
+Uploads are limited to200000 bytes, dimensions1–2048 per axis and4million pixels.
+The server checks JPEG structure, marker bounds, dimensions and supported
+baseline/progressive8-bit encoding; it does not fully decode entropy data.
+APP/COM segments are stripped, including EXIF/GPS/comments. Only sanitized raw
+JPEG bytes are stored as a D1 BLOB. An identical sanitized SHA256 is an idempotent
+success without consuming quota. Changed images are limited to10/day/list and
+at least2seconds apart using atomic database writes.
+
+`GET /api/lists/:id/cover` is public, serves `image/jpeg` with nosniff, a restrictive
+CSP, SHA256 ETag and60-second cache revalidation. The list's public cover URL
+includes its content hash. Anyone with the invitation/list link can view it.
+Replacing a cover replaces its single stored BLOB. **An explicit PATCH
+`coverId` selects that preset and removes the custom image**, even when the ID
+equals the current fallback preset. Ordinary title/date/description updates
+must omit `coverId` to preserve an existing custom image. List/account deletion
+cascades to stored cover bytes; copies in browser caches may remain until expiry.
+
+At the existing500-list global cap, cover payloads are bounded to100million bytes
+(database/index overhead and other records are additional). No R2, paid API,
+scheduled cleanup or additional provider is used. Keep the existing Free plan;
+database quota exhaustion must fail rather than upgrade. See
+[D1 limits](https://developers.cloudflare.com/d1/platform/limits/).
+
+Apply additive migrations0006(custom cover BLOB/metadata/triggers) and
+0007(nullable credential columns/fixed rate buckets) with the same existing
+command before deploying code:
+
+```powershell
+wrangler d1 migrations apply wunschkiste-test --remote --config tools/wunschkiste-backend/wrangler.local.json
+```
+
+The local SQLite adapter applies those exact migrations transactionally when
+their marker columns are absent. Existing account keys, sessions, lists, claims
+and preset covers are preserved. No password or cover content is backfilled.
+
 ## Local checks
 
 From the repository root, Node22:
@@ -259,6 +377,7 @@ From the repository root, Node22:
 ```powershell
 node tools/wunschkiste-backend/local.mjs
 node --check appidee/app.js
+node --test tools/wunschkiste-backend/passwords.test.mjs tools/wunschkiste-backend/custom-covers.test.mjs tools/wunschkiste-backend/accounts.test.mjs tools/wunschkiste-backend/invitations.test.mjs tools/wunschkiste-backend/worker.test.mjs
 node --test appidee/domain.test.mjs appidee/ui-contract.test.mjs tools/wunschkiste-backend/worker.test.mjs tests/site-structure.test.mjs
 ```
 

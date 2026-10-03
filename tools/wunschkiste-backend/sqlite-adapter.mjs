@@ -34,6 +34,20 @@ export function createDatabase(path = ":memory:") {
       database.exec("COMMIT");
     } catch(error) { database.exec("ROLLBACK"); throw error; }
   }
+  if(!database.prepare("PRAGMA table_info(lists)").all().some(column=>column.name==="cover_hash")) {
+    database.exec("BEGIN");
+    try {
+      database.exec(readFileSync(new URL("migrations/0006_custom_covers.sql",import.meta.url),"utf8"));
+      database.exec("COMMIT");
+    } catch(error) { database.exec("ROLLBACK"); throw error; }
+  }
+  if(!database.prepare("PRAGMA table_info(accounts)").all().some(column=>column.name==="username")) {
+    database.exec("BEGIN");
+    try {
+      database.exec(readFileSync(new URL("migrations/0007_password_credentials.sql",import.meta.url),"utf8"));
+      database.exec("COMMIT");
+    } catch(error) { database.exec("ROLLBACK"); throw error; }
+  }
   return {
     close: () => database.close(),
     prepare(sql) {

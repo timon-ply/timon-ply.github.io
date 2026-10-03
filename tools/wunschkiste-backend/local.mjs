@@ -19,7 +19,8 @@ const server = createServer(async (incoming, outgoing) => {
       let size = 0;
       for await (const chunk of incoming) {
         size += chunk.length;
-        if (size > 16384) { outgoing.writeHead(413).end(); return; }
+        const bodyLimit = /^\/api\/lists\/[a-f0-9]{24}\/cover$/.test(url.pathname) ? 200000 : 16384;
+        if (size > bodyLimit) { outgoing.writeHead(413).end(); return; }
         chunks.push(chunk);
       }
       const request = new Request(url, {
