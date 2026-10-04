@@ -11,7 +11,7 @@ permalink: /wunschkiste/privacy.de/
 ---
 # Datenschutz bei Wunschkiste
 
-Stand: 4. Oktober 2026 · Version 1.6
+Stand: 4. Oktober 2026 · Version 1.7
 
 ## Verantwortlicher
 
@@ -71,7 +71,15 @@ Firebase Authentication verwaltet den E-Mail-Zugang. Cloud Firestore speichert K
 
 Diese Anbieter können Daten außerhalb des Europäischen Wirtschaftsraums verarbeiten. Informationen zu ihren Verarbeitungen und Übermittlungsmechanismen finden sich in der [Datenschutzerklärung von GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement), den [Cloudflare-Datenschutzhinweisen](https://www.cloudflare.com/privacypolicy/), den [Firebase-Datenschutzhinweisen](https://firebase.google.com/support/privacy) und der [Datenschutzerklärung von Google](https://policies.google.com/privacy). Google nennt unter anderem das EU-US Data Privacy Framework und vertragliche Datenschutzbestimmungen. Informationen zu den für diesen Dienst geltenden Garantien und gegebenenfalls eine Kopie entsprechender Vereinbarungen kannst du beim Verantwortlichen anfragen.
 
-Wunschkiste verwendet keine Analyse- oder Werbe-SDKs, insbesondere kein Google Analytics, und versendet keine Werbe-E-Mails. Bestätigungs- und Passwort-E-Mails dienen ausschließlich dem von dir angeforderten Zugang. Premium ist derzeit nur ein geplantes Angebot. Diese Version bietet keinen Checkout, keine Käufe oder Abonnements an und verarbeitet keine Zahlungsdaten. Es findet keine ausschließlich automatisierte Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung statt.
+Wunschkiste verwendet kein Google Analytics und versendet keine Werbe-E-Mails. Bestätigungs- und Passwort-E-Mails dienen ausschließlich dem von dir angeforderten Zugang. Premium ist derzeit nur ein geplantes Angebot. Diese Version bietet keinen Checkout, keine Käufe oder Abonnements an und verarbeitet keine Zahlungsdaten. Es findet keine ausschließlich automatisierte Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung statt.
+
+## Werbung und freiwillige Kontingente
+
+Version 1.7 enthält eine vorbereitete Integration von Google AdMob und der User Messaging Platform (UMP). Anzeigen bleiben deaktiviert, solange die erforderliche Publisher-, Zielgruppen- und Einwilligungskonfiguration nicht bestätigt ist. Bei deaktivierter Integration werden weder UMP noch das Anzeigen-SDK durch Wunschkiste gestartet. Die Web-Gastansicht enthält keine Anzeigenintegration.
+
+Wenn Anzeigen freigeschaltet sind, können die Kisten- und Geschenkeübersicht jeweils ein Banner zeigen. Anmelden, Reservieren und Kontolöschung werden nicht durch Werbung unterbrochen. Erforderliche Einwilligungsoptionen werden vor Anzeigenanfragen angezeigt; die entsprechenden Werbe-Datenschutzoptionen sind später in der App erreichbar. Google kann dabei IP-Adresse, Geräteinformationen und Kennungen, Einwilligungsstatus sowie Anzeigeninteraktionen verarbeiten. Auch nicht personalisierte Werbung kann Zugriff auf Geräteinformationen erfordern. Einzelheiten stehen in der [Google-Datenschutzerklärung](https://policies.google.com/privacy) und der [AdMob-Dokumentation zur Einwilligung](https://developers.google.com/admob/android/privacy). Soweit eine Einwilligung erforderlich ist, beruht die Verarbeitung auf Art. 6 Abs. 1 Buchst. a DSGVO und kann für die Zukunft widerrufen werden.
+
+Freiwillige Videos können bei einem erreichten Limit zusätzliche Plätze anbieten. Dabei wird eine zufällige, kurz gültige Vorgangskennung an Google übermittelt; sie enthält weder Namen noch E-Mail-Adresse, Produktlinks oder Kistentitel. Google sendet eine signierte Belohnungsbestätigung mit Vorgangs-, Anzeigen- und Transaktionskennung sowie Zeitstempel an das Backend. Erst nach Prüfung wird das Kontingent dem Konto beziehungsweise der gewählten Kiste gutgeschrieben. Firestore speichert dafür die Kontingentzuordnung und technische Nachweise zur Verhinderung mehrfacher Gutschriften. Diese Zuordnungen werden bei Kontolöschung bereinigt. Ein abgeschlossener Videodialog allein garantiert keine Gutschrift.
 
 ## Aufbewahrung und Löschung
 

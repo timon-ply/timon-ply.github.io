@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.de/
 ---
 # Hilfe zu Wunschkiste
 
-Stand: 4. Oktober 2026 · Version 1.6
+Stand: 4. Oktober 2026 · Version 1.7
 
 Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -95,7 +95,9 @@ Push auf dein Gerät wird nur angeboten, wenn der Versand eingerichtet ist. Akti
 
 Kostenlos kannst du bis zu drei aktive Kisten mit jeweils bis zu 20 aktiven Wünschen erstellen. Archivierte Kisten zählen nicht als aktiv. Vorhandene Inhalte, die bereits vor dieser Begrenzung gespeichert waren, bleiben erhalten und zugänglich. Bei erreichten Grenzen kannst du bestehende Inhalte bearbeiten, entfernen oder archivieren; neue Inhalte benötigen einen freien Platz. Einladungen und Reservierungen bleiben nutzbar.
 
-Premium ist ein geplantes Angebot. Es gibt derzeit keinen Kauf, kein Abonnement und keinen Checkout. Eine Vorschau schaltet keine Funktionen frei und löst keine Zahlung aus. Die App enthält keine Werbung oder Analyse-Tracker.
+Premium ist ein geplantes Angebot. Es gibt derzeit keinen Kauf, kein Abonnement und keinen Checkout. Eine Vorschau schaltet keine Funktionen frei und löst keine Zahlung aus. Es wird kein Google Analytics verwendet.
+
+Am Limit kannst du eine aktive Kiste zum Archivieren oder einen Wunsch zum Entfernen auswählen. Das Formular bleibt dabei erhalten. Die neue Version bereitet außerdem freiwillige AdMob-Videos vor: Ein bestätigtes Video kann einen zusätzlichen aktiven Kistenplatz oder fünf zusätzliche Wunschplätze für die ausgewählte Kiste freischalten. Höchstens drei zusätzliche Kistenplätze und 20 zusätzliche Wunschplätze je Kiste sind vorgesehen; höchstens eine Belohnung je Konto und UTC-Kalendertag. Erst die geprüfte Serverbestätigung zählt, nicht das Schließen des Videos. Ohne verfügbare Anzeige bleibt die normale Archivierungs- beziehungsweise Löschmöglichkeit bestehen. Anzeigen und Videos bleiben bis zur bestätigten Anbieter-, Zielgruppen- und Einwilligungskonfiguration deaktiviert.
 
 ## Ein eigenes Titelbild auswählen
 

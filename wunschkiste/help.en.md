@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.en/
 ---
 # Help with Wunschkiste
 
-Last updated: 4 October 2026 · Version 1.6
+Last updated: 4 October 2026 · Version 1.7
 
 This website provides help and legal information. You can find the web view and Android direct download at [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -95,7 +95,9 @@ Push to your device is only offered if delivery has been configured. Deliberatel
 
 For free, you can create up to three active lists with up to 20 active wishes each. Archived lists do not count as active. Existing content saved before this limit remains retained and accessible. When a limit has been reached, you can edit, remove or archive existing content; new content requires an available slot. Invitations and reservations remain usable.
 
-Premium is a planned offering. There is currently no purchase, subscription or checkout. A preview does not unlock features or trigger payment. The app contains no advertising or analytics trackers.
+Premium is a planned offering. There is currently no purchase, subscription or checkout. A preview does not unlock features or trigger payment. Google Analytics is not used.
+
+At a limit, you can select an active list to archive or a wish to remove. The form is preserved. The new version also prepares voluntary AdMob videos: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Ads and videos remain disabled until provider, audience and consent configuration has been confirmed.
 
 ## Select your own cover image
 

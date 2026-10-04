@@ -11,7 +11,7 @@ permalink: /wunschkiste/privacy.en/
 ---
 # Privacy at Wunschkiste
 
-Last updated: 4 October 2026 · Version 1.6
+Last updated: 4 October 2026 · Version 1.7
 
 ## Controller
 
@@ -71,7 +71,15 @@ Firebase Authentication manages email access. Cloud Firestore stores account pro
 
 These providers may process data outside the European Economic Area. Information on their processing and transfer mechanisms is available in [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement), [Cloudflare's privacy notice](https://www.cloudflare.com/privacypolicy/), the [Firebase privacy notice](https://firebase.google.com/support/privacy) and [Google's privacy policy](https://policies.google.com/privacy). Google mentions, among other measures, the EU-US Data Privacy Framework and contractual data protection provisions. You can ask the controller about safeguards applicable to this service and, where relevant, request a copy of the corresponding agreements.
 
-Wunschkiste uses no analytics or advertising SDKs, including no Google Analytics, and sends no marketing emails. Verification and password emails serve only the access you requested. Premium is currently only a planned offering. This version offers no checkout, purchases or subscriptions and processes no payment data. There is no decision based solely on automated processing that produces legal or similarly significant effects.
+Wunschkiste uses no Google Analytics and sends no marketing emails. Verification and password emails serve only the access you requested. Premium is currently only a planned offering. This version offers no checkout, purchases or subscriptions and processes no payment data. There is no decision based solely on automated processing that produces legal or similarly significant effects.
+
+## Advertising and voluntary extra capacity
+
+Version 1.7 contains a prepared integration of Google AdMob and the User Messaging Platform (UMP). Ads remain disabled until the required publisher, audience and consent configuration has been confirmed. When the integration is disabled, Wunschkiste starts neither UMP nor the advertising SDK. The guest web view contains no advertising integration.
+
+When ads are enabled, the lists and gifts overviews may each show a banner. Sign-in, reservations and account deletion are not interrupted by ads. Required consent choices appear before ad requests; the corresponding advertising privacy options remain available in the app. Google may process IP addresses, device information and identifiers, consent status and ad interactions. Non-personalized ads may also require access to device information. Details appear in the [Google privacy policy](https://policies.google.com/privacy) and [AdMob consent documentation](https://developers.google.com/admob/android/privacy). Where consent is required, processing relies on Article 6(1)(a) GDPR and consent can be withdrawn for the future.
+
+Optional videos may offer extra capacity when a limit is reached. A random, short-lived operation identifier is sent to Google; it contains no name, email address, product links or list titles. Google sends a signed reward confirmation with operation, ad and transaction identifiers and a timestamp to the backend. Only after verification is extra capacity assigned to the account or selected list. Firestore stores the capacity association and technical evidence to prevent duplicate grants. Account deletion cleans up these associations. Completing a video dialog alone does not guarantee a grant.
 
 ## Retention and deletion
 
