@@ -11,13 +11,13 @@ permalink: /wunschkiste/help.de/
 ---
 # Hilfe zu Wunschkiste
 
-Stand: 3. Oktober 2026
+Stand: 4. Oktober 2026
 
 Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
 ## Einführung
 
-Beim ersten Start zeigt die App drei kurze Schritte. Du kannst sie durch Weiter oder Wischen wechseln, zurückgehen oder jederzeit überspringen. Danach kannst du ohne Konto anfangen, ein Konto erstellen oder dich anmelden. Unter „Profil → Hilfe → Einführung ansehen“ kannst du sie erneut öffnen. Bereits vorhandene Konten und Gastkisten werden beim Update nicht unterbrochen.
+Beim ersten Start zeigt die App, wie du eine Kiste erstellst, Wünsche hinzufügst und die Einladung teilst. Du kannst mit „Weiter“ oder Wischen wechseln, zurückgehen oder jederzeit überspringen. Danach kannst du ohne Konto anfangen, ein Konto erstellen oder dich anmelden. Unter „Profil → Hilfe → Einführung ansehen“ öffnest du die Schritte erneut. In der Hilfe kannst du einzelne Themen aufklappen. Vorhandene Konten und Gastkisten bleiben beim Update erhalten.
 
 ## Eine Kiste erstellen
 
@@ -31,7 +31,9 @@ Du kannst als Gast beginnen. Deine Bearbeitungsberechtigung bleibt dabei auf die
 
 Mit Benutzername und Passwort meldest du dich in der Android-App auf einem weiteren Gerät an. Nach erfolgreicher Anmeldung bleibst du auf diesem Gerät angemeldet, solange die Sitzung gültig ist. Verwende ein eigenes Passwort mit 15–128 Zeichen und speichere es in deinem Passwortmanager. Leerzeichen bleiben Bestandteil des Passworts. Wunschkiste fragt dafür keine E-Mail-Adresse ab und bietet kein Zurücksetzen per E-Mail an. Ohne gültigen Zugang kann der Support kein vergessenes Passwort anzeigen oder allein anhand eines Benutzernamens Zugriff gewähren.
 
-Für ein neues Konto musst du keinen langen Kontoschlüssel abschreiben oder exportieren. Ein noch vorhandener alter Kontoschlüssel ist ein optionaler privater Zugang, kein Einladungscode. Teile ihn nicht mit Gästen. Wenn du ein bestehendes Konto auf Benutzername und Passwort umstellst, verwende die Kontofunktion in deiner bereits angemeldeten App, damit deine Kisten erhalten bleiben.
+Für ein neues Konto musst du keinen langen Kontoschlüssel abschreiben oder exportieren. Ein noch vorhandener alter Kontoschlüssel ist ein privater Zugang, kein Einladungscode. Teile ihn nicht mit Gästen. Zum Umstellen eines bestehenden Kontos auf Benutzername und Passwort öffnest du in der angemeldeten App „Profil → Stift → Passwort einrichten“. Deine Kisten bleiben dabei im selben Konto.
+
+Über den Stift im Profil bearbeitest du deinen Namen. „Speichern“ bestätigt nur die Namensänderung. „Passwort ändern“ öffnet einen eigenen Dialog mit aktuellem und neuem Passwort; ein falsches aktuelles Passwort wird abgelehnt. Nach erfolgreicher Passwortänderung werden andere Geräte abgemeldet. „Angemeldete Geräte“ findest du direkt im Profil.
 
 ## Produktdaten übernehmen
 
@@ -41,9 +43,9 @@ Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App m
 
 ## Deinen Zugang sichern und wiederherstellen
 
-Unter „Profil → Sicherheit“ kannst du optional Passkeys hinzufügen und einen einmaligen Wiederherstellungscode erstellen. Passkeys benötigen Android 9 oder neuer und einen verfügbaren Anbieter auf deinem Gerät. Wunschkiste richtet keinen Anbieter-Account für dich ein. Die Passwortanmeldung bleibt verfügbar.
+Unter „Profil → Passkeys“ kannst du optional Passkeys hinzufügen. Sie benötigen Android 9 oder neuer und einen verfügbaren Anbieter auf deinem Gerät. Wunschkiste richtet keinen Anbieter-Account für dich ein. Die Passwortanmeldung bleibt verfügbar.
 
-Sichere den Wiederherstellungscode außerhalb der App, beispielsweise in deinem Passwortmanager. Ein neu erstellter Code ersetzt den alten. Auf der Anmeldeseite führt „Zugang wiederherstellen“ mit Benutzername und gesichertem Code zum neuen Passwort. Danach meldest du dich normal an; alle bisherigen Sitzungen, Passkeys und alten Zugänge sind ungültig. Richte gewünschte Passkeys und einen neuen Code danach erneut ein. Der Support kann fehlende Nachweise nicht ersetzen; es gibt keine Passwort-E-Mail.
+Falls du in einer früheren Version einen Wiederherstellungscode eingerichtet hast, bleibt dieser verwendbar. Auf der Anmeldeseite führt „Zugang wiederherstellen“ mit Benutzername und gesichertem Code zum neuen Passwort. Danach meldest du dich normal an; alle bisherigen Sitzungen, Passkeys und alten Zugänge sind ungültig. Richte gewünschte Passkeys danach erneut ein. Der Support kann fehlende Nachweise nicht ersetzen; diese Version bietet noch kein Zurücksetzen per E-Mail an.
 
 ## Kisten archivieren
 
@@ -51,7 +53,7 @@ Sichere den Wiederherstellungscode außerhalb der App, beispielsweise in deinem 
 
 ## Einladen und einer Kiste beitreten
 
-Öffne „Teilen“ in deiner Kiste. Du kannst den Einladungslink über das native Teilen-Menü senden oder den Einladungscode weitergeben. Neue Links öffnen die Webansicht auf der neuen Wunschkiste-Adresse oder bei installierter, zugeordneter Android-App die Kiste direkt. Alte Links zu dieser Website bleiben entfernt; die Einladungscodes bestehender Kisten bleiben verwendbar.
+Öffne „Teilen“ in deiner Kiste. Der Dialog zeigt den Einladungscode groß an. Mit „Code kopieren“ kopierst du ihn für die App; „Link teilen“ öffnet das native Teilen-Menü mit dem öffentlichen Weblink. Ältere Kisten ohne Code können weiterhin per Link geteilt werden. Neue Links öffnen die Webansicht auf der neuen Wunschkiste-Adresse oder bei installierter, zugeordneter Android-App die Kiste direkt. Alte Links zu dieser Website bleiben entfernt; die Einladungscodes bestehender Kisten bleiben verwendbar.
 
 Unter „Geschenke“ kannst du einen Einladungscode eingeben. Die Vorschau zeigt zunächst die Kiste. Erst mit „Beitreten“ nimmst du sie in deine Einladungen auf. Prüfe vorher, ob Name, Datum und Beschreibung zum erwarteten Anlass passen. Einladungslinks und Codes machen die Kiste für Personen zugänglich, die sie kennen; veröffentliche sie deshalb nicht unbeabsichtigt.
 
