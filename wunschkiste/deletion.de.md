@@ -1,7 +1,7 @@
 ---
 layout: legal
 title: "Konto und Daten löschen · Wunschkiste"
-doc_id: deletion
+doc_id: wunschkiste-deletion
 doc_type: "Löschung und Datenkontrollen"
 app_name: "Wunschkiste"
 language: "Deutsch"
@@ -11,13 +11,15 @@ permalink: /wunschkiste/deletion.de/
 ---
 # Konto und Daten löschen
 
-Stand: 4. Oktober 2026 · Version 1.5
+Stand: 4. Oktober 2026 · Version 1.6
 
 ## Dein Konto löschen
 
 Öffne in Wunschkiste den Bereich „Profil“ und wähle „Konto löschen“. Lies die Zusammenfassung und bestätige die Löschung mit deinem Passwort und der ausdrücklichen Löschbestätigung. Bei bestehenden Konten ohne Passwort wird der vorhandene private Zugang geprüft. Eine Deinstallation oder Abmeldung löscht dein Konto nicht.
 
-Die Kontolöschung entfernt die dem Konto zugeordneten Kisten, Wünsche, hochgeladenen Titelbilder, Gerätesitzungen und gespeicherten Einladungen. Deine Reservierungen in Kisten anderer Personen werden freigegeben. Bei einem E-Mail-Konto wird der Firebase-Authentication-Zugang gesperrt und nach der Bereinigung der Wunschkiste-Daten gelöscht. Die eigenständigen Kisten anderer Personen werden nicht gelöscht. Eine bestätigte Kontolöschung lässt sich über die App nicht rückgängig machen.
+Bei einem reinen Google-Zugang bestätigst du die Aktion mit einer erneuten Google-Anmeldung anstelle eines Wunschkiste-Passworts. Ein abgebrochener Anmeldedialog startet keine Löschung.
+
+Die Kontolöschung entfernt die dem Konto zugeordneten Kisten, Wünsche, hochgeladenen Titel- und Profilbilder, Gerätesitzungen, Versandzuordnungen für Push-Nachrichten, Einstellungen, gespeicherten Hinweise und Einladungen. Deine Reservierungen in Kisten anderer Personen werden freigegeben. Bei einem Firebase-Konto wird der Firebase-Authentication-Zugang gesperrt und nach der Bereinigung der Wunschkiste-Daten gelöscht. Dein allgemeines Google-Konto wird nicht gelöscht. Die eigenständigen Kisten anderer Personen werden nicht gelöscht. Eine bestätigte Kontolöschung lässt sich über die App nicht rückgängig machen.
 
 Gespeicherte Passkey-Prüfdaten und Wiederherstellungscodes bisheriger Konten werden ebenfalls entfernt. Archivierte Kisten sind Teil des Kontos und werden bei der Kontolöschung mit gelöscht. Archivieren allein löscht keine Kiste und widerruft keine Einladung.
 

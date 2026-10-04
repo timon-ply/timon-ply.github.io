@@ -1,7 +1,7 @@
 ---
 layout: legal
 title: "Hilfe · Wunschkiste"
-doc_id: help
+doc_id: wunschkiste-help
 doc_type: "Hilfe"
 app_name: "Wunschkiste"
 language: "Deutsch"
@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.de/
 ---
 # Hilfe zu Wunschkiste
 
-Stand: 4. Oktober 2026 · Version 1.5
+Stand: 4. Oktober 2026 · Version 1.6
 
 Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -31,11 +31,15 @@ Du kannst als Gast beginnen. Deine Bearbeitungsberechtigung bleibt dabei auf die
 
 Neue Konten verwenden eine E-Mail-Adresse und ein Passwort. Wähle „Konto erstellen“, gib deine Angaben ein und fordere den Bestätigungslink an. Öffne den Link in deinem Postfach, kehre in die App zurück und wähle „Bestätigung prüfen“. Schließe danach die Anmeldung ab. Bei einem bereits bestätigten Konto meldest du dich direkt mit E-Mail-Adresse und Passwort an. Ein Google-Konto ist dafür nicht nötig. Ohne Konto kannst du weiterhin als Gast beginnen.
 
+Wenn „Mit Google fortfahren“ angezeigt wird, kannst du dich alternativ über den Google-Kontodialog anmelden. Wird der Dialog abgebrochen, bleibt dein bisheriger Zugang unverändert. Für ein Konto, das ausschließlich Google verwendet, bestätigst du sensible Aktionen über Google; ein Wunschkiste-Passwort musst du dafür nicht erfinden. Andere Anbieter werden erst angeboten, wenn sie eingerichtet sind.
+
 Nach erfolgreicher Anmeldung bleibst du auf diesem Gerät angemeldet, solange die Sitzung gültig ist. Verwende ein eigenes Passwort mit 15–128 Zeichen und speichere es in deinem Passwortmanager. Leerzeichen bleiben Bestandteil des Passworts. Halte auch den Zugang zu deinem E-Mail-Postfach aktuell, damit du Bestätigungs- und Wiederherstellungslinks empfangen kannst.
 
 Für ein neues Konto musst du keinen langen Kontoschlüssel abschreiben oder exportieren. Ein noch vorhandener alter Kontoschlüssel ist ein privater Zugang, kein Einladungscode. Teile ihn nicht mit Gästen.
 
-Über den Stift im Profil bearbeitest du deinen Namen. „Speichern“ bestätigt nur die Namensänderung. „Passwort ändern“ öffnet einen eigenen Dialog mit aktuellem und neuem Passwort; ein falsches aktuelles Passwort wird abgelehnt. Bei E-Mail-Konten müssen andere Geräte erneut ihr Passwort eingeben, sobald ihr bisheriger Zugang abläuft; bei bisherigen Konten werden andere Sitzungen beim Ändern ungültig. „Angemeldete Geräte“ findest du direkt im Profil.
+Über den Stift im Profil bearbeitest du deinen Namen. „Speichern“ bestätigt nur die Namensänderung. Wenn dein Konto ein Passwort verwendet, öffnet „Passwort ändern“ einen eigenen Dialog mit aktuellem und neuem Passwort; ein falsches aktuelles Passwort wird abgelehnt. Bei E-Mail-Konten müssen andere Geräte erneut ihr Passwort eingeben, sobald ihr bisheriger Zugang abläuft; bei bisherigen Konten werden andere Sitzungen beim Ändern ungültig. „Angemeldete Geräte“ findest du direkt im Profil.
+
+Im Profil kannst du ein eigenes Profilfoto wählen, ersetzen oder entfernen. Dieses Bild bleibt privat in deinem Konto und wird nicht automatisch Gästen gezeigt. Unter „Sprache“ wechselst du zwischen Deutsch und Englisch. Deine Auswahl bleibt gespeichert; Produktnamen und selbst eingegebene Texte werden nicht übersetzt.
 
 ## Ein bisheriges Konto weiterverwenden
 
@@ -55,6 +59,8 @@ Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App m
 
 Bei einem E-Mail-Konto wähle auf der Anmeldeseite „Passwort vergessen“, gib deine E-Mail-Adresse ein und fordere einen Link an. Öffne ihn in deinem Postfach, setze ein neues Passwort und melde dich anschließend wieder in der App an. Prüfe bei ausbleibenden Nachrichten auch deinen Spamordner und die Schreibweise der Adresse. Eine Bestätigung der Anfrage verrät nicht, ob für eine eingegebene Adresse ein Konto besteht. Der Support kann dir dein Passwort nicht anzeigen und den Nachweis für ein fremdes Konto nicht ersetzen.
 
+Bei einem reinen Google-Zugang nutze die Wiederherstellungsfunktionen deines Google-Kontos. Die Passwortfunktion in Wunschkiste gilt für Konten mit einem eingerichteten Wunschkiste-Passwort.
+
 Für bisherige Konten ohne E-Mail-Verknüpfung bleiben Passkeys unter „Profil → Passkeys“ verfügbar. Sie benötigen Android 9 oder neuer und einen verfügbaren Anbieter auf deinem Gerät. Wunschkiste richtet keinen Anbieter-Account für dich ein. Für E-Mail-Konten werden in dieser Version keine Passkeys angeboten.
 
 Falls du für ein bisheriges Konto einen Wiederherstellungscode eingerichtet hast, bleibt dieser bis zur E-Mail-Verknüpfung verwendbar. Unter „Bisheriges Konto mit Benutzername → Zugang wiederherstellen“ kannst du mit Benutzername und gesichertem Code ein neues Passwort setzen. Danach meldest du dich normal an; alle bisherigen Sitzungen, Passkeys und alten Zugänge sind ungültig. Richte gewünschte Passkeys danach erneut ein. Ein bisheriges Konto ohne verknüpfte E-Mail-Adresse lässt sich nicht über einen E-Mail-Link wiederherstellen.
@@ -71,7 +77,25 @@ Unter „Geschenke“ kannst du einen Einladungscode eingeben. Die Vorschau zeig
 
 ## Ein Geschenk auswählen
 
-Reserviere einen freien Wunsch, bevor du ihn kaufst. Andere Gäste sehen dann, dass er vergeben ist, aber keinen Namen der reservierenden Person. Der Einkauf erfolgt im Shop. Nach dem Kauf kannst du den Wunsch als gekauft markieren oder eine nicht mehr benötigte Reservierung freigeben. Ohne Konto hängt die Bearbeitung deiner Reservierung vom ursprünglichen Gerät beziehungsweise Browser ab.
+Reserviere einen freien Wunsch, bevor du ihn kaufst. Andere Gäste sehen dann, dass er vergeben ist. Geschenke sind standardmäßig anonym. Wenn die Kiste Namensfreigaben erlaubt, kannst du als angemeldeter Gast freiwillig zustimmen, deinen Anzeigenamen anzuzeigen. Ohne deine ausdrückliche Zustimmung bleibt er verborgen. Deine E-Mail-Adresse und dein Profilfoto werden dabei nicht gezeigt. Der Einkauf erfolgt im Shop. Nach dem Kauf kannst du den Wunsch als gekauft markieren oder eine nicht mehr benötigte Reservierung freigeben. Ohne Konto hängt die Bearbeitung deiner Reservierung vom ursprünglichen Gerät beziehungsweise Browser ab.
+
+## Überraschung und Anonymität einstellen
+
+Beim Bearbeiten deiner Kiste kannst du „Reservierungen für mich ausblenden“ aktivieren. In deiner angemeldeten App siehst du dann nicht, welche Wünsche reserviert oder gekauft sind. Das betrifft auch zugehörige Hinweise. Die öffentliche Gastansicht zeigt Gästen weiterhin die Verfügbarkeit; die Einstellung macht die Einladung nicht geheim.
+
+„Geschenke anonym“ schützt die Namen der Schenkenden. Wird es ausgeschaltet, dürfen Gäste ihren Namen nur mit eigener Zustimmung zeigen. Bereits anonyme Reservierungen erhalten dadurch keinen sichtbaren Namen. Teile Einladungscodes und Links nur mit den vorgesehenen Personen.
+
+## Benachrichtigungen verwenden
+
+Unter „Profil → Benachrichtigungen“ kannst du Push-Mitteilungen über neue Gäste und gekaufte Wünsche einzeln aktivieren oder abschalten. Beide Schalter sind anfangs aus. Unabhängig von den Push-Schaltern zeigt die Aktivitätsübersicht die letzten höchstens 20 tatsächlichen Ereignisse deiner Kisten. Die Schalter löschen oder deaktivieren diese Übersicht nicht.
+
+Push auf dein Gerät wird nur angeboten, wenn der Versand eingerichtet ist. Aktiviere ihn bewusst und erlaube gegebenenfalls Benachrichtigungen in Android. Ohne Geräteberechtigung erscheinen keine Push-Mitteilungen. Push-Nachrichten enthalten keine Namen oder Fotos der Schenkenden. Du kannst die Berechtigung jederzeit in den Android-Einstellungen ändern. Bei ausgeschalteten Push-Mitteilungen können vorhandene Hinweise weiterhin in der App stehen.
+
+## Kostenloser Umfang und Premium
+
+Kostenlos kannst du bis zu drei aktive Kisten mit jeweils bis zu 20 aktiven Wünschen erstellen. Archivierte Kisten zählen nicht als aktiv. Vorhandene Inhalte, die bereits vor dieser Begrenzung gespeichert waren, bleiben erhalten und zugänglich. Bei erreichten Grenzen kannst du bestehende Inhalte bearbeiten, entfernen oder archivieren; neue Inhalte benötigen einen freien Platz. Einladungen und Reservierungen bleiben nutzbar.
+
+Premium ist ein geplantes Angebot. Es gibt derzeit keinen Kauf, kein Abonnement und keinen Checkout. Eine Vorschau schaltet keine Funktionen frei und löst keine Zahlung aus. Die App enthält keine Werbung oder Analyse-Tracker.
 
 ## Ein eigenes Titelbild auswählen
 
