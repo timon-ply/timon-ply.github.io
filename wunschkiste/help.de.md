@@ -31,6 +31,10 @@ Du kannst als Gast beginnen. Deine Bearbeitungsberechtigung bleibt dabei auf die
 
 ## Ein Konto verwenden
 
+Wähle zuerst deine Altersgruppe, ohne Voreinstellung. Erwachsene können ein Konto erstellen oder ausdrücklich als Gast fortfahren. Unter 13 nutzt du das Elternkonto. Mit 13–17 wählst du vor dem eigenen Konto Elternfreigabe. Sende den Elternlink ausschließlich an deine Elternperson und vergleicht gemeinsam den angezeigten Code. Nötig sind ein bestätigtes, als erwachsen erklärtes Elternkonto und eine ausdrückliche Erziehungsberechtigungserklärung. Das sind dokumentierte Angaben, keine unabhängige Identitätsprüfung. Nach bestätigter Freigabe erstellst und bestätigst du dein Konto. Die Anfrage gilt 24 Stunden; ihr Ablauf löscht eine bereits erstellte Firebase-Identität nicht automatisch. Kontaktiere bei abgebrochener Bestätigung den Support. Bestehende Konten können sich zur Wiederherstellung, Abmeldung oder Löschung auch bei gesperrter Inhaltsnutzung anmelden.
+
+Erwachsene finden Freigaben unter „Profil → Familie“. Öffne den Kindereintrag und bestätige nach erneuter Anmeldung den namentlichen Widerruf. Das sperrt App-Zugang und neue Datenänderungen des Kindes; geteilte Listen, fremde Kopien oder bereits angenommene Systemnachrichten werden nicht gelöscht beziehungsweise zurückgerufen. Kontolöschung ist getrennt. Eine widerrufene Freigabe lässt sich derzeit nicht in der App erneuern.
+
 Neue Konten verwenden eine E-Mail-Adresse und ein Passwort. Wähle „Konto erstellen“, gib deine Angaben ein und fordere den Bestätigungslink an. Öffne den Link in deinem Postfach, kehre in die App zurück und wähle „Bestätigung prüfen“. Schließe danach die Anmeldung ab. Bei einem bereits bestätigten Konto meldest du dich direkt mit E-Mail-Adresse und Passwort an. Ein Google-Konto ist dafür nicht nötig. Ohne Konto kannst du weiterhin als Gast beginnen.
 
 Wenn „Mit Google fortfahren“ angezeigt wird, kannst du dich alternativ über den Google-Kontodialog anmelden. „Mit Apple fortfahren“ wird nur angeboten, wenn dieser Zugang eingerichtet und für deine App-Version freigeschaltet ist; der Apple-Dialog öffnet sich im Browser. Kehre anschließend in die App zurück und prüfe dort den Abschluss. Bei unterbrochener Verbindung kannst du einen noch gültigen Vorgang erneut prüfen. Ein abgelaufener Vorgang benötigt einen neuen Start.
@@ -59,11 +63,11 @@ Nach dem erfolgreichen Wechsel meldest du dich mit E-Mail-Adresse und dem dafür
 
 ## Produktdaten übernehmen
 
-In der ersten iOS-Version fügst du den Link durch Einfügen ins Wunschformular hinzu. Name, Preis und Notiz trägst du selbst ein; Größe und Farbe stehen unter den weiteren Details. Shopdaten und externe Produktfotos werden hier nicht automatisch übernommen. Neutrale Geschenkvisualisierungen ersetzen Händlerbilder, bis die nötigen shopbezogenen Rechte und Berechtigungen geklärt sind. Ein Wunsch ist auch ohne Link möglich. Öffnest du einen Link, kaufst du ausschließlich im Shop; Wunschkiste löst keine Bestellung aus. Der folgende automatische Abruf und das Teilen aus anderen Apps betreffen Android-Versionen, die diese Funktionen anbieten.
+Auf iOS fügst du einen unterstützten HTTPS-Shoplink ein und wählst „Details laden“. Verfügbare Produkttitel und EUR-Preise füllen unveränderte Felder; deine Bearbeitungen bleiben erhalten. Manche Shops blockieren den Abruf oder liefern nicht alle Angaben. Fehlendes lässt sich manuell ergänzen; Größe, Farbe und Notizen bleiben bearbeitbar. Händlerfotos und Beschreibungen werden auf iOS nicht übernommen, sondern neutrale Geschenkvisualisierungen verwendet. Preise sind Momentaufnahmen: Prüfe den Shop vor dem Kauf. Ein Wunsch ist auch ohne Link möglich. Wunschkiste bestellt nichts.
 
 Größe und Farbe kannst du als optionale Angaben direkt unter dem Namen eintragen. Gäste sehen diese Angaben in der App und im Browser. Ein Wunsch wird dadurch nicht in mehrere Shopvarianten aufgeteilt.
 
-Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App mit Wunschkiste. Bei unterstützten Shops werden verfügbare Namen, Bilder und Preise geladen. Manche Shops blockieren den Abruf oder liefern nicht alle Angaben. Ergänze fehlende Informationen direkt im Formular. Ein Wunsch ist auch ohne Produktlink möglich. Ein angezeigter Preis ist eine Momentaufnahme; maßgeblich ist der Preis beim Kauf im Shop.
+Ältere Android-Versionen können neben Namen und Preis auch externe Shopbilder übernehmen. Die neue iOS-/Weboberfläche und das Backend bei aktivierter Inhaltsprüfung verwenden stattdessen neutrale Geschenkvisualisierungen. Shopangaben können fehlen oder veraltet sein; prüfe Preis und Variante vor dem Einkauf.
 
 ## Deinen Zugang sichern und wiederherstellen
 
@@ -91,13 +95,13 @@ Unter „Geschenke“ kannst du einen Einladungscode eingeben. Die Vorschau zeig
 
 ## Ein Geschenk auswählen
 
-Reserviere einen freien Wunsch, bevor du ihn kaufst. Andere Gäste sehen dann, dass er vergeben ist. Geschenke sind standardmäßig anonym. Wenn die Kiste Namensfreigaben erlaubt, kannst du als angemeldeter Gast freiwillig zustimmen, deinen Anzeigenamen anzuzeigen. Ohne deine ausdrückliche Zustimmung bleibt er verborgen. Deine E-Mail-Adresse und dein Profilfoto werden dabei nicht gezeigt. Der Einkauf erfolgt im Shop. Nach dem Kauf kannst du den Wunsch als gekauft markieren oder eine nicht mehr benötigte Reservierung freigeben. Ohne Konto hängt die Bearbeitung deiner Reservierung vom ursprünglichen Gerät beziehungsweise Browser ab.
+Reserviere einen freien Wunsch, bevor du ihn kaufst. Andere Gäste sehen dann, dass er vergeben ist. In der neuen iOS-/Weboberfläche und bei aktivierter Inhaltsprüfung bleiben Namen der Schenkenden verborgen. Ältere Android-Versionen können bei Kisten ohne diese Prüfung eine freiwillige ausdrückliche Namensfreigabe anbieten; E-Mail-Adresse und Profilfoto werden dabei nicht gezeigt. Der Einkauf erfolgt im Shop. Nach dem Kauf kannst du den Wunsch als gekauft markieren oder eine nicht mehr benötigte Reservierung freigeben. Ohne Konto hängt die Bearbeitung deiner Reservierung vom ursprünglichen Gerät beziehungsweise Browser ab.
 
 ## Überraschung und Anonymität einstellen
 
 Beim Bearbeiten deiner Kiste kannst du „Reservierungen für mich ausblenden“ aktivieren. In deiner angemeldeten App siehst du dann nicht, welche Wünsche reserviert oder gekauft sind. Das betrifft auch zugehörige Hinweise. Die öffentliche Gastansicht zeigt Gästen weiterhin die Verfügbarkeit; die Einstellung macht die Einladung nicht geheim.
 
-„Geschenke anonym“ schützt die Namen der Schenkenden. Wird es ausgeschaltet, dürfen Gäste ihren Namen nur mit eigener Zustimmung zeigen. Bereits anonyme Reservierungen erhalten dadurch keinen sichtbaren Namen. Teile Einladungscodes und Links nur mit den vorgesehenen Personen.
+In der neuen iOS-/Weboberfläche sind Geschenke anonym. Bei aktivierter Inhaltsprüfung ist die Namensfreigabe deaktiviert. Ältere Kisten ohne diese Prüfung können „Geschenke anonym“ anbieten: Auch nach Ausschalten dürfen Gäste ihren Namen nur mit eigener Zustimmung zeigen; bereits anonyme Reservierungen bleiben anonym. Teile Einladungscodes und Links nur mit den vorgesehenen Personen.
 
 ## Benachrichtigungen verwenden
 
@@ -117,15 +121,15 @@ Am Limit kannst du eine aktive Kiste zum Archivieren oder einen Wunsch zum Entfe
 
 ## Altersgruppe und Anzeigen
 
-Dieser Abschnitt und die vorbereiteten Belohnungsvideos oben betreffen Android. Die erste iOS-Version enthält weder Anzeigenintegration noch Belohnungsvideos, käufliches Premium oder eine Altersgruppenauswahl. Archiviere dort Kisten und entferne Wünsche, um freie Plätze zu schaffen.
+Android und iOS enthalten getrennte vorbereitete AdMob-Integrationen. Produktionsbanner und Belohnungsvideos bleiben bis zur jeweiligen Anbieter-, Einwilligungs- und nativen Prüfung ausgeschaltet. Die deutsch- und englischsprachige Einwilligungsnachricht ist beiden Apps zugeordnet. Das allein schaltet Anzeigen nicht frei. Käufliches Premium gibt es nicht. Archivieren und Entfernen von Wünschen bleiben ohne Werbung möglich.
 
-Die App ist für Erwachsene und Kinder vorgesehen. Die vorbereitete Anzeigenfunktion fragt vor jedem ersten Consent-/Anzeigenstart neutral nach „Unter 13“, „13–17“ oder „18+“. Es gibt keine Vorauswahl. Ohne Auswahl und unter 18 starten weder UMP noch das Anzeigen-SDK; es gibt keine Banner oder Belohnungsvideos. Die normalen Appfunktionen bleiben nutzbar. Die Auswahl speichert ausschließlich die grobe Kategorie lokal auf diesem Gerät, ohne Geburtsdatum oder Cloud-Übertragung; sie wird nicht im Gerätebackup gesichert.
+Die neutrale Alterswahl steuert in aktuellen Clients auch den Zugang: Eigene Konten mit 13–17 benötigen Elternfreigabe, unter13 wird das Elternkonto genutzt. Erklärte Minderjährige erhalten keine Anzeigenanfragen. Werbung bei angemeldeter erwachsener Nutzung benötigt aktuelle Serverfreigabe sowie Einwilligung und Anbieterfreigabe. Altersgruppe und Familienzuordnung des Kontos werden im Backend gespeichert; ein Geburtsdatum wird nicht abgefragt. Anbieter-SDK-Verarbeitung und Aufbewahrung erläutert der Datenschutztext.
 
-Unter „Profil → Altersgruppe“ beziehungsweise in den Einstellungen kannst du die Auswahl ändern oder die Auswahl zunächst abbrechen. Banner werden beim Ändern ausgeblendet; weitere Anzeigenanfragen bleiben bis zur zulässigen neuen Auswahl gesperrt. Für Erwachsene gelten zusätzlich Anbieterfreigabe und Consent-Prüfung. Ausstehende Serverbestätigungen eines bereits gestarteten freiwilligen Videos bleiben prüfbar; die Alterswahl selbst erteilt keine zusätzlichen Plätze. Die eigenständige Web-Gastansicht enthält keine Anzeigen.
+Bei aktivierter Werbung bleiben die zugehörigen Datenschutzoptionen im Profil erreichbar. Geänderter oder widerrufener Zugang stoppt neue Anfragen. Die ausstehende Serverbestätigung eines begonnenen freiwilligen Videos bleibt im selben Konto wiederaufnehmbar; Alterswahl oder Schließen des Videos allein schreiben keine Plätze gut. Die Webansicht enthält keine Anzeigen.
 
 ## Ein eigenes Titelbild auswählen
 
-Nutze eines der vorgegebenen Motive oder ein Bild, das du teilen darfst. Das Titelbild sehen auch eingeladene Personen. Für einen Kindergeburtstag genügt ein Motiv; ein Kinderfoto ist nicht nötig. Die App bereitet ausgewählte Bilder für den Upload auf. Wenn ein Upload abgelehnt wird, bleibt die bisherige Kiste erhalten; wähle ein kleineres Bild oder ein vorgegebenes Motiv.
+Nutze eines der vorgegebenen Motive oder ein eigenes Bild, das du teilen darfst. Bei aktivierter Inhaltsprüfung sehen Gäste zunächst das voreingestellte Motiv, bis das eigene Titelbild freigegeben ist. Für einen Kindergeburtstag genügt ein Motiv; ein Kinderfoto ist nicht nötig. Die App bereitet ausgewählte Bilder für den Upload auf. Wenn ein Upload abgelehnt wird, bleibt die bisherige Kiste erhalten; wähle ein kleineres Bild oder ein vorgegebenes Motiv.
 
 ## Wenn etwas nicht funktioniert
 
@@ -140,3 +144,11 @@ Eine Kontolöschung bestätigst du im Profil mit deinem aktuellen Zugang. Falls 
 Bei einem mit Apple verbundenen Konto kann für die Löschung eine frische Bestätigung desselben Apple-Zugangs und der Anbieter-Widerruf erforderlich sein. Folge der angebotenen Apple-Bestätigung, statt ein neues Konto anzulegen. Dein allgemeines Apple-Konto bleibt erhalten; die Abschlussmeldung verspricht keine sofortige Löschung aller Daten oder Sicherungen bei Apple oder Google.
 
 Bei verlorenen Zugängen, Löschanfragen oder anderen Problemen nutze [dev@timonply.com](mailto:dev@timonply.com). Nenne die App, dein Gerät und den betroffenen Vorgang; sende keine Passwörter oder privaten Schlüssel. Informationen zum Entfernen von Daten findest du unter [Konto und Daten löschen](/wunschkiste/deletion.de.html).
+
+## Inhalte melden und Ersteller blockieren
+
+In der vorbereiteten iOS-Version findest du „Inhalt melden“ im Kistenmenü und bei einem Wunsch. Wähle einen Grund und beschreibe das Problem bei Bedarf. Erst die Empfangsbestätigung bedeutet, dass die Meldung eingegangen ist. Nach einem Verbindungsproblem kannst du dieselbe Meldung erneut senden. Eine ausdrücklich abgelehnte Meldung kann verworfen und neu begonnen werden. Für dringende Anliegen erreichst du uns unter [dev@timonply.com](mailto:dev@timonply.com); sende keine Passwörter oder privaten Schlüssel.
+
+„Ersteller blockieren“ blendet dessen Kisten für deinen Zugang aus. Unter „Blockierte Ersteller“ kannst du eine Blockierung aufheben. Es werden keine anonymen Schenkenden enttarnt. Gäste mit einer anderen Zugangsberechtigung oder bereits gespeicherte Kopien werden dadurch nicht gesperrt.
+
+Eigene Kistenfotos benötigen eine Prüfung, bevor Gäste sie sehen. Währenddessen bleibt dein voreingestelltes Kistenbild sichtbar; du kannst das eigene Foto weiterhin in deiner berechtigten Ansicht ansehen. Lade nur Bilder und Texte hoch, die du verwenden und mit deinen eingeladenen Gästen teilen darfst. Verwende keine persönlichen Inhalte anderer Personen ohne deren erforderliche Erlaubnis. Unzulässige Inhalte können entfernt und Zugänge eingeschränkt werden. Die Schutzfunktionen und Betreiberbearbeitung werden vor öffentlicher Freigabe überprüft.

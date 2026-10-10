@@ -45,11 +45,13 @@ Bei Gastkisten liegt die Verwaltungsberechtigung auf dem Gerät oder im Browser.
 
 Du kannst Appdaten über Android beziehungsweise lokale Webdaten über die Browsereinstellungen entfernen. Führe eine gewünschte Serverlöschung vorher durch. Andernfalls kann die lokale Berechtigung zur Verwaltung und Löschung verloren gehen.
 
-Die grobe Altersgruppe für die vorbereitete Anzeigenfunktion bleibt ausschließlich auf dem Gerät und kann unter „Profil → Altersgruppe“ geändert werden. Appdaten löschen oder Deinstallation entfernt diese lokale Auswahl; es gibt dafür keine Cloud-Kopie oder Sicherung im Gerätebackup. Das Ändern der Auswahl löscht keine Serverkisten und erteilt keine Belohnung. Ohne Auswahl und für beide minderjährigen Gruppen werden keine Anzeigen angefordert.
+Ältere Android-Versionen speichern die grobe Altersauswahl für die vorbereitete Anzeigenfunktion lokal. Im neuen Familienablauf werden zusätzlich die erforderliche Kontofreigabe und Elternnachweise im Backend gespeichert. Lokale Datenlöschung entfernt diese Serverdaten nicht; für ihre Löschung nutze die Kontolöschung beziehungsweise den Kontaktweg oben. Ohne Auswahl und für minderjährige Gruppen werden keine Anzeigen angefordert.
 
 In iOS werden Kontozugang, Gastberechtigungen und benötigte Nachweise zur Löschfortsetzung im gerätegebundenen Schlüsselbund gespeichert. „Abmelden“ beendet den Kontozugang und versucht, den lokalen Push-Token sowie zugestellte Gerätehinweise zu entfernen; Gastberechtigungen können erhalten bleiben. Eine Deinstallation löscht keine Serverdaten und ist keine verlässliche Zusage zur Entfernung aller Schlüsselbunddaten. Bei einem noch laufenden Löschvorgang bewahre die App und den Zugang auf, bis der Server den Abschluss bestätigt. Eine erforderliche erneute Anmeldung muss dasselbe Konto bestätigen; ein anderes Konto darf die gespeicherte Löschung nicht übernehmen.
 
-Bereits an APNs/FCM übergebene allgemeine iOS-Mitteilungen können nach Abschalten, Abmelden oder Löschen noch angezeigt werden. Die angeforderte kurze Ablaufzeit ist keine sofortige Rückrufgarantie. Neue Sendungen werden nur mit gültiger Geräte-/Sitzungszuordnung und aktivierten Einstellungen veranlasst. Die erste iOS-Version enthält keine Anzeigenintegration und keine lokale Werbe-Altersgruppenauswahl; die Altersgruppenhinweise oben betreffen Android.
+Bereits an APNs/FCM übergebene allgemeine iOS-Mitteilungen können nach Abschalten, Abmelden oder Löschen noch erscheinen. Die kurze Ablaufzeit ist keine sofortige Rückrufgarantie. Neue Sendungen benötigen gültige Geräte-/Sitzungszuordnung, aktuelle Kontofreigabe und aktivierte Einstellungen. iOS-Werbung ist vorbereitet, bleibt bis zur Freigabe deaktiviert. Lokale Datenlöschung entfernt keine serverseitige Altersfreigabe oder Elternnachweise.
+
+Eltern können die Freigabe unter Profil → Familie widerrufen. Der Widerruf sperrt App-Zugang, ist aber von Kinderkontolöschung und Löschung geteilter Inhalte getrennt. Elternkontolöschung widerruft auch zugeordnete Freigaben. Kinderkontolöschung entfernt Identitäts- und Familienzuordnungen. Ein minimaler gehashter Schutz gegen Wiederverwendung kann bis zum ursprünglichen Ablauf der 24-Stunden-Anfrage bestehen und wird danach bei Zugriff bereinigt. Eine abgelaufene unvollständige Elternanfrage löscht keine danach bereits erstellte Firebase-Identität automatisch; kontaktiere den Verantwortlichen bei abgebrochener Kontobestätigung für Löschhilfe.
 
 ## Einzelne Wünsche und Reservierungen
 
@@ -64,3 +66,7 @@ Die Löschbestätigung ist auch keine Zusage, dass Apple oder Google alle eigene
 Informationen, die zur Bearbeitung einer Anfrage oder zur Erfüllung gesetzlicher Pflichten erforderlich sind, werden nur für diesen Zweck und die dafür notwendige Dauer aufbewahrt. Auskunft zu deinen konkreten Daten erhältst du beim Verantwortlichen.
 
 [Datenschutz](/wunschkiste/privacy.de.html) · [Impressum](/wunschkiste/impressum.de.html) · [Hilfe](/wunschkiste/help.de.html)
+
+## Meldungsdaten und Blockierungen
+
+Bei bestätigter Kontolöschung werden die eigenen Blockierungen und die diesem Konto zugeordneten offenen iOS-Meldungsentwürfe entfernt. Empfangene Meldungen werden für die Bearbeitung gespeichert; Ein begrenzter pseudonymer Meldendenbezug bleibt bis zur Bearbeitung beziehungsweise manuellen Bereinigung auch nach Kontolöschung erhalten; er ermöglicht keine Anmeldung. Notwendige Nachweise über Inhalte anderer Nutzer können für die Bearbeitung und berechtigte Ansprüche verbleiben. Geschlossene Nachweise sind für eine manuelle Bereinigung nach 90 Tagen vorgesehen, offene Fälle bleiben bis zur Bearbeitung erhalten. Kontolöschung stellt nicht automatisch eine Erlaubnis zur Löschung der Inhalte anderer Nutzer dar.

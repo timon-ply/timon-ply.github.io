@@ -45,11 +45,13 @@ For guest lists, the management permission is stored on your device or in your b
 
 You can remove app data through Android or local web data through your browser settings. Complete any desired server deletion first. Otherwise, you may lose the local permission needed to manage or delete the list.
 
-The coarse age group for the prepared advertising feature stays only on the device and can be changed under “Profile → Age group”. Clearing app data or uninstalling removes this local choice; it has no cloud copy or device backup. Changing the choice deletes no server lists and grants no reward. Without a choice and for both minor groups, no ads are requested.
+Older Android versions store the coarse age choice for the prepared advertising feature locally. The new family flow additionally stores required account eligibility and parent approval records in the backend. Clearing local data does not erase these server records; use account deletion or the contact route above. No ads are requested without an age choice or for minor groups.
 
 On iOS, account access, guest permissions and proofs needed for deletion recovery are stored in the device-bound Keychain. “Sign out” ends account access and attempts to remove the local push token and delivered device notifications; guest permissions may remain. Uninstalling deletes no server data and does not reliably promise removal of all Keychain data. During an unfinished deletion, retain the app and access until the server confirms completion. Any required renewed sign-in must confirm the same account; another account must not take over the stored deletion.
 
-Generic iOS messages already handed to APNs/FCM may still appear after disabling notifications, signing out or deletion. The requested short expiry is not an immediate recall guarantee. New sends require a valid device/session association and enabled settings. The first iOS version contains no advertising integration or local advertising age-group selector; the age-group instructions above concern Android.
+Generic iOS messages already handed to APNs/FCM may still appear after disabling notifications, signing out or deletion. The requested short expiry is not an immediate recall guarantee. New sends require a valid device/session association, current account eligibility and enabled settings. iOS advertising is prepared but disabled pending readiness. Clearing local data does not erase server-side age eligibility or family consent records.
+
+Parents can withdraw a child's approval under Profile → Family; withdrawal blocks application access but is separate from erasure of the child's account and shared content. Parent account erasure also withdraws associated approvals. Child account erasure removes identity bindings and family associations. A minimal hashed anti-replay receipt can remain until the original request's 24-hour expiry, then is reclaimed on access. Expiry of an uncompleted parent request does not automatically delete a Firebase identity already created afterwards; contact the controller if account verification was abandoned and you need deletion help.
 
 ## Individual wishes and reservations
 
@@ -64,3 +66,7 @@ Deletion confirmation also does not promise that Apple or Google immediately rem
 Information needed to process a request or comply with legal obligations is retained only for that purpose and for as long as necessary. You can ask the controller about your particular data.
 
 [Privacy](/wunschkiste/privacy.en.html) · [Legal notice](/wunschkiste/impressum.en.html) · [Help](/wunschkiste/help.en.html)
+
+## Report data and blocks
+
+Confirmed account deletion removes own blocks and pending iOS report drafts associated with that account. Received reports are retained for handling, including a bounded pseudonymous reporter reference that remains after account deletion until handling or manual cleanup and cannot be used to sign in. Necessary evidence about another user’s content may remain for handling and legitimate claims. Closed evidence is intended for manual cleanup after 90 days; open cases remain until handled. Deleting your account does not automatically authorize deletion of another user’s content.

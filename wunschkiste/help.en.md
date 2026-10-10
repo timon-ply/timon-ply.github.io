@@ -31,6 +31,10 @@ You can begin as a guest. Your editing permission remains on this device. The li
 
 ## Use an account
 
+Choose your age group first, without a default choice. Adults can create an account or explicitly continue as a guest. Under 13, use your parent's account. At 13–17, choose parent approval before creating your own account. Send the parent link only to your parent and compare the displayed code together. A verified adult-declared parent account and explicit guardian confirmation are required. These are recorded statements, not independent identity checks. After confirmed approval, create and verify your account. The request is valid for 24 hours; expiry does not automatically delete an already created Firebase identity. Contact support if verification was abandoned. Existing accounts can sign in for recovery, logout or erasure even while ordinary content is blocked.
+
+Adults find approvals under “Profile → Family”. Open the child entry and confirm a named withdrawal after signing in again. This blocks the child's app access and future data changes; it does not erase shared lists or recall copies and already accepted system messages. Account deletion is separate. A withdrawn approval cannot currently be renewed in the app.
+
 New accounts use an email address and password. Choose “Create account”, enter your details and request a verification link. Open the link in your inbox, return to the app and choose “Check verification”. Then finish signing in. For an already verified account, sign in directly with your email address and password. You do not need a Google Account for this. You can still begin as a guest without an account.
 
 If “Continue with Google” is displayed, you can alternatively sign in through Google's account dialog. “Continue with Apple” is only offered when configured and enabled for your app version; Apple's dialog opens in the browser. Return to the app afterwards and check completion there. After an interrupted connection, you can check a still-valid operation again. An expired operation requires a new start.
@@ -59,11 +63,11 @@ After a successful switch, sign in with your email address and the password chos
 
 ## Import product details
 
-In the first iOS version, paste the link into the wish form. Enter the name, price and note yourself; size and colour are under further details. Shop data and external product photos are not imported automatically here. Neutral gift visuals replace retailer images until the necessary shop-specific rights and permissions are established. A wish can also have no link. Opening a link purchases only at the shop; Wunschkiste places no order. The automatic retrieval and sharing from other apps described below concern Android versions offering those features.
+On iOS, paste a supported HTTPS shop link and choose “Load details”. Available product titles and EUR prices fill untouched fields; your edits remain yours. Some shops block retrieval or omit information, so missing details can be entered manually. Size, colour and notes remain editable. Retailer photos and descriptions are not imported on iOS; neutral gift visuals are used. Prices are snapshots: check the shop before buying. A wish can have no link. Wunschkiste places no order.
 
 You can enter size and colour as optional details directly below the name. Guests see them in the app and browser. They do not split a wish into multiple shop variants.
 
-Paste an HTTPS product address or share it to Wunschkiste from another app. Available names, images and prices are retrieved from supported shops. Some shops block retrieval or do not provide all details. Fill in missing information directly in the form. A wish can also be created without a product link. A displayed price is a snapshot; the price charged by the shop at purchase is what matters.
+Older Android versions may import external shop images alongside a title and price. The new iOS/web interface and backend with content review enabled use neutral gift visuals instead. Shop details may be missing or outdated; check the price and variant before buying.
 
 ## Secure and recover your access
 
@@ -91,13 +95,13 @@ Under “Gifts”, enter an invitation code. The preview first shows the list. O
 
 ## Choose a gift
 
-Reserve an available wish before buying it. Other guests then see that it is taken. Gifts are anonymous by default. If the list allows name sharing, you can voluntarily agree to display your name as a signed-in guest. Without your explicit agreement, it remains hidden. Your email address and profile photo are not shown. Purchases take place in the shop. After buying, you can mark the wish as purchased or release a reservation you no longer need. Without an account, editing your reservation depends on the original device or browser.
+Reserve an available wish before buying it. Other guests then see that it is taken. In the new iOS/web interface and with content review enabled, gift-givers’ names remain hidden. Older Android versions may offer voluntary explicit name sharing for boxes without that review; email addresses and profile photos are not shown. Purchases take place in the shop. After buying, mark the wish as purchased or release an unneeded reservation. Without an account, editing your reservation depends on the original device or browser.
 
 ## Set surprise and anonymity preferences
 
 While editing your list, you can enable “Hide reservations from me”. In your signed-in app, you then cannot see which wishes are reserved or purchased. This also applies to related notifications. The public guest view still shows availability to guests; the setting does not make the invitation secret.
 
-“Anonymous gifts” protects gift-givers' names. If it is switched off, guests may only display their name with their own agreement. Already anonymous reservations do not acquire a visible name as a result. Share invitation codes and links only with the intended people.
+Gifts are anonymous in the new iOS/web interface. Name sharing is disabled while content review is enabled. Older boxes without that review may offer “Anonymous gifts”: switching it off still requires each guest’s own agreement to show their name, and existing anonymous reservations remain anonymous. Share invitation codes and links only with intended people.
 
 ## Use notifications
 
@@ -117,11 +121,11 @@ At a limit, you can select an active list to archive or a wish to remove. The fo
 
 ## Age group and advertising
 
-This section and the prepared reward videos above concern Android. The first iOS version has no advertising integration, reward videos, purchasable Premium or age-group selector. Archive boxes or remove wishes there to free capacity.
+Android and iOS contain separately prepared AdMob integrations. Production banners and reward videos remain off until the relevant provider, consent and native checks pass. The German/English consent message is associated with both apps. This alone does not enable advertising. No purchasable Premium is offered. Archiving lists or removing wishes remains available without advertising.
 
-The app is intended for adults and children. The prepared advertising feature neutrally asks for “Under 13”, “13–17” or “18+” before initial consent/advertising startup. There is no default choice. Without a choice and under 18, neither UMP nor the advertising SDK starts; there are no banners or reward videos. Normal app features remain usable. The choice stores only the coarse category locally on this device, without a date of birth or cloud transmission; it is excluded from device backups.
+The neutral age choice also governs access in current clients: own accounts at 13–17 require parent approval; under13 use a parent account. Declared minors receive no advertising requests. Authenticated adult advertising requires current server eligibility as well as consent and provider readiness. Account age categories and family associations are stored in the backend; no date of birth is requested. See the privacy notice for provider SDK processing and retention.
 
-Change the choice under “Profile → Age group” or in settings, or cancel selection for now. Changing it hides banners; further ad requests remain blocked until a permitted new choice. Adults additionally require provider readiness and consent checks. Outstanding server confirmation for a previously started optional video remains checkable; choosing an age never grants extra capacity itself. The standalone guest web view contains no ads.
+When advertising is enabled, the relevant privacy choices remain available in Profile. A changed or revoked scope stops new requests. Outstanding server confirmation of a previously started voluntary video remains recoverable on the same account; choosing an age or closing a video never grants capacity itself. The web view has no ads.
 
 ## Select your own cover image
 
@@ -140,3 +144,11 @@ Confirm account deletion in Profile using your current access. If “Account is 
 An Apple-associated account may require fresh confirmation with the same Apple access and provider revocation before deletion. Follow the offered Apple confirmation instead of creating a new account. Your general Apple Account remains; the completion message does not promise instant deletion of all data or backups held by Apple or Google.
 
 For lost access, deletion requests or other problems, contact [dev@timonply.com](mailto:dev@timonply.com). Mention the app, your device and the affected action; do not send passwords or private keys. Information on removing data is available under [Delete account and data](/wunschkiste/deletion.en.html).
+
+## Report content and block creators
+
+In the prepared iOS version, “Report content” is available in the box menu and on a wish. Choose a reason and optionally describe the problem. Only the receipt confirmation means the report arrived. After a connection problem you can send the same report again. An explicitly rejected report can be discarded and started again. For urgent concerns, contact [dev@timonply.com](mailto:dev@timonply.com); do not send passwords or private keys.
+
+“Block creator” hides their boxes for your access. You can reverse this under “Blocked creators”. Anonymous gift givers are not identified. Guests using another access capability and previously saved copies are not blocked by this action.
+
+Custom box photos need review before guests see them. While pending, guests see your preset cover; you can still view your own photo through authorized access. Upload only images and text you are allowed to use and share with your invited guests. Do not include another person’s personal content without their required permission. Disallowed content may be removed and access restricted. Safety functions and operator handling are checked before public availability.
