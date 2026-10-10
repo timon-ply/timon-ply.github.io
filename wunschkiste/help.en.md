@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.en/
 ---
 # Help with Wunschkiste
 
-Last updated: 4 October 2026 · Version 1.7
+Last updated: 10 October 2026
 
 This website provides help and legal information. You can find the web view and Android direct download at [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -31,7 +31,11 @@ You can begin as a guest. Your editing permission remains on this device. The li
 
 New accounts use an email address and password. Choose “Create account”, enter your details and request a verification link. Open the link in your inbox, return to the app and choose “Check verification”. Then finish signing in. For an already verified account, sign in directly with your email address and password. You do not need a Google Account for this. You can still begin as a guest without an account.
 
-If “Continue with Google” is displayed, you can alternatively sign in through Google's account dialog. Cancelling the dialog leaves your existing access unchanged. For an account that uses Google exclusively, confirm sensitive actions through Google; you do not need to invent a Wunschkiste password. Other providers are only offered once configured.
+If “Continue with Google” is displayed, you can alternatively sign in through Google's account dialog. “Continue with Apple” is only offered when configured and enabled for your app version; Apple's dialog opens in the browser. Return to the app afterwards and check completion there. After an interrupted connection, you can check a still-valid operation again. An expired operation requires a new start.
+
+The new provider sign-in flow shows an explanation before each Apple/Google operation and requires explicit, initially unchecked consent. With the same verified email address, Firebase may use existing email/Google access, associate providers or replace a previously untrusted credential under its provider rules. Without consent, this new flow opens no provider dialog. Consent is not a promise that Firebase prevents every association; later cancellation does not automatically undo provider changes already made. You can use the offered email sign-in or guest mode instead.
+
+With Apple, you can choose “Hide My Email”. Wunschkiste then receives the relay address instead of your real address. Actual message forwarding depends on Apple and your settings and is not guaranteed. For provider-only access, confirm sensitive actions through the associated provider; you do not need to invent a Wunschkiste password. Removing the app or disabling forwarding does not delete your Wunschkiste account.
 
 After a successful sign-in, you remain signed in on this device while the session is valid. Use a unique password with 15–128 characters and save it in your password manager. Spaces remain part of the password. Keep access to your email inbox up to date so you can receive verification and recovery links.
 
@@ -47,7 +51,7 @@ Your older account is retained. On the sign-in page, choose “Previous account 
 
 To switch to email sign-in, choose “Set up email sign-in” in Profile. You can create new email access or choose “Use existing email sign-in”. Verify your email address and also confirm your previous password, or your previous account key if the account has no password. Your lists and reservations remain in the same Wunschkiste account. Your previous access remains valid until completion is confirmed.
 
-After a successful switch, sign in with your email address and the password chosen for that access. Old account keys, passkeys and recovery codes are no longer valid. Accounts are never merged solely because names or email addresses match. You cannot additionally link email access that is already associated with another Wunschkiste account to your older account.
+After a successful switch, sign in with your email address and the password chosen for that access. Old account keys, passkeys and recovery codes are no longer valid. Older Wunschkiste accounts using usernames or account keys are not merged solely because names or email addresses match. This is separate from the Firebase provider association described above. You cannot additionally link email access that is already associated with another Wunschkiste account to your older account.
 
 ## Import product details
 
@@ -60,6 +64,8 @@ Paste an HTTPS product address or share it to Wunschkiste from another app. Avai
 For an email account, choose “Forgot password” on the sign-in page, enter your email address and request a link. Open it in your inbox, set a new password and then sign in to the app again. If no message arrives, also check your spam folder and the spelling of the address. Confirmation of the request does not reveal whether an account exists for the address entered. Support cannot show you your password or replace proof of access to someone else's account.
 
 For access that uses Google exclusively, use your Google Account's recovery features. Wunschkiste's password feature applies to accounts with a configured Wunschkiste password.
+
+For Apple-only access, use your Apple Account's recovery and, where applicable, check “Hide My Email” settings. Sign in again with the Apple access belonging to the affected account. A new email address or new provider access does not prove ownership of another existing account.
 
 Passkeys remain available under “Profile → Passkeys” for older accounts without an email link. They require Android 9 or newer and an available provider on your device. Wunschkiste does not create a provider account for you. Passkeys are not offered for email accounts in this version.
 
@@ -97,7 +103,13 @@ For free, you can create up to three active lists with up to 20 active wishes ea
 
 Premium is a planned offering. There is currently no purchase, subscription or checkout. A preview does not unlock features or trigger payment. Google Analytics is not used.
 
-At a limit, you can select an active list to archive or a wish to remove. The form is preserved. The new version also prepares voluntary AdMob videos: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Ads and videos remain disabled until provider, audience and consent configuration has been confirmed.
+At a limit, you can select an active list to archive or a wish to remove. The form is preserved. The new version also prepares voluntary AdMob videos for adults: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Production ads and videos are currently off and additionally require confirmed store/provider review and technical readiness. The published German/English consent message for all regions offers a direct decline option; publication alone does not activate ads.
+
+## Age group and advertising
+
+The app is intended for adults and children. The prepared advertising feature neutrally asks for “Under 13”, “13–17” or “18+” before initial consent/advertising startup. There is no default choice. Without a choice and under 18, neither UMP nor the advertising SDK starts; there are no banners or reward videos. Normal app features remain usable. The choice stores only the coarse category locally on this device, without a date of birth or cloud transmission; it is excluded from device backups.
+
+Change the choice under “Profile → Age group” or in settings, or cancel selection for now. Changing it hides banners; further ad requests remain blocked until a permitted new choice. Adults additionally require provider readiness and consent checks. Outstanding server confirmation for a previously started optional video remains checkable; choosing an age never grants extra capacity itself. The standalone guest web view contains no ads.
 
 ## Select your own cover image
 
@@ -108,5 +120,7 @@ Use a provided design or an image you are permitted to share. Invited people can
 Check your connection and try the action again. A change is only saved once confirmed by the server. Limits of the free test operation may temporarily prevent further actions. A reservation or repeated save attempt does not place an order. This version does not offer purchases or subscriptions.
 
 Confirm account deletion in Profile using your current access. If “Account is being deleted” appears, the process has not yet been fully completed. Choose “Continue deletion” once a connection is available again. Do not clear app data during this process: the confirmation is kept on this device so deletion can continue. Only the final confirmation means that the server has completed the process.
+
+An Apple-associated account may require fresh confirmation with the same Apple access and provider revocation before deletion. Follow the offered Apple confirmation instead of creating a new account. Your general Apple Account remains; the completion message does not promise instant deletion of all data or backups held by Apple or Google.
 
 For lost access, deletion requests or other problems, contact [dev@timonply.com](mailto:dev@timonply.com). Mention the app, your device and the affected action; do not send passwords or private keys. Information on removing data is available under [Delete account and data](/wunschkiste/deletion.en.html).

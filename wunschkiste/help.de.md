@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.de/
 ---
 # Hilfe zu Wunschkiste
 
-Stand: 4. Oktober 2026 · Version 1.7
+Stand: 10. Oktober 2026
 
 Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -31,7 +31,11 @@ Du kannst als Gast beginnen. Deine Bearbeitungsberechtigung bleibt dabei auf die
 
 Neue Konten verwenden eine E-Mail-Adresse und ein Passwort. Wähle „Konto erstellen“, gib deine Angaben ein und fordere den Bestätigungslink an. Öffne den Link in deinem Postfach, kehre in die App zurück und wähle „Bestätigung prüfen“. Schließe danach die Anmeldung ab. Bei einem bereits bestätigten Konto meldest du dich direkt mit E-Mail-Adresse und Passwort an. Ein Google-Konto ist dafür nicht nötig. Ohne Konto kannst du weiterhin als Gast beginnen.
 
-Wenn „Mit Google fortfahren“ angezeigt wird, kannst du dich alternativ über den Google-Kontodialog anmelden. Wird der Dialog abgebrochen, bleibt dein bisheriger Zugang unverändert. Für ein Konto, das ausschließlich Google verwendet, bestätigst du sensible Aktionen über Google; ein Wunschkiste-Passwort musst du dafür nicht erfinden. Andere Anbieter werden erst angeboten, wenn sie eingerichtet sind.
+Wenn „Mit Google fortfahren“ angezeigt wird, kannst du dich alternativ über den Google-Kontodialog anmelden. „Mit Apple fortfahren“ wird nur angeboten, wenn dieser Zugang eingerichtet und für deine App-Version freigeschaltet ist; der Apple-Dialog öffnet sich im Browser. Kehre anschließend in die App zurück und prüfe dort den Abschluss. Bei unterbrochener Verbindung kannst du einen noch gültigen Vorgang erneut prüfen. Ein abgelaufener Vorgang benötigt einen neuen Start.
+
+Der neue Anbieter-Anmeldeweg zeigt vor jedem Apple-/Google-Vorgang eine Erklärung und verlangt deine ausdrückliche, zunächst nicht ausgewählte Zustimmung. Bei gleicher bestätigter E-Mail-Adresse kann Firebase einen vorhandenen E-Mail-/Google-Zugang verwenden, Anbieter verbinden oder nach seinen Anbieterregeln einen bisher nicht vertrauenswürdigen Zugang ersetzen. Ohne Zustimmung öffnet dieser neue Weg keinen Anbieter-Dialog. Die Zustimmung ist keine Zusage, dass Firebase jede Verknüpfung verhindert; ein späterer Abbruch macht bereits ausgeführte Anbieteränderungen nicht automatisch rückgängig. Du kannst stattdessen die angebotene E-Mail-Anmeldung oder den Gastmodus nutzen.
+
+Bei Apple kannst du „E-Mail verbergen“ wählen. Wunschkiste erhält dann die Weiterleitungsadresse statt deiner echten Adresse. Die tatsächliche Weiterleitung von Nachrichten hängt von Apple und deinen Einstellungen ab und ist nicht garantiert. Für reine Anbieter-Zugänge bestätigst du sensible Aktionen über den zugehörigen Anbieter; ein Wunschkiste-Passwort musst du dafür nicht erfinden. Das Entfernen der App oder das Abschalten der Weiterleitung löscht dein Wunschkiste-Konto nicht.
 
 Nach erfolgreicher Anmeldung bleibst du auf diesem Gerät angemeldet, solange die Sitzung gültig ist. Verwende ein eigenes Passwort mit 15–128 Zeichen und speichere es in deinem Passwortmanager. Leerzeichen bleiben Bestandteil des Passworts. Halte auch den Zugang zu deinem E-Mail-Postfach aktuell, damit du Bestätigungs- und Wiederherstellungslinks empfangen kannst.
 
@@ -47,7 +51,7 @@ Dein bisheriges Konto bleibt erhalten. Wähle auf der Anmeldeseite „Bisheriges
 
 Für den Wechsel zur E-Mail-Anmeldung wähle im Profil „E-Mail-Zugang einrichten“. Du kannst einen neuen E-Mail-Zugang erstellen oder „Vorhandene E-Mail-Anmeldung verwenden“ wählen. Bestätige deine E-Mail-Adresse und zusätzlich dein bisheriges Passwort beziehungsweise bei einem Konto ohne Passwort den bisherigen Kontoschlüssel. Deine Kisten und Reservierungen bleiben im selben Wunschkiste-Konto. Bis zum bestätigten Abschluss bleibt dein bisheriger Zugang erhalten.
 
-Nach dem erfolgreichen Wechsel meldest du dich mit E-Mail-Adresse und dem dafür gewählten Passwort an. Alte Kontoschlüssel, Passkeys und Wiederherstellungscodes gelten dann nicht mehr. Konten werden niemals allein wegen gleicher Namen oder E-Mail-Adressen zusammengeführt. Eine E-Mail-Anmeldung, die bereits einem anderen Wunschkiste-Konto zugeordnet ist, kannst du nicht zusätzlich mit deinem bisherigen Konto verbinden.
+Nach dem erfolgreichen Wechsel meldest du dich mit E-Mail-Adresse und dem dafür gewählten Passwort an. Alte Kontoschlüssel, Passkeys und Wiederherstellungscodes gelten dann nicht mehr. Bisherige Wunschkiste-Konten mit Benutzername oder Kontoschlüssel werden nicht allein wegen gleicher Namen oder E-Mail-Adressen zusammengeführt. Das ist von der oben beschriebenen Anbieterzuordnung innerhalb von Firebase zu unterscheiden. Eine E-Mail-Anmeldung, die bereits einem anderen Wunschkiste-Konto zugeordnet ist, kannst du nicht zusätzlich mit deinem bisherigen Konto verbinden.
 
 ## Produktdaten übernehmen
 
@@ -60,6 +64,8 @@ Füge eine HTTPS-Adresse des Produkts ein oder teile sie aus einer anderen App m
 Bei einem E-Mail-Konto wähle auf der Anmeldeseite „Passwort vergessen“, gib deine E-Mail-Adresse ein und fordere einen Link an. Öffne ihn in deinem Postfach, setze ein neues Passwort und melde dich anschließend wieder in der App an. Prüfe bei ausbleibenden Nachrichten auch deinen Spamordner und die Schreibweise der Adresse. Eine Bestätigung der Anfrage verrät nicht, ob für eine eingegebene Adresse ein Konto besteht. Der Support kann dir dein Passwort nicht anzeigen und den Nachweis für ein fremdes Konto nicht ersetzen.
 
 Bei einem reinen Google-Zugang nutze die Wiederherstellungsfunktionen deines Google-Kontos. Die Passwortfunktion in Wunschkiste gilt für Konten mit einem eingerichteten Wunschkiste-Passwort.
+
+Bei einem reinen Apple-Zugang nutze die Wiederherstellung deines Apple-Kontos und prüfe gegebenenfalls die Einstellungen für „E-Mail verbergen“. Melde dich wieder mit dem Apple-Zugang des betroffenen Kontos an. Eine neue E-Mail-Adresse oder ein neuer Anbieter-Zugang ist kein Nachweis für ein anderes bestehendes Konto.
 
 Für bisherige Konten ohne E-Mail-Verknüpfung bleiben Passkeys unter „Profil → Passkeys“ verfügbar. Sie benötigen Android 9 oder neuer und einen verfügbaren Anbieter auf deinem Gerät. Wunschkiste richtet keinen Anbieter-Account für dich ein. Für E-Mail-Konten werden in dieser Version keine Passkeys angeboten.
 
@@ -97,7 +103,13 @@ Kostenlos kannst du bis zu drei aktive Kisten mit jeweils bis zu 20 aktiven Wün
 
 Premium ist ein geplantes Angebot. Es gibt derzeit keinen Kauf, kein Abonnement und keinen Checkout. Eine Vorschau schaltet keine Funktionen frei und löst keine Zahlung aus. Es wird kein Google Analytics verwendet.
 
-Am Limit kannst du eine aktive Kiste zum Archivieren oder einen Wunsch zum Entfernen auswählen. Das Formular bleibt dabei erhalten. Die neue Version bereitet außerdem freiwillige AdMob-Videos vor: Ein bestätigtes Video kann einen zusätzlichen aktiven Kistenplatz oder fünf zusätzliche Wunschplätze für die ausgewählte Kiste freischalten. Höchstens drei zusätzliche Kistenplätze und 20 zusätzliche Wunschplätze je Kiste sind vorgesehen; höchstens eine Belohnung je Konto und UTC-Kalendertag. Erst die geprüfte Serverbestätigung zählt, nicht das Schließen des Videos. Ohne verfügbare Anzeige bleibt die normale Archivierungs- beziehungsweise Löschmöglichkeit bestehen. Anzeigen und Videos bleiben bis zur bestätigten Anbieter-, Zielgruppen- und Einwilligungskonfiguration deaktiviert.
+Am Limit kannst du eine aktive Kiste zum Archivieren oder einen Wunsch zum Entfernen auswählen. Das Formular bleibt dabei erhalten. Die neue Version bereitet außerdem freiwillige AdMob-Videos für Erwachsene vor: Ein bestätigtes Video kann einen zusätzlichen aktiven Kistenplatz oder fünf zusätzliche Wunschplätze für die ausgewählte Kiste freischalten. Höchstens drei zusätzliche Kistenplätze und 20 zusätzliche Wunschplätze je Kiste sind vorgesehen; höchstens eine Belohnung je Konto und UTC-Kalendertag. Erst die geprüfte Serverbestätigung zählt, nicht das Schließen des Videos. Ohne verfügbare Anzeige bleibt die normale Archivierungs- beziehungsweise Löschmöglichkeit bestehen. Produktionsanzeigen und Videos sind derzeit ausgeschaltet und benötigen zusätzlich die bestätigte Store-/Anbieterprüfung und technische Freigabe. Die veröffentlichte deutsch-/englischsprachige Einwilligungsnachricht für alle Regionen bietet eine direkte Ablehnmöglichkeit; ihre Veröffentlichung allein aktiviert keine Anzeigen.
+
+## Altersgruppe und Anzeigen
+
+Die App ist für Erwachsene und Kinder vorgesehen. Die vorbereitete Anzeigenfunktion fragt vor jedem ersten Consent-/Anzeigenstart neutral nach „Unter 13“, „13–17“ oder „18+“. Es gibt keine Vorauswahl. Ohne Auswahl und unter 18 starten weder UMP noch das Anzeigen-SDK; es gibt keine Banner oder Belohnungsvideos. Die normalen Appfunktionen bleiben nutzbar. Die Auswahl speichert ausschließlich die grobe Kategorie lokal auf diesem Gerät, ohne Geburtsdatum oder Cloud-Übertragung; sie wird nicht im Gerätebackup gesichert.
+
+Unter „Profil → Altersgruppe“ beziehungsweise in den Einstellungen kannst du die Auswahl ändern oder die Auswahl zunächst abbrechen. Banner werden beim Ändern ausgeblendet; weitere Anzeigenanfragen bleiben bis zur zulässigen neuen Auswahl gesperrt. Für Erwachsene gelten zusätzlich Anbieterfreigabe und Consent-Prüfung. Ausstehende Serverbestätigungen eines bereits gestarteten freiwilligen Videos bleiben prüfbar; die Alterswahl selbst erteilt keine zusätzlichen Plätze. Die eigenständige Web-Gastansicht enthält keine Anzeigen.
 
 ## Ein eigenes Titelbild auswählen
 
@@ -108,5 +120,7 @@ Nutze eines der vorgegebenen Motive oder ein Bild, das du teilen darfst. Das Tit
 Prüfe deine Verbindung und versuche die Aktion erneut. Eine Änderung ist erst gespeichert, wenn der Server sie bestätigt. Grenzen des kostenlosen Testbetriebs können vorübergehend weitere Aktionen verhindern. Eine Reservierung oder ein wiederholter Speicherversuch löst keine Bestellung aus. Für die Nutzung werden in dieser Version keine Käufe oder Abonnements angeboten.
 
 Eine Kontolöschung bestätigst du im Profil mit deinem aktuellen Zugang. Falls „Konto wird gelöscht“ angezeigt wird, ist der Vorgang noch nicht vollständig abgeschlossen. Wähle „Löschung fortsetzen“, sobald wieder eine Verbindung besteht. Lösche die Appdaten währenddessen nicht: Auf diesem Gerät bleibt die Bestätigung gespeichert, damit die Löschung fortgesetzt werden kann. Erst die abschließende Bestätigung bedeutet, dass der Server den Vorgang abgeschlossen hat.
+
+Bei einem mit Apple verbundenen Konto kann für die Löschung eine frische Bestätigung desselben Apple-Zugangs und der Anbieter-Widerruf erforderlich sein. Folge der angebotenen Apple-Bestätigung, statt ein neues Konto anzulegen. Dein allgemeines Apple-Konto bleibt erhalten; die Abschlussmeldung verspricht keine sofortige Löschung aller Daten oder Sicherungen bei Apple oder Google.
 
 Bei verlorenen Zugängen, Löschanfragen oder anderen Problemen nutze [dev@timonply.com](mailto:dev@timonply.com). Nenne die App, dein Gerät und den betroffenen Vorgang; sende keine Passwörter oder privaten Schlüssel. Informationen zum Entfernen von Daten findest du unter [Konto und Daten löschen](/wunschkiste/deletion.de.html).
