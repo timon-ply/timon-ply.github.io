@@ -5,7 +5,11 @@ import {fileURLToPath} from 'node:url';
 const root=dirname(fileURLToPath(import.meta.url));
 const escape=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 function inline(value){return escape(value).replaceAll('&lt;br&gt;','<br>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,label,url)=>`<a href="${url}">${label}</a>`);}
-for(const language of ['de','en'])for(const name of ['privacy','impressum','help','deletion']){
+const allowed=['privacy','impressum','help','deletion'];
+const requested=process.argv.slice(2);
+if(requested.some(name=>!allowed.includes(name)))throw new Error('Unknown Wunschkiste document');
+const documents=requested.length?[...new Set(requested)]:allowed;
+for(const language of ['de','en'])for(const name of documents){
   const english=language==='en';
   const source=readFileSync(join(root,`${name}.${language}.md`),'utf8').replaceAll('\r\n','\n');
   const title=source.match(/^title: "(.+)"$/m)[1];

@@ -17,6 +17,8 @@ Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und A
 
 ## Einführung
 
+Die erste native iOS-Testversion nutzt dieselben online gespeicherten Kisten wie die Webansicht. Die Hinweise unterscheiden gemeinsame Funktionen und ältere Android-Funktionen. Eine Testversion ist kein Nachweis einer abgeschlossenen öffentlichen Store-Freigabe.
+
 Beim ersten Start zeigt die App, wie du eine Kiste erstellst, Wünsche hinzufügst und die Einladung teilst. Du kannst mit „Weiter“ oder Wischen wechseln, zurückgehen oder jederzeit überspringen. Danach kannst du ohne Konto anfangen, ein Konto erstellen oder dich anmelden. Unter „Profil → Hilfe → Einführung ansehen“ öffnest du die Schritte erneut. In der Hilfe kannst du einzelne Themen aufklappen. Vorhandene Konten und Gastkisten bleiben beim Update erhalten.
 
 ## Eine Kiste erstellen
@@ -37,15 +39,17 @@ Der neue Anbieter-Anmeldeweg zeigt vor jedem Apple-/Google-Vorgang eine Erkläru
 
 Bei Apple kannst du „E-Mail verbergen“ wählen. Wunschkiste erhält dann die Weiterleitungsadresse statt deiner echten Adresse. Die tatsächliche Weiterleitung von Nachrichten hängt von Apple und deinen Einstellungen ab und ist nicht garantiert. Für reine Anbieter-Zugänge bestätigst du sensible Aktionen über den zugehörigen Anbieter; ein Wunschkiste-Passwort musst du dafür nicht erfinden. Das Entfernen der App oder das Abschalten der Weiterleitung löscht dein Wunschkiste-Konto nicht.
 
-Nach erfolgreicher Anmeldung bleibst du auf diesem Gerät angemeldet, solange die Sitzung gültig ist. Verwende ein eigenes Passwort mit 15–128 Zeichen und speichere es in deinem Passwortmanager. Leerzeichen bleiben Bestandteil des Passworts. Halte auch den Zugang zu deinem E-Mail-Postfach aktuell, damit du Bestätigungs- und Wiederherstellungslinks empfangen kannst.
+Nach erfolgreicher Anmeldung bleibst du auf diesem Gerät angemeldet, solange die Sitzung gültig ist. Verwende ein eigenes Passwort mit mindestens 15 Zeichen und speichere es in deinem Passwortmanager. Leerzeichen bleiben Bestandteil des Passworts. Halte auch den Zugang zu deinem E-Mail-Postfach aktuell, damit du Bestätigungs- und Wiederherstellungslinks empfangen kannst.
 
 Für ein neues Konto musst du keinen langen Kontoschlüssel abschreiben oder exportieren. Ein noch vorhandener alter Kontoschlüssel ist ein privater Zugang, kein Einladungscode. Teile ihn nicht mit Gästen.
 
-Über den Stift im Profil bearbeitest du deinen Namen. „Speichern“ bestätigt nur die Namensänderung. Wenn dein Konto ein Passwort verwendet, öffnet „Passwort ändern“ einen eigenen Dialog mit aktuellem und neuem Passwort; ein falsches aktuelles Passwort wird abgelehnt. Bei E-Mail-Konten müssen andere Geräte erneut ihr Passwort eingeben, sobald ihr bisheriger Zugang abläuft; bei bisherigen Konten werden andere Sitzungen beim Ändern ungültig. „Angemeldete Geräte“ findest du direkt im Profil.
+Über den Stift im Profil bearbeitest du deinen Namen. „Speichern“ bestätigt die Namensänderung. In iOS wird ein dort neu gewähltes Profilfoto ebenfalls gespeichert; das Passwort wird separat geändert. Wenn dein Konto ein Passwort verwendet, öffnet „Passwort ändern“ einen eigenen Dialog mit aktuellem und neuem Passwort; ein falsches aktuelles Passwort wird abgelehnt. Bei E-Mail-Konten müssen andere Geräte erneut ihr Passwort eingeben, sobald ihr bisheriger Zugang abläuft; bei bisherigen Konten werden andere Sitzungen beim Ändern ungültig. „Angemeldete Geräte“ findest du direkt im Profil.
 
 Im Profil kannst du ein eigenes Profilfoto wählen, ersetzen oder entfernen. Dieses Bild bleibt privat in deinem Konto und wird nicht automatisch Gästen gezeigt. Unter „Sprache“ wechselst du zwischen Deutsch und Englisch. Deine Auswahl bleibt gespeichert; Produktnamen und selbst eingegebene Texte werden nicht übersetzt.
 
 ## Ein bisheriges Konto weiterverwenden
+
+Dieser Abschnitt beschreibt ältere Android-Zugänge. Für die erste iOS-Version verknüpfe ein solches Konto zuerst über die dort angebotene Funktion mit einer bestätigten E-Mail-Adresse. iOS bietet die neue E-Mail-/Anbieter-Anmeldung, keine alte Schlüsselanmeldung oder Passkeys.
 
 Dein bisheriges Konto bleibt erhalten. Wähle auf der Anmeldeseite „Bisheriges Konto mit Benutzername“, um deinen bisherigen Zugang zu verwenden. Konten ohne eingerichtetes Passwort behalten ihren alten Kontoschlüssel als Zugang. In einem angemeldeten bisherigen Konto kannst du unter „Profil → Stift → Passwort einrichten“ weiterhin ein Passwort einrichten.
 
@@ -54,6 +58,8 @@ Für den Wechsel zur E-Mail-Anmeldung wähle im Profil „E-Mail-Zugang einricht
 Nach dem erfolgreichen Wechsel meldest du dich mit E-Mail-Adresse und dem dafür gewählten Passwort an. Alte Kontoschlüssel, Passkeys und Wiederherstellungscodes gelten dann nicht mehr. Bisherige Wunschkiste-Konten mit Benutzername oder Kontoschlüssel werden nicht allein wegen gleicher Namen oder E-Mail-Adressen zusammengeführt. Das ist von der oben beschriebenen Anbieterzuordnung innerhalb von Firebase zu unterscheiden. Eine E-Mail-Anmeldung, die bereits einem anderen Wunschkiste-Konto zugeordnet ist, kannst du nicht zusätzlich mit deinem bisherigen Konto verbinden.
 
 ## Produktdaten übernehmen
+
+In der ersten iOS-Version fügst du den Link durch Einfügen ins Wunschformular hinzu. Name, Preis und Notiz trägst du selbst ein; Größe und Farbe stehen unter den weiteren Details. Shopdaten und externe Produktfotos werden hier nicht automatisch übernommen. Neutrale Geschenkvisualisierungen ersetzen Händlerbilder, bis die nötigen shopbezogenen Rechte und Berechtigungen geklärt sind. Ein Wunsch ist auch ohne Link möglich. Öffnest du einen Link, kaufst du ausschließlich im Shop; Wunschkiste löst keine Bestellung aus. Der folgende automatische Abruf und das Teilen aus anderen Apps betreffen Android-Versionen, die diese Funktionen anbieten.
 
 Größe und Farbe kannst du als optionale Angaben direkt unter dem Namen eintragen. Gäste sehen diese Angaben in der App und im Browser. Ein Wunsch wird dadurch nicht in mehrere Shopvarianten aufgeteilt.
 
@@ -72,6 +78,8 @@ Für bisherige Konten ohne E-Mail-Verknüpfung bleiben Passkeys unter „Profil 
 Falls du für ein bisheriges Konto einen Wiederherstellungscode eingerichtet hast, bleibt dieser bis zur E-Mail-Verknüpfung verwendbar. Unter „Bisheriges Konto mit Benutzername → Zugang wiederherstellen“ kannst du mit Benutzername und gesichertem Code ein neues Passwort setzen. Danach meldest du dich normal an; alle bisherigen Sitzungen, Passkeys und alten Zugänge sind ungültig. Richte gewünschte Passkeys danach erneut ein. Ein bisheriges Konto ohne verknüpfte E-Mail-Adresse lässt sich nicht über einen E-Mail-Link wiederherstellen.
 
 ## Kisten archivieren
+
+In iOS öffnest du die Kiste und wählst unten „Kiste archivieren“. Die Archivübersicht erreichst du über das Menü in „Meine Kisten“. In einer archivierten Kiste bietet „Kiste wiederherstellen“ die Rückkehr an, wenn ein aktiver Platz frei ist.
 
 Öffne die Kiste und wähle beim Bearbeiten „Archivieren“. Sie erscheint anschließend im Archiv statt unter den aktiven Kisten. „Rückgängig“ oder „Wiederherstellen“ bringt dieselbe Kiste zurück. Einladungslinks und Reservierungen bleiben während der Archivierung gültig. Archivieren ist keine Löschung; Duplizieren wird nicht angeboten.
 
@@ -93,6 +101,8 @@ Beim Bearbeiten deiner Kiste kannst du „Reservierungen für mich ausblenden“
 
 ## Benachrichtigungen verwenden
 
+Unter iOS kannst du die Geräteberechtigung in den iOS-Einstellungen ändern. Die Banner bleiben allgemein: kein Name einer schenkenden Person, kein Artikel- oder Kistenname. Schon an den Zustelldienst übergebene Mitteilungen können trotz Abschalten oder Abmelden noch erscheinen; die angeforderte kurze Ablaufzeit ist keine Zusage eines sofortigen Rückrufs. Eine zuvor bestätigte Aktivierung kann beim nächsten Start ohne neue Berechtigungsfrage wiederhergestellt werden.
+
 Unter „Profil → Benachrichtigungen“ kannst du Push-Mitteilungen über neue Gäste und gekaufte Wünsche einzeln aktivieren oder abschalten. Beide Schalter sind anfangs aus. Unabhängig von den Push-Schaltern zeigt die Aktivitätsübersicht die letzten höchstens 20 tatsächlichen Ereignisse deiner Kisten. Die Schalter löschen oder deaktivieren diese Übersicht nicht.
 
 Push auf dein Gerät wird nur angeboten, wenn der Versand eingerichtet ist. Aktiviere ihn bewusst und erlaube gegebenenfalls Benachrichtigungen in Android. Ohne Geräteberechtigung erscheinen keine Push-Mitteilungen. Push-Nachrichten enthalten keine Namen oder Fotos der Schenkenden. Du kannst die Berechtigung jederzeit in den Android-Einstellungen ändern. Bei ausgeschalteten Push-Mitteilungen können vorhandene Hinweise weiterhin in der App stehen.
@@ -107,6 +117,8 @@ Am Limit kannst du eine aktive Kiste zum Archivieren oder einen Wunsch zum Entfe
 
 ## Altersgruppe und Anzeigen
 
+Dieser Abschnitt und die vorbereiteten Belohnungsvideos oben betreffen Android. Die erste iOS-Version enthält weder Anzeigenintegration noch Belohnungsvideos, käufliches Premium oder eine Altersgruppenauswahl. Archiviere dort Kisten und entferne Wünsche, um freie Plätze zu schaffen.
+
 Die App ist für Erwachsene und Kinder vorgesehen. Die vorbereitete Anzeigenfunktion fragt vor jedem ersten Consent-/Anzeigenstart neutral nach „Unter 13“, „13–17“ oder „18+“. Es gibt keine Vorauswahl. Ohne Auswahl und unter 18 starten weder UMP noch das Anzeigen-SDK; es gibt keine Banner oder Belohnungsvideos. Die normalen Appfunktionen bleiben nutzbar. Die Auswahl speichert ausschließlich die grobe Kategorie lokal auf diesem Gerät, ohne Geburtsdatum oder Cloud-Übertragung; sie wird nicht im Gerätebackup gesichert.
 
 Unter „Profil → Altersgruppe“ beziehungsweise in den Einstellungen kannst du die Auswahl ändern oder die Auswahl zunächst abbrechen. Banner werden beim Ändern ausgeblendet; weitere Anzeigenanfragen bleiben bis zur zulässigen neuen Auswahl gesperrt. Für Erwachsene gelten zusätzlich Anbieterfreigabe und Consent-Prüfung. Ausstehende Serverbestätigungen eines bereits gestarteten freiwilligen Videos bleiben prüfbar; die Alterswahl selbst erteilt keine zusätzlichen Plätze. Die eigenständige Web-Gastansicht enthält keine Anzeigen.
@@ -116,6 +128,10 @@ Unter „Profil → Altersgruppe“ beziehungsweise in den Einstellungen kannst 
 Nutze eines der vorgegebenen Motive oder ein Bild, das du teilen darfst. Das Titelbild sehen auch eingeladene Personen. Für einen Kindergeburtstag genügt ein Motiv; ein Kinderfoto ist nicht nötig. Die App bereitet ausgewählte Bilder für den Upload auf. Wenn ein Upload abgelehnt wird, bleibt die bisherige Kiste erhalten; wähle ein kleineres Bild oder ein vorgegebenes Motiv.
 
 ## Wenn etwas nicht funktioniert
+
+Wenn nach dem Speichern eines neuen Wunsches unklar bleibt, ob er angekommen ist, prüfe zuerst die Kiste. Wiederhole eine solche Anlage nicht blind mehrfach; der Entwurf bleibt für die angebotene Prüfung und eine bewusst bestätigte Wiederholung erhalten.
+
+In iOS speichert die App Gast- und Kontozugänge gerätegebunden im Schlüsselbund. „Abmelden“ beendet den Kontozugang; Gastberechtigungen können erhalten bleiben. Verlasse dich nicht auf eine Deinstallation als Serverlöschung oder als sichere Entfernung aller Schlüsselbunddaten. Bewahre während einer laufenden Löschung die App und den Zugang auf, bis der Server den Abschluss bestätigt.
 
 Prüfe deine Verbindung und versuche die Aktion erneut. Eine Änderung ist erst gespeichert, wenn der Server sie bestätigt. Grenzen des kostenlosen Testbetriebs können vorübergehend weitere Aktionen verhindern. Eine Reservierung oder ein wiederholter Speicherversuch löst keine Bestellung aus. Für die Nutzung werden in dieser Version keine Käufe oder Abonnements angeboten.
 

@@ -47,6 +47,10 @@ Du kannst Appdaten über Android beziehungsweise lokale Webdaten über die Brows
 
 Die grobe Altersgruppe für die vorbereitete Anzeigenfunktion bleibt ausschließlich auf dem Gerät und kann unter „Profil → Altersgruppe“ geändert werden. Appdaten löschen oder Deinstallation entfernt diese lokale Auswahl; es gibt dafür keine Cloud-Kopie oder Sicherung im Gerätebackup. Das Ändern der Auswahl löscht keine Serverkisten und erteilt keine Belohnung. Ohne Auswahl und für beide minderjährigen Gruppen werden keine Anzeigen angefordert.
 
+In iOS werden Kontozugang, Gastberechtigungen und benötigte Nachweise zur Löschfortsetzung im gerätegebundenen Schlüsselbund gespeichert. „Abmelden“ beendet den Kontozugang und versucht, den lokalen Push-Token sowie zugestellte Gerätehinweise zu entfernen; Gastberechtigungen können erhalten bleiben. Eine Deinstallation löscht keine Serverdaten und ist keine verlässliche Zusage zur Entfernung aller Schlüsselbunddaten. Bei einem noch laufenden Löschvorgang bewahre die App und den Zugang auf, bis der Server den Abschluss bestätigt. Eine erforderliche erneute Anmeldung muss dasselbe Konto bestätigen; ein anderes Konto darf die gespeicherte Löschung nicht übernehmen.
+
+Bereits an APNs/FCM übergebene allgemeine iOS-Mitteilungen können nach Abschalten, Abmelden oder Löschen noch angezeigt werden. Die angeforderte kurze Ablaufzeit ist keine sofortige Rückrufgarantie. Neue Sendungen werden nur mit gültiger Geräte-/Sitzungszuordnung und aktivierten Einstellungen veranlasst. Die erste iOS-Version enthält keine Anzeigenintegration und keine lokale Werbe-Altersgruppenauswahl; die Altersgruppenhinweise oben betreffen Android.
+
 ## Einzelne Wünsche und Reservierungen
 
 Als Ersteller kannst du eigene Wünsche entfernen. Eine angebotene Rückgängig-Funktion kann diese zunächst wiederherstellen. Als schenkende Person kannst du deine eigene Reservierung freigeben. Das Freigeben einer Reservierung löscht nicht den Wunsch der anderen Person.

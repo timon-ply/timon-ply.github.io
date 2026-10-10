@@ -47,11 +47,17 @@ Providing the requested list, account and gift features is based on Article 6(1)
 
 ## Guest mode and data on your device
 
+The first native iOS version uses Firebase email, Apple and Google sign-in where each provider is configured. The older username, account-key and passkey methods described above concern existing Android access; this iOS version does not offer them. An older account can be prepared for the new sign-in through the email-linking feature offered there.
+
 Without an account, permission to edit your own lists or reservations is kept locally on your device or in your browser. This permission is separate from the public invitation link. Android protects local credentials with the Android Keystore; they are excluded from normal device backups. The web version uses local browser storage for necessary management and reservation permissions.
 
 Storage serves the feature you requested and recognises your permission; it is not used for advertising or tracking across devices. If you clear app data or browser storage, lose your device or uninstall the app, guest access may be lost. Previously uploaded lists are not automatically deleted from the server as a result. Save any management access you need, or link your lists beforehand through the available account feature.
 
 Whether you have seen or skipped the optional introduction is stored locally, separately from your credentials. This setting remains after you sign out. The introduction can be reopened in Help; your learning progress is not analysed.
+
+On iOS, Wunschkiste stores session and Firebase authentication tokens, guest permissions, unconfirmed drafts and the proofs needed for sign-in and deletion recovery in the device-bound Apple Keychain. These entries use protection after the first unlock of this device; the app does not configure them for synchronisation to other devices. Language and introduction status are stored separately in local app preferences. Signing out removes account access; local guest permissions may remain. Uninstalling is neither account deletion nor a reliable promise that all Keychain data is removed. [Apple](https://support.apple.com/guide/security/keychain-data-protection-secb0694df1a/web) describes the protection technology.
+
+For custom cover or profile photos, iOS uses the system photo picker. Wunschkiste processes the image you selected rather than uploading your entire photo library. Before upload, it is rendered as a new JPEG with limited dimensions and file size. An unfinished box draft may retain the selected image locally; only a confirmed upload makes it the stored cover. Invited people can see covers, while profile photos remain within authenticated account access.
 
 ## Invitations, reservations and product images
 
@@ -61,6 +67,8 @@ The “Hide reservations from me” setting hides details about reserved or purc
 
 For supported product links, the backend retrieves public product information. Suitable public product previews may be reused for up to five minutes in a limited memory cache. Links with URL query parameters and short links are not stored as shared cache entries; the purchase link you entered is retained. External product images are loaded from their respective addresses; the image provider receives technically necessary connection data, particularly your IP address. Opening a shop is subject to that shop's own privacy rules. A click or reservation does not trigger a purchase in Wunschkiste.
 
+The automatic product retrieval described above concerns Android/web versions offering that feature. The first iOS version does not automatically import shop titles, prices or product images and does not load external product photos. You enter the wish name, price, link and other details yourself; wishes use neutral gift visuals owned by the app. Automatic retailer data and retailer images remain disabled on iOS until the required shop-specific rights and permissions are established. Opening your link is subject to the respective shop's notices.
+
 ## Notifications
 
 Push notifications about new guests or purchased wishes are off by default. You can enable and disable them individually. Independently of these switches, a limited activity overview of the latest, up to 20 events is stored in the account. It comes from actual actions in your lists, remains available with push switched off and is not used for analytics or advertising.
@@ -68,6 +76,10 @@ Push notifications about new guests or purchased wishes are off by default. You 
 Push messages are only offered if delivery is configured. After you enable them, the app may additionally request your device's notification permission. To send through Firebase Cloud Messaging, technical device identifiers and delivery tokens are associated with your signed-in device; at most ten device sessions are considered. Messages contain no gift-givers' names or profile images and no private credentials. Google processes the data required for delivery. The connection is encrypted; Firebase Cloud Messaging itself does not provide end-to-end encryption. See the [Firebase privacy notice](https://firebase.google.com/support/privacy) and [FCM message security guidance](https://firebase.google.com/docs/cloud-messaging/encryption).
 
 Turning off push messages or device permission does not automatically remove notifications already stored in the account. After signing out or revoking a device session, that session is no longer used for delivery; deleting the account removes stored notifications, settings and device associations. Voluntary name sharing and push activation are based on your consent under Article 6(1)(a) GDPR; you can withdraw it for the future.
+
+On iOS, delivery uses Firebase Cloud Messaging and Apple Push Notification service (APNs). Google and Apple process installation/delivery identifiers and technical delivery data. iOS banners use the title “Wunschkiste” and a generic message about a new guest or purchased wish; they contain no item, box or person names. The technical payload contains public event and box identifiers that do not grant editing permission. The app initialises FCM only for enabled, signed-in use with device permission. Previously confirmed activation can be restored on a later launch without prompting for permission again.
+
+Generic messages already handed to the delivery service may still be displayed by the operating system after sign-out, disabling notifications or session revocation. iOS delivery requests a short five-minute expiry; this guarantees neither delivery nor immediate recall of accepted messages. Signing out or disabling notifications removes the Wunschkiste device association for future delivery and attempts to remove the local FCM token and delivered device notifications. The service and operating system may still retain identifiers or processed messages under their own rules. See the [FCM guidance for Apple platforms](https://firebase.google.com/docs/cloud-messaging/ios/get-started).
 
 ## Hosting and recipients
 
@@ -80,6 +92,8 @@ These providers may process data outside the European Economic Area. Information
 Wunschkiste uses no Google Analytics and sends no marketing emails. Verification and password emails serve only the access you requested. Premium is currently only a planned offering. This version offers no checkout, purchases or subscriptions and processes no payment data. There is no decision based solely on automated processing that produces legal or similarly significant effects.
 
 ## Advertising and voluntary extra capacity
+
+The prepared advertising and age-group features below concern Android. The first iOS version contains no AdMob/UMP integration, requests no ads and offers no reward videos or purchasable Premium membership. It has no advertising age-group selector. This description does not authorise future advertising activation; such a change requires new technical and legal review.
 
 Wunschkiste contains a prepared integration of Google AdMob and the User Messaging Platform (UMP). Production ads and reward videos are currently off. The German/English consent message has been prepared and published for all regions with a direct decline option; this alone does not enable ads. Store association, provider review and technical readiness must also be confirmed. When the integration is disabled, Wunschkiste starts neither UMP nor the advertising SDK. The standalone guest web view contains no advertising integration.
 
