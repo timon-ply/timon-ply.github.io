@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.de/
 ---
 # Hilfe zu Wunschkiste
 
-Stand: 10. Oktober 2026
+Stand: 11. Oktober 2026
 
 Diese Website stellt Hilfe und rechtliche Informationen bereit. Webansicht und Android-Direktdownload findest du unter [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -61,13 +61,13 @@ Für den Wechsel zur E-Mail-Anmeldung wähle im Profil „E-Mail-Zugang einricht
 
 Nach dem erfolgreichen Wechsel meldest du dich mit E-Mail-Adresse und dem dafür gewählten Passwort an. Alte Kontoschlüssel, Passkeys und Wiederherstellungscodes gelten dann nicht mehr. Bisherige Wunschkiste-Konten mit Benutzername oder Kontoschlüssel werden nicht allein wegen gleicher Namen oder E-Mail-Adressen zusammengeführt. Das ist von der oben beschriebenen Anbieterzuordnung innerhalb von Firebase zu unterscheiden. Eine E-Mail-Anmeldung, die bereits einem anderen Wunschkiste-Konto zugeordnet ist, kannst du nicht zusätzlich mit deinem bisherigen Konto verbinden.
 
-## Produktdaten übernehmen
+## Produktdetails eintragen
 
-Auf iOS fügst du einen unterstützten HTTPS-Shoplink ein und wählst „Details laden“. Verfügbare Produkttitel und EUR-Preise füllen unveränderte Felder; deine Bearbeitungen bleiben erhalten. Manche Shops blockieren den Abruf oder liefern nicht alle Angaben. Fehlendes lässt sich manuell ergänzen; Größe, Farbe und Notizen bleiben bearbeitbar. Händlerfotos und Beschreibungen werden auf iOS nicht übernommen, sondern neutrale Geschenkvisualisierungen verwendet. Preise sind Momentaufnahmen: Prüfe den Shop vor dem Kauf. Ein Wunsch ist auch ohne Link möglich. Wunschkiste bestellt nichts.
+Trage den Namen und Preis deines Wunsches selbst ein. Bei Bedarf ergänzt du einen unterstützten HTTPS-Shoplink, eine Notiz sowie Größe und Farbe. Die aktuelle iOS-/Web-Beta und der gemeinsame Backend-Abruf laden keine Shopdaten automatisch. Händlerfotos und Shopbeschreibungen werden nicht übernommen; Wünsche verwenden neutrale Geschenkvisualisierungen. Ein Wunsch ist auch ohne Link möglich.
 
 Größe und Farbe kannst du als optionale Angaben direkt unter dem Namen eintragen. Gäste sehen diese Angaben in der App und im Browser. Ein Wunsch wird dadurch nicht in mehrere Shopvarianten aufgeteilt.
 
-Ältere Android-Versionen können neben Namen und Preis auch externe Shopbilder übernehmen. Die neue iOS-/Weboberfläche und das Backend bei aktivierter Inhaltsprüfung verwenden stattdessen neutrale Geschenkvisualisierungen. Shopangaben können fehlen oder veraltet sein; prüfe Preis und Variante vor dem Einkauf.
+Ein Shoplink öffnet den Händler extern. Prüfe dort Preis, Variante und Verfügbarkeit; ein selbst eingetragener Preis ist keine aktuelle Shopauskunft. Wunschkiste bestellt nichts. Ältere Android-Versionen können noch „Details laden“ anbieten oder vorhandene externe Bildadressen anzeigen. Der aktuelle gemeinsame Abruf liefert jedoch keine automatisch geladenen Produktdaten. Fehlende Angaben trägst du selbst ein; vorhandene Wünsche bleiben erhalten.
 
 ## Deinen Zugang sichern und wiederherstellen
 
@@ -130,6 +130,10 @@ Bei aktivierter Werbung bleiben die zugehörigen Datenschutzoptionen im Profil e
 ## Ein eigenes Titelbild auswählen
 
 Nutze eines der vorgegebenen Motive oder ein eigenes Bild, das du teilen darfst. Bei aktivierter Inhaltsprüfung sehen Gäste zunächst das voreingestellte Motiv, bis das eigene Titelbild freigegeben ist. Für einen Kindergeburtstag genügt ein Motiv; ein Kinderfoto ist nicht nötig. Die App bereitet ausgewählte Bilder für den Upload auf. Wenn ein Upload abgelehnt wird, bleibt die bisherige Kiste erhalten; wähle ein kleineres Bild oder ein vorgegebenes Motiv.
+
+Mit dem Hochladen erlaubst du Wunschkiste und den für diesen Betrieb eingesetzten technischen Dienstleistern, die Inhalte zu speichern, technisch für die Anzeige aufzubereiten und sie dir sowie deinen eingeladenen Gästen im Rahmen der vorgesehenen Funktionen anzuzeigen. Die Erlaubnis umfasst die notwendige Inhaltsprüfung und Bearbeitung von Meldungen. Sie gilt nur, soweit dies für deine Kiste, dein Profil und diese Sicherheitsfunktionen erforderlich ist; private Profilbilder werden nicht für Gäste veröffentlicht und eigene Kistenbilder erst nach Freigabe. Du überträgst damit kein Eigentum an den Inhalten. Die Lösch- und Aufbewahrungsregeln stehen unter [Datenschutz](/wunschkiste/privacy.de.html) und [Konto und Daten löschen](/wunschkiste/deletion.de.html).
+
+Du musst die dafür nötigen Rechte und gegebenenfalls die Erlaubnis abgebildeter Personen haben. Kopiere keine fremden Händlerfotos oder Beschreibungen ohne ausreichende Erlaubnis. Eine manuelle Freigabe ist keine Bestätigung, dass alle Rechte geklärt sind. Melde Inhalte, die diese Rechte verletzen, über „Inhalt melden“ oder an [dev@timonply.com](mailto:dev@timonply.com), ohne private Zugangsdaten zu senden.
 
 ## Wenn etwas nicht funktioniert
 

@@ -11,7 +11,7 @@ permalink: /wunschkiste/privacy.de/
 ---
 # Datenschutz bei Wunschkiste
 
-Stand: 10. Oktober 2026
+Stand: 11. Oktober 2026
 
 ## Verantwortlicher
 
@@ -67,9 +67,9 @@ Wer einen gültigen Einladungslink oder Einladungscode kennt, kann die zugehöri
 
 Die Einstellung „Reservierungen für mich ausblenden“ blendet für den Ersteller Angaben zu reservierten oder gekauften Wünschen in der angemeldeten App und zugehörigen Hinweisen aus. Sie ist eine Anzeigeeinstellung und keine Geheimhaltung gegenüber Personen, die die öffentliche Gastansicht öffnen können. Gäste sehen weiterhin die Verfügbarkeit von Wünschen.
 
-Bei unterstützten Produktlinks ruft das Backend öffentliche Produktinformationen ab. Geeignete öffentliche Produktvorschauen können für höchstens fünf Minuten in einem begrenzten Arbeitsspeicher-Cache wiederverwendet werden. Links mit URL-Abfrageparametern und Kurzlinks werden nicht als gemeinsame Cache-Einträge gespeichert; der eingegebene Kauflink bleibt erhalten. Die neue iOS-/Weboberfläche und das Backend bei aktivierter Inhaltsprüfung übernehmen keine Händlerfotos oder Beschreibungen. Ältere Android-Versionen ohne diese Prüfung können externe Produktbilder von deren Adresse laden; dabei erhält der Bildanbieter Verbindungsdaten, insbesondere deine IP-Adresse. Beim Öffnen eines Shops gelten dessen eigene Datenschutzregeln. Ein Klick oder eine Reservierung löst in Wunschkiste keinen Kauf aus.
+In der aktuellen iOS-/Web-Beta und beim gemeinsamen Backend-Abruf werden Produktdaten manuell eingetragen. Produktlinks lösen keinen automatischen Abruf einer Händlerseite, keine Übernahme von Titel oder EUR-Preis und keine Vorschau-Zwischenspeicherung aus. Händlerfotos und Beschreibungen werden nicht importiert; Wünsche nutzen neutrale Geschenkvisualisierungen. Die eingetragene Wunschadresse und deine selbst eingegebenen Details werden zur Bereitstellung der Kiste gespeichert.
 
-Auf iOS kannst du den verfügbaren Produkttitel und EUR-Preis eines unterstützten öffentlichen HTTPS-Shoplinks ausdrücklich abrufen. Fehlende oder blockierte Angaben lassen sich manuell ergänzen. Ein Preis ist eine Momentaufnahme und keine Kaufgarantie. Die iOS-Antwort enthält keine Händlerfotos oder Beschreibungen; Wünsche verwenden neutrale Geschenkvisualisierungen. Das Backend kontaktiert den Shop für den Abruf der öffentlichen Seite innerhalb begrenzter Anfragen und Zwischenspeicherung. Beim Öffnen deines Kauflinks gelten die Hinweise des Shops. Die Funktion bedeutet keine offizielle Shop-Partnerschaft oder Lizenz für Händlerfotos und Beschreibungen.
+Beim Öffnen eines Shoplinks wird der Händler extern aufgerufen; dort gelten dessen eigene Datenschutzhinweise. Ältere Android-Versionen können noch externe Bildadressen bereits gespeicherter Wünsche anzeigen und dabei dem Bildanbieter Verbindungsdaten, insbesondere die IP-Adresse, übermitteln. Ein selbst eingegebener Preis ist keine aktuelle Shopauskunft. Ein Klick oder eine Reservierung löst keinen Kauf in Wunschkiste aus. Ein späterer automatischer Import wird erst nach gesonderter Prüfung der Händlerberechtigung und seiner Datenverarbeitung eingerichtet.
 
 ## Benachrichtigungen
 

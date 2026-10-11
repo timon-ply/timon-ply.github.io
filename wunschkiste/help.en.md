@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.en/
 ---
 # Help with Wunschkiste
 
-Last updated: 10 October 2026
+Last updated: 11 October 2026
 
 This website provides help and legal information. You can find the web view and Android direct download at [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
 
@@ -61,13 +61,13 @@ To switch to email sign-in, choose “Set up email sign-in” in Profile. You ca
 
 After a successful switch, sign in with your email address and the password chosen for that access. Old account keys, passkeys and recovery codes are no longer valid. Older Wunschkiste accounts using usernames or account keys are not merged solely because names or email addresses match. This is separate from the Firebase provider association described above. You cannot additionally link email access that is already associated with another Wunschkiste account to your older account.
 
-## Import product details
+## Enter product details
 
-On iOS, paste a supported HTTPS shop link and choose “Load details”. Available product titles and EUR prices fill untouched fields; your edits remain yours. Some shops block retrieval or omit information, so missing details can be entered manually. Size, colour and notes remain editable. Retailer photos and descriptions are not imported on iOS; neutral gift visuals are used. Prices are snapshots: check the shop before buying. A wish can have no link. Wunschkiste places no order.
+Enter the wish name and price yourself. If useful, add a supported HTTPS shop link, a note, size and colour. The current iOS/web beta and shared backend lookup do not retrieve shop details automatically. Retailer photos and descriptions are not imported; wishes use neutral gift visuals. A wish can have no link.
 
 You can enter size and colour as optional details directly below the name. Guests see them in the app and browser. They do not split a wish into multiple shop variants.
 
-Older Android versions may import external shop images alongside a title and price. The new iOS/web interface and backend with content review enabled use neutral gift visuals instead. Shop details may be missing or outdated; check the price and variant before buying.
+A shop link opens the retailer externally. Check its price, variant and availability; a price you entered is not a current shop quote. Wunschkiste places no order. Older Android versions may still offer “Load details” or show previously saved external image addresses. However, the current shared lookup returns no automatically retrieved product details. Enter missing details yourself; existing wishes remain retained.
 
 ## Secure and recover your access
 
@@ -130,6 +130,10 @@ When advertising is enabled, the relevant privacy choices remain available in Pr
 ## Select your own cover image
 
 Use a provided design or an image you are permitted to share. Invited people can also see the cover image. A design is enough for a child's birthday; a child's photo is not needed. The app prepares selected images for upload. If an upload is rejected, the existing list is preserved; choose a smaller image or a provided design.
+
+By uploading content, you allow Wunschkiste and the technical service providers used to operate it to store that content, prepare its format for display, and show it to you and your invited guests within the offered features. This permission includes necessary content review and handling reports. It applies only as needed for your box, profile and these safety functions; private profile photos are not published to guests, and custom box photos are shared only after approval. You do not transfer ownership of the content. Deletion and retention rules are explained under [Privacy](/wunschkiste/privacy.en.html) and [Delete account and data](/wunschkiste/deletion.en.html).
+
+You must have the necessary rights and, where required, permission from people pictured. Do not copy other people's retailer photos or descriptions without sufficient permission. Manual approval does not confirm that all rights are cleared. Report infringing content through “Report content” or [dev@timonply.com](mailto:dev@timonply.com), without sending private access credentials.
 
 ## If something does not work
 

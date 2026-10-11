@@ -11,7 +11,7 @@ permalink: /wunschkiste/privacy.en/
 ---
 # Privacy at Wunschkiste
 
-Last updated: 10 October 2026
+Last updated: 11 October 2026
 
 ## Controller
 
@@ -67,9 +67,9 @@ Anyone who knows a valid invitation link or code can view the corresponding avai
 
 The “Hide reservations from me” setting hides details about reserved or purchased wishes from the creator in the signed-in app and related notifications. It is a display preference and does not provide secrecy from people who can open the public guest view. Guests still see wish availability.
 
-For supported product links, the backend retrieves public product information. Suitable public previews may be reused for up to five minutes in a bounded memory cache. Links with URL query parameters and short links are not shared cache entries; the purchase link you entered is retained. The new iOS/web interface and backend with content review enabled do not import retailer photos or descriptions. Older Android versions without that review may load external product images from their addresses, giving the image provider connection data, particularly your IP address. Opening a shop is subject to its own privacy rules. A click or reservation does not trigger a purchase in Wunschkiste.
+Product details are entered manually in the current iOS/web beta and shared backend lookup. Product links do not trigger an automatic retailer-page fetch, title or EUR-price import, or preview caching. Retailer photos and descriptions are not imported; wishes use neutral gift visuals. The wish address and details you enter are stored to provide the box.
 
-On iOS, you can explicitly request the available product title and EUR price from a supported public HTTPS shop link. Missing or blocked details remain editable manually. A price is a snapshot, not a purchase guarantee. The iOS response excludes retailer photos and descriptions; wishes use neutral gift visuals. The backend contacts the shop to retrieve the public page, subject to bounded requests and caching. Opening your purchase link is subject to the shop's own notices. This feature is not an official shop partnership or a licence to reproduce shop photos or descriptions.
+Opening a shop link calls the retailer externally, under its own privacy notices. Older Android versions may still display external image addresses of previously saved wishes, giving the image provider connection data, particularly your IP address. A price you entered is not a current shop quote. A click or reservation does not trigger a purchase in Wunschkiste. Any later automatic importer will require a separate review of merchant permission and its data processing.
 
 ## Notifications
 
