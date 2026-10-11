@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 const root=dirname(fileURLToPath(import.meta.url));
 const escape=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 function inline(value){return escape(value).replaceAll('&lt;br&gt;','<br>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,label,url)=>`<a href="${url}">${label}</a>`);}
-const allowed=['privacy','impressum','help','deletion'];
+const allowed=['privacy','impressum','help','deletion','terms'];
 const requested=process.argv.slice(2);
 if(requested.some(name=>!allowed.includes(name)))throw new Error('Unknown Wunschkiste document');
 const documents=requested.length?[...new Set(requested)]:allowed;
