@@ -11,9 +11,9 @@ permalink: /wunschkiste/help.en/
 ---
 # Help with Wunschkiste
 
-Last updated: 11 October 2026
+Last updated: 14 October 2026
 
-This website provides help and legal information. You can find the web view and Android direct download at [Wunschkiste](https://wunschkiste.timon-polley1.workers.dev/).
+This website provides help and legal information. The new app address is [Wunschkiste](https://wunschkiste-671c5.web.app/). An Android download is offered there only after the updated version is approved; a former download is not offered as the new version.
 
 ## Introduction
 
@@ -63,9 +63,9 @@ After a successful switch, sign in with your email address and the password chos
 
 ## Enter product details
 
-Enter the wish name and price yourself. If useful, add a supported HTTPS shop link, a note, size and colour. The current iOS/web beta and shared backend lookup do not retrieve shop details automatically. Retailer photos and descriptions are not imported; wishes use neutral gift visuals. A wish can have no link.
+Enter the wish name and price yourself. If useful, add a supported HTTPS shop link, a note or your own wish photo. The prepared link helper may suggest a name solely from your link's path. It does not load a retailer page, photo, price or description. Review and correct the suggestion. A wish can have no link.
 
-You can enter size and colour as optional details directly below the name. Guests see them in the app and browser. They do not split a wish into multiple shop variants.
+Size and colour are optional. You can also add up to five custom label/value details (at most 40 and 120 characters respectively). Guests see these details in the app and browser. They do not split a wish into separate orderable shop variants.
 
 A shop link opens the retailer externally. Check its price, variant and availability; a price you entered is not a current shop quote. Wunschkiste places no order. Older Android versions may still offer “Load details” or show previously saved external image addresses. However, the current shared lookup returns no automatically retrieved product details. Enter missing details yourself; existing wishes remain retained.
 
@@ -77,19 +77,19 @@ For access that uses Google exclusively, use your Google Account's recovery feat
 
 For Apple-only access, use your Apple Account's recovery and, where applicable, check “Hide My Email” settings. Sign in again with the Apple access belonging to the affected account. A new email address or new provider access does not prove ownership of another existing account.
 
-Passkeys remain available under “Profile → Passkeys” for older accounts without an email link. They require Android 9 or newer and an available provider on your device. Wunschkiste does not create a provider account for you. Passkeys are not offered for email accounts in this version.
+Passkeys for the former app address do not apply to the new Firebase address. Passkey sign-in is disabled during migration. If offered again, explicitly enroll a passkey for the new address. Wunschkiste does not create a provider account for you; private passkey keys are not transferred from the old backend.
 
 If you configured a recovery code for an older account, it remains usable until email access is linked. Under “Previous account with username → Recover access”, you can set a new password using your username and saved code. Then sign in normally; all previous sessions, passkeys and old access credentials become invalid. Set up any desired passkeys again afterwards. An older account without a linked email address cannot be recovered through an email link.
 
 ## Archive lists
 
-On iOS, open the box and choose “Archive box” at the bottom. Open the archive through the menu in “My boxes”. In an archived box, “Restore box” returns it when an active slot is available.
+On iOS, open the box and choose “Archive box” at the bottom. Open the archive through the menu in “My boxes”. In an archived box, “Restore box” returns it when a free active slot is available or a verified active Premium membership applies. Technical capacity limits still apply.
 
 Open the list and choose “Archive” while editing it. It then appears in the archive instead of among active lists. “Undo” or “Restore” brings back the same list. Invitation links and reservations remain valid while it is archived. Archiving is not deletion; duplication is not offered.
 
 ## Invite people and join a list
 
-Open “Share” in your list. The dialog displays the invitation code prominently. “Copy code” copies it for the app; “Share link” opens the native share menu with the public web link. Older lists without a code can still be shared by link. New links open the web view at the new Wunschkiste address or open the list directly in an installed, associated Android app. Old application links on this website remain removed; existing lists' invitation codes remain usable.
+Open “Share” in your list. The dialog displays the invitation code prominently. “Copy code” copies it for the app; “Share link” opens the native share menu with the public web link. Older lists without a code can still be shared by link. New links open the web view at the new Wunschkiste address or open the list directly in an installed, associated Android app. Old application links on this website remain removed; existing lists' invitation codes remain usable. After the switch, share invitation and management links again using the new Firebase address. Former app addresses, including Cloudflare addresses, are not redirected.
 
 Under “Gifts”, enter an invitation code. The preview first shows the list. Only “Join” adds it to your invitations. First check whether its name, date and description match the expected occasion. Invitation links and codes give access to people who know them; do not publish them unintentionally.
 
@@ -115,27 +115,33 @@ Push to your device is only offered if delivery has been configured. Deliberatel
 
 For free, you can create up to three active lists with up to 20 active wishes each. Archived lists do not count as active. Existing content saved before this limit remains retained and accessible. When a limit has been reached, you can edit, remove or archive existing content; new content requires an available slot. Invitations and reservations remain usable.
 
-Premium is a planned offering. There is currently no purchase, subscription or checkout. A preview does not unlock features or trigger payment. Google Analytics is not used.
+The native iOS and Android apps include prepared Apple StoreKit and Google Play Billing integrations, respectively. Purchases remain disabled while the required store credentials, products, permissions and checks are missing. Planned prices are €1.99 monthly or €14.99 yearly; the price displayed by the relevant store governs any later purchase. A verified active membership is ad-free and has no Wunschkiste-imposed count limit on boxes or wishes. The finite overall beta capacity and technical protection, request and image limits remain and may prevent actions. A preview or an unverified purchase message does not unlock Premium.
+
+Once purchases are enabled, manage or cancel a subscription in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Subscriptions renew according to the terms shown by the store unless canceled. Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account.
+
+Google Analytics is not used.
 
 At a limit, you can select an active list to archive or a wish to remove. The form is preserved. The new version also prepares voluntary AdMob videos for adults: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Production ads and videos are currently off and additionally require confirmed store/provider review and technical readiness. The published German/English consent message for all regions offers a direct decline option; publication alone does not activate ads.
 
 ## Age group and advertising
 
-Android and iOS contain separately prepared AdMob integrations. Production banners and reward videos remain off until the relevant provider, consent and native checks pass. The German/English consent message is associated with both apps. This alone does not enable advertising. No purchasable Premium is offered. Archiving lists or removing wishes remains available without advertising.
+Android and iOS contain separately prepared AdMob integrations. Production banners and reward videos remain off until the relevant provider, consent and native checks pass. The German/English consent message is associated with both apps. This alone does not enable advertising. Premium purchases remain disabled pending separate activation. Archiving lists or removing wishes remains available without advertising.
 
 The neutral age choice also governs access in current clients: own accounts at 13–17 require parent approval; under13 use a parent account. Declared minors receive no advertising requests. Authenticated adult advertising requires current server eligibility as well as consent and provider readiness. Account age categories and family associations are stored in the backend; no date of birth is requested. See the privacy notice for provider SDK processing and retention.
 
 When advertising is enabled, the relevant privacy choices remain available in Profile. A changed or revoked scope stops new requests. Outstanding server confirmation of a previously started voluntary video remains recoverable on the same account; choosing an age or closing a video never grants capacity itself. The web view has no ads.
 
-## Select your own cover image
+## Select your own cover or wish image
 
-Use a provided design or an image you are permitted to share. Invited people can also see the cover image. A design is enough for a child's birthday; a child's photo is not needed. The app prepares selected images for upload. If an upload is rejected, the existing list is preserved; choose a smaller image or a provided design.
+Use a provided design or an image you are permitted to share. You may also attach your own photo to a wish. Guests see a preset cover or neutral wish visual until the exact uploaded image digest and revision are approved. A replacement needs new review. You can see your own pending image through authorized access. A design is enough for a child's birthday; a child's photo is not needed. The app prepares selected images for upload. If an upload is rejected, the existing list is preserved; choose a smaller image or a provided design.
 
-For your own image upload, the supported flow asks you to explicitly confirm the [upload and use terms](/wunschkiste/terms.en/), version upload-v1-2026-10-11. Approval is not preselected. It permits only the necessary storage, technical preparation, display and content review for your profile or box by Wunschkiste and the technical service providers used for those functions. Private profile photos are not published to guests and own box covers only after approval. You retain your rights; advertising and other independent marketing use are excluded. Erasure and retention rules are under [Privacy](/wunschkiste/privacy.en.html) and [Delete account and data](/wunschkiste/deletion.en.html).
+For your own image upload, the supported flow asks you to explicitly confirm the [upload and use terms](/wunschkiste/terms.en/), version upload-v1-2026-10-11. Approval is not preselected. It permits only the necessary storage, technical preparation, display and content review for your profile or box by Wunschkiste and the technical service providers used for those functions. Private profile photos are not published to guests and own box covers and wish photos only after approval. You retain your rights; advertising and other independent marketing use are excluded. Erasure and retention rules are under [Privacy](/wunschkiste/privacy.en.html) and [Delete account and data](/wunschkiste/deletion.en.html).
 
 At 13–17, own photo uploads additionally require explicit parent permission. An older general account approval does not replace it. The parent can grant or withdraw photo permission in the supported family flow. Withdrawal blocks future photo uploads but does not automatically erase old images. Without photo permission, use a preset illustration. For existing images, use the available removal functions or the contact method below.
 
 You must have the necessary rights and, where required, permission from people pictured. Do not copy other people's retailer photos or descriptions without sufficient permission. Manual approval does not confirm that all rights are cleared. Report infringing content through “Report content” or [dev@timonply.com](mailto:dev@timonply.com), without sending private access credentials.
+
+After confirmed image removal, empty technical deletion fences with minimal owner/resource references may remain. They contain no image bytes. Historically occupied photo-object slots are not released, so another upload may be blocked even after an image is removed. Use a preset cover instead or contact support. Retention details are in [Privacy](/wunschkiste/privacy.en.html) and [Delete account and data](/wunschkiste/deletion.en.html).
 
 ## If something does not work
 
@@ -143,7 +149,7 @@ If saving a new wish leaves its outcome uncertain, inspect the box first. Do not
 
 On iOS, guest and account access is stored in the device-bound Keychain. “Sign out” ends account access; guest permissions may remain. Do not rely on uninstalling as server deletion or as reliable removal of all Keychain data. During an unfinished deletion, retain the app and access until the server confirms completion.
 
-Check your connection and try the action again. A change is only saved once confirmed by the server. Limits of the free test operation may temporarily prevent further actions. A reservation or repeated save attempt does not place an order. This version does not offer purchases or subscriptions.
+Check your connection and try the action again. A change is only saved once confirmed by the server. Limits of the free test operation may temporarily prevent further actions. A reservation or repeated save attempt does not place an order. Using the free allowance requires no purchase.
 
 Confirm account deletion in Profile using your current access. If “Account is being deleted” appears, the process has not yet been fully completed. Choose “Continue deletion” once a connection is available again. Do not clear app data during this process: the confirmation is kept on this device so deletion can continue. Only the final confirmation means that the server has completed the process.
 

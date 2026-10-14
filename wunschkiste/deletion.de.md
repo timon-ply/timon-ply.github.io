@@ -11,7 +11,7 @@ permalink: /wunschkiste/deletion.de/
 ---
 # Konto und Daten löschen
 
-Stand: 10. Oktober 2026
+Stand: 14. Oktober 2026
 
 ## Dein Konto löschen
 
@@ -21,13 +21,17 @@ Bei einem reinen Google-Zugang bestätigst du die Aktion mit einer erneuten Goog
 
 Wenn das Konto mit Apple verbunden ist und dieser Zugang angeboten wird, ist eine frische Apple-Anmeldung mit dem Zugang desselben Kontos erforderlich. Die App erklärt zuvor die mögliche Firebase-Anbieterzuordnung und verlangt für diesen neuen Anbieter-Vorgang deine ausdrückliche, zunächst nicht ausgewählte Zustimmung. Nach der Bestätigung muss auch der Widerruf der Apple-Anbieterberechtigung bestätigt sein, bevor die Kontolöschung fortgesetzt wird. Ein anderer Apple-Zugang ersetzt den Nachweis nicht. Die allgemeinen Apple- oder Google-Konten werden dabei nicht gelöscht. Ein Widerruf oder späterer Abbruch macht bereits erfolgte Firebase-Anbieterzuordnungen nicht automatisch rückgängig.
 
-Die Kontolöschung entfernt die dem Konto zugeordneten Kisten, Wünsche, hochgeladenen Titel- und Profilbilder, Gerätesitzungen, Versandzuordnungen für Push-Nachrichten, Einstellungen, gespeicherten Hinweise und Einladungen. Deine Reservierungen in Kisten anderer Personen werden freigegeben. Bei einem Firebase-Konto wird der Firebase-Authentication-Zugang gesperrt und nach der Bereinigung der Wunschkiste-Daten gelöscht. Dein allgemeines Google- oder Apple-Konto wird nicht gelöscht. Die eigenständigen Kisten anderer Personen werden nicht gelöscht. Eine bestätigte Kontolöschung lässt sich über die App nicht rückgängig machen.
+Die Kontolöschung entfernt die dem Konto zugeordneten Kisten, Wünsche, hochgeladenen Titel-, Wunsch- und Profilbilder, Gerätesitzungen, Versandzuordnungen für Push-Nachrichten, Einstellungen, gespeicherten Hinweise und Einladungen. Deine Reservierungen in Kisten anderer Personen werden freigegeben. Bei einem Firebase-Konto wird der Firebase-Authentication-Zugang gesperrt und nach der Bereinigung der Wunschkiste-Daten gelöscht. Dein allgemeines Google- oder Apple-Konto wird nicht gelöscht. Die eigenständigen Kisten anderer Personen werden nicht gelöscht. Eine bestätigte Kontolöschung lässt sich über die App nicht rückgängig machen.
 
 Gespeicherte Passkey-Prüfdaten und Wiederherstellungscodes bisheriger Konten werden ebenfalls entfernt. Archivierte Kisten sind Teil des Kontos und werden bei der Kontolöschung mit gelöscht. Archivieren allein löscht keine Kiste und widerruft keine Einladung.
 
+## Abonnements getrennt verwalten
+
+Käufe sind vorbereitet, aber noch nicht freigeschaltet. Nach einer späteren Freischaltung verwaltest oder kündigst du ein Abonnement im ursprünglichen [Apple Account](https://support.apple.com/de-de/118428) beziehungsweise [Google-Play-Konto](https://support.google.com/googleplay/answer/7018481?hl=de). Abonnements verlängern sich nach den im Store angezeigten Bedingungen, wenn sie nicht gekündigt werden. Kontolöschung, Abmeldung und Deinstallation kündigen kein Store-Abonnement. „Käufe wiederherstellen“ benötigt den ursprünglichen Store-Zugang und die ursprüngliche Wunschkiste-Kontozuordnung; es überträgt einen Kauf nicht auf ein anderes Konto und stellt kein gelöschtes Konto wieder her.
+
 ## Eine unterbrochene Löschung fortsetzen
 
-Die Löschung kann mehrere Schritte benötigen. Wenn „Konto wird gelöscht“ erscheint, fehlt noch die abschließende Serverbestätigung. Die App speichert deine Löschbestätigung geschützt auf diesem Gerät. Wähle „Löschung fortsetzen“, sobald wieder eine Verbindung besteht. Falls die App dich dazu auffordert, bestätige deinen Zugang erneut. Ein Verbindungsfehler bedeutet nicht, dass bereits ausgeführte Löschschritte rückgängig gemacht wurden.
+Die Löschung kann mehrere Schritte benötigen. Dabei werden auch Titel- und Wunschbilder aller zugeordneten Kisten schrittweise entfernt. Ein ausstehender Bild-Löschschritt wird gespeichert und bei der Fortsetzung wiederholt, bevor der Abschluss bestätigt wird. Wenn „Konto wird gelöscht“ erscheint, fehlt noch die abschließende Serverbestätigung. Die App speichert deine Löschbestätigung geschützt auf diesem Gerät. Wähle „Löschung fortsetzen“, sobald wieder eine Verbindung besteht. Falls die App dich dazu auffordert, bestätige deinen Zugang erneut. Ein Verbindungsfehler bedeutet nicht, dass bereits ausgeführte Löschschritte rückgängig gemacht wurden.
 
 Wenn eine noch nicht gestartete Apple-Kontolöschung erneut eine Anbieterbestätigung benötigt, verwende die angebotene Apple-Anmeldung desselben Kontos. Ein abgelaufener Bestätigungsvorgang benötigt einen neuen Start; der bereits gespeicherte Löschvorgang kann damit weitergeführt werden. Eine schon serverseitig gestartete Löschung wird über die gespeicherte Fortsetzung bestätigt. Lege dafür kein Ersatzkonto an. Das alleinige Entfernen von Wunschkiste aus deinen Apple-Einstellungen ersetzt die Löschung der Wunschkiste-Daten nicht.
 
@@ -59,7 +63,11 @@ Als Ersteller kannst du eigene Wünsche entfernen. Eine angebotene Rückgängig-
 
 ## Aufbewahrung nach einer Löschung
 
+Nach einem Premium-Kauf bleibt bei Kontolöschung ein privater Sperrnachweis gegen erneute oder fremde Kaufzuordnung bestehen: ein SHA-256-Prüfwert aus Store, Umgebung und ursprünglicher Kaufkennung, die gelöschte interne Kontokennung, ein Anbieter-Zeitwert und gegebenenfalls die Kennung einer widerrufenen Transaktion. Er enthält keinen Namen, keine E-Mail-Adresse, kein rohes Google-Kauftoken und keine zufällige Kauf-Kontokennung. Er ermöglicht keine Anmeldung oder Wiederherstellung des gelöschten Kontos. Für diesen Nachweis ist im derzeitigen Ablauf keine automatische Ablauffrist eingerichtet; eine feste spätere Löschung wird daher nicht zugesagt. Fragen zu seiner weiteren Erforderlichkeit oder zur Löschung kannst du an den Verantwortlichen richten. Aktuelle Mitgliedschaftsdatensätze und die zufällige Kauf-Kontokennung werden dagegen in Test- und Produktionsumgebung entfernt.
+
 Minimale technische Lösch- und Sperrkennungen können zum Schutz vor wiederholter Verwendung alter Zugänge erhalten bleiben. Sie ermöglichen keine Anmeldung oder Wiederherstellung des gelöschten Kontos. Eine Abschlussbestätigung bedeutet nicht, dass alle Anbieter-Sicherungskopien im selben Moment entfernt sind: Technische Sicherungen können Daten bis zur regulären Überschreibung enthalten. Die besonderen Aufbewahrungsfristen von Firebase Authentication sind im Abschnitt „Aufbewahrung und Löschung“ der [Datenschutzhinweise](/wunschkiste/privacy.de.html) beschrieben.
+
+Nach bestätigter Bildentfernung können im privaten Bildspeicher leere Objekte mit null Bildbytes und begrenzte technische Löschsperren erhalten bleiben. Sie verhindern, dass ein verspäteter Upload ein entferntes Bild unter derselben Objektkennung wiederherstellt. Dazu können interne Eigentümer-, Kisten-/Konto-, Ressourcen- und Objektkennungen sowie begrenzte Status- und Kapazitätsdaten gehören; die Sperre enthält keine Bildinhalte, Namen oder E-Mail-Adressen und erlaubt keine Anmeldung oder Wiederherstellung eines gelöschten Kontos. Historisch belegte Objektplätze werden durch das Entfernen eines Bildes nicht wieder freigegeben. Für diese technischen Sperren ist derzeit keine automatische Ablauffrist eingerichtet; eine vollständige Entfernung sämtlicher technischer Bezüge oder die spätere Freigabe aller Kapazität wird deshalb nicht zugesagt. Fragen zu ihrer weiteren Erforderlichkeit oder Löschung kannst du an den Verantwortlichen richten.
 
 Die Löschbestätigung ist auch keine Zusage, dass Apple oder Google alle eigenen Kennungen und Sicherheitsdaten sofort entfernen. Für deren Verarbeitung gelten zusätzlich die jeweiligen Datenschutzhinweise. Technische, zehn Minuten gültige Apple-/Google-Anmeldevorgänge werden nach Ablauf erst beim Start späterer Vorgänge bereinigt; bestätigte Apple-Übergabe-Tokeninhalte werden nach Übernahme oder Abbruch entfernt. Die begrenzten Zustimmungsnachweise im Wunschkiste-Konto beziehungsweise in seinen Sitzungen werden bei der Kontolöschung bereinigt.
 

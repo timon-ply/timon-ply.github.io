@@ -11,7 +11,7 @@ permalink: /wunschkiste/deletion.en/
 ---
 # Delete your account and data
 
-Last updated: 10 October 2026
+Last updated: 14 October 2026
 
 ## Delete your account
 
@@ -21,13 +21,17 @@ If you use Google exclusively, confirm the action by signing in with Google agai
 
 If the account is associated with Apple and that access is offered, fresh Apple sign-in using the access belonging to that same account is required. The app first explains the possible Firebase provider association and requires explicit, initially unchecked consent for this new provider operation. After authentication, revocation of the Apple provider permission must also be confirmed before account deletion continues. Another Apple access does not replace this proof. Your general Apple or Google Account is not deleted. Revocation or later cancellation does not automatically undo Firebase provider associations already made.
 
-Account deletion removes the lists, wishes, uploaded cover and profile photos, device sessions, push delivery associations, settings, stored notifications and invitations associated with the account. Your reservations in other people's lists are released. For a Firebase account, the Firebase Authentication access is disabled and then deleted after the Wunschkiste data has been cleaned up. Your general Google or Apple Account is not deleted. Other people's independent lists are not deleted. A confirmed account deletion cannot be undone through the app.
+Account deletion removes the lists, wishes, uploaded cover, wish and profile photos, device sessions, push delivery associations, settings, stored notifications and invitations associated with the account. Your reservations in other people's lists are released. For a Firebase account, the Firebase Authentication access is disabled and then deleted after the Wunschkiste data has been cleaned up. Your general Google or Apple Account is not deleted. Other people's independent lists are not deleted. A confirmed account deletion cannot be undone through the app.
 
 Stored passkey verification data and recovery codes belonging to older accounts are also removed. Archived lists belong to the account and are deleted with it. Archiving alone does not delete a list or revoke an invitation.
 
+## Manage subscriptions separately
+
+Purchases are prepared but not yet enabled. Once purchases are enabled, manage or cancel a subscription in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Subscriptions renew according to the terms shown by the store unless canceled. Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account.
+
 ## Continue an interrupted deletion
 
-Deletion may require several steps. If “Account is being deleted” appears, the final server confirmation is still outstanding. The app stores your deletion confirmation securely on this device. Choose “Continue deletion” once your connection is available again. If prompted, confirm your access again. A connection error does not mean that completed deletion steps have been reversed.
+Deletion may require several steps. Cover and wish images of all associated boxes are also removed in bounded steps. A pending image-deletion step is stored and retried on continuation before completion is confirmed. If “Account is being deleted” appears, the final server confirmation is still outstanding. The app stores your deletion confirmation securely on this device. Choose “Continue deletion” once your connection is available again. If prompted, confirm your access again. A connection error does not mean that completed deletion steps have been reversed.
 
 If Apple account deletion has not yet started and needs renewed provider confirmation, use the offered Apple sign-in for the same account. An expired confirmation operation requires a new start; it can continue the already stored deletion operation. Deletion already started on the server is confirmed through the stored continuation. Do not create a replacement account for this. Removing Wunschkiste from your Apple settings alone does not replace deletion of Wunschkiste data.
 
@@ -59,7 +63,11 @@ As the creator, you can remove your own wishes. An available undo feature may in
 
 ## Retention after deletion
 
+After a Premium purchase, account deletion retains a private anti-reuse record: a SHA-256 digest of the store, environment and original purchase identifier, the deleted internal account identifier, a provider timestamp and, where applicable, the identifier of a revoked transaction. It contains no name, email address, raw Google purchase token or random purchase-account identifier. It cannot sign in to or restore the deleted account. The current flow has no automatic expiry for this record, so deletion after a fixed further period is not promised. Contact the controller with questions about its continued necessity or erasure. Current membership records and the random purchase-account identifier are removed in both test and production environments.
+
 Minimal technical deletion and blocking identifiers may be retained to prevent old access credentials from being reused. They do not allow sign-in or restoration of the deleted account. A completion confirmation does not mean that all providers' backup copies are removed at that same moment: technical backups may contain data until they are overwritten normally. The specific retention periods for Firebase Authentication are described under “Retention and deletion” in the [privacy notice](/wunschkiste/privacy.en.html).
+
+After confirmed image removal, the private image store may retain empty objects with zero image bytes and bounded technical deletion fences. They prevent a delayed upload from restoring a removed image under the same object identifier. These records may include internal owner, list/account, resource and object identifiers and bounded status and capacity data; the fence contains no image content, names or email addresses and cannot sign in to or restore a deleted account. Historically occupied object slots are not released by removing an image. These technical fences currently have no automatic expiry, so complete removal of every technical reference or later release of all capacity is not promised. Contact the controller with questions about their continued necessity or erasure.
 
 Deletion confirmation also does not promise that Apple or Google immediately remove all their own identifiers and security data. Their respective privacy notices additionally apply. Technical Apple/Google sign-in operations, valid for ten minutes, are cleaned up after expiry only when later operations start; confirmed Apple handoff token payloads are removed after acknowledgment or cancellation. Limited consent records in the Wunschkiste account and its sessions are cleaned up during account deletion.
 
