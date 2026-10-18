@@ -15,7 +15,7 @@ Last updated: 11 October 2026
 
 Version: upload-v1-2026-10-11
 
-Factual feature notes added on 14 October 2026; the scope and version of the upload permission remain unchanged.
+Factual feature notes added on 18 October 2026; the scope and version of the upload permission remain unchanged.
 
 ## Provider and purpose
 
@@ -41,7 +41,7 @@ Supply only content that you may store, process and share for these purposes. Ot
 
 Prohibited content includes rights-infringing, discriminatory, harassing or threatening content, sexual exploitation and child sexual abuse material. Do not use boxes or invitations for fraud or to circumvent restrictions. Content may be restricted for review or removed for violations; access may be restricted. A word and link filter does not replace complete content review.
 
-The current beta imports no retailer photographs or shop descriptions and does not retrieve product details automatically. The prepared link helper may suggest a name from the path of your HTTPS link without loading the retailer page; review that suggestion. Enter the wish, price and optional details yourself; a supported HTTPS shop link opens the retailer externally. Seeing a shop image online does not give permission to copy it. Wunschkiste's content approval does not grant those rights.
+Wunschkiste imports no retailer photographs or shop descriptions and does not retrieve product details automatically. The prepared link helper may suggest a name from the path of your HTTPS link without loading the retailer page; review that suggestion. Enter the wish, price and optional details yourself; a supported HTTPS shop link opens the retailer externally. Seeing a shop image online does not give permission to copy it. Wunschkiste's content approval does not grant those rights.
 
 ## Age groups and parent approval
 
@@ -59,9 +59,11 @@ The licence for ongoing display ends upon confirmed removal or erasure of the af
 
 After confirmed image removal, the private image store may retain empty objects with zero image bytes and bounded technical deletion fences. They prevent a delayed upload from restoring a removed image under the same object identifier. These records may include internal owner, list/account, resource and object identifiers and bounded status and capacity data; the fence contains no image content, names or email addresses and cannot sign in to or restore a deleted account. Historically occupied object slots are not released by removing an image. These technical fences currently have no automatic expiry, so complete removal of every technical reference or later release of all capacity is not promised. Contact the controller with questions about their continued necessity or erasure.
 
-## Prepared Premium feature
+## Premium and store subscriptions
 
-The native iOS and Android apps include prepared Apple StoreKit and Google Play Billing integrations, respectively. Purchases remain disabled while the required store credentials, products, permissions and checks are missing. Planned prices are €1.99 monthly or €14.99 yearly; the price displayed by the relevant store governs any later purchase. A verified active membership is ad-free and has no Wunschkiste-imposed count limit on boxes or wishes. The finite overall beta capacity and technical protection, request and image limits remain and may prevent actions. A preview or an unverified purchase message does not unlock Premium. Upload confirmation does not replace a separate store purchase confirmation. Management and cancellation are explained in [Help](/wunschkiste/help.en.html).
+Premium is offered in supported native versions through Apple StoreKit or Google Play Billing. A purchase is possible only when the relevant store provides the product and purchase dialog and purchase verification is available. Standard euro plans are €1.99 per month or €14.99 per year; the price, currency, period and renewal terms displayed in the relevant store purchase dialog are binding. A server-verified active membership is ad-free and has no Wunschkiste-imposed count limit on boxes or wishes. Technical overall capacity, abuse protection, request, file and image limits remain and may temporarily prevent actions. A preview or an unverified purchase message does not unlock Premium. Upload confirmation does not replace a separate store purchase confirmation. Management, renewal, cancellation and refunds are explained in [Help](/wunschkiste/help.en.html).
+
+Store test purchases in Apple’s sandbox or Google Play licence testing are accepted only for explicitly server-allowlisted technical test accounts. Installing a beta or joining a test group does not automatically grant that permission. Test and production purchases are verified separately; a test confirmation does not confer a paid production membership.
 
 ## Reports and contact
 

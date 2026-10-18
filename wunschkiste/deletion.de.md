@@ -11,7 +11,7 @@ permalink: /wunschkiste/deletion.de/
 ---
 # Konto und Daten löschen
 
-Stand: 14. Oktober 2026
+Stand: 18. Oktober 2026
 
 ## Dein Konto löschen
 
@@ -27,7 +27,7 @@ Gespeicherte Passkey-Prüfdaten und Wiederherstellungscodes bisheriger Konten we
 
 ## Abonnements getrennt verwalten
 
-Käufe sind vorbereitet, aber noch nicht freigeschaltet. Nach einer späteren Freischaltung verwaltest oder kündigst du ein Abonnement im ursprünglichen [Apple Account](https://support.apple.com/de-de/118428) beziehungsweise [Google-Play-Konto](https://support.google.com/googleplay/answer/7018481?hl=de). Abonnements verlängern sich nach den im Store angezeigten Bedingungen, wenn sie nicht gekündigt werden. Kontolöschung, Abmeldung und Deinstallation kündigen kein Store-Abonnement. „Käufe wiederherstellen“ benötigt den ursprünglichen Store-Zugang und die ursprüngliche Wunschkiste-Kontozuordnung; es überträgt einen Kauf nicht auf ein anderes Konto und stellt kein gelöschtes Konto wieder her.
+Ein abgeschlossenes Monats- beziehungsweise Jahresabonnement verlängert sich automatisch um die im Store angezeigte Laufzeit, wenn du es nicht nach den dortigen Bedingungen kündigst. Verwalte oder kündige es im ursprünglichen [Apple Account](https://support.apple.com/de-de/118428) beziehungsweise [Google-Play-Konto](https://support.google.com/googleplay/answer/7018481?hl=de). Kontolöschung, Abmeldung und Deinstallation kündigen kein Store-Abonnement. „Käufe wiederherstellen“ benötigt den ursprünglichen Store-Zugang und die ursprüngliche Wunschkiste-Kontozuordnung; es überträgt einen Kauf nicht auf ein anderes Konto und stellt kein gelöschtes Konto wieder her. Erstattungsanfragen richten sich nach den Verfahren von [Apple](https://support.apple.com/de-de/118223) beziehungsweise [Google Play](https://support.google.com/googleplay/answer/2479637?hl=de) und den anwendbaren gesetzlichen Rechten.
 
 ## Eine unterbrochene Löschung fortsetzen
 
@@ -53,7 +53,7 @@ Du kannst Appdaten über Android beziehungsweise lokale Webdaten über die Brows
 
 In iOS werden Kontozugang, Gastberechtigungen und benötigte Nachweise zur Löschfortsetzung im gerätegebundenen Schlüsselbund gespeichert. „Abmelden“ beendet den Kontozugang und versucht, den lokalen Push-Token sowie zugestellte Gerätehinweise zu entfernen; Gastberechtigungen können erhalten bleiben. Eine Deinstallation löscht keine Serverdaten und ist keine verlässliche Zusage zur Entfernung aller Schlüsselbunddaten. Bei einem noch laufenden Löschvorgang bewahre die App und den Zugang auf, bis der Server den Abschluss bestätigt. Eine erforderliche erneute Anmeldung muss dasselbe Konto bestätigen; ein anderes Konto darf die gespeicherte Löschung nicht übernehmen.
 
-Bereits an APNs/FCM übergebene allgemeine iOS-Mitteilungen können nach Abschalten, Abmelden oder Löschen noch erscheinen. Die kurze Ablaufzeit ist keine sofortige Rückrufgarantie. Neue Sendungen benötigen gültige Geräte-/Sitzungszuordnung, aktuelle Kontofreigabe und aktivierte Einstellungen. iOS-Werbung ist vorbereitet, bleibt bis zur Freigabe deaktiviert. Lokale Datenlöschung entfernt keine serverseitige Altersfreigabe oder Elternnachweise.
+Bereits an APNs/FCM übergebene allgemeine iOS-Mitteilungen können nach Abschalten, Abmelden oder Löschen noch erscheinen. Die kurze Ablaufzeit ist keine sofortige Rückrufgarantie. Neue Sendungen benötigen gültige Geräte-/Sitzungszuordnung, aktuelle Kontofreigabe und aktivierte Einstellungen. Anzeigen bleiben ohne Anbieterfreigabe, bestätigte Store-Zuordnung und erforderliche Einwilligung deaktiviert. Lokale Datenlöschung entfernt keine serverseitige Altersfreigabe oder Elternnachweise.
 
 Eltern können die Freigabe unter Profil → Familie widerrufen. Der Widerruf sperrt App-Zugang, ist aber von Kinderkontolöschung und Löschung geteilter Inhalte getrennt. Elternkontolöschung widerruft auch zugeordnete Freigaben. Kinderkontolöschung entfernt Identitäts- und Familienzuordnungen. Ein minimaler gehashter Schutz gegen Wiederverwendung kann bis zum ursprünglichen Ablauf der 24-Stunden-Anfrage bestehen und wird danach bei Zugriff bereinigt. Eine abgelaufene unvollständige Elternanfrage löscht keine danach bereits erstellte Firebase-Identität automatisch; kontaktiere den Verantwortlichen bei abgebrochener Kontobestätigung für Löschhilfe.
 

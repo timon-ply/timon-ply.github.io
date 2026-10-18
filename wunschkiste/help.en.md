@@ -11,7 +11,7 @@ permalink: /wunschkiste/help.en/
 ---
 # Help with Wunschkiste
 
-Last updated: 14 October 2026
+Last updated: 18 October 2026
 
 This website provides help and legal information. The new app address is [Wunschkiste](https://wunschkiste-671c5.web.app/). An Android download is offered there only after the updated version is approved; a former download is not offered as the new version.
 
@@ -115,19 +115,21 @@ Push to your device is only offered if delivery has been configured. Deliberatel
 
 For free, you can create up to three active lists with up to 20 active wishes each. Archived lists do not count as active. Existing content saved before this limit remains retained and accessible. When a limit has been reached, you can edit, remove or archive existing content; new content requires an available slot. Invitations and reservations remain usable.
 
-The native iOS and Android apps include prepared Apple StoreKit and Google Play Billing integrations, respectively. Purchases remain disabled while the required store credentials, products, permissions and checks are missing. Planned prices are €1.99 monthly or €14.99 yearly; the price displayed by the relevant store governs any later purchase. A verified active membership is ad-free and has no Wunschkiste-imposed count limit on boxes or wishes. The finite overall beta capacity and technical protection, request and image limits remain and may prevent actions. A preview or an unverified purchase message does not unlock Premium.
+Premium is offered in supported native versions through Apple StoreKit or Google Play Billing. A purchase is possible only when the relevant store provides the product and purchase dialog and purchase verification is available. Standard euro plans are €1.99 per month or €14.99 per year; the price, currency, period and renewal terms displayed in the relevant store purchase dialog are binding. A server-verified active membership is ad-free and has no Wunschkiste-imposed count limit on boxes or wishes. Technical overall capacity, abuse protection, request, file and image limits remain and may temporarily prevent actions. A preview or an unverified purchase message does not unlock Premium.
 
-Once purchases are enabled, manage or cancel a subscription in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Subscriptions renew according to the terms shown by the store unless canceled. Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account.
+Store test purchases in Apple’s sandbox or Google Play licence testing are accepted only for explicitly server-allowlisted technical test accounts. Installing a beta or joining a test group does not automatically grant that permission. Test and production purchases are verified separately; a test confirmation does not confer a paid production membership.
+
+A purchased monthly or yearly subscription renews automatically for the period displayed by the store unless canceled under its terms. Manage or cancel it in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account. Refund requests follow the procedures of [Apple](https://support.apple.com/en-us/118223) or [Google Play](https://support.google.com/googleplay/answer/2479637?hl=en) and applicable statutory rights.
 
 Google Analytics is not used.
 
-At a limit, you can select an active list to archive or a wish to remove. The form is preserved. The new version also prepares voluntary AdMob videos for adults: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Production ads and videos are currently off and additionally require confirmed store/provider review and technical readiness. The published German/English consent message for all regions offers a direct decline option; publication alone does not activate ads.
+At a limit, you can select an active list to archive or a wish to remove. The form is preserved. When advertising is enabled, voluntary AdMob videos may also be offered to adults: a confirmed video may unlock one extra active-list slot or five extra wish slots for the selected list. At most three extra list slots and 20 extra wish slots per list are planned, with at most one reward per account per UTC calendar day. Only verified server confirmation counts, not closing the video. If no ad is available, normal archive or removal recovery remains available. Ads and videos require confirmed store/provider review, consent and technical readiness; they are not offered before those conditions are met. The published German/English consent message for all regions offers a direct decline option; publication alone does not activate ads.
 
 ## Age group and advertising
 
-Android and iOS contain separately prepared AdMob integrations. Production banners and reward videos remain off until the relevant provider, consent and native checks pass. The German/English consent message is associated with both apps. This alone does not enable advertising. Premium purchases remain disabled pending separate activation. Archiving lists or removing wishes remains available without advertising.
+Android and iOS have separate AdMob integrations. Banners and voluntary reward videos are offered only when the relevant store association, provider approval, consent configuration and technical readiness are confirmed. The iOS AdMob provider approval is still pending. The German/English consent message is associated with both apps; this alone does not enable advertising. A verified active Premium membership is ad-free. Archiving lists or removing wishes remains available without advertising.
 
-The neutral age choice also governs access in current clients: own accounts at 13–17 require parent approval; under13 use a parent account. Declared minors receive no advertising requests. Authenticated adult advertising requires current server eligibility as well as consent and provider readiness. Account age categories and family associations are stored in the backend; no date of birth is requested. See the privacy notice for provider SDK processing and retention.
+The neutral age choice also governs access in current clients: own accounts at 13–17 require parent approval; under13 use a parent account. Declared minors and access with unknown age eligibility receive no advertising requests. Authenticated adult advertising requires current server eligibility as well as consent and provider readiness. Account age categories and family associations are stored in the backend; no date of birth is requested. See the privacy notice for provider SDK processing and retention.
 
 When advertising is enabled, the relevant privacy choices remain available in Profile. A changed or revoked scope stops new requests. Outstanding server confirmation of a previously started voluntary video remains recoverable on the same account; choosing an age or closing a video never grants capacity itself. The web view has no ads.
 
@@ -149,7 +151,7 @@ If saving a new wish leaves its outcome uncertain, inspect the box first. Do not
 
 On iOS, guest and account access is stored in the device-bound Keychain. “Sign out” ends account access; guest permissions may remain. Do not rely on uninstalling as server deletion or as reliable removal of all Keychain data. During an unfinished deletion, retain the app and access until the server confirms completion.
 
-Check your connection and try the action again. A change is only saved once confirmed by the server. Limits of the free test operation may temporarily prevent further actions. A reservation or repeated save attempt does not place an order. Using the free allowance requires no purchase.
+Check your connection and try the action again. A change is only saved once confirmed by the server. Technical capacity and protection limits may temporarily prevent further actions. A reservation or repeated save attempt does not place an order. Using the free allowance requires no purchase.
 
 Confirm account deletion in Profile using your current access. If “Account is being deleted” appears, the process has not yet been fully completed. Choose “Continue deletion” once a connection is available again. Do not clear app data during this process: the confirmation is kept on this device so deletion can continue. Only the final confirmation means that the server has completed the process.
 
@@ -159,7 +161,7 @@ For lost access, deletion requests or other problems, contact [dev@timonply.com]
 
 ## Report content and block creators
 
-In the prepared iOS version, “Report content” is available in the box menu and on a wish. Choose a reason and optionally describe the problem. Only the receipt confirmation means the report arrived. After a connection problem you can send the same report again. An explicitly rejected report can be discarded and started again. For urgent concerns, contact [dev@timonply.com](mailto:dev@timonply.com); do not send passwords or private keys.
+In the iOS app, “Report content” is available in the box menu and on a wish. Choose a reason and optionally describe the problem. Only the receipt confirmation means the report arrived. After a connection problem you can send the same report again. An explicitly rejected report can be discarded and started again. For urgent concerns, contact [dev@timonply.com](mailto:dev@timonply.com); do not send passwords or private keys.
 
 “Block creator” hides their boxes for your access. You can reverse this under “Blocked creators”. Anonymous gift givers are not identified. Guests using another access capability and previously saved copies are not blocked by this action.
 

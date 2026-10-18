@@ -15,7 +15,7 @@ Stand: 11. Oktober 2026
 
 Fassung: upload-v1-2026-10-11
 
-Sachliche Funktionshinweise ergänzt am 14. Oktober 2026; Umfang und Fassung der Upload-Erlaubnis bleiben unverändert.
+Sachliche Funktionshinweise ergänzt am 18. Oktober 2026; Umfang und Fassung der Upload-Erlaubnis bleiben unverändert.
 
 ## Anbieter und Zweck
 
@@ -41,7 +41,7 @@ Stelle nur Inhalte bereit, die du für diese Zwecke speichern, bearbeiten und te
 
 Unzulässig sind insbesondere rechtsverletzende, diskriminierende, belästigende oder bedrohende Inhalte sowie sexuelle Ausbeutung und Darstellungen von Kindesmissbrauch. Nutze Kisten und Einladungen nicht für Betrug oder zur Umgehung von Sperren. Inhalte können zur Prüfung eingeschränkt oder bei Verstößen entfernt werden; Zugänge können eingeschränkt werden. Ein Wort- und Linkfilter ersetzt keine vollständige Inhaltsprüfung.
 
-Die aktuelle Beta übernimmt keine Händlerfotos oder Shopbeschreibungen und ruft Produktdetails nicht automatisch ab. Die vorbereitete Linkhilfe leitet höchstens einen Namensvorschlag aus dem Pfad deines HTTPS-Links ab, ohne die Händlerseite zu laden; prüfe diesen Vorschlag. Trage Wunsch, Preis und optionale Angaben selbst ein; ein unterstützter HTTPS-Shoplink öffnet den Händler extern. Ein sichtbares Shopbild im Internet ist keine Erlaubnis zum Kopieren. Eine Inhaltsfreigabe durch Wunschkiste verschafft dir keine solchen Rechte.
+Wunschkiste übernimmt keine Händlerfotos oder Shopbeschreibungen und ruft Produktdetails nicht automatisch ab. Die vorbereitete Linkhilfe leitet höchstens einen Namensvorschlag aus dem Pfad deines HTTPS-Links ab, ohne die Händlerseite zu laden; prüfe diesen Vorschlag. Trage Wunsch, Preis und optionale Angaben selbst ein; ein unterstützter HTTPS-Shoplink öffnet den Händler extern. Ein sichtbares Shopbild im Internet ist keine Erlaubnis zum Kopieren. Eine Inhaltsfreigabe durch Wunschkiste verschafft dir keine solchen Rechte.
 
 ## Altersgruppen und Elternfreigabe
 
@@ -59,9 +59,11 @@ Das Nutzungsrecht für die laufende Anzeige endet mit der bestätigten Entfernun
 
 Nach bestätigter Bildentfernung können im privaten Bildspeicher leere Objekte mit null Bildbytes und begrenzte technische Löschsperren erhalten bleiben. Sie verhindern, dass ein verspäteter Upload ein entferntes Bild unter derselben Objektkennung wiederherstellt. Dazu können interne Eigentümer-, Kisten-/Konto-, Ressourcen- und Objektkennungen sowie begrenzte Status- und Kapazitätsdaten gehören; die Sperre enthält keine Bildinhalte, Namen oder E-Mail-Adressen und erlaubt keine Anmeldung oder Wiederherstellung eines gelöschten Kontos. Historisch belegte Objektplätze werden durch das Entfernen eines Bildes nicht wieder freigegeben. Für diese technischen Sperren ist derzeit keine automatische Ablauffrist eingerichtet; eine vollständige Entfernung sämtlicher technischer Bezüge oder die spätere Freigabe aller Kapazität wird deshalb nicht zugesagt. Fragen zu ihrer weiteren Erforderlichkeit oder Löschung kannst du an den Verantwortlichen richten.
 
-## Vorbereitete Premium-Funktion
+## Premium und Store-Abonnements
 
-Die nativen iOS- und Android-Apps enthalten eine vorbereitete Anbindung an Apple StoreKit beziehungsweise Google Play Billing. Käufe bleiben gesperrt, solange die erforderlichen Store-Zugangsdaten, Produkte, Berechtigungen und Prüfungen fehlen. Vorgesehen sind 1,99 € monatlich oder 14,99 € jährlich; maßgeblich ist bei einer späteren Bestellung der im jeweiligen Store angezeigte Preis. Eine bestätigte aktive Mitgliedschaft ist werbefrei und hat keine von Wunschkiste gesetzte Anzahlgrenze für Kisten oder Wünsche. Die endliche Gesamtkapazität des Beta-Betriebs sowie technische Schutz-, Anfrage- und Bildgrenzen bleiben bestehen und können Aktionen verhindern. Eine Vorschau oder eine ungeprüfte Kaufmeldung schaltet Premium nicht frei. Die Upload-Bestätigung ersetzt keine gesonderte Kaufbestätigung im Store. Hinweise zur Verwaltung und Kündigung stehen in der [Hilfe](/wunschkiste/help.de.html).
+Premium wird in unterstützten nativen Versionen über Apple StoreKit beziehungsweise Google Play Billing angeboten. Eine Bestellung ist nur möglich, wenn der jeweilige Store das Produkt und seinen Kaufdialog bereitstellt und die Kaufprüfung verfügbar ist. Die regulären Euro-Tarife sind 1,99 € pro Monat oder 14,99 € pro Jahr; verbindlich sind Preis, Währung, Laufzeit und Verlängerungsbedingungen im Kaufdialog des jeweiligen Stores. Eine serverseitig bestätigte aktive Mitgliedschaft ist werbefrei und hat keine von Wunschkiste gesetzte Anzahlgrenze für Kisten oder Wünsche. Technische Gesamtkapazität, Missbrauchsschutz sowie Anfrage-, Datei- und Bildgrenzen bleiben bestehen und können Aktionen vorübergehend verhindern. Eine Vorschau oder eine ungeprüfte Kaufmeldung schaltet Premium nicht frei. Die Upload-Bestätigung ersetzt keine gesonderte Kaufbestätigung im Store. Hinweise zur Verwaltung, Verlängerung, Kündigung und Erstattung stehen in der [Hilfe](/wunschkiste/help.de.html).
+
+Store-Testkäufe in Apples Sandbox beziehungsweise Google-Play-Lizenztests werden nur für ausdrücklich serverseitig freigegebene technische Testkonten angenommen. Eine Beta-Installation oder Mitgliedschaft in einer Testgruppe schaltet diese Berechtigung nicht automatisch frei. Test- und Produktionskäufe werden getrennt geprüft; eine Testbestätigung gewährt keinen Anspruch auf eine bezahlte Produktionsmitgliedschaft.
 
 ## Meldungen und Kontakt
 

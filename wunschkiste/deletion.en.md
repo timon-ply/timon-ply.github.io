@@ -11,7 +11,7 @@ permalink: /wunschkiste/deletion.en/
 ---
 # Delete your account and data
 
-Last updated: 14 October 2026
+Last updated: 18 October 2026
 
 ## Delete your account
 
@@ -27,7 +27,7 @@ Stored passkey verification data and recovery codes belonging to older accounts 
 
 ## Manage subscriptions separately
 
-Purchases are prepared but not yet enabled. Once purchases are enabled, manage or cancel a subscription in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Subscriptions renew according to the terms shown by the store unless canceled. Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account.
+A purchased monthly or yearly subscription renews automatically for the period displayed by the store unless canceled under its terms. Manage or cancel it in the original [Apple Account](https://support.apple.com/en-us/118428) or [Google Play account](https://support.google.com/googleplay/answer/7018481?hl=en). Account deletion, signing out and uninstalling do not cancel a store subscription. “Restore purchases” requires the original store access and original Wunschkiste account association; it does not transfer a purchase to another account or restore a deleted account. Refund requests follow the procedures of [Apple](https://support.apple.com/en-us/118223) or [Google Play](https://support.google.com/googleplay/answer/2479637?hl=en) and applicable statutory rights.
 
 ## Continue an interrupted deletion
 
@@ -53,7 +53,7 @@ Older Android versions store the coarse age choice for the prepared advertising 
 
 On iOS, account access, guest permissions and proofs needed for deletion recovery are stored in the device-bound Keychain. “Sign out” ends account access and attempts to remove the local push token and delivered device notifications; guest permissions may remain. Uninstalling deletes no server data and does not reliably promise removal of all Keychain data. During an unfinished deletion, retain the app and access until the server confirms completion. Any required renewed sign-in must confirm the same account; another account must not take over the stored deletion.
 
-Generic iOS messages already handed to APNs/FCM may still appear after disabling notifications, signing out or deletion. The requested short expiry is not an immediate recall guarantee. New sends require a valid device/session association, current account eligibility and enabled settings. iOS advertising is prepared but disabled pending readiness. Clearing local data does not erase server-side age eligibility or family consent records.
+Generic iOS messages already handed to APNs/FCM may still appear after disabling notifications, signing out or deletion. The requested short expiry is not an immediate recall guarantee. New sends require a valid device/session association, current account eligibility and enabled settings. Advertising remains disabled without provider approval, confirmed store association and required consent. Clearing local data does not erase server-side age eligibility or family consent records.
 
 Parents can withdraw a child's approval under Profile → Family; withdrawal blocks application access but is separate from erasure of the child's account and shared content. Parent account erasure also withdraws associated approvals. Child account erasure removes identity bindings and family associations. A minimal hashed anti-replay receipt can remain until the original request's 24-hour expiry, then is reclaimed on access. Expiry of an uncompleted parent request does not automatically delete a Firebase identity already created afterwards; contact the controller if account verification was abandoned and you need deletion help.
 
