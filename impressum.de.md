@@ -30,6 +30,8 @@ Phone: +49 178 9702884
 
 Angaben gemäß § 5 DDG.
 
+Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE460704313
+
 ## Verbraucherstreitbeilegung
 
 Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nach dem VSBG teilzunehmen.

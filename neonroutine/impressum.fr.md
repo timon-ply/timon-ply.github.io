@@ -11,6 +11,8 @@ permalink: /neonroutine/impressum.fr/
 redirect_from:
   - /neonroutine/impressum.fr.html
   - /neonroutine/impressum.fr.md
+  - /impressum.fr.md
+  - /impressum.fr.html
 ---
 # Mentions légales de NeonRoutine
 
@@ -29,6 +31,8 @@ Téléphone: +49 178 9702884
 ## Informations sur le fournisseur
 
 Informations sur le fournisseur communiquées conformément à l’article 5 du DDG allemand pour cette application. Les mentions légales générales sont également disponibles.
+
+Numéro allemand d’identification économique (W-IdNr.), conformément au § 139c AO : DE460704313
 
 ## Règlement extrajudiciaire des litiges de consommation
 

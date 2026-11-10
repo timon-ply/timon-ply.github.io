@@ -30,6 +30,8 @@ Phone: +49 178 9702884
 
 Información conforme al § 5 DDG.
 
+Número de identificación económica alemán (W-IdNr.), conforme al § 139c AO: DE460704313
+
 ## Resolución de litigios de consumo
 
 No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante una junta arbitral de consumo conforme a la ley alemana VSBG.

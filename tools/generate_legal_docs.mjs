@@ -5,6 +5,14 @@ import { fileURLToPath } from 'node:url';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const updated = 'August 30, 2026';
 
+const businessIdLines = {
+  "de": "Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE460704313",
+  "en": "German business identification number (W-IdNr.) under Section 139c AO: DE460704313",
+  "es": "Número de identificación económica alemán (W-IdNr.), conforme al § 139c AO: DE460704313",
+  "fr": "Numéro allemand d’identification économique (W-IdNr.), conformément au § 139c AO : DE460704313",
+  "ja": "ドイツ経済識別番号（W-IdNr.、租税通則法第139c条）: DE460704313"
+};
+
 const languages = [
   { code: 'de', name: 'Deutsch', order: 1 },
   { code: 'en', name: 'English', order: 2 },
@@ -628,6 +636,9 @@ function docRedirects(appKey, doc, code) {
   if (appKey === 'neonroutine' && doc === 'privacy' && code === 'en') {
     redirects.push('/neonroutine/privacy/');
   }
+  if (appKey === 'neonroutine' && doc === 'impressum' && code === 'fr') {
+    redirects.push('/impressum.fr.md', '/impressum.fr.html');
+  }
   return redirects;
 }
 
@@ -707,7 +718,7 @@ function appImpressum(appKey, app, lang) {
   const country = lang.code === 'fr' ? 'Allemagne' : 'Germany';
   const emailLabel = lang.code === 'fr' ? 'E-mail' : 'Email';
   const phoneLabel = lang.code === 'fr' ? 'Téléphone' : 'Phone';
-  return `${frontmatter({ title, docId: `${appKey}-impressum`, docType: l.impressumTitle, appName: app.name, lang, permalink: `/${appKey}/impressum.${lang.code}/`, redirects: docRedirects(appKey, 'impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\n${country}\n\n${emailLabel}: [dev@timonply.com](mailto:dev@timonply.com)<br>\n${phoneLabel}: +49 178 9702884\n\n## ${l.providerInfo}\n\n${copyFor('appProviderInfo', lang.code)}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n${related(appKey, app, lang.code)}`;
+  return `${frontmatter({ title, docId: `${appKey}-impressum`, docType: l.impressumTitle, appName: app.name, lang, permalink: `/${appKey}/impressum.${lang.code}/`, redirects: docRedirects(appKey, 'impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\n${country}\n\n${emailLabel}: [dev@timonply.com](mailto:dev@timonply.com)<br>\n${phoneLabel}: +49 178 9702884\n\n## ${l.providerInfo}\n\n${copyFor('appProviderInfo', lang.code)}\n\n${businessIdLines[lang.code]}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n${related(appKey, app, lang.code)}`;
 }
 
 function generalImpressum(lang) {
@@ -716,7 +727,7 @@ function generalImpressum(lang) {
   const sitePrivacyHeading = lang.code === 'de' ? 'Datenschutz dieser Website' : lang.code === 'es' ? 'Privacidad de este sitio web' : lang.code === 'ja' ? 'このウェブサイトのプライバシー' : 'Website privacy';
   const sitePrivacyText = lang.code === 'de' ? 'Hinweise zu Website-Aufrufen und E-Mail-Kontakt' : lang.code === 'es' ? 'Información sobre visitas al sitio y contacto por correo electrónico (en inglés)' : lang.code === 'ja' ? 'サイト閲覧とメール連絡に関する情報（英語）' : 'Information about website visits and email contact';
   const sitePrivacyPath = lang.code === 'de' ? '/privacy.de/' : '/privacy.en/';
-  return `${frontmatter({ title, docId: 'impressum', docType: l.impressumTitle, appName: 'General', lang, permalink: `/impressum.${lang.code}/`, redirects: generalRedirects('impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\nGermany\n\nEmail: [dev@timonply.com](mailto:dev@timonply.com)<br>\nPhone: +49 178 9702884\n\n## ${l.providerInfo}\n\n${lang.code === 'de' ? 'Angaben gemäß § 5 DDG.' : lang.code === 'es' ? 'Información conforme al § 5 DDG.' : lang.code === 'ja' ? 'DDG第5条に基づく情報。' : 'Information in accordance with Section 5 DDG.'}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n## ${sitePrivacyHeading}\n\n- [${sitePrivacyText}](https://timonply.com${sitePrivacyPath})\n\n## ${l.appSpecificNotices}\n\n${Object.entries(apps).map(([key, app]) => `- [${app.name}](https://timonply.com/${key}/impressum.${lang.code}/)`).join('\n')}`;
+  return `${frontmatter({ title, docId: 'impressum', docType: l.impressumTitle, appName: 'General', lang, permalink: `/impressum.${lang.code}/`, redirects: generalRedirects('impressum', lang.code) })}\n# ${title}\n\n${l.lastUpdated}: ${l.date}\n\n## ${l.controller}\n\nTimon Polley<br>\nGutenbergstraße 5<br>\n51469 Bergisch Gladbach<br>\nGermany\n\nEmail: [dev@timonply.com](mailto:dev@timonply.com)<br>\nPhone: +49 178 9702884\n\n## ${l.providerInfo}\n\n${lang.code === 'de' ? 'Angaben gemäß § 5 DDG.' : lang.code === 'es' ? 'Información conforme al § 5 DDG.' : lang.code === 'ja' ? 'DDG第5条に基づく情報。' : 'Information in accordance with Section 5 DDG.'}\n\n${businessIdLines[lang.code]}\n\n## ${l.consumerDispute}\n\n${l.dispute}\n\n## ${sitePrivacyHeading}\n\n- [${sitePrivacyText}](https://timonply.com${sitePrivacyPath})\n\n## ${l.appSpecificNotices}\n\n${Object.entries(apps).map(([key, app]) => `- [${app.name}](https://timonply.com/${key}/impressum.${lang.code}/)`).join('\n')}`;
 }
 
 function generateAppDocuments(key, app, lang) {
