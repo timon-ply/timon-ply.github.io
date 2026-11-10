@@ -6,11 +6,11 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const updated = 'August 30, 2026';
 
 const businessIdLines = {
-  "de": "Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE460704313",
-  "en": "German business identification number (W-IdNr.) under Section 139c AO: DE460704313",
-  "es": "Número de identificación económica alemán (W-IdNr.), conforme al § 139c AO: DE460704313",
-  "fr": "Numéro allemand d’identification économique (W-IdNr.), conformément au § 139c AO : DE460704313",
-  "ja": "ドイツ経済識別番号（W-IdNr.、租税通則法第139c条）: DE460704313"
+  "de": "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE460704313",
+  "en": "VAT identification number under Section 27a of the German VAT Act (UStG): DE460704313",
+  "es": "Número de identificación a efectos del IVA, conforme al § 27a UStG: DE460704313",
+  "fr": "Numéro d’identification TVA, conformément au § 27a UStG : DE460704313",
+  "ja": "付加価値税識別番号（USt-IdNr.、ドイツ売上税法第27a条）: DE460704313"
 };
 
 const languages = [

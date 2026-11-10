@@ -30,7 +30,7 @@ Phone: +49 178 9702884
 
 Provider information under Section 5 DDG for this app offering. The general legal notice is also available.
 
-German business identification number (W-IdNr.) under Section 139c AO: DE460704313
+VAT identification number under Section 27a of the German VAT Act (UStG): DE460704313
 
 ## Consumer dispute resolution
 

@@ -30,7 +30,7 @@ Phone: +49 178 9702884
 
 Información del proveedor conforme al § 5 DDG para esta oferta de app. También está disponible el aviso legal general.
 
-Número de identificación económica alemán (W-IdNr.), conforme al § 139c AO: DE460704313
+Número de identificación a efectos del IVA, conforme al § 27a UStG: DE460704313
 
 ## Resolución de litigios de consumo
 

@@ -21,7 +21,7 @@ Email: [dev@timonply.com](mailto:dev@timonply.com)<br>Telephone: +49 178 9702884
 
 Information pursuant to Section 5 of the German Digital Services Act (DDG).
 
-Economic identification number pursuant to Section 139c of the German Fiscal Code (AO): DE460704313.
+VAT identification number pursuant to Section 27a of the German VAT Act (UStG): DE460704313.
 
 ## Consumer dispute resolution
 

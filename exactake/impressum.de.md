@@ -30,7 +30,7 @@ Phone: +49 178 9702884
 
 Angaben nach § 5 DDG für dieses App-Angebot. Die allgemeine Impressumsseite ist ebenfalls verfügbar.
 
-Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE460704313
+Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE460704313
 
 ## Verbraucherstreitbeilegung
 

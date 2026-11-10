@@ -32,7 +32,7 @@ Téléphone: +49 178 9702884
 
 Informations sur le fournisseur communiquées conformément à l’article 5 du DDG allemand pour cette application. Les mentions légales générales sont également disponibles.
 
-Numéro allemand d’identification économique (W-IdNr.), conformément au § 139c AO : DE460704313
+Numéro d’identification TVA, conformément au § 27a UStG : DE460704313
 
 ## Règlement extrajudiciaire des litiges de consommation
 
