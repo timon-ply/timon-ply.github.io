@@ -1,7 +1,7 @@
 ---
 layout: legal
 title: "Impressum · Wunschkiste"
-doc_id: impressum
+doc_id: wunschkiste-impressum
 doc_type: "Impressum"
 app_name: "Wunschkiste"
 language: "Deutsch"
@@ -11,7 +11,7 @@ permalink: /wunschkiste/impressum.de/
 ---
 # Impressum
 
-Stand: 3. Oktober 2026
+Stand: 4. Oktober 2026
 
 ## Anbieter von Wunschkiste
 

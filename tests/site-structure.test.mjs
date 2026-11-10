@@ -437,3 +437,33 @@ test('all owned legal markdown documents avoid the discontinued EU ODR URL', () 
     assert.doesNotMatch(text, /ec\.europa\.eu\/consumers\/odr/i, `${file} contains discontinued ODR URL`);
   }
 });
+
+test('public legal site excludes relocated application routes and app-link delegation', () => {
+  for (const path of [
+    'appidee',
+    'tools/wunschkiste-backend',
+    '.well-known/assetlinks.json',
+    'design/previews/appidee-mvp-v5',
+    'design/previews/appidee-wunschkiste',
+    'design/previews/appidee-wunschkiste-v2',
+    'design/previews/appidee-wunschkiste-v3',
+    'design/previews/appidee-wunschkiste-v4',
+  ]) {
+    assert.equal(exists(path), false, `relocated application content remains at ${path}`);
+  }
+  for (const page of ['index.html', 'support.html', 'debug.html', '_layouts/legal.html', 'assets/site.js']) {
+    assert.doesNotMatch(read(page), /appidee|wunschkiste|\.apk(?:["'?#\s]|$)/i, `${page} links to relocated application content`);
+  }
+});
+
+test('retained Wunschkiste legal and help pages do not depend on removed app hosting', () => {
+  assert.equal(exists('assets/wunschkiste-legal.css'), true);
+  for (const name of ['privacy', 'impressum', 'help', 'deletion']) {
+    assert.equal(exists(`wunschkiste/${name}.de.md`), true);
+    const html = read(`wunschkiste/${name}.de.html`);
+    assert.match(html, /href="\/assets\/wunschkiste-legal\.css"/);
+    assert.match(html, /href="\/">Zur Website/);
+    assert.doesNotMatch(html, /(?:href|src)="[^\"]*(?:\/appidee|\.apk)/);
+  }
+  assert.doesNotMatch(read('wunschkiste/generate.mjs'), /\/appidee\//);
+});
